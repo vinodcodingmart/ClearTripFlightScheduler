@@ -1,0 +1,39 @@
+<section id="flights-nav">
+  <div class="container-fluid">
+		<div class="ctCol ctProducts mview-header">
+			<a class="ctBrand" href="/">
+				<span class="cleartripLogo"> Home</span>
+			</a>
+			<ul class="productLinks hasProductIcons">
+				<li class="flightApp">
+					<a rel="bToolTip" href="/flights">
+						<span class="productIcon flights"><%= t('header.flights')%></span>
+					</a>
+				</li>
+				<li class="hotelApp">
+					<a rel="bToolTip" href="/hotels">
+						<span class="productIcon hotels"> <%= t('header.hotels') %></span>
+					</a>
+				</li>
+
+				<li class="packagesApp">
+					<a rel="bToolTip"  href="/packages">
+						<span class="productIcon packages"><%= t('header.packages') %></span>
+					</a>
+				</li>
+				<%if @country_code == 'IN' %>
+				<li class="trainsApp">
+					<a rel="bToolTip" title="Trains" href="/trains">
+						<span class="productIcon trains"><%= t('header.trains') %></span>
+					</a>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% if I18n.locale==:en %>
+			<div class="ctCol ctCenter mview-center">&nbsp;</div>
+		<% end %>
+  </div>
+	<div class="clearfix"></div>
+</section>
+<div class="clearfix"></div>

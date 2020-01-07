@@ -1,0 +1,15 @@
+<% src = domain_section_banner(@country_code) %>
+<% unless !src.present? %>
+<div class="banner">
+  <a  href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= schedule_layout_values['dep_airport_code']%>&to=<%= schedule_layout_values['arr_airport_code'] %><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=%>&domain=<%=domain%>&section=<%=@section[3..5]%>&page_type=flight-schedule&button_type=book_now_button">
+    <amp-img src="<%= src %>" height="120" >
+    </amp-img>
+  </a>
+</div>
+<div class="mbanner hide-xs">
+  <a  href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= schedule_layout_values['dep_airport_code']%>&to=<%= schedule_layout_values['arr_airport_code'] %><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=%>&domain=<%=domain%>&section=<%=@section[3..5]%>&page_type=flight-schedule&button_type=book_now_button">
+    <amp-img src="<%= src %>" height="70" >
+    </amp-img>
+  </a>
+</div>
+<% end %>

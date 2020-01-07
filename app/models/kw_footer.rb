@@ -1,0 +1,2 @@
+class KwFooter < ApplicationRecord
+end

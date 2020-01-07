@@ -1,0 +1,3 @@
+class NewUniqueRoute < ApplicationRecord
+
+end

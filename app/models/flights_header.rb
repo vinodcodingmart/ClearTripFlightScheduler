@@ -1,0 +1,2 @@
+class FlightsHeader < ApplicationRecord
+end

@@ -1,0 +1,20 @@
+<% if routes.present? && !routes.nil? %>
+<div class="blocks">
+	<% if I18n.locale.to_s == "ar"%>
+	<h2><%= t("brand.top_destinations") %></h2>
+	<% else %>
+	<h2><%= t("brand.top_#{section}_flight_schedule_title") %></h2>
+	<% end %>
+	<ul class="list-unstyled top-airlines">
+		<% routes[0..5].each do |route| %>
+		<% if route["dep_city_name_ar"].present? && route["arr_city_name_ar"].present? %>
+		<li>
+			<% link = link_to( "#{route['dep_city_name_ar']} #{I18n.t('brand.to')} #{route['arr_city_name_ar']} #{t('brand_flight.flights')}", "/ar/flight-schedule/" + "#{route['schedule_route_url']}" + "-flights.html") %>
+			<%= link %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+		<% end %>
+	</ul>
+</div>
+<% end %>

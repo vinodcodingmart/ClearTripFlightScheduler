@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dep_city_code: MyString
+  arr_city_code: MyString
+  dep_city_name: MyString
+  arr_city_name: MyString
+  route_type: MyString
+  event_city: MyString
+  weekend_getaway_city: MyString
+  package_city: MyString
+  featured_city: MyString
+  things_todo_city: MyString
+  hotel_details: MyText
+  train_details: MyText
+
+two:
+  dep_city_code: MyString
+  arr_city_code: MyString
+  dep_city_name: MyString
+  arr_city_name: MyString
+  route_type: MyString
+  event_city: MyString
+  weekend_getaway_city: MyString
+  package_city: MyString
+  featured_city: MyString
+  things_todo_city: MyString
+  hotel_details: MyText
+  train_details: MyText

@@ -1,0 +1,21 @@
+<div class="blocks">
+	<h2> Top Hotels In <%= arr_city_name%></h2>
+	<ul class="list-unstyled top-airlines">
+	<% if near_by_airport_hotels.present? && near_by_airport_hotels!="" %>
+
+		<% hotels_list[0..5].each do |hotel| %>
+		<li>
+			<%= link_to hotel["hotel_name"] , hotel["hotel_link"] %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	<% else %>
+		<% hotels_rhs_list.each do |hotel| %>
+		<li>
+			<%= link_to hotel["hotel_name"] , hotel["hotel_link"] %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	<% end %>
+	</ul>
+</div>

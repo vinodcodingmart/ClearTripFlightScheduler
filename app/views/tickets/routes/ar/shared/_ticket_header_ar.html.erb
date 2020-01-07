@@ -1,0 +1,54 @@
+
+  <section id="Second-menu">
+    <div class="close visible-xs"><i class="fa fa-close"></i></div>
+    <ul class="list-inline">
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%= I18n.t("schedule_header.flights")%> <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <li><a href="/flight-schedule/flights-from-<%= dep_city_name_formated%>.html" title="<%= I18n.t("schedule_header.flights_from")%> <%= dep_city_name_ar %>" target="_blank"><%= I18n.t("schedule_header.list_of_flights_from")%> <%= dep_city_name_ar%></a></li> 
+          <li><a href="/flight-schedule/flights-to-<%= arr_city_name_formated %>.html" title="<%= I18n.t("schedule_header.flights_to")%> <%= arr_city_name_ar %>" target="_blank"><%= I18n.t("schedule_header.list_of_flights_to")%> <%= arr_city_name_ar%></a></li>  
+        </ul>
+      </li>
+
+      <% if route_dom_airlines.present? %>
+        <li>
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%#= dep_city_name.titleize%>  <%#= arr_city_name.titleize %> <%= I18n.t("schedule_header.domestic_airlines")%> <span class="caret"></span></a>
+          <ul class="list-unstyled dropdown-menu"> 
+            <% route_dom_airlines[0..10].each do |cc| %>
+          <% 
+          airline_name = I18n.t("airlines.#{cc}")
+          I18n.locale = :en
+           airline_name_en = I18n.t("airlines.#{cc}")
+          I18n.locale = :ar
+          link = "/flight-booking/#{url_escape("#{airline_name.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+            <li><%= t('brand_flights_routes_html', dep_city_name: dep_city_name_ar, airline_name: airline_name, arr_city_name: arr_city_name_ar, link: link,title: "#{airline_name} #{dep_city_name_ar} #{arr_city_name_ar} #{I18n.t('schedule_header.flights')}",target: "_blank") %></li>
+          <% end %>
+          </ul>
+        </li>
+      <% end %>
+
+      <% if route_int_airlines.present? %>
+        <li>
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%#= dep_city_name.titleize%>  <%#= arr_city_name.titleize %> <%= I18n.t("schedule_header.international_airlines") %> <span class="caret"></span></a>
+          <ul class="list-unstyled dropdown-menu"> 
+          <% route_int_airlines[0..10].each do |cc| %>
+          <% 
+          airline_name = I18n.t("airlines.#{cc}")
+          I18n.locale = :en
+           airline_name_en = I18n.t("airlines.#{cc}")
+          I18n.locale = :ar
+          link = "/flight-booking/#{url_escape("#{airline_name_en.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+            <li><%= t('brand_flights_routes_html', dep_city_name: dep_city_name_ar, airline_name: airline_name, arr_city_name: arr_city_name_ar, link: link,title: "#{airline_name} #{dep_city_name_ar} #{arr_city_name_ar} flights",target: "_blank") %></li>
+          <% end %> 
+          </ul>
+        </li>
+      <% end %>
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%= I18n.t("schedule_header.airports")%><span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu"> 
+          <li><a href="/tourism/airports/<%= dep_city_name_formated %>-airport.html" title="<%= dep_city_name_ar%> <%= I18n.t("schedule_header.airport")%>" target="_blank"><%= dep_city_name_ar%> <%= I18n.t('schedule_header.airport')%></a></li> 
+          <li><a href="/tourism/airports/<%= arr_city_name_formated %>-airport.html"  title="<%= arr_city_name_ar%> <%= I18n.t("schedule_header.airport")%>" target="_blank"><%= arr_city_name_ar.titleize%> <%= I18n.t('schedule_header.airport')%></a></li> 
+        </ul>
+      </li>
+    </ul>
+  </section>

@@ -1,0 +1,2 @@
+class BhFromToContent < ApplicationRecord
+end

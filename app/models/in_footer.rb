@@ -1,0 +1,2 @@
+class InFooter < ApplicationRecord
+end

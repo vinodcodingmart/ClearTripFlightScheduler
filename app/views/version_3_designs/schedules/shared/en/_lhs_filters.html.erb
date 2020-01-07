@@ -1,0 +1,313 @@
+<div class="lhs">
+  <a href="javascript:void(0);" class="reset_filter" style="display: none;">Clear all</a>
+      
+      <div class="lhs-cards">
+        <div class="stops-filters hop_filter">
+          <h4>Stops</h4>
+            <ul class="list-inline">
+              <!-- <li class="dNonStop non_stop"><a href="javascript:void(0);" class="">Non Stop</a></li>
+              <li class="dOneStop one_stop"><a href="javascript:void(0);" class="">1 stop</a></li>
+              <li class="dTwoStops two_stops"><a href="javascript:void(0);" class="">2 stops</a></li> -->
+              <li class="dNonStop non_stop">
+                <label class="custom-checkbox"> 
+                  <input type="checkbox" name="non_stop" value="Non Stop" id="ns">
+                  <span class="checkmark"></span>
+                  <span class="filter-title">Non Stop</span>
+                </label>
+              </li>
+              <li class="dOneStop one_stop">
+                <label class="custom-checkbox"> 
+                  <input type="checkbox" name="one_stop" value="1 stop" id="os">
+                  <span class="checkmark"></span>
+                  <span class="filter-title">1 Stop</span>
+                </label>
+              </li>
+              <li class="dTwoStops two_stops">
+                <label class="custom-checkbox"> 
+                  <input type="checkbox" name="two_stops" value="2 stops" id="ts">
+                  <span class="checkmark"></span>
+                  <span class="filter-title">2 Stop</span>
+                </label>
+              </li>
+
+              <!-- <li class="dOneStop one_stop">
+                <input type="checkbox" name="one_stop" value="1 stop" id="os"><label for="os">1 stop</label></li>
+              <li class="dTwoStops two_stops">
+                <input type="checkbox" name="two_stops" value="2 stops" id="ts"><label for="ts">2 stops</label>
+              </li> -->
+            </ul>
+        </div>
+      </div><!--/lhs-cards-->
+
+       <div class="lhs-cards">
+        <div class="stops-filters more_filters">
+          <h4>Fare Types</h4>
+          <ul class="list-inline">
+            <li class="dRefundable">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="rf" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Refundable</span>
+              </label>
+            </li>
+            <li class="dMeals">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Meals" value="Meals" id="fm">
+                <span class="checkmark"></span>
+                <span class="filter-title"> In-flight Meals</span>
+              </label>
+            </li>
+            <li class="dHbag disabled">
+              <label class="custom-checkbox">
+              <input type="checkbox" name="Hbag" value="Hbag" id="cb">
+              <span class="checkmark"></span>
+              <span class="filter-title"> Check-in baggage</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div><!--/lhs-cards-->
+
+
+      <div class="lhs-cards">
+        <div class="dtime-filters depart_time_filter">
+          <h4>Departure time from <%= dep_city_name %></h4>
+          <!-- <div class="day-filter depart_time_filter"> -->
+             <ul class="list-unstyled">
+            <li data-time="00:00-08:00" id="em">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="em" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Early Morning <span class="lhs-ftiming">12 AM - 08 AM</span>
+              </label>
+            </li>
+            <li data-time="08:00-12:00" id="mor">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="mor" >
+                <span class="checkmark"></span>
+                <span class="filter-title"> Morning <span class="lhs-ftiming">08 AM - 12 PM</span>
+              </label>
+            </li>
+            <li data-time="12:00-16:00" id="mid">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="mid" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Mid-Day <span class="lhs-ftiming">12 PM - 04 PM</span>
+              </label>
+            </li>
+            <li data-time="16:00-20:00" id="eve">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="em" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Evening <span class="lhs-ftiming">04 PM - 08 PM</span>
+              </label>
+            </li>
+            <li data-time="20:00-24:00" id="ni">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="ni" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Night <span class="lhs-ftiming">08 PM - 12 AM</span>
+              </label>
+            </li>
+            <div class="clearfix"></div>
+          <!-- </div> -->
+          <!-- <div class="day-filter depart_time_filter">
+            <ul class="list-unstyled ">
+              <li class="emr" data-time="00:00-06:00" id="em">
+                <a href="javascript:void(0);" class="">
+                  <span></span>
+                   00-06
+                </a>
+              </li>
+              <li class="mrg" data-time="06:00-12:00" id="mor">
+                <a href="javascript:void(0);" class="">
+                  <span></span>
+                  06-12
+                </a>
+              </li>
+              <li class="evng" data-time="12:00-18:00" id="eve">
+                <a href="javascript:void(0);" class="">
+                  <span></span>
+                  12-18 
+                </a>
+              </li>
+              <li class="ngt" data-time="18:00-00:00" id="ni">
+                <a href="javascript:void(0);" class="">
+                  <span></span>
+                  18-00 
+                </a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div> -->
+        </div>
+      </div><!--/lhs-cards-->
+      <div class="lhs-cards">
+        <div class="dtime-filters arrival_time_filter">
+          <% if @round_trip == "R" %>
+            <h4>Departure time from <%= arr_city_name %></h4>
+          <% else %>
+            <h4>Arrival time to <%= arr_city_name %></h4>
+          <% end %>
+          <!-- <div class="day-filter arrival_time_filter">
+         
+            <ul class="list-unstyled">
+              <li class="emr" data-time="00:00-06:00" id="em" >
+                  <a href="javascript:void(0);" class="" > 
+                    <span></span>
+                    00-06
+                  </a>
+              </li>
+              <li class="mrg" data-time="06:00-12:00" id="mor">
+                <a href="javascript:void(0);" class="">
+                  <span></span>
+                  06-12
+                </a>
+              </li>
+
+              <li class="evng" data-time="12:00-18:00" id="eve">
+                <a href="javascript:void(0);" class="">
+                  <span></span>
+                  12-18
+                </a>
+              </li>
+              <li class="ngt" data-time="18:00-00:00" id="ni">
+                <a href="javascript:void(0);" class="">
+                  <span></span>
+                  18-00
+                </a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div> -->
+          <ul class="list-unstyled">
+            <li data-time="00:00-08:00" id="em">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="em" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Early Morning <span class="lhs-ftiming">12 AM - 08 AM</span>
+              </label>
+            </li>
+            <li data-time="08:00-12:00" id="mor">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="mor" >
+                <span class="checkmark"></span>
+                <span class="filter-title"> Morning <span class="lhs-ftiming">08 AM - 12 PM</span>
+              </label>
+            </li>
+            <li data-time="12:00-16:00" id="mid">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="mid" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Mid-Day <span class="lhs-ftiming">12 PM - 04 PM</span>
+              </label>
+            </li>
+            <li data-time="16:00-20:00" id="eve">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="em" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Evening <span class="lhs-ftiming">04 PM - 08 PM</span>
+              </label>
+            </li>
+            <li data-time="20:00-24:00" id="ni">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="Refundable" value="Refundable" id="ni" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Night <span class="lhs-ftiming">08 PM - 12 AM</span>
+              </label>
+            </li>
+            <!-- <li data-time="00:00-08:00" id="em">
+                <a href="javascript:void(0);" class="">
+                  <label for="em">Early Morning</label> 12 AM - 08 AM</a>
+            </li>
+            <li data-time="08:00-12:00" id="mor"><a href="javascript:void(0);" class=""><label for="mor">Morning</label> 08 AM - 12 PM</a></a></li>
+            <li data-time="12:00-16:00" id="mid"><a href="javascript:void(0);" class=""><label for="mid">Mid-Day</label> 12 PM - 04 PM</a></a></li>
+            <li data-time="16:00-20:00" id="eve"><a href="javascript:void(0);" class=""><label for="eve">Evening</label> 04 PM - 08 PM</a></a></li>
+            <li data-time="20:00-24:00" id="ni"><a href="javascript:void(0);" class=""><label for="ni">Night</label> 08 PM - 12 PM</a></a></li> -->
+          </ul>
+        </div>
+      </div><!--/lhs-cards-->
+     
+      <div class="lhs-cards">
+        <div class="priceSlider">
+          <h4>Price</h4>
+              <input type="text" class="js-range-slider" name="my_range" value="" />
+              <span class="price-left"></span>
+              <span class="price-right"></span>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="lhs-cards">
+        <div class="airlines-filter carrier_filter">
+          <h4>Preferred Airlines</h4>
+          <ul class="list-unstyled top-airlines">
+            <%# @available_airlines.each do |airline| %>
+              <%# airline_name = airline%>
+              <li>
+                <div class="airlines-list">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" name="airline" id="">
+                    <span class="checkmark"></span>
+                    <span ><div class="R-airline-logo "><span class="carrier-logo air-asia"></span></div> Air Asia</span>
+                  </label>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+            <%# end %>
+          <li>
+            <div class="airlines-list">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" name="airline" id="">
+                    <span class="checkmark"></span>
+                    <span ><div class="R-airline-logo "><span class="carrier-logo air-asia"></span></div> Air India</span>
+                  </label>
+                </div>
+            <div class="clearfix"></div>
+          </li>
+
+          <li>
+            <div class="airlines-list">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" name="airline" id="">
+                    <span class="checkmark"></span>
+                    <span ><div class="R-airline-logo "><span class="carrier-logo spicejet"></span></div> GoAir</span>
+                  </label>
+                </div>
+
+            
+            
+            <div class="clearfix"></div>
+          </li>
+          <li>
+            <div class="airlines-list">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" name="airline" id="">
+                    <span class="checkmark"></span>
+                    <span ><div class="R-airline-logo "><span class="carrier-logo indigo"></span></div> Indigo</span>
+                  </label>
+                </div>
+
+            
+            
+            <div class="clearfix"></div>
+          </li>
+          <li>
+            <div class="airlines-list">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" name="airline" id="">
+                    <span class="checkmark"></span>
+                    <span ><div class="R-airline-logo "><span class="carrier-logo emirates"></span></div> SpiceJet</span>
+                  </label>
+                </div>
+
+            
+            
+            <div class="clearfix"></div>
+          </li>
+
+        </ul>
+        </div>
+      </div><!--/lhs-cards-->
+    </div><!--/lhs-->

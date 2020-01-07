@@ -1,0 +1,87 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  username: root
+  password: root
+
+# development:
+#   <<: *default
+#   host: 54.169.165.81
+#   username: flights
+#   password: ClearTripCalendar
+#   database: air_development_testing
+
+development:
+  <<: *default
+  database: ct_flights_testing
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
+  # host: snapshot-flights-dynamic.czw4letayoyk.ap-southeast-1.rds.amazonaws.com
+  host: flights-dynamic.czw4letayoyk.ap-southeast-1.rds.amazonaws.com
+  username: seo_flights
+  password:  ClearTrip$S3GLN
+  pool: 1000
+
+# cms_development:
+#   <<: *default
+#   database: cms_panel_development
+#   host: 13.251.49.54
+#   username: flights
+#   password: ClearTripCalendar
+#   port: 3306
+#   pool: 1000
+
+cms_development:
+  adapter: mysql2
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
+  database: cms_panel_production
+  host: flights-dynamic.czw4letayoyk.ap-southeast-1.rds.amazonaws.com
+  username: seo_flights
+  password: ClearTrip$S3GLN
+  port: 3306
+  pool: 1000
+
+# calendar_mysql:
+#   adapter: mysql2
+#   username: flights
+#   password: ClearTripCalendar
+#   database: flights_dynamic_calendars
+#   pool: 1000
+#   host: 52.77.242.232
+#   encoding: utf8
+
+db_editor_panel:
+  adapter: mysql2
+  username: root
+  password: ClearTripSeoHeader
+  database: flights_editor_panel_development
+  pool: 40
+  host: 52.77.239.110
+  encoding: utf8
+
+db_flights_header:
+  adapter: mysql2
+  username: flights
+  password: ClearTripCalendar
+  # password:
+  database: flights_header
+  pool: 40
+  # host: localhost
+  host: 52.221.208.99
+  port: 3306
+  encoding: utf8
+
+db_postgres:
+  adapter: postgresql
+  host: 52.221.208.99
+  # database: air_development
+  # host: 52.221.208.99
+  database: backup_new_oag_flights_development
+  # database: air_development_new_oag
+  username: postgres
+  # port: 5432
+  password: ClearTripWayToGo
+  # password: root
+

@@ -1,0 +1,85 @@
+<div id="search-widget">
+        <form action="/ar/flights/international/search" errorblockid="flt_err" id="AirSearch" class="search no-action-change removeSelflabels" method="get" target="_blank">
+          <ul class="list-inline trip-type">
+            <li>
+              <label class="encaps" for="rnd_trip">
+                <input type="radio" value="R" checked="" name="rnd_one" id="rnd_trip">
+                <strong>رحلة ذهاب وعودة</strong>
+              </label>
+            </li>
+            <li>
+              <label class="encaps" for="one_way">
+                <input type="radio" value="O" name="rnd_one" id="one_way">
+                <strong>ذهاب فقط</strong></label>
+              </li>
+            </ul>
+            <ul class="list-inline search-bar">
+              <li class="search-mview">
+                <label class="required" for="origin_autocomplete">من عند <span class="weak">(أي مدينة في جميع أنحاء العالم أو المطار)</span>
+                </label>
+                <input type="text" selflabel="أدخل اسم مدينة أو مطار" id="origin_autocomplete" autocomplete="off" class="ui-autocomplete-input">
+                <input type="hidden" name="from" id="from">
+              </li>
+              <li class="search-mview">
+                <label class="required" for="destination_autocomplete">إلى <span class="weak">(أي مدينة في جميع أنحاء العالم أو المطار)</span>
+                </label>
+                <input type="text" selflabel="أدخل اسم مدينة أو مطار" id="destination_autocomplete" class="ui-autocomplete-input" autocomplete="off">
+                <input type="hidden" name="to" id="to" value="BOM">
+              </li>
+              <li class="date">
+                <label class="required" for="dpt_date">المغادرة في</label>
+                <span class="enclosedPicker">
+                  <input readonly="readonly" type="text" size="10" autocomplete="off" id="dpt_date" title="تاريخ المغادرة" name="depart_date" class=" required selflabel ">
+                </span>
+              </li>
+              <li class="date" id="returnDateSec">
+                <label class="required" for="rtn_date">العودة في</label>
+                <span class="enclosedPicker">
+                  <input readonly="readonly" type="text" size="10" id="rtn_date" autocomplete="off" mindatefieldid="dpt_date" title="تاريخ العودة" name="return_date" class=" second required no_autochange selflabel disabled ">
+                </span>
+              </li>
+              <div class="clearfix mobile-widget-clear"></div>
+              <li class="travellers">
+                <label class="required" for="adults">البالغون</label>
+                <select size="1" name="adults" id="adults">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+                <span class="weak">&gt; 12 yrs</span>
+              </li>
+              <li class="travellers">
+                <label for="children">الأطفال</label>
+                <select size="1" name="childs" id="children">
+                  <option value="0" selected="selected">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+                <span class="weak">من 2- إلى12سنة</span>
+              </li>
+              <li class="travellers">
+                <label for="infants">الرضّع</label>
+                <select size="1" name="infants" id="infants">
+                  <option value="0" selected="selected">0</option>
+                  <option value="1">1</option>
+                </select>
+                <span class="weak">أقل من عامين</span>
+              </li>
+              <li class="search-mview">
+                <button type="submit" id="button_flight_search" title="Search" class="booking">البحث عن رحلات جوية</button>
+              </li>
+            </ul>
+          </form>
+      </div>

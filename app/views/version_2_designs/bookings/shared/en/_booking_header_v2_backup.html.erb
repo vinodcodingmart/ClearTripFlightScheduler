@@ -1,0 +1,124 @@
+<section id="common-nav-bar">
+  <div class="custom-container">
+
+
+    <!--Logo Sections-->
+    <div class="col-sm-3 ct-col-3 pad-lzero">
+      <a class="ctBrand" href="/">
+        <span class="cleartripLogo" title="Cleartrip ">Home</span>
+      </a>
+      <ul class=" list-inline productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" title="Flights" href="/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" title="Hotels" href="/hotels">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <!--Header Links Sections-->
+    <div class="col-sm-7 pad-lzero common-m-navbar">
+      <div class="main-nav-links">
+        <ul class="list-inline">
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="flights-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Airline Resources </span>
+            <div class="dropdown-menu" aria-labelledby="flights-menu">
+              <% unless brand_type == "booking-overview" %>
+                <%= link_to("#{carrier_name_en} Overview","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}.html",title:"#{carrier_name_en} Overview")%>
+                <% end %>
+                <% unless brand_type == "pnr_status" %>
+                <%= link_to("#{carrier_name_en} Flight and PNR Status","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-flight-pnr-status.html",title:"#{carrier_name_en} Flight and PNR Status") %>
+                <% end %>
+                <% unless brand_type == "web_checkin" %>
+                <%= link_to("#{carrier_name_en} Web Check-in","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-web-check-in.html",title:"#{carrier_name_en} Web Check-in") %>
+                <% end %>
+                <% unless brand_type == "baggage" %>
+                <%if header_pnr_web_check_in["baggage_content"] %>
+                <%  carrier_name_formatted = format_overview_link(carrier_name_en).gsub("-airlines",'') %>
+                <%= link_to("#{carrier_name_en} Baggage Allowance","/flight-booking/#{carrier_name_formatted}-baggages.html",title: "#{carrier_name_en} Baggage Allowance")%>
+                <% end %>
+                <% end %>
+                <% unless brand_type == "customer_support" %>
+                  <%if header_pnr_web_check_in["customer_support_content"] %>
+                    <%= link_to("#{carrier_name_en} Customer Support","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-customer-support.html",title: "#{carrier_name_en} Customer Support")%>
+                  <%end%>
+                <% end %>
+                <% unless brand_type == "special_assistance" %>
+                  <%if header_pnr_web_check_in["special_assistance"] %>
+                    <%= link_to("#{carrier_name_en} Special Assistance","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-special-assistance.html",title: "#{carrier_name_en} Special Assistance")%>
+                  <%end%>
+                <% end %>
+                <% unless brand_type == "refund_cancellation" %>
+                  <%if header_pnr_web_check_in["cancellation_content"] %>
+                    <%= link_to("#{carrier_name_en} Refund Cancellation","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-refund-cancellation.html",title: "#{carrier_name_en} Refund Cancellation")%>
+                  <%end%>
+                <% end %>
+                <% unless brand_type == "travel_documents" %>
+                  <%if header_pnr_web_check_in["travel_document"] %>
+                    <%= link_to("#{carrier_name_en} Travell Document","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-travel-documents.html",title: "#{carrier_name_en} Travell Document")%>
+                  <%end%>
+                <% end %>
+              </div>
+          </li>
+
+        <% if airports["dom_airports"].present? && !["SA","AE"].include?(@country_code) %>
+          <li class="dropdown">
+              <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Domestic Airports</span>
+              <div class="dropdown-menu" aria-labelledby="airlines-menu">
+                <% airports["dom_airports"].each do |airport|%>
+                  <%  airport_name = link_to( airport['airport_name'], "/tourism/airports/"+ "#{use_helper.url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}", title: airport['airport_name']) %>
+                  <%=  airport_name %>
+                <% end %>
+              </div>
+          </li>
+        <% end %>
+
+        <% if airports["dom_airports"].present? && !["SA","AE"].include?(@country_code) %>
+         <li class="dropdown">
+              <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">International Airports</span>
+              <div class="dropdown-menu" aria-labelledby="airlines-menu">
+                <% airports["int_airports"].each do |airport|%>
+                  <%  airport_name = link_to( airport['airport_name'], "/tourism/airports/"+ "#{use_helper.url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}", title: airport['airport_name']) %>
+                  <%=  airport_name %>
+                <% end %>
+              </div>
+            </li>
+        <% end %>
+
+          
+          <% if @country_code == "IN" %>
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="offers-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Offers</span>
+            <div class="dropdown-menu" aria-labelledby="offers-menu">
+              <a href="https://www.cleartrip.com/offers/india/payless" target="_blank" title="Domestic flight offers">Domestic flight offers</a>
+             <a href="https://www.cleartrip.com/offers/india/anywhere" target="_blank" title="International flight offers">International flight offers</a>
+             <a href="https://www.cleartrip.com/offers/india/awesome-long-weekends-2017" title="Long weekend offers" target="_blank">Long weekend offers</a>
+            <a href="https://www.cleartrip.com/offers/india/hdfc-weekends" title="HDFC weekend offers" target="_blank">HDFC weekend offers</a>
+            <a href="https://www.cleartrip.com/offers/india/hsbc-offers" title="HSBC offers" target="_blank">HSBC offers</a>
+            <a href="https://www.cleartrip.com/offers/india/yes-bank" target="_blank" title="Yes bank offers ">Yes bank offers </a>
+            <a href="https://www.cleartrip.com/offers/india/axisbank" target="_blank" title="AXIS bank offers">AXIS bank offers</a>
+            <a href="https://www.cleartrip.com/offers/india/amex-tuesday" title="American express offers" target="_blank">American express offers</a>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <!--Language Links Sections-->
+    <% unless @country_code == "IN" %>
+    <div class="col-sm-2 pad-lzero hidden-xs">
+      <ul class=" lang-menu list-inline text-right">
+        <li><a href="#{application_processor.host_name(country_code)}/#{@page_type}/#{flight_file_name}">English</a></li>
+        <li><a href="<%= "#{application_processor.host_name(country_code)}/ar/#{@page_type}/#{flight_file_name}" %>">العربية</a></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+</section>

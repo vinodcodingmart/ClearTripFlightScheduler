@@ -1,0 +1,174 @@
+<% has_price = routes.map{ |x| (x['min_price'].present? && x['min_price'] != 0 ) && (x['max_price'].present? &&  x['max_price']!= 0) }.include?(true) %>
+<div class="normal-list">
+  <div class="sort-bar">
+    <div class="items text-center">
+    <div class="col-xs-2"><a href="">&nbsp;</a></div>
+    <div class="col-xs-2"><a href=""><%= I18n.t('brand.days') %></a></div>
+     <% if has_price %>
+        <div class="col-xs-2"><a href=""><%= I18n.t('brand.min_price')%></a></div>
+        <div class="col-xs-2"><a href=""><%= I18n.t('brand.max_price')%></a></div>
+      <% else %>
+        <div class="col-xs-2"><a href=""><%= I18n.t('brand.dep_time')%></a></div>
+        <div class="col-xs-2"><a href=""><%= I18n.t('brand.arr_time')%></a></div>
+      <% end %>
+      <div class="col-xs-2"><a href=""><%= I18n.t('brand.route')%></a></div>
+      <div class="col-xs-2"><a class="sortAsc" href=""><%= I18n.t('brand.airline')%></a></div>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+  <ul id="airline-lists" class="list-unstyled">
+  
+    <% rc = 0 %>
+   <% routes.each do |route| %>
+    <% rc +=1 %>
+      <li class="<%= rc>10 ? "hide showMore" : "" %>">
+            <div class="airline">
+              <% if (route['min_price'].present? && route['min_price'] != 0) && (route['max_price'].present? && route['max_price'] != 0) %>
+                  <div class="col-xs-2 no-padding">
+                    <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" class="booking flight-schedule-booking" data-section="<%=section%>" target="_blank"><%= I18n.t('brand.book') %></a>
+                  </div>
+                <% else %>
+                  <div class="col-xs-2 no-padding">
+                    <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%=section%>" class="booking flight-schedule-booking" data-section="<%=section%>" target="_blank"><%= I18n.t('brand.check_price') %></a>
+                    <div class="clearfix"></div>
+                  </div>
+             <% end %>
+
+              <div class="col-xs-2 no-padding pad-10">
+                <ul class="list-inline days">
+                  <%= route['op_days'] %>
+                </ul>
+              </div>
+
+              <% if has_price %>
+                <div class="col-xs-2 no-padding pad-10">
+                <% if route['min_price'].present? && route['min_price'] != 0 %>
+                  <span><%= currency_code %> <%= route['min_price'] %></span>
+                  <% else %>
+                  <span>-NA-</span>
+                <% end %>
+                </div>
+                <div class="col-xs-2 mview-price no-padding pad-10">
+                <% if route['max_price'].present? && route['max_price'] != 0 %>
+                  <span><%= currency_code %> <%= route['max_price'] %></span>
+                  <% else %>
+                  <span>-NA-</span>
+                <% end %>
+                </div>
+              <% else %>
+                 <div class="col-xs-2 no-padding pad-10">
+                  <span><%= Time.strptime(route['dep_time'],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+                </div>
+                 <div class="col-xs-2 no-padding pad-10">
+                  <span><%= Time.strptime(route['arr_time'],"%H:%M").to_time.strftime("%I:%M %p")%></span>
+                </div>
+              <% end %>
+              <div class="col-xs-2 no-padding pad-10">
+                <span><%= route['dep_city_code'] %>  →  <%= route['arr_city_code'] %></span>
+                <span class="type"><%= route['arr_city_name_ar'] %> <%= I18n.t('brand.to')%> <%= route['dep_city_name_ar'] %></span>
+              </div>
+              <div class="col-xs-2 no-padding">
+               
+                  <span class="name mt-15">
+                    <%= route['carrier_code'] %><%= route['flight_no'] %>
+                  </span>
+                  <span class="name mt-5">
+                    <% airline_name = link_to( I18n.t("airlines.#{route['carrier_code']}"), "/ar/flight-booking/" + format_airline_name(I18n.with_locale(:en) { I18n.t("airlines.#{route['carrier_code']}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+                    <%= airline_name %>
+                  </span>
+                <br>
+              </div>
+              <!--/airline-->
+            <div class="clearfix"></div>
+          </li>
+    <% end %>
+    <% if routes.count>10 %>
+      <li class="more-link">
+        <a href="#" id="show_all_flights"><%= I18n.t('brand.view_all_flight_schedules') %></a>
+      </li>
+      <% end %>
+  </ul>
+</div><!--/normal-view-->
+
+
+<div class="mview-list">
+  <div class="sort-bar">
+    <div class="items text-center">
+    <div class="col-xs-3"><a href="">&nbsp;</a></div>
+    <% if has_price %>
+      <div class="col-xs-4 no-padding"><a href=""><%= I18n.t('brand.min_price')%></a></div>
+      <% else %>
+      <div class="col-xs-4"><a href=""><%= I18n.t('brand.dep_time')%> - <%= I18n.t('brand.arr_time')%></a></div>
+      <% end %>
+      <div class="col-xs-3 no-padding"><a href=""><%= I18n.t('brand.route')%></a></div>
+      <div class="col-xs-2"><a class="sortAsc" href=""><%= I18n.t('brand.airline')%></a></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <ul id="airline-lists" class="list-unstyled">
+    <% rc = 0 %>
+   <% routes.each do |route| %>
+    <% rc +=1 %>
+      <li class="<%= rc>10 ? "hide showMore" : "" %>">
+        <div class="airline">
+          <% if route['min_price'].present? && route['min_price'] != 0 %>
+            <div class="col-xs-3 no-padding">
+              <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" class="booking flight-schedule-booking" data-section="<%=section%>"><%= I18n.t('brand.book')%></a>
+            </div>
+            <% else %>
+              <div class="col-xs-3 no-padding">
+              <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" class="booking flight-schedule-booking" data-section="<%=section%>"><%= I18n.t('brand.check_price')%></a>
+            <% end %>
+         <% if has_price %>
+          <div class="col-xs-4 no-padding pad-10">
+            <% if route['min_price'].present? && route['min_price'] != 0 %>
+              <span><%= currency_code %><%= route['min_price'] %></span>
+            <% else %>
+              <span>-NA-</span>
+            <% end %>
+          </div>
+          <% else %>
+           <div class="col-xs-4 no-padding pad-10">
+              <span><%= Time.strptime(route['dep_time'],"%H:%M").to_time.strftime("%I:%M %p") %> - <%= Time.strptime(route['arr_time'],"%H:%M").to_time.strftime("%I:%M %p")%></span>
+            </div>
+          <% end %>
+
+          <div class="col-xs-3 no-padding pad-10">
+            <span><%= route['dep_city_code'] %>  →  <%= route['arr_city_code'] %></span>
+            <span class="type"><%= route['arr_city_name'] %> <%= I18n.t('brand.to')%><%= route['dep_city_name'] %> </span>
+          </div>
+
+          <div class="col-xs-2 no-padding">
+            <% if country_code=='IN' && section.include?('dom') %>
+            <span class="Domairlogo go">
+              <img src="<%= assets_path%>/new_images/airlines/<%= route['carrier_code']%>.png" alt="">
+            </span>
+            <span class="name">
+              <%= route['carrier_code'] %><%= route['flight_no'] %> |
+              <% airline_name = link_to( I18n.t("airlines.#{route['carrier_code']}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { I18n.t("airlines.#{route['carrier_code']}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+              <%= airline_name %>
+            </span>
+            <% else %>
+            <span class="name mt-15">
+              <%= route['carrier_code'] %><%= route['flight_no'] %>
+            </span>
+            <span class="name mt-5">
+              <% airline_name = link_to( I18n.t("airlines.#{route['carrier_code']}"), "/ar/flight-booking/" + format_airline_name(I18n.with_locale(:en) { I18n.t("airlines.#{route['carrier_code']}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+              <%= airline_name %>
+            </span>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+        </div><!--/airline-->
+        <div class="clearfix"></div>
+      </li>
+    <% end %>
+    <% if routes.count>10 %>
+      <li class="more-link">
+        <a href="#" id="show_all_flights_mobile"><%= I18n.t('brand.view_all_flight_schedules')%></a>
+      </li>
+      <% end %>
+  </ul>
+</div><!--mobile-view-->
+<div class="clearfix"></div>

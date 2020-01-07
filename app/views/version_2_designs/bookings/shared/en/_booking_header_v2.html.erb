@@ -1,0 +1,91 @@
+<section id="common-nav-bar">
+  <div class="custom-container">
+
+
+    <!--Logo Sections-->
+    <div class="col-sm-3 ct-col-3 pad-lzero">
+      <a class="ctBrand" href="/">
+        <span class="cleartripLogo" title="Cleartrip ">Home</span>
+      </a>
+      <ul class=" list-inline productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" title="Flights" href="/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" title="Hotels" href="/hotels">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <!--Header Links Sections-->
+    <div class="col-sm-7 pad-lzero common-m-navbar">
+      <div class="main-nav-links">
+        <ul class="list-inline">
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="flights-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Airline Resources </span>
+            <div class="dropdown-menu" aria-labelledby="flights-menu">
+              <% unless brand_type == "booking-overview" %>
+                <%= link_to("#{carrier_name_en} Overview","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}.html",title:"#{carrier_name_en} Overview")%>
+                <% end %>
+                <% unless brand_type == "pnr_status" %>
+                <%= link_to("#{carrier_name_en} Flight and PNR Status","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-flight-pnr-status.html",title:"#{carrier_name_en} Flight and PNR Status") %>
+                <% end %>
+                <% unless brand_type == "web_checkin" %>
+                <%= link_to("#{carrier_name_en} Web Check-in","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-web-check-in.html",title:"#{carrier_name_en} Web Check-in") %>
+                <% end %>
+                <% unless brand_type == "baggage" %>
+                <%if header_pnr_web_check_in["baggage_content"] %>
+                <%  carrier_name_formatted = format_overview_link(carrier_name_en).gsub("-airlines",'') %>
+                <%= link_to("#{carrier_name_en} Baggage Allowance","/flight-booking/#{carrier_name_formatted}-baggages.html",title: "#{carrier_name_en} Baggage Allowance")%>
+                <% end %>
+                <% end %>
+                <% unless brand_type == "customer_support" %>
+                  <%if header_pnr_web_check_in["customer_support_content"] %>
+                    <%= link_to("#{carrier_name_en} Customer Support","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-customer-support.html",title: "#{carrier_name_en} Customer Support")%>
+                  <%end%>
+                <% end %>
+                <% unless brand_type == "special_assistance" %>
+                  <%if header_pnr_web_check_in["special_assistance"] %>
+                    <%= link_to("#{carrier_name_en} Special Assistance","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-special-assistance.html",title: "#{carrier_name_en} Special Assistance")%>
+                  <%end%>
+                <% end %>
+                <% unless brand_type == "refund_cancellation" %>
+                  <%if header_pnr_web_check_in["cancellation_content"] %>
+                    <%= link_to("#{carrier_name_en} Refund Cancellation","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-refund-cancellation.html",title: "#{carrier_name_en} Refund Cancellation")%>
+                  <%end%>
+                <% end %>
+                <% unless brand_type == "travel_documents" %>
+                  <%if header_pnr_web_check_in["travel_document"] %>
+                    <%= link_to("#{carrier_name_en} Travell Document","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}-travel-documents.html",title: "#{carrier_name_en} Travell Document")%>
+                  <%end%>
+                <% end %>
+              </div>
+          </li>
+
+         
+        </ul>
+      </div>
+    </div>
+
+    <!--Language Links Sections-->
+    <% unless @country_code == "IN" %>
+    <div class="col-sm-2 pad-lzero hidden-xs">
+      <ul class=" lang-menu list-inline text-right">
+        <li><a href="#{application_processor.host_name(country_code)}/#{@page_type}/#{flight_file_name}">English</a></li>
+        <li><a href="<%= "#{application_processor.host_name(country_code)}/ar/#{@page_type}/#{flight_file_name}" %>">العربية</a></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+  <div class="Menuicon visible-xs pull-right"> 
+      <span></span> 
+      <span></span> 
+      <span></span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+<p>Air travel is one of the most convenient routes to choose. It’s safe, it’s fast, and it’s comfortable. All major cities in <%= schedule_layout_values["country_name"] %> are well-connected with each other by the air route. And, traveling between them has become a matter of just a few hours.</p>
+<p>A major concern with flights earlier was the ticket booking procedure. But with digitalization, this process has now become easy. Cleartrip goes a step further to offer a quick, simple, and hassle-free ticket booking experience to its customers. It has a user-friendly interface to ensure that your flight tickets are ready in just a few clicks!</p>
+<p>If you are planning to travel from <%= dep_city_name%> to <%= arr_city_name%>, then air route is what you should choose. Here’s all the information you need to know.</p>
+<p>The nearest airport to <%= dep_city_name %> is <%= schedule_layout_values["dep_airport_name"]%> and its IATA code is <%= schedule_layout_values["dep_airport_code"]%>.</p>
+<p>The nearest airport here is <%= schedule_layout_values["arr_airport_name"] %> with an IATA code, <%= schedule_layout_values["arr_airport_code"] %>.</p>  
+<% if schedule_layout_values["operational_airlines_count"].present? %>
+<p>Between <%= dep_city_name%> and <%= arr_city_name%>, <%= schedule_layout_values["operational_airlines_count"] %> airlines are operational. In a week, around <%= schedule_layout_values["weekly_flights_count"]%> flights travel from <%= dep_city_name%> to <%= arr_city_name%>. The travel duration between these cities in a non-stop flight is usually around <%= schedule_layout_values["max_duration"] %>.</p>
+<% end %>
+<% if  schedule_layout_values["min_price"].present? && schedule_layout_values["max_price"].present? %>
+<p><%= dep_city_name%> to <%= arr_city_name%> flights will cost you a minimum of Rs.<%= schedule_layout_values["min_price"]%>. This may extend up to Rs.<%= schedule_layout_values["max_price"]%>. Worry not! As you may enjoy a number of domestic flight booking offers exclusive for Cleartrip customers!</p>
+<% end %>
+<p>Cleartrip ensures a hassle-free travel experience for its customers. With its PNR status check, Web check-in facility, and customer support, you may rest assured of a pleasurable travel.</p> 
+<p>So, simply book a flight and be at ease while we land you to your destination! </p>
+

@@ -1,0 +1,2 @@
+class AeVolumeRoute < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class NewPackageFlightHopSchedule < ApplicationRecord
+end

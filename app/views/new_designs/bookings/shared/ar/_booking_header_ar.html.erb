@@ -1,0 +1,70 @@
+<!--======Second Header Starts Here==========-->
+
+<section id="Second-menu">
+  <div class="container">
+    <div class="close visible-xs"><i class="fa fa-close"></i></div>
+    <ul class="list-inline">
+
+
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">معلومات شركة الطيران <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <% if brand_type != 'overview_page' %>
+            <li><%= link_to("#{@carrier_name_ar} نظرة عامة","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}.html",title:"#{@carrier_name_ar} نظرة عامة")%>
+            </li>
+          <% end %>
+          <% if brand_type != 'pnr_page' %>
+            <li><%= link_to("#{@carrier_name_ar} PNR حالة","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-flight-pnr-status.html",title:"#{@carrier_name_ar} PNR حالة") %></li>
+          <% end%>
+          <% if brand_type != 'webcheckin_page' %>
+          <li><%= link_to("#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-web-check-in.html",title:"#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت") %></li>
+          <%end%>
+        </ul>
+      </li>
+
+      <!-- %# if !sa_header_routes[:header_routes].empty? && @country_code == "SA" %>
+        <li>
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown"> <%#= t("header.routes")%> <span class="caret"></span></a>
+          <ul class="list-unstyled dropdown-menu">
+            <%# sa_header_routes[:header_routes].each do |route|%>
+
+            <%# if route["dep_city_name_ar"] != "" && route["arr_city_name_ar"] != "" %>
+            <li>
+              <a href="/ar/flight-schedule/<%#= route['url'] %>"><%#= "#{route['dep_city_name_ar']} #{t('to')} #{route['arr_city_name_ar']}" %></a>
+            </li>
+            <%# end %>
+            <%# end %>
+          </ul>
+        </li> -->
+      <%# end %>
+
+        <% if airports["dom_airports"].present? && !["SA","AE"].include?(@country_code) %>
+        <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">مطارات داخلية <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <% airports["dom_airports"].each do |airport|%>
+          <li>
+            <%  airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/ar/"+ "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}", title: airport['airport_name_ar']) %>
+            <%=  airport_name %>
+          </li>
+          <% end %>
+        </ul>
+        </li>
+        <% end %>
+
+        <% if airports["int_airports"].present? && !["SA","AE"].include?(@country_code) %>
+        <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">مطارات دولية <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <%  airports["int_airports"].each do |airport| %>
+          <li>
+            <%  airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/ar/"+ "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}",title: airport['airport_name_ar'])  %>
+            <%=  airport_name %>
+          </li>
+          <% end %>
+        </ul>
+        </li>
+        <% end %>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,2 @@
+class AirlineBrand < ApplicationRecord
+end

@@ -1,0 +1,58 @@
+<% if hotel_api[:hotel_api_stars].present? || hotel_api[:hotel_api_property_types].present? || hotel_api[:local_data_offset].present? %>
+<div class="hotels-details airline-info">
+  <h3>Hotels In  <%= arr_city_name %> </h3>
+  <table class="airline-info-table">
+   <tbody>
+    <%if hotel_api[:hotel_api_stars].present? %>
+    <tr>
+      <td>Star Hotels in <%= arr_city_name %></td>
+      <td>
+        <% hotel_api[:hotel_api_stars].each_with_index do |star,index| %>
+        <% if star.include?("/stars/") %>
+        <% star_name = star.scan(/\d+/).first rescue 0 %>
+        <% index +=1 %>
+        <% if index < hotel_api[:hotel_api_stars].count-1  %>
+        <% link = star_name +" star hotels in "+ arr_city_name+','%>
+        <% else %>
+        <% link = star_name +" star hotels in "+ arr_city_name%>
+        <% end %>
+        <%= link_to link, star %>
+        <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <%if hotel_api[:hotel_api_property_types].present? %>
+    <tr>
+      <td>Property Types in <%=arr_city_name %></td>
+      <td><% hotel_api[:hotel_api_property_types].each_with_index do |loc,index| %>
+        <% index +=1 %>
+        <% if index < hotel_api[:hotel_api_property_types].count  %>
+        <% link = loc["name"]+','%>
+        <%else %>
+        <% link = loc["name"]%>
+        <% end %>
+        <%= link_to link, loc["link"] %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <%if hotel_api[:local_data_offset].present? %>
+    <tr>
+      <td>Locality</td>
+      <td><% hotel_api[:local_data_offset].each_with_index do |loc,index| %>
+        <% index +=1 %>
+        <% if index < hotel_api[:local_data_offset].count  %>
+        <% link = loc["name"]+','%>
+        <%else %>
+        <% link = loc["name"]%>
+        <% end %>
+        <%= link_to link, loc["link"] %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div><!--/hotel-deatils-->
+<% end %>

@@ -1,0 +1,57 @@
+
+<%if @country_code == "IN"%>
+	<% top_airlines = top_airlines %>
+<% elsif @country_code == "SA" %>
+	<% top_airlines = ["SV","XY","F3","GF","FZ","G9","WY","EY","MS","AI","TK","EK","UL","KU","NE","LH","RJ","NP","SM","8Q"] %>
+<% else%>
+	<%	top_airlines = ["G9","IX","FZ","EK","EY","6E","5J","SG","PA","WY","PR","GF","CX","MS","SQ","UL","TK","AK","BA","NL","ET","RJ","TG","AF","LH"]  %>
+<% end %>
+
+
+
+  <% if top_airlines.present? && top_airlines.any? %>
+    <% if  @country_code == "IN" %>
+      <div class="new-rhs-cards">
+        <h2>Popular Airlines</h2>
+        <ul class="list-unstyled top-airlines">
+        	<% top_airlines.uniq.each do |airline_code| %>
+						<% airline_name =  airline_code == "AI"  ? "Air India" : t("airlines.#{airline_code}")  %>
+						<% formated_carrier_name =  airline_name.downcase.gsub(" ",'-').gsub('--','-') %>
+					<li>
+						<a href="<%= "/flight-booking/#{formated_carrier_name.downcase}-#{schedule_layout_values["dep_city_name_formated"]}-#{schedule_layout_values["arr_city_name_formated"]}-flights.html" %>" class="airline-link" title="<%= dep_city_name %> <%= arr_city_name  %> <%= airline_name %>"><%= dep_city_name %> <%= arr_city_name  %> <%= airline_name %> </a>
+            </a>
+            <div class="clearfix"></div>
+          </li>
+				<% end %>
+        </ul>
+      </div>
+    <% else %>
+    	<div class="new-rhs-cards">
+        <h2>Popular Airlines</h2>
+        <ul class="list-unstyled top-airlines">
+        	<% top_airlines.uniq.each do |airline_code| %>
+						<% airline_name =  airline_code == "AI"  ? "Air India" : t("airlines.#{airline_code}")  %>
+						<% formated_carrier_name =  airline_name.downcase.gsub(" ",'-').gsub('--','-') %>
+						<li>
+							<a href="/flight-booking/<%= formated_carrier_name.downcase%>-airlines.html" class="airline-link">
+	              <div class="R-airline-logo "><span class="carrier-logo <%= formated_carrier_name %>"></span></div>
+	              <div class="R-airline-name"><span><%= airline_name %> </span></div>
+	            </a>
+	            <div class="clearfix"></div>
+	          </li>
+					<% end %>
+        </ul>
+      </div>
+    <% end %>
+	 <% end %>
+
+	
+
+
+
+
+
+
+
+
+

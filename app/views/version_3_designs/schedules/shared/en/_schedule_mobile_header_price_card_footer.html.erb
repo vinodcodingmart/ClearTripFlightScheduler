@@ -1,0 +1,64 @@
+<div id="mobile-headers">
+  <div class="mobile-top-headers">
+    <ul class="list-inline">
+      <li class="m-date">
+        <% dep_date  = @dep_date %>
+        <% arr_date = @arr_date %>
+        
+        <% if @round_trip == "R" %>
+        <div class="m-round-trip">
+          <div class="m-round-dep">
+            <span class="m-date-txt"><%= dep_date.to_date.strftime('%d') %></span>
+            <span class="m-month"><%= dep_date.to_date.strftime('%b') %></span>
+            <span class="m-day"><%= dep_date.to_date.strftime('%a')%></span>
+          </div>
+          <div class="m-round-arr">
+            <span class="m-date-rtn-txt"><%= arr_date.to_date.strftime('%d') %></span>
+            <span class="m-rtn-month"><%= arr_date.to_date.strftime('%b') %></span>
+            <span class="m-rtn-day"><%= arr_date.to_date.strftime('%a') %></span>
+          </div>
+        </div>
+        <% else %>
+          <div class="m-one-way">
+            <span class="m-date-txt"><%= dep_date.to_date.strftime('%d') %></span>
+            <span class="m-month"><%= dep_date.to_date.strftime('%b') %></span>
+            <span class="m-day"><%= dep_date.to_date.strftime('%a')%></span>
+          </div>
+        <% end %>
+      </li>
+      <li class="m-routes">
+          <% if @round_trip == "R" %>
+            <span class="f-routes-details"> <%= @dep_city_name %> ⇄ <%= @arr_city_name %>  </span>
+          <% else %>
+            <span class="f-routes-details"> <%= @dep_city_name %> → <%= @arr_city_name %>  </span>
+          <% end %>
+        <span class="f-class-details">Economy | 1 Traveller</span>
+      </li>
+      <li class="m-search-icon" >
+        <a  href="javascript:void(0);"><i class="fa fa-pencil" ></i></a>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div><!--/mobile-top-headers-->
+  <div class="sticky-price-cta">
+    <div class="best-price" id= "best-price-mob">
+     <%if  @best_price["cc_min_price"].to_i > 0  %>
+     <% "#{currency_code}" +  @best_price["cc_min_price"].to_s  %>
+     <% else %>
+      <%= "--NA--" %>
+      <% end %>
+   </div>
+   <div class="m-book-btn"><button class="ct-btn book_button_mobile footer_button" data-key="" >Book</button></div>
+ </div>
+</div><!--/mobile-headers-->
+<!-- mobile footer icons -->
+<div id="mobile-footer">
+  <ul class="list-inline filters-icons">
+    <li class="msort-icons" data-toggle="modal" data-target="#nd-mobilesort">
+      <img src="/assets/m-sort.png" alt=""> Sort 
+    </li>
+    <li class="m-filter" data-toggle="modal" data-target="#nd-mobilefilter"><i class="fa fa-filter"></i> Filter</li>
+    <li class="m-date-icon"><i class="fa fa-calendar mCalendarIcon"></i></li>
+  </ul>
+</div>
+<!-- mobile footer icons -->

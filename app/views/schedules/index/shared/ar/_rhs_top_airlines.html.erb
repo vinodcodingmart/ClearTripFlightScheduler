@@ -1,0 +1,21 @@
+<div class="blocks">
+	<h2><%= t("index.top_#{@section}_airlines") %> </h2>
+	<ul class="list-unstyled top-airlines">
+		<% top_airlines.each do |cc| %>
+		<li>
+		<% if I18n.locale == :ar %>
+		<% book_text_translated =  t('flight_schedule.book_text') %>
+		
+		<div class="col-xs-8  pad-5">
+				<% airline_name = link_to( t("airlines.#{cc}"), "/ar/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+				<%= airline_name %>
+		</div>
+		<div class="col-xs-4 pad-rzero">
+			<%= link_to(book_text_translated, "/ar/flight-booking/" + t("airlines.#{cc}").downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"booking") %>
+		</div>
+		<% end %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+</div>

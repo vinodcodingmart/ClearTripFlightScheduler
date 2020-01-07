@@ -1,0 +1,104 @@
+<% use_helper = self.extend ApplicationHelper %>
+<%I18n.locale="en"%>
+<div class="new-airlines">
+  <%= render partial: "new_designs/bookings/shared/en/main_header", locals: { assets_path: @assets_path, country_code: country_code, host: @host_name, flight_file_name: flight_file_name, page_type: 'flight-booking', application_processor: application_processor} %>
+  <!--/Header Ends Here-->
+  <!-- /Second Header starts here -->
+  
+   <%= render partial: "new_designs/bookings/shared/en/booking_header",locals: {popular_routes: header_routes,airports: header_airports,carrier_name_en: @carrier_name,use_helper: use_helper, application_processor: application_processor,customer_support: customer_support,baggages: baggages,brand_type: @meta_page_type,header_pnr_web_check_in: header_pnr_web_check_in}  %>
+  <!-- /Second Header ends  here -->
+  <div class="clearfix"></div>
+  <!--/content Starts Here-->
+
+  <section id="content">
+    
+      <!-- <h1 class="col-lg-6 no-padding"><%#= format_airline_name(@carrier_name, I18n.locale) %> </h1> -->
+      
+
+      <div class="clearfix"></div>
+      <%= render partial: "new_designs/bookings/shared/en/airline_search_widget_en",locals: {assets_path: @assets_path,carrier_code: @carrier_code,carrier_name_translated: @carrier_name, formated_airline_name: format_airline_name(@carrier_name, I18n.locale) }%>
+      <div class="container content-wrapper">
+      <div class="col-lg-9 col-md-9 col-sm-12 mobile-view pad-lzero" id="flight-schedule">
+       <br>
+        <div class="list-box">
+            <div class="content-desc">
+            <% if @country_code == "IN" %>
+              <div id="banner" class="lhs-banner">
+            </div>
+          <% end %>
+              <div class="airline-cnt">
+                             
+                     <%if @special_pages_content["cancellation_content_en"].present?%>
+                        <%= raw @special_pages_content["cancellation_content_en"]%>
+                                  
+                  
+                     <% end %>
+            </div>
+            </div>
+          </div>
+            <div class="clearfix"></div>
+        <!--list-box-->
+      </div>
+      <div id="Rside-bar">
+        <div class="col-lg-3 col-md-3 col-sm-12 pad-rzero side-bar">
+          <div class="banner-section">
+            <div id="banner">
+              <a target="_blank"><img></a>
+            </div>
+          </div>
+          <%#= render :partial=>"bookings/pnr_webcheck_in/rhs_airlines_en",:locals=>{:top_airlines=>rhs_airlines[:int_airlines], use_helper: use_helper,:assets_path=>@assets_path, application_processor: application_processor,section: "int"} %>
+          <%= render :partial=>"new_designs/bookings/shared/en/rhs_top_airlines",:locals=>{:top_airlines=>rhs_airlines[:int_airlines], use_helper: use_helper,:assets_path=>@assets_path, application_processor: application_processor,section: "int"} %>
+          <!-- <div class="blocks banner-section">
+            <%#= render :partial=>"common/banner",:locals=>{:country_code=>@country_code} %>
+          </div> -->
+        </div>
+      </div><!--/Rside-bar-->
+    
+    <div class="clearfix"></div>
+    <div class="container-fluid">
+      <ul class="list-inline bread-crumb">
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="first">
+          <a href="/flights" title="<%= t('breadcrumb.flights') %>" itemprop="url"><span itemprop="title"><%= t('breadcrumb.flights') %></span></a>
+        </li>
+        <% if @section.include?("dom") %>
+          <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+            <a href="<%= @host_name %>/flight-booking/domestic-airlines.html" title="<%= t('breadcrumb.domestic_airlines') %>" itemprop="url">
+              <span itemprop="title"><%= t('breadcrumb.domestic_airlines')%></span>
+            </a>
+          </li>
+        <% else %>
+          <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+            <a href="<%= @host_name %>/flight-booking/international-airlines.html" title="<%= t('breadcrumb.international_airlines') %>" itemprop="url">
+            <span itemprop="title"><%= t('breadcrumb.international_airlines')%></span>
+            </a>
+          </li>
+        <% end %>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a>
+            <span itemprop="title"><%= format_airline_name(@carrier_name, I18n.locale) %></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
+  </section><!--/contnet-- >
+  <!--/contnet Ends Here-->
+  
+      <% country_code = @country_code %>
+      <%=render partial: "new_footers/#{@country_code.downcase}/#{country_code.downcase}_int_booking_footer_#{@language.downcase}", locals: {country_code: country_code,footer_airline_data: booking_footer[:footer_airline_data],top_airlines: booking_footer[:int_airlines],section: @section,volume_routes: booking_footer[:volume_routes],page_type: '',footer_links_data: {}  } %>
+      <%= render "shared/#{country_code.downcase}/#{country_code.downcase}_gac"%>
+</div>
+  
+  <%= render "common/comscore" %>
+  <%= render "common/mobile_header_flexislider" %>
+
+  <script type="text/javascript">
+  var country_code='<%= @country_code.downcase%>';
+  var section_type='<%= @section.include?("dom") ? "domestic" : "international" %>';
+  var page_type="flight-booking";
+  var language_type='<%= I18n.locale.downcase.to_s%>';
+  var carrier_name= '<%= @carrier_name %>' ;
+  var carrier_code= '<%= @carrier_code %>';
+  var page_sub_type= '<%= @meta_page_type %>';
+  var sub_section= '<%= @meta_page_type %>';
+</script>

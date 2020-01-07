@@ -1,0 +1,23 @@
+<div class="blocks">
+	<h2><%= t('flight_schedule.top_airlines_from') %> <%= dep_city_name%></h2>
+	<ul class="list-unstyled top-airlines">
+		<% top_airlines.each do |cc| %>
+		<li>
+		<% if I18n.locale == :ar %>
+		<% book_text_translated =  t('flight_schedule.book_text') %>
+		<% I18n.locale = :en %>
+		<div class="col-xs-4 pad-rzero">
+			<%= link_to(book_text_translated, "/ar/flight-booking/" + t("airlines.#{cc}").downcase.gsub(" ", "-").gsub("--","-") + "-"+ url_escape("#{schedule_layout_values["dep_city_name_formated"]}-#{schedule_layout_values["arr_city_name_formated"]}-flights") + ".html",:class=>"booking") %>
+		</div>
+		<% I18n.locale = :ar %>
+		<% end %>
+			<div class="col-xs-8  pad-5">
+				<% airline_name = link_to( t("airlines.#{cc}"), "/ar/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+				<%= airline_name %>
+			</div>
+
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+</div>

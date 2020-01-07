@@ -1,0 +1,2 @@
+class OmHotelApi < ApplicationRecord
+end

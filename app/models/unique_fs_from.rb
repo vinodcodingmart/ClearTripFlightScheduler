@@ -1,0 +1,2 @@
+class UniqueFsFrom < ApplicationRecord
+end

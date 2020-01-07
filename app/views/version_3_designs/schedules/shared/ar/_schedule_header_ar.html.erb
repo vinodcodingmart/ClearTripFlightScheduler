@@ -1,0 +1,115 @@
+<section id="common-nav-bar">
+  <div class="custom-container">
+     <!--Language Links Sections-->
+    <% unless @country_code == "IN"  %>
+    <div class="col-sm-3 pad-lzero hidden-xs">
+      <ul class=" lang-menu list-inline text-right">
+        <li><a href="<%= "#{application_processor.host_name(@country_code)}/#{@page_type}/#{flight_file_name}" %>">English</a></li>
+        <li><a href="<%= "#{application_processor.host_name(@country_code)}/ar/#{@page_type}/#{flight_file_name}" %>">العربية</a></li>
+      </ul>
+    </div>
+    <% end %>
+    <div class="Menuicon visible-xs pull-left"> 
+      <span></span> 
+      <span></span> 
+      <span></span>
+    </div>
+   
+ 
+
+    <!--Header Links Sections-->
+    <div class="col-sm-6 pad-lzero common-m-navbar">
+      <div class="main-nav-links">
+        <ul class="list-inline">
+
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="flights-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t('header.flights') %></span>
+            <div class="dropdown-menu" aria-labelledby="flights-menu">
+              <a href="<%= @host_name %>/ar/flight-schedule/flights-from-<%= url_escape(dep_city_name)%>.html" title="رحلات طيران من <%= @dep_city_name_ar %>" target="_blank"><%= t('header.list_of_flights_from',dep_city_name: @dep_city_name_ar) %></a>
+              <a href="<%= @host_name %>/ar/flight-schedule/flights-to-<%= url_escape(arr_city_name) %>.html" title="رحلات جوية إلى <%= @arr_city_name_ar %>" target="_blank"><%= t('header.list_of_flights_to',arr_city_name: @arr_city_name_ar) %></a>
+              <a href="<%= @host_name %>/ar/flight-schedule/flights-to-<%= url_escape(dep_city_name)%>.html" title="رحلات طيران من <%= @dep_city_name_ar %>" target="_blank"><%= t('header.list_of_flights_from',dep_city_name: @dep_city_name_ar) %></a>
+              <a href="<%= @host_name %>/ar/flight-schedule/flights-from-<%= url_escape(arr_city_name) %>.html" title="رحلات جوية إلى <%= @arr_city_name_ar %>" target="_blank"><%= t('header.list_of_flights_to',arr_city_name: @arr_city_name_ar) %></a>
+              
+            </div>
+          </li>
+
+         <% top_airlines =  dom_top_airlines + int_top_airlines %>
+          <% if top_airlines.present? && !top_airlines.nil? %>
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= I18n.t("airlines_text") %></span>
+            <div class="dropdown-menu" aria-labelledby="airlines-menu">
+              <% top_airlines[0..5].shuffle.each do |cc| %>
+              <% airline_name_ar =  cc == "AI"  ? "طيران الهند" : I18n.t("airlines.#{cc}")  %>
+              <% I18n.locale = :en %>
+                <% airline_name =  cc == "AI"  ? "Air India" : I18n.t("airlines.#{cc}") %>
+              <% I18n.locale = :ar %>
+              <% formated_carrier_name =  airline_name.downcase.gsub(" ",'-').gsub('--','-') %>
+              <a href="<%= "/ar/flight-booking/"+format_airline_name(airline_name).downcase.gsub(" ", "-").gsub("--","-") + ".html" %>" class="airline-link"><%= airline_name_ar %></a>
+              <% end %>
+            </div>
+          </li> 
+          <% end %>
+          <%# if route_dom_airlines.present? %>
+          <!-- <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%#= I18n.t('header.domestic_flights') %></span>
+            <div class="dropdown-menu" aria-labelledby="airlines-menu">
+              <%# route_dom_airlines[0..10].each do |cc| %>
+              <%#
+              if I18n.locale ==:ar
+                I18n.locale = :en
+                airline_name = I18n.t("airlines.#{cc}")
+                I18n.locale =:ar
+                airline_name_arabic = I18n.t("airlines.#{cc}")
+              end
+              link = "#{@host_name}/ar/flight-booking/#{url_escape("#{airline_name.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+             <%#= t('brand_flights_routes_html', dep_city_name: @dep_city_name_ar, airline_name: airline_name_arabic, arr_city_name: @arr_city_name_ar, link: link,airline_name_arabic: airline_name_arabic,title: "#{airline_name_arabic} #{@dep_city_name_ar} #{@arr_city_name_ar} flights",target: "_blank") %>
+              <%# end %>
+            </div>
+          </li> -->
+          <%# end %>
+
+          <%# if route_int_airlines.present? %>
+       <!--    <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%#=  I18n.t('header.international_flights') %></span>
+            <div class="dropdown-menu" aria-labelledby="airlines-menu">
+            <%# route_int_airlines[0..10].each do |cc| %>
+            <%#
+            if I18n.locale ==:ar
+              I18n.locale = :en
+              airline_name = I18n.t("airlines.#{cc}")
+              I18n.locale =:ar
+              airline_name_arabic = I18n.t("airlines.#{cc}")
+            end
+
+            link = "#{@host_name}/ar/flight-booking/#{url_escape("#{airline_name.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+            <%#= t('brand_flights_routes_html', dep_city_name: @dep_city_name_ar, airline_name: airline_name_arabic, airline_name_arabic: airline_name_arabic,arr_city_name: @arr_city_name_ar, link: link,title: "#{airline_name_arabic} #{@dep_city_name_ar} #{@arr_city_name_ar} #{t("flight_schedule.flights")}",target: "_blank") %>
+            <%# end %>
+            </div>
+          </li> -->
+          <%# end %>
+          
+        </ul>
+      </div>
+    </div>
+ 
+   
+    <!--Logo Sections-->
+    <div class="col-sm-3 ct-col-3 pad-lzero ">
+      <a class="ctBrand" href="/ar/flights">
+        <span class="cleartripLogo" title="Cleartrip ">Home</span>
+      </a>
+      <ul class=" list-inline productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" title="Flights" href="/ar/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" title="Hotels" href="/hotels">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

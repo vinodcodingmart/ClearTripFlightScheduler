@@ -1,0 +1,86 @@
+<div class="content-desc">
+                            
+<%# so for unique content i have given u 20-20 domestic and international.. for those routes please don't add the city content. plus if we have mumbai to abu dhabi(don't have unique content) for this you have to add city content. but if one city A has city content and city B doesn't have city content then don't add for both. %>
+  <% if I18n.t("flight_schedule_content.#{dep_city_name}-#{arr_city_name}-Flights").index('translation missing').nil? %>
+    <%= raw t("flight_schedule_content.#{dep_city_name}-#{arr_city_name}-Flights",airlines_list: schedule_layout_values['airline_routes_list'],weekly_flights_count: schedule_layout_values['total_flights'],airline_count_list: schedule_layout_values['airline_count_list'],first_dep_time: schedule_layout_values['dep_first_time'], first_dep_flight_no: schedule_layout_values['dep_first_flight_no'], first_dep_airline_name: t("airlines.#{schedule_layout_values["dep_first_carrier_code"]}"),last_dep_time: schedule_layout_values['dep_last_time'], last_dep_flight_no: schedule_layout_values['dep_last_flight_no'],last_dep_airline_name: t("airlines.#{schedule_layout_values["dep_last_carrier_code"]}") ) %>
+  <% else %>
+
+    <p>
+    <%= t("flight_schedule.flight_schedule_new_oag_para1",country:I18n.t("footer.#{country_code.downcase}")) %>
+    </p>
+    <p>
+    <%= t("flight_schedule.flight_schedule_new_oag_para2") %>
+    </p>
+    <p>
+    <%= t("flight_schedule.flight_schedule_new_oag_para3", dep_city_name: dep_city_name_translated,
+    arr_city_name: arr_city_name_translated) %>
+    </p>
+    <p>
+      <%= t("flight_schedule.flight_schedule_new_oag_para4",arr_airport_name: schedule_layout_values['arr_airport_name'], arr_airport_code: schedule_layout_values['arr_airport_code'], arr_city_name: arr_city_name_translated) %>
+      <% if hotels_list.count > 0 %>
+        <% hotels_list.uniq.take(3).each_with_index do |hotel_data,index| %>
+          <% if  index != hotels_list.uniq.take(3).size - 1 %>
+            <% if index == 0 %>
+            <%= t("flight_schedule.flight_schedule_hotels_in_city",url:hotel_data["hotel_link"],hotel_name:hotel_data["hotel_name"]).html_safe %> <%= ',' if index==0%>
+            <% else %>
+              <%= hotel_data["hotel_name"] %>
+            <% end %>
+          <% else %>
+            <%= t("flight_schedule.flight_schedule_hotels_in_city_last",url:hotel_data["hotel_link"],hotel_name:hotel_data["hotel_name"]).html_safe %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if near_by_airport_hotels.count > 0 %>
+        <%= t("flight_schedule.flight_schedule_hotels_near_to_airport",arr_city_name: arr_city_name_translated) %>
+        <% near_by_airport_hotels.each_with_index do |hotel_data,index| %>
+          <% if  index != near_by_airport_hotels.size - 1 %>
+            <% if index == 0 %>
+              <%= t("flight_schedule.flight_schedule_hotels_near_to_airport_hotels",url:hotel_data["hotel_link"],hotel_name:hotel_data["hotel_name"]).html_safe %> <%= ',' if index==0%>
+            <% else %>
+              <%= hotel_data["hotel_name"] %>
+            <% end %>
+          <% else %>
+            <%= t("flight_schedule.flight_schedule_hotels_near_to_airport_hotels_last",url:hotel_data["hotel_link"],hotel_name:hotel_data["hotel_name"]).html_safe %>
+          <% end %>
+        <% end %>
+        <%= t("flight_schedule.flight_schedule_hotels_near_to_airport_last", arr_airport_name: schedule_layout_values['arr_airport_name']) %>
+      <% end %>
+    </p>
+    <p>
+      <% if schedule_layout_values['airline_routes_list'].present? %>
+        <%= t('flight_schedule.number_of_airlines',dep_city_name: dep_city_name_translated, 
+        arr_city_name: arr_city_name_translated,number_of_airlines: schedule_layout_values['airline_routes_list'].split(',').count) %>
+      <% end %>
+
+      <% if schedule_layout_values['total_flights'].present? %>
+        <%= t('flight_schedule.weekly_flights_count_oag',dep_city_name: dep_city_name_translated, 
+        arr_city_name: arr_city_name_translated,weekly_flights_count: schedule_layout_values['total_flights']) %>
+      <% end %>
+
+      <% if duration_from_and_to.present? %>
+        <%= t('flight_schedule.duration_data',dep_city_name: dep_city_name_translated, 
+        arr_city_name: arr_city_name_translated,duration: duration_from_and_to) %>
+      <% end %>
+
+      <% unless schedule_layout_values['no_price'] %>
+        <%= t('flight_schedule.min_max_data',dep_city_name: dep_city_name_translated, 
+        arr_city_name: arr_city_name_translated,min_price:schedule_layout_values['min_price'].try(:to_f).try(:round),max_price:schedule_layout_values['max_price'].try(:to_f).try(:round)) %>
+      <% end %>
+    </p>
+
+    <p><%= t('flight_schedule.flight_schedule_new_oag_para6')%></p>
+    <p><%= t('flight_schedule.flight_schedule_oag_last_para')%></p>
+  <% end %> 
+
+
+  <% unless I18n.t("flight_schedule_content.#{dep_city_name}-#{arr_city_name}-Flights").index('translation missing').nil? %>
+    <% if unique_dep_city_content && unique_arr_city_content %>
+      <h2>About <%= dep_city_name %> (<%= dep_city_code%>)</h2>
+      <%= raw dep_city_content %>
+      <div class="clearfix"></div>
+      <h2>About <%= arr_city_name %> (<%= arr_city_code%>)</h2>
+      <%= raw arr_city_content %>
+      <div class="clearfix"></div>
+    <% end %>
+  <% end %>
+</div><!--content-desc-->

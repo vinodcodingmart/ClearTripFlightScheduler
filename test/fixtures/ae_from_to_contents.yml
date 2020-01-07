@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_code: MyString
+  en_from_content: MyText
+  en_to_content: MyText
+  ar_from_content: MyText
+  ar_to_content: MyText
+  city_name: MyString
+
+two:
+  city_code: MyString
+  en_from_content: MyText
+  en_to_content: MyText
+  ar_from_content: MyText
+  ar_to_content: MyText
+  city_name: MyString

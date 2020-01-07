@@ -1,0 +1,61 @@
+<% case country_code
+    when "IN"
+      hotel_country = "india/"
+    when "AE"
+      hotel_country = "united-arab-emirates/"
+    when "SA"
+      hotel_country = "saudi-arabia/"
+    else
+      hotel_country = ""
+   end %>
+<!--/Header Starts Here-->
+<section id="flights-nav">
+  <div class="container">
+    <div class="ctCol ctProducts mview-header">
+      <a class="ctBrand" href="/">
+        <span class="cleartripLogo" title="Cleartrip ">Home</span>
+      </a>
+      <ul class="productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" title="Flights" href="/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" title="Hotels" href="//hotels/<%= hotel_country %>">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+        <% unless !@country_code == "IN"%>
+        <li class="packagesApp hidden-xs">
+          <a rel="bToolTip" title="Packages" href="/packages">
+            <span class="productIcon packages">Packages</span>
+          </a>
+        </li>
+        <li class="trainsApp hidden-xs">
+          <a rel="bToolTip" title="Trains" href="/trains">
+            <span class="productIcon trains">Trains</span>
+          </a>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <!--/ctProducts-->
+    <div class="ctCol ctCenter mview-center hidden-xs">&nbsp;</div>
+    <div class="ctCol hidden-xs">
+      <ul class="list-inline language">
+        <% unless country_code == 'IN' %>
+          <li class="en first active">
+            <a href="<%= "#{host}/#{page_type}/#{flight_file_name}" %>" lang="en">English</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="<%= "#{host}/ar/#{page_type}/#{flight_file_name}" %>" lang="ar">العربية</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</section>
+<!--/Header ends here-->

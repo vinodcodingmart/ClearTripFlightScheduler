@@ -1,0 +1,131 @@
+<style>
+        .airport-outer-ticket {
+            padding: 15px;
+            background-color: #FCFCE1;
+        }
+
+        .no-padding-ticket {
+            padding: 0 !important;
+        }
+
+        .airport-details-ticket {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            border: 1px solid #d9d9d9;
+            background-color: #fff;
+        }
+
+        #content h2 {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            margin: 0;
+            color: #000;
+        }
+        
+
+
+        .airport-details-ticket h2 {
+            font-size: 16px !important;
+            padding: 10px 10px 10px 40px;
+            background: url(https://d2w5af8s1781.cloudfront.net/waytogo-staging/images/icon_airport.png) 10px center no-repeat rgba(249, 249, 249, .32);
+            border-bottom: 1px solid #d9d9d9;
+        }
+
+
+        
+        .list-unstyled-ticket {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .airport-details-ticket li {
+            clear: both;
+        }
+
+        .airport-details-ticket label {
+            width: 70px;
+            color: #222;
+            float: right;
+        }
+
+        .airport-details-ticket span {
+        	word-wrap: break-word;
+            padding: 0 0 0 5px;
+            color: #444;
+        }
+        .pull-right{
+            float: right!important;
+        }
+        .pull-left {
+    float: left!important;
+}
+
+        .pull-right-ticket {
+            float: left !important;
+        }
+    </style>
+
+<div class="airport-outer-ticket">
+	<div class="col-sm-5 col-xs-12 no-padding-ticket">
+		<div class="airport-details-ticket">
+			<h2><%= dep_city_name %> <%= I18n.t('airport.airport_details') %> </h2>
+			<ul class="list-unstyled-ticket " style="padding: 10px;">
+				<li>
+
+					
+
+					<label><%= I18n.t('airport.name') %><span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["dep_airport_name_ar"] %></span>
+
+				</li>
+				<li>
+					<label><%= I18n.t('airport.address') %> <span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["dep_airport_address"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.phone') %> <span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["dep_airport_phone"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.email') %><span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["dep_airport_email"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.website') %> <span class='pull-right-ticket'>:</span></label>
+					<span><a rel="nofollow" href="<%= airport_details["dep_airport_website"] %>" target="_blank"><%= airport_details["dep_airport_website"] %></a></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-sm-5 no-padding-ticket col-sm-offset-1 col-xs-12">
+		<div class="airport-details-ticket">
+			<h2><%= arr_city_name %> <%= I18n.t('airport.airport_details') %></h2>
+			<ul class="list-unstyled-ticket " style="padding: 10px;">
+				<li>
+					<label><%= I18n.t('airport.name') %> <span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["arr_airport_name_ar"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.address') %> <span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["arr_airport_address"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.phone') %> <span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["arr_airport_phone"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.email') %> <span class='pull-right-ticket'>:</span></label>
+					<span><%= airport_details["arr_airport_email"] %></span>
+				</li>
+				<li>
+					<label> <%= I18n.t('airport.website') %><span class='pull-right-ticket'>:</span></label>
+					<span>
+						<a rel="nofollow" href="<%= airport_details["arr_airport_website"] %>" target="_blank">
+							<%= airport_details["arr_airport_website"] %></a>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>

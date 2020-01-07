@@ -1,0 +1,155 @@
+<div class="normal-list">
+  <div class="sort-bar">
+    <div class="items text-center">
+      <div class="col-xs-2"><a href="">Route</a></div>
+      <div class="col-xs-2"><a class="sortAsc" href="">Airline</a></div>
+      <div class="col-xs-2"><a href="">Departure</a></div>
+      <div class="col-xs-2"><a class="sortDes" href="">Arrival</a></div>
+      <% if ['IN', 'AE'].include?(country_code) %>
+      <div class="col-xs-2">
+        <a class="sortDes" href="">
+          <%= t('rate') %> <span class="f11">(per adult)</span>
+        </a>
+      </div>
+      <% else %>
+      <div class="col-xs-2"><a href="">Duration</a></div>
+      <% end %>
+      <div class="col-xs-2"><a href="">&nbsp;</a></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <ul id="airline-lists" class="list-unstyled">
+    <% routes.each do |route| %>
+        <li>
+          <div class="airline">
+            <div class="col-xs-2 no-padding pad-10">
+              <span class="name"><%= route['dep_city_code'] %>  →  <%= route['arr_city_code'] %></span>
+              <span class="type"><%= route['dep_city_name'] %> to <%= route['arr_city_name'] %></span>
+            </div>
+            <div class="col-xs-2 no-padding">
+              <% if country_code=='IN' && section.include?('dom') %>
+                <span class="Domairlogo go">
+                  <img src="<%= assets_path%>/new_images/airlines/<%= route['carrier_code']%>.png" alt="">
+                </span>
+                <span class="name">
+                  <%= route['carrier_code'] %><%= route['flight_no'] %> |
+                  <% airline_name = link_to( t("airlines.#{route['carrier_code']}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route['carrier_code']}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+                  <%= airline_name %>
+                </span>
+              <% else %>
+                <span class="name mt-15">
+                  <%= route['carrier_code'] %><%= route['flight_no'] %>
+                </span>
+                <span class="name mt-5">
+                  <% airline_name = link_to( t("airlines.#{route['carrier_code']}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route['carrier_code']}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+                  <%= airline_name %>
+                </span>
+              <% end %>
+              <br>
+            </div>
+            <div class="col-xs-2 no-padding pad-10">
+              <%= route['dep_time'] %>
+            </div>
+            <div class="col-xs-2 mview-price no-padding pad-10">
+              <%= route['arr_time'] %>
+            </div>
+            <% if ['IN', 'AE'].include?(country_code) %>
+            <div class="col-xs-2 no-padding pad-10">
+              <% if route['min_price'].present? && route['min_price']!=0 %>
+                <% if country_code=='IN' %>
+                <i class='fa fa-inr'></i>
+                <% elsif country_code=='AE' %>
+                AED
+                <% end %>
+                <%= route['min_price'].to_i %></span>
+              <% else %>
+                --NA--
+              <% end %>
+            </div>
+            <% else %>
+              <div class="col-xs-2 no-padding pad-10">
+               <% if route["duration"].include? (":") %>
+                  <span> <%= route["duration"].to_time.strftime("%Hh %Mm") %></span>
+                  <span class="type">non-stop</span>
+                <% else %>
+                  <span> <%= Time.at(route["duration"].to_i*60).utc.strftime("%Hh %Mm") %></span>
+                  <span class="type">non-stop</span>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="col-xs-2 no-padding">
+              <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%= section.include?('int') ? 'int' : 'dom' %>" class="booking flight-schedule-booking">
+                <% if (route['min_price'].present? && route['min_price']!=0) || ['IN', 'AE'].include?(country_code)==false %>
+                   <%= t('button.book')%>
+                <% else %>
+                  <%= t('price.check_price')%>
+                <% end %>
+              </a>
+            </div>
+            <div class="clearfix"></div>
+          </div><!--/airline-->
+        </li>
+    <% end %>
+  </ul>
+</div><!--/normal-view-->
+<div class="mview-list">
+  <div class="sort-bar">
+    <div class="items text-center">
+      <div class="col-xs-3"><a href=""><%= t('route')%></a></div>
+      <div class="col-xs-5 no-padding"><a href="">Depart-Arrival</a></div>
+      <% if ['IN', 'AE'].include?(country_code) %>
+      <div class="col-xs-2">
+        <a class="sortDes" href="">
+          <%= t('rate') %> <span class="f11">(per adult)</span>
+        </a>
+      </div>
+      <% else %>
+      <div class="col-xs-2"><a href="">Duration</a></div>
+      <% end %>
+      <div class="col-xs-2"><a href="">&nbsp;</a></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <ul id="airline-lists" class="list-unstyled">
+    <% routes.each do |route| %>
+      <li>
+        <div class="airline">
+            <div class="col-xs-3 no-padding pad-10">
+              <span class="name"><%= route['dep_city_code'] %>  →  <%= route['arr_city_code'] %></span>
+              <span class="type"><%= route['dep_city_name'] %> to <%= route['arr_city_name'] %></span>
+            </div>
+            <div class="col-xs-5 no-padding pad-10">
+            <% if route['dep_time'].present? %>
+              <%= route['dep_time'] %> → <%= route['arr_time'] %>
+            <% end %>
+            </div>
+            <% if ['IN', 'AE'].include?(country_code) %>
+            <div class="col-xs-2 no-padding pad-10">
+              <% if route['min_price'].present? && route['min_price']!=0 %>
+                <span><i class="fa fa-inr"></i> <%= route['min_price'].to_i %></span>
+              <% else %>
+                --NA--
+              <% end %>
+            </div>
+            <% else %>
+            <div class="col-xs-2 no-padding pad-10">
+              <span><%= route["duration"]%></span>
+              <span class="type">non-stop</span>
+            </div>
+            <% end %>
+            <div class="col-xs-2 no-padding">
+              <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %><%= section.include?('dom') ? '-int' : '' %>" class="booking flight-schedule-booking">
+                <% if (route['min_price'].present? && route['min_price']!=0) || ['IN', 'AE'].include?(country_code)==false %>
+                  <%= t('button.book')%>
+                <% else %>
+                 <%= t('price.check_price')%>
+                <% end %>
+              </a>
+            </div>
+            <div class="clearfix"></div>
+          </div><!--/airline-->
+      </li>
+    <% end %>
+  </ul>
+</div><!--mobile-view-->
+<div class="clearfix"></div>

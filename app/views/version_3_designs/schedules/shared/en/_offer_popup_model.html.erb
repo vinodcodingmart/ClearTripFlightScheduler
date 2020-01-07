@@ -1,0 +1,21 @@
+ <div class="modal fade" id="deal_popup" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="true" data-keyboard="true">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content">
+        <% if @section.include?("int") %>
+          <div class="modal-header">
+            <h3 class="modal-title"> Grab Instant cashback of up to ₹ 10000 on international flights<span class="trip-close" data-dismiss="modal" aria-label="Close"><img src="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/images/close.png"></span></h3>
+          </div>
+            <div class="modal-body">Book an International One-way/Roundtrip flight using coupon code <span class="offer-code"><a href="JavaScript:Void(0)" class="offer_book_now" >FESTIVE </a> and get Instant cashback of up to ₹ 10000.  </span>  <br />  <br />
+            Offer valid till 15-Dec-19 <br/> <a href="https://www.cleartrip.com/offers/india/festive-air-offer" class="terms-conditions" title="Terms and Conditions">Terms and Conditions</a></div>
+        <% else %>
+          <div class="modal-header">
+              <h3 class="modal-title">Flat ₹ 500 Off on Domestic Flights<span class="trip-close" data-dismiss="modal" aria-label="Close"><img src="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/images/close.png"></span></h3>
+            </div>
+            <div class="modal-body">Book a domestic One-way/Roundtrip flight for 3 or more passengers using coupon code <span class="offer-code"><a href="JavaScript:Void(0)" class="offer_book_now" >CTFLAT500</a> and get Flat ₹ 500 Off. </span>  <br />  <br />
+            Offer valid till 31-March-2020 <br/> <a href=" https://www.cleartrip.com/offers/india/ctflat500" class="terms-conditions" title="Terms and Conditions">Terms and Conditions</a></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

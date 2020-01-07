@@ -1,0 +1,2 @@
+class InVolumeRoute < ApplicationRecord
+end

@@ -1,0 +1,168 @@
+
+  <div>
+    <div class="container-fluid">
+      <div class="sixteen columns alpha">
+      
+        <ul class="footerlinkssmall list-unstyled">
+          
+          <%if  footer_airline_data.present? %>
+            <ul class="footerlinkssmall">
+              <% footer_airline_data.each_with_index do |airline,index| %>
+                <% if index == 0 %>
+                  <li><%= t('footer.intl_airlines') %> :</li>
+                  <li><%= link_to t("airlines.#{airline[1]}"), "/flight-booking/#{airline[0]}",title: t("airlines.#{airline[1]}") %></li>
+                <% else %>
+                  <li><%= link_to t("airlines.#{airline[1]}"), "/flight-booking/#{airline[0]}",title: t("airlines.#{airline[1]}") %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+        </ul>
+        <div class="clear"></div>
+        <ul class="footerlinkssmall">
+          <%if  footer_links_data.present? %>
+          <li>Popular Routes:</li>
+            <% footer_links_data.each_with_index do |footer,index| %> 
+                <li><%= link_to "#{footer[:dep_city_name]} #{footer[:arr_city_name]} Flights", "https://www.cleartrip.com/flight-schedule/#{footer[:dep_city_name].gsub(' ','-').downcase}-#{footer[:arr_city_name].gsub(' ','-').downcase}-flights.html" %></li>
+            <% end %>
+          <% end %>
+        </ul>
+        <ul class="footerlinkssmall list-unstyled">
+          <li> Other Tools:</li>
+           
+          <li>
+            <a href="/flights" title=" ClearTrip Flights">Cheap Flights</a>
+          </li> 
+
+          <li>
+            <a href="/flights" title="ClearTrip Flights">
+             Flights
+            </a>
+          </li>
+      <li>
+          <a href="/flight-booking/domestic-airlines.html" title="Flight Booking">
+              Flight Booking
+          </a>
+      </li>
+      <li>
+          <a href="/flight-tickets/cheap-flight-air-tickets-domestic.html" title="Cheap Air Tickets">
+          Cheap Air Tickets
+          </a>
+      </li>
+      <li>
+          <a href="/flight-schedule/flight-schedules-domestic.html" title="Flight Tickets">
+          Flight Tickets
+          </a>
+      </li>
+        <li>
+          <a href="/flight-booking/domestic-airlines.html" title="Domestic Airlines">
+            Domestic Airlines
+          </a>
+        </li>
+        <li>
+          <a href="/flight-tickets/cheap-flight-air-tickets-international.html" title="International Air Tickets">
+            International Air Tickets
+          </a>
+        </li>
+        <li>
+          <a href="/flight-schedule/flight-schedules-international.html" title="International Flights">
+            International Flights
+          </a>
+        </li>
+        <li>
+          <a href="/flight-booking/international-airlines.html" title="International Airlines">
+            International Airlines
+          </a>
+        </li>
+        <li>
+          <a href="/hotels/india/" title="India Hotels">
+            Hotels in India
+          </a>
+        </li>
+        <li>
+          <a href="https://www.cleartrip.com/trains/" title="IRCTC Railway Reservation">
+            IRCTC Railway Reservation
+          </a>
+        </li>
+        <li>
+          <a href="https://www.cleartrip.com/trains/pnr/" title="IRCTC Railway PNR Status">
+            IRCTC Railway PNR Status
+          </a>
+        </li>
+        <li>
+          <a href="https://www.cleartrip.com/tourism/train/tatkal-booking.html" title="IRCTC Tatkal booking">
+            IRCTC Tatkal booking
+          </a>
+        </li>
+        <li>
+          <a href="/flight-booking/international-airlines.html" title="International Airlines">
+            International Airlines
+          </a>
+        </li>
+        <li>
+          <a href="https://www.cleartrip.com/trains/calendar" title="IRCTC Seat Availability">
+            IRCTC Seat Availability
+          </a>
+        </li>
+        <% if flights_header["dep_city_package"]== true %>
+          <li>
+            <a href="https://www.cleartrip.com/tourism/packages/<%= dep_city_name_formated %>" title="<%= dep_city_name %> Holiday Packages">
+              <%= dep_city_name %> Holiday Packages
+            </a>
+          </li>
+        <% end %>
+        <% if flights_header["arr_city_package"] == true %>
+          <li>
+            <a href="https://www.cleartrip.com/tourism/packages/<%= arr_city_name_formated %>" title="<%= arr_city_name %> Holiday Packages">
+              <%= arr_city_name %> Holiday Packages
+            </a>
+          </li>
+        <% end %>
+        <% if flights_header["dep_city_things_to_do"] == true %>  
+          <li>
+            <a href="https://www.cleartrip.com/local/<%= dep_city_name_formated %>/things-to-do-in-<%= dep_city_name.downcase %>" title="Things to do in <%= dep_city_name %>">
+             Things to do in <%= dep_city_name %>
+            </a>
+          </li>
+        <% end %>
+        <% if flights_header["arr_city_things_to_do"] == true %>
+          <li>
+            <a href="https://www.cleartrip.com/local/<%= arr_city_name_formated %>/things-to-do-in-<%= arr_city_name.downcase %>" title="Things to do in <%= arr_city_name %>">
+             Things to do in <%= arr_city_name %>
+            </a>
+          </li>
+        <% end %>
+        <% if flights_header["dep_city_weekend_getaway"]== true %>
+          <li>
+            <a href="https://www.cleartrip.com/hotels/india/<%= dep_city_name_formated %>/weekend-getaways/" title="Long weekend getaways from <%= dep_city_name %>">
+             Long weekend getaways from <%= dep_city_name %>
+            </a>
+          </li>
+        <% end %>
+        <% if flights_header["arr_city_weekend_gateway"] == true %>
+          <li>
+            <a href="https://www.cleartrip.com/hotels/india/<%= arr_city_name_formated %>/weekend-getaways/" title="Long weekend getaways from <%= arr_city_name %>">
+             Long weekend getaways from <%= arr_city_name %>
+            </a>
+          </li>
+        <% end %>
+      </ul> 
+     
+      <div class="clear"></div>
+      <ul class="footerlinkssmall">
+       <li>Countries:</li>
+       <li> <a href="https://www.cleartrip.com" title="India">India</a> </li>
+       <li> <a href="https://www.cleartrip.ae" title="United Arab Emirates">UAE</a> </li>
+       <li> <a href="https://www.cleartrip.sa" title="Saudi Arabia">SA</a> </li>
+       <li> <a href="https://bh.cleartrip.com" title="Bahrain">Bahrain</a> </li>
+       <li> <a href="https://kw.cleartrip.com" title="Kuwait">Kuwait</a> </li>
+       <li> <a href="https://qa.cleartrip.com" title="Qatar">Qatar</a> </li>
+       <li> <a href="https://om.cleartrip.com" title="Oman">Oman</a> </li> 
+     </ul>
+     <div class="clear"></div>
+     <ul class="footerlinkssmall list-unstyled" style="width:100%;"> 
+      <li style="width:80%">&copy;2006-2019 Cleartrip Pvt. Ltd.</li><li> <a rel="nofollow" href="/privacy-policy/">Privacy</a> </li><li> <a rel="nofollow" href="/security">Security</a> </li><li> <a rel="nofollow" href="/terms/">Terms of Use</a> </li>
+    </ul>
+  </div>
+</div>
+</div>

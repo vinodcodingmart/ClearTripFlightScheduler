@@ -1,0 +1,16 @@
+<div class="blocks">
+  <h2><%= t('brand.airport')%></h2>
+  <ul class="list-unstyled top-airlines">
+    <% top_airports.each do |airport| %>
+      <li>
+        <% if I18n.locale.to_s == "en" %>
+          <%  airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/"+ "#{use_helper.url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}")  %>
+        <% else %>
+          <% airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/"+ I18n.locale.to_s + "/" + "#{use_helper.url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}")  %>
+        <% end %>
+        <%=  airport_name %>
+        <div class="clearfix"></div>
+      </li>
+    <% end %>
+  </ul>
+</div>

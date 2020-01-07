@@ -1,0 +1,26 @@
+<ul class="linklist list-inline">
+  <% if top_routes.compact.nil? or top_routes.blank? %>
+    <li><%= t('brand.no_top_routes')%></li>
+  <% else %>
+    <% if @city_section=="from"%>
+    <% top_routes.compact.each do |route| -%>
+      <% if !route.dep_city_name_ar.blank? && !route.arr_city_name_ar.blank? %>
+        <li>
+          <% link = "/ar/flight-schedule/#{route.url}" %>
+          <%= I18n.t('flights_routes_html', dep_city_name: route.dep_city_name_ar, arr_city_name: route.arr_city_name_ar, link: link).html_safe %>
+        </li>
+      <% end %>
+    <% end -%>
+    <% else %> 
+      <% top_routes.compact.each do |route| -%>
+        <% if !route.dep_city_name_ar.blank? && !route.arr_city_name_ar.blank? %>
+          <li>
+            <% link = "/ar/flight-schedule/#{route.url}" %>
+            <%= I18n.t('flights_routes_html', dep_city_name: route.dep_city_name_ar, arr_city_name: route.arr_city_name_ar, link: link).html_safe %>
+          </li>
+        <% end %>
+    <% end -%>
+    <% end %>
+  <% end %>
+</ul>
+<br>

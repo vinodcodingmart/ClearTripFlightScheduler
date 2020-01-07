@@ -1,0 +1,98 @@
+<% if schedule_layout_values["top_min_flights_30"].present? || schedule_layout_values["top_min_flights_90"] || schedule_layout_values["top_min_flights_today"] || schedule_layout_values["top_min_flights_15"].present?   %>
+					<% currency_given = currency %>
+					<% currency_given = "₹" if currency == "Rs." %>
+						
+							
+						<div class="minfare-table min-fare-mobile">
+							<div class="min-fare-wrapper">
+								<% if schedule_layout_values["top_min_flights_today"].present? && schedule_layout_values["top_min_flights_today"].first["pr"].to_f > 0 %>
+								<div class="col-sm-3 pad-zero">
+									<h3 class="fare-title">Today's Cheapest</h3>
+									<ul class="list-unstyled">
+										<% schedule_layout_values["top_min_flights_today"].each do|min_today| %>
+										<% unless min_today["pr"].to_i == 0 %>
+										<% if min_today["ad"].to_date == Date.today %>
+										<% temp_date = min_today["ad"] %>
+										<% elsif min_today["ad"].to_date <= Date.today %>
+										<% temp_date = (Time.now).strftime('%d/%m/%Y') %>
+										<% else %>
+										<% temp_date = (Time.now+2.days).strftime('%d/%m/%Y') %>
+										<% end %>
+										<li>
+											<h4>
+												<a href="<%= "/flights/results?from=#{schedule_layout_values["dep_airport_code"]}&to=#{schedule_layout_values["arr_airport_code"]}&depart_date=#{temp_date}&adults=1&childs=0&infants=0&page=loaded&airline=#{min_today["al"]}" %>">
+													<span><%= min_today["aln"] %></span>
+													<button class="booking-btn"><%= "#{currency_given} #{min_today["pr"].to_i}" %></button>
+												</a>
+											</h4>
+											<div class="clearfix"></div>
+										</li>
+										<% end %>
+										<% end %>
+									</ul>
+								</div>
+								<% end %>
+								<% if schedule_layout_values["top_min_flights_15"].present?  && schedule_layout_values["top_min_flights_15"].first["pr"].to_f > 0 %>
+								<div class="col-sm-3 pad-zero">
+									<h3 class="fare-title">15 day's Cheapest</h3>
+									<ul class="list-unstyled">
+										<% schedule_layout_values["top_min_flights_15"].each do|min_15| %>
+										<% unless min_15["pr"].to_i == 0 %>
+										<% if min_15["dd"].to_date >= Date.today %>
+										<% temp_date = min_15["dd"] %>
+										<% else %>
+										<% temp_date = (Time.now+2.days).strftime('%d/%m/%Y') %>
+										<% end %>
+										<li><h4><a href="<%= "/flights/results?from=#{schedule_layout_values["dep_airport_code"]}&to=#{schedule_layout_values["arr_airport_code"]}&depart_date=#{temp_date}&adults=1&childs=0&infants=0&page=loaded&airline=#{min_15["al"]}" %>"><span><%= min_15["aln"] %></span>
+											<button class="booking-btn"><%= "#{currency_given} #{min_15["pr"].to_i}" %></button>
+											</a>
+										</h4></li>
+										<% end %>
+										<% end %>
+									</ul>
+								</div>
+								<% end %>
+								<% if schedule_layout_values["top_min_flights_30"].present?  && schedule_layout_values["top_min_flights_30"].first["pr"].to_f > 0 %>
+								<div class="col-sm-3 pad-zero">
+									<h3 class="fare-title">30 day's Cheapest</h3>
+									<ul class="list-unstyled">
+										<% schedule_layout_values["top_min_flights_30"].each do|min_30| %>
+										<% unless min_30["pr"].to_i == 0 %>
+										<% if min_30["dd"].to_date >= Date.today %>
+										<% temp_date = min_30["dd"] %>
+										<% else %>
+										<% temp_date = (Time.now+2.days).strftime('%d/%m/%Y') %>
+										<% end %>
+										<li><h4><a href="<%= "/flights/results?from=#{schedule_layout_values["dep_airport_code"]}&to=#{schedule_layout_values["arr_airport_code"]}&depart_date=#{temp_date}&adults=1&childs=0&infants=0&page=loaded&airline=#{min_30["al"]}" %>"><span><%= min_30["aln"] %></span>
+											<button class="booking-btn"><%= "#{currency_given} #{min_30["pr"].to_i}" %></button>
+										</a>
+										</h4></li>
+										<% end %>
+										<% end %>
+									</ul>
+								</div>
+								<% end %>
+								<% if schedule_layout_values["top_min_flights_90"].present?  && schedule_layout_values["top_min_flights_90"].first["pr"].to_f > 0 %>
+								<div class="col-sm-3 pad-zero">
+									<h3 class="fare-title">90 day's Cheapest</h3>
+									<ul class="list-unstyled">
+										<% schedule_layout_values["top_min_flights_90"].each do|min_90| %>
+										<% unless min_90["pr"].to_i == 0 %>
+										<% if min_90["dd"].to_date >= Date.today %>
+										<% temp_date = min_90["dd"] %>
+										<% else %>
+										<% temp_date = (Time.now+2.days).strftime('%d/%m/%Y') %>
+										<% end %>
+										<li><h4><a href="<%= "/flights/results?from=#{schedule_layout_values["dep_airport_code"]}&to=#{schedule_layout_values["arr_airport_code"]}&depart_date=#{temp_date}&adults=1&childs=0&infants=0&page=loaded&airline=#{min_90["al"]}" %>"><span><%= min_90["aln"] %></span>
+											<button class="booking-btn"><%= "#{currency_given} #{min_90["pr"].to_i}" %></button>
+										</a>
+										</h4></li>
+										<% end %>
+										<% end %>
+									</ul>
+								</div>
+								<% end %>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<% end %>

@@ -1,0 +1,26 @@
+
+<% if country_code == 'IN'
+  country_name = 'india'
+elsif country_code == 'AE'
+  country_name = 'united-arab-emirates'
+elsif country_code == 'BH'
+  country_name = 'bahrain'
+elsif country_code == 'KW'
+  country_name = 'kuwait'
+elsif country_code == 'QA'
+  country_name = 'qatar'
+elsif country_code == 'OM'
+  country_name = 'oman'
+elsif country_code == 'SA'
+  country_name = 'saudi-arabia'
+else
+  country_name = ''
+  end %>
+  <h3><%= I18n.t('rhs.rhs_book') %></h3>
+  <div class="four columns alpha omega mb10"><div class="whyb offers"></div><label class="pad_left lang"><%= I18n.t('rhs.fab_offers') %></label><span><%= I18n.t('rhs.get_deals') %>
+  <br><a class="fs12" href=<%="#{host_name(country_code)}/offers/#{country_name}"%>><%= I18n.t('rhs.more') %> &rarr;</a></span></div>
+  <div class="four columns alpha omega mb10"><div class="whyb expressway"></div><label class="pad_left lang"><%= I18n.t('rhs.express') %></label><span><%= I18n.t('rhs.touch_book') %><br><a class="fs12" href="/expressway"><%= I18n.t('rhs.more') %>&rarr;</a></span></div>
+  <!-- <div class="four columns alpha omega mb10"><div class="whyb pricewatch"></div><label class="pad_left">Price Watch</label><span>Your Money Back when the prices fall on any international flights.<br><a class="fs12" href="/pricewatch/">Know more &rarr;</a></span></div> -->
+  <div class="four columns alpha omega mb10"><div class="whyb farealert"></div><label class="pad_left lang"><%= I18n.t('rhs.fare') %></label><span><%= I18n.t('rhs.track') %><br><a class="fs12" href="/alerts"><%= I18n.t('rhs.more') %> &rarr;</a></span></div>
+  <div class="four columns alpha omega mb10"><div class="whyb go_mobile"></div><label class="pad_left lang"><%= I18n.t('rhs.mobile') %></label><span><%= I18n.t('rhs.book_on_go') %><br><a class="fs12" href="/mobile/"><%= I18n.t('rhs.more') %> &rarr;</a></span></div>
+  <div class="four columns alpha omega mb10"><div class="whyb quickeys"></div><label class="pad_left lang"><%= I18n.t('rhs.quick') %></label><span><%= I18n.t('rhs.last_min') %><br><a href="/quickeys/" class="fs12"><%= I18n.t('rhs.more') %> &rarr;</a></span></div>

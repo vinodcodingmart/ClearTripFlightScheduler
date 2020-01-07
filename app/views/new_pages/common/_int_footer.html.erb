@@ -1,0 +1,135 @@
+<% case country_code
+    when "IN"
+      hotel_country = "india/"
+    when "AE"
+      hotel_country = "united-arab-emirates/"
+    when "SA"
+      hotel_country = "saudi-arabia/"
+    else
+      hotel_country = ""
+   end
+
+   if I18n.locale == :ar
+    lang = "/#{I18n.locale.to_s}/"
+   else
+    lang = "/"
+   end %>
+<footer>
+  <div class="more-links">
+    <div class="container pad-lzero">
+      <ul class="list-inline secondaryLinks weaker footerMenus">
+        <% title = section.include?("dom") ? "#{t("brand.domestic_airlines")}:" : "#{t("brand.international_airlines")}:" %>
+        <li><%= title %></li>
+        <% top_airlines.each do |cc| %>
+          <li>
+            <% airline_name = link_to( t("airlines.#{cc}"), "#{lang}flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+            <%= airline_name %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="list-inline secondaryLinks weaker footerMenus">
+        <li><%= t("brand.international_flights") %>:</li>
+        <% case country_code %>
+        <% when "AE" %>
+          <li class="first"> <a href="<%= lang %>flight-schedule/abu-dhabi-new-delhi-flights.html" title='<%= t("airline_city.abu_dhabi") + t("airline_city.newdelhi") + t("airline_city.flights") %>'><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.newdelhi') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/abu-dhabi-kuwait-flights.html" title='<%= t('airline_city.abu_dhabi') %> <%= t('airline_city.kuwait') %> <%= t('airline_city.flights') %>'><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.kuwait') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/abu-dhabi-bahrain-flights.html" title='<%= t('airline_city.abu_dhabi') %> <%= t('airline_city.bahrain') %> <%= t('airline_city.flights') %>'><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.bahrain') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/dubai-muscat-flights.html" title='<%= t('airline_city.dubai') %> <%= t('airline_city.muscat') %> <%= t('airline_city.flights') %>'><%= t('airline_city.dubai') %> <%= t('airline_city.muscat') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/dubai-doha-flights.html" title='<%= t('airline_city.dubai') %> <%= t('airline_city.doha') %> <%= t('airline_city.flights') %>'><%= t('airline_city.dubai') %> <%= t('airline_city.doha') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/abu-dhabi-muscat-flights.html" title='<%= t('airline_city.abu_dhabi') %> <%= t('airline_city.muscat') %> <%= t('airline_city.flights') %>'><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.muscat') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/abu-dhabi-london-flights.html" title='<%= t('airline_city.abu_dhabi') %> <%= t('airline_city.london') %> <%= t('airline_city.flights') %>'><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.london') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/dubai-london-flights.html" title='<%= t('airline_city.dubai') %> <%= t('airline_city.london') %> <%= t('airline_city.flights') %>'><%= t('airline_city.dubai') %> <%= t('airline_city.london') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/dubai-kuwait-flights.html" title='<%= t('airline_city.dubai') %> <%= t('airline_city.kuwait') %> <%= t('airline_city.flights') %>'><%= t('airline_city.dubai') %> <%= t('airline_city.kuwait') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/abu-dhabi-sydney-flights.html" title='<%= t('airline_city.abu_dhabi') %> <%= t('airline_city.sydney') %> <%= t('airline_city.flights') %>'><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.sydney') %> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/abu-dhabi-manchester-flights.html" title='<%= t('airline_city.abu_dhabi') %> <%= t('airline_city.manchester') %> <%= t('airline_city.flights') %>'><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.manchester') %> <%= t('airline_city.flights') %></a> </li>
+        <% when "SA" %>
+	        <li class="first"> <a href="<%= lang %>flight-schedule/jeddah-dubai-flights.html" title='<%=  t('airline_city.jeddah') %> <%= t('airline_city.dubai') %> <%= t('airline_city.flights') %>'><%=  t('airline_city.jeddah') %> <%= t('airline_city.dubai') %> <%= t('airline_city.flights') %></a> </li>
+	        <li> <a href="<%= lang %>flight-schedule/jeddah-abu-dhabi-flights.html" title='<%= t('airline_city.jeddah') %> <%= t('airline_city.abu_dhabi') %> <%= t('airline_city.flights') %>'><%= t('airline_city.jeddah') %> <%= t('airline_city.abu_dhabi') %> <%= t('airline_city.flights') %></a></li>
+	        <li> <a href="<%= lang %>flight-schedule/riyadh-abu-dhabi-flights.html" title='<%= t('airline_city.riyadh') %>   <%= t('airline_city.abu_dhabi') %> <%= t('airline_city.flights') %>'><%= t('airline_city.riyadh') %> <%= t('airline_city.abu_dhabi') %> <%= t('airline_city.flights') %></a> </li>
+	        <li> <a href="<%= lang %>flight-schedule/dammam-abu-dhabi-flights.html" title='<%= t('airline_city.dammam') %><%= t('airline_city.abu_dhabi') %> <%= t('airline_city.flights') %>'> <%= t('airline_city.dammam') %> <%= t('airline_city.abu_dhabi') %> <%= t('airline_city.flights') %></a> </li>
+	        <li> <a href="<%= lang %>flight-schedule/riyadh-dubai-flights.html" title='<%= t('airline_city.riyadh') %> <%= t('airline_city.dubai') %><%= t('airline_city.flights') %>'><%= t('airline_city.riyadh') %> <%= t('airline_city.dubai') %> <%= t('airline_city.flights') %></a> </li>
+	        <li> <a href="<%= lang %>flight-schedule/jeddah-cairo-flights.html" title='<%= t('airline_city.jeddah') %> <%= t('airline_city.cairo') %> <%= t('airline_city.flights') %>'> <%= t('airline_city.jeddah') %> <%= t('airline_city.cairo') %> <%= t('airline_city.flights') %></a> </li>
+	        <li> <a href="<%= lang %>flight-schedule/dammam-dubai-flights.html" title='<%= t('airline_city.dammam') %><%= t('airline_city.dubai') %> <%= t('airline_city.flights') %>'> <%= t('airline_city.dammam') %> <%= t('airline_city.dubai') %> <%= t('airline_city.flights') %></a> </li>
+	        <li> <a href="<%= lang %>flight-schedule/riyadh-bahrain-flights.html" title='<%= t('airline_city.riyadh')%><%= t('airline_city.bahrain')%> <%= t('airline_city.flights') %>'> <%= t('airline_city.riyadh')%> <%= t('airline_city.bahrain')%> <%= t('airline_city.flights') %></a> </li>
+	        <li> <a href="<%= lang %>flight-schedule/jeddah-addis-ababa-flights.html" title='<%= t('airline_city.jeddah')%><%= t('airline_city.addis_ababa')%> <%= t('airline_city.flights') %>'><%= t('airline_city.jeddah')%> <%= t('airline_city.addis_ababa')%> <%= t('airline_city.flights') %></a> </li>
+          <li> <a href="<%= lang %>flight-schedule/jeddah-frankfurt-flights.html" title='<%= t('airline_city.jeddah')%><%= t('airline_city.frankfurt')%> <%= t('airline_city.flights') %>'><%= t('airline_city.jeddah')%>   <%= t('airline_city.frankfurt')%> <%= t('airline_city.flights') %></a> </li>
+        <% else %>
+          <% routes.uniq.each do |route| %>
+            <li>
+              <% if I18n.locale.to_s == "en"
+                  link = link_to( "#{route['dep_city_name']} to #{route['arr_city_name']} Flights", "/flight-schedule/" + "#{route['schedule_route_url']}" + "-flights.html")
+                else
+                  link = link_to( "#{t('brand.flights')} #{route[:dep_city_name_ar]} #{t('to')} #{route[:arr_city_name_ar]}", "/ar/flight-schedule/" + "#{route['schedule_route_url']}" + "-flights.html")
+                end %>
+              <%= link %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <ul class="list-inline secondaryLinks weaker otherTools footerMenus">
+        <li><%= t('other')%>:</li>
+        <li> <a href="<%= lang %>flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.dom_flight')%></a> </li>
+        <% if country_code=="SA" %>
+         <li> <a href="<%= lang %>/flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a> </li>
+        <% else %>
+        <li> <a href="<%= lang %>international-flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a> </li>
+        <% end %>
+        <% if @country_code == "AE" %>
+          <li> <a href="/hotels/" title="<%= t('footer.hotels')%>"><%= t('footer.hotels')%></a> </li>
+        <li> <a href="/hotels/united-arab-emirates/dubai/" title="<%= t('footer.dubai_hotels')%>"><%= t('footer.dubai_hotels')%></a> </li>
+        <li> <a href="/hotels/united-arab-emirates/abu-dhabi/" title="<%= t('footer.abu_dhabi_hotels')%>"><%= t('footer.abu_dhabi_hotels') %></a> </li>
+        <% else %>
+          <li> <a href="/hotels/<%= hotel_country %>" title="<%= t('footer.hotels')%>"><%= t('footer.hotels')%></a> </li>
+        <% end %>
+        <% unless country_code=="SA" %>
+        <li> <a href="/status/" title="<%= t('footer.status')%>"><%= t('footer.status')%></a> </li>
+        <li> <a href="<%= lang %>flight-tickets/cheap-flight-air-tickets-domestic.html" title="<%= t('footer.dom_air_ticket')%>"><%= t('footer.dom_air_ticket')%></a> </li>
+        <li> <a href="<%= lang %>flight-schedule/flight-schedules-domestic.html" title="<%= t('footer.dom_schedule')%>"><%= t('footer.dom_schedule')%></a> </li>
+        
+        <li> <a href="/tourism/airports<%= lang %>" title="<%= t('footer.dom_airports')%>"><%= t('footer.dom_airports')%></a> </li>
+        <li> <a href="<%= lang %>flight-tickets/cheap-flight-air-tickets-international.html" title="<%= t('footer.intl_air_tickets')%>"><%= t('footer.intl_air_tickets')%></a> </li>
+        <li> <a href="<%= lang %>flight-schedule/flight-schedules-international.html" title="<%= t('footer.intl_flight_sched')%>"><%= t('footer.intl_flight_sched')%></a> </li>
+        <li> <a href="/tourism/airports<%= lang %>international-airports.html" title="<%= t('footer.intl_airport')%>"><%= t('footer.intl_airport')%></a> </li>
+        <% end %>
+
+        <li> <a href="<%= lang %>flight-booking/domestic-airlines.html" title="<%= t('footer.dom_airlines')%>"><%= t('footer.dom_airlines')%></a> </li>
+        <li> <a href="<%= lang %>flight-booking/international-airlines.html" title="<%= t('footer.intl_airlines')%>"><%= t('footer.intl_airlines')%></a> </li>
+        <!-- <li> <a href="/tourism/routes<%= lang %>" title="<%#= t('footer.routes')%>"><%#= t('footer.routes')%></a> </li> -->
+      </ul>
+      <% unless country_code=="SA" %>
+      <ul class="list-inline secondaryLinks weaker footerMenus">
+        <li><%= t('footer.countries')%>:</li>
+        <li> <a href="https://www.cleartrip.com" title="<%= t('footer.in')%>"><%= t('footer.in')%></a> </li>
+        <li> <a href="https://www.cleartrip.ae" title="<%= t('footer.ae')%>"><%= t('footer.ae')%></a> </li>
+        <li> <a href="https://www.cleartrip.sa" title="<%= t('footer.sa')%>"><%= t('footer.sa')%></a> </li>
+        <li> <a href="https://bh.cleartrip.com" title="<%= t('footer.bh')%>"><%= t('footer.bh')%></a> </li>
+        <li> <a href="https://kw.cleartrip.com" title="<%= t('footer.kw')%>"><%= t('footer.kw')%></a> </li>
+        <li> <a href="https://qa.cleartrip.com" title="<%= t('footer.qa')%>"><%= t('footer.qa')%></a> </li>
+        <li> <a href="https://om.cleartrip.com" title="<%= t('footer.om')%>"><%= t('footer.om')%></a> </li>
+      </ul>
+      <% end %>
+      <div class="clear"></div>
+      <div class="footer-bottom">
+        <% if I18n.locale.to_s =="en" %>
+          <div class="col-sm-6 pad-lzero">©2006-2019 Cleartrip Pvt. Ltd.</div>
+          <div class="col-sm-6 pad-zero">
+            <ul class="list-inline pull-right" >
+              <li><a rel="nofollow" href="/privacy-policy/">Privacy</a> </li>
+              <li> <a rel="nofollow" href="/security">Security</a> </li>
+              <li> <a rel="nofollow" href="/terms/">Terms of Use</a> </li>
+            </ul>
+          </div>
+        <% else %>
+          <div class="col-sm-6 pad-zero">
+            <ul class="list-inline pull-left" >
+              <li><a rel="nofollow" href="/privacy-policy/">الخصوصية</a> </li>
+              <li> <a rel="nofollow" href="/security">الحماية</a> </li>
+              <li> <a rel="nofollow" href="/terms/">شروط الاستخدام</a> </li>
+            </ul>
+          </div>
+          <div class="col-sm-6 pad-lzero">©2006 - 2019 كليرتريب الخاصة.المحدودة</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</footer>

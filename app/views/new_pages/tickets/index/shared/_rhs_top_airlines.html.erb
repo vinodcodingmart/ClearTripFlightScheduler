@@ -1,0 +1,43 @@
+<% if I18n.locale == :en %>
+  <% if top_airlines.present? %>
+    <div class="white-card">
+      <h2><%= t("brand.top_#{section}_airlines")%></h2>
+      <ul class="list-unstyled top-airlines">
+        <% top_airlines.uniq.each do |cc| %>
+          <li>
+            <div class=" col-xs-8 pad-5">
+              <div class="R-airline-logo "><span class="carrier-logo <%= t("airlines.#{cc}").downcase.gsub(" ",'-').gsub('--','-') %>"></span></div>
+              <% airline_name = link_to( t("airlines.#{cc}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"airline-link R-airline-name") %>
+              <%= airline_name %>
+            </div>
+            <div class="col-xs-4 pad-rzero">
+              <%= link_to( "Book", "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"booking-btn") %>
+            </div>
+            <div class="clearfix"></div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <% if top_airlines.present? %>
+    <div class="white-card">
+      <h2><%= t("brand.top_#{section}_airlines")%></h2>
+      <ul class="list-unstyled top-airlines">
+        <% top_airlines.uniq.each do |cc| %>
+          <li>
+            <div class="col-xs-4 pad-rzero">
+              <%= link_to( t("brand.book"), "/ar/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"booking-btn") %>
+            </div>
+            <div class=" col-xs-8 pad-5">
+              <div class="R-airline-logo "><span class="carrier-logo <%= t("airlines.#{cc}").downcase.gsub(" ",'-').gsub('--','-') %>"></span></div>
+              <% airline_name = link_to( t("airlines.#{cc}"), "/ar/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"airline-link R-airline-name") %>
+              <%= airline_name %>
+            </div>
+            <div class="clearfix"></div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

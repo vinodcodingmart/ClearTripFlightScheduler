@@ -1,0 +1,12 @@
+<div class="blocks">
+	<h2>Popular Fight Schedules</h2>
+	<ul class="list-unstyled top-airlines">
+		<% top_sectors.each do |r| %>
+		<li><a href="/flight-tickets/<%=url_escape(r.dep_city_name) %>-<%= url_escape(r.arr_city_name)%>-cheap-airtickets.html" 
+			title="<%= r.dep_city_name %> <%= r.arr_city_name %> Flights">
+			<%= r.dep_city_name%> to  <%=r.arr_city_name%>
+		</a>
+	</li>
+	<% end %>
+</ul>
+</div>

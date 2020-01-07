@@ -1,0 +1,2 @@
+class OmFromToContent < ApplicationRecord
+end

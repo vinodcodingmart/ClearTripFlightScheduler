@@ -1,0 +1,2 @@
+class FlightTicketsController < ApplicationController
+end

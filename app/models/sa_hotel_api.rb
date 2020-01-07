@@ -1,0 +1,2 @@
+class SaHotelApi < ApplicationRecord
+end

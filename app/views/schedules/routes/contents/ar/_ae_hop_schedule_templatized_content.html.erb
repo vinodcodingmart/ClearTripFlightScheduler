@@ -1,0 +1,9 @@
+ <p> قد يبدو حجز التذاكر للسفر للخارج إجراءً معقداً ولاسيما بالنسبة للمسافرين للمرة الأولى. ويقوم كليرتريب بتوفير تفاصيل شاملة للطرق الدولية والأسعار والأوقات في مكان واحد لجعل تجربتك سهلة ومريحة.</p>
+ <p>وإن الخطوط الجوية التي تسير رحلات بين <%= dep_city_name%> و <%= arr_city_name%> هي <%= schedule_layout_values["operational_airlines_count"] %>.</p>
+    <p>يوجد بالمجمل <%= schedule_layout_values["weekly_flights_count"] %> رحلات متوفرة كل أسبوع للمسافرين الذين يرغبون في السفر من <%= dep_city_name%> إلى <%=arr_city_name%>.</p>
+    <p>إن الرحلة الأولى من <%= dep_city_name%> إلى <%= arr_city_name%> هي <%= schedule_layout_values["first_dep_airline"]%> والتي تغادر في <%= schedule_layout_values["first_dep_time"] %>. أما الرحلة الأخيرة هي <%= schedule_layout_values["last_dep_airline"]%> والتي تغادر في <%= schedule_layout_values["last_dep_time"]%>.</p>
+    <p>تستغرق الرحلة في المتوسط <%=  schedule_layout_values["min_duration"] %> ساعات بما في ذلك التوقف. وإن الفرق الزمني بين هاتين المدينتين هو <%=  schedule_layout_values["max_duration"] %>.</p>
+    <p>وأرخص يوم للسفر من %<%= arr_city_name%> إلى <% dep_city_name%> هو <%= schedule_layout_values['route_min_price'] %>. قم بحجز تذاكرك قبل 90 يوماً للاستفادة من أفضل العروض. </p>
+    <p>إن الرحلات من <%= dep_city_name %> تغادر من <%= schedule_layout_values["dep_airport_name_ar"]%> ورمز الاتحاد الدولي للنقل الجوي لهذا المطار هو <%= schedule_layout_values["dep_airport_code"]%>. </p>
+    <p>إن الرحلات من <%= arr_city_name%> تغادر من <%=schedule_layout_values["arr_airport_name_ar"]%> ورمز الاتحاد الدولي للنقل الجوي لهذا المطار هو <%=schedule_layout_values["arr_airport_code"]%>. </p>
+    <p>استخدم تطبيق كليرتريب سواءً كنت مسافر للتجوال أو للعمل. وسيسمح لك تقويم الأسعار بمقارنة الأسعار وتغيير تاريخ الحجز على الفور. احجز التذاكر في أقل من 60 ثانية مع خيار حجز الرحلات بلمسة واحدة. اختر كليرتريب للاهتمام بالجوانب التقنية بحيث يمكنك التركيز على جوانب الممتعة لرحلتك. </p>

@@ -1,0 +1,21 @@
+<% if top_airports.present? %>
+  <div class="white-card">
+    <% if @section.include? "dom" %>
+      <h2><%= t("brand.top_dom_airport") %></h2>
+    <% else %>
+      <h2><%= t("brand.top_int_airport") %></h2>
+    <% end %>
+    <ul class="list-unstyled flight-routes">
+      <% top_airports.each do |airport| %>
+        <li>
+          <% if I18n.locale.to_s == "en" %>
+            <%  airport_name = link_to( airport['airport_name'], "/tourism/airports/"+ "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}")  %>
+          <% else %>
+            <% airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/"+ I18n.locale.to_s + "/" + "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}")  %>
+          <% end %>
+          <%=  airport_name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

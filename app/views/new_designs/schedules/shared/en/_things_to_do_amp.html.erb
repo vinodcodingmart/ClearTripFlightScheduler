@@ -1,0 +1,20 @@
+<h2>Things To Do in <%=arr_city_name.titleize%></h2>
+	<div class="cnt-local-city featured-local-wrapper">
+		<div class="featured_local">
+			<ul class="slides">
+				<% things_todo[:activities_data].each do |img| %>
+				<li>
+					<div class="local-tile">
+            <a href="<%=img["map_url"]%>">
+                <amp-img src="<%= img["collection_image"] %>" alt="" height="140"></amp-img>
+                <div class="hotels-cnt">
+                  <h2><%=img["name"]%></h2>
+                  <span class="count"><%= img["ttd_count"] %> Experience</span>
+                </div>
+            </a>
+					</div>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>

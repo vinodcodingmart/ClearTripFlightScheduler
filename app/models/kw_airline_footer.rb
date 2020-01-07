@@ -1,0 +1,2 @@
+class KwAirlineFooter < ApplicationRecord
+end

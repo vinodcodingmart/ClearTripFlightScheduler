@@ -1,0 +1,51 @@
+<!--======Second Header Starts Here==========-->
+
+<section id="Second-menu">
+  <div class="container">
+    <ul class="list-inline">
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">معلومات شركة الطيران <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <% if brand_type != "booking-overview" %>
+            <li><%= link_to("#{@carrier_name_ar} نظرة عامة","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}.html",title:"#{@carrier_name_ar} نظرة عامة")%>
+            </li>
+          <% end %>
+          <% if brand_type != 'pnr_status' %>
+            <li><%= link_to("#{@carrier_name_ar} PNR حالة","#{@host_name}/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-flight-pnr-status.html",title:"#{@carrier_name_ar} PNR حالة") %></li>
+          <% end%>
+          <% if brand_type != 'web_checkin' %>
+          <li><%= link_to("#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت","#{@host_name}/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-web-check-in.html",title:"#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت") %></li>
+          <%end%>
+        </ul>
+      </li>
+
+        <% if airports["dom_airports"].present? %>
+        <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">مطارات داخلية <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <% airports["dom_airports"].each do |airport|%>
+          <li>
+            <%  airport_name = link_to( airport['airport_name_ar'], "#{@host_name}/tourism/airports/ar/"+ "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}", title: airport['airport_name_ar']) %>
+            <%=  airport_name %>
+          </li>
+          <% end %>
+        </ul>
+        </li>
+        <% end %>
+
+        <% if airports["int_airports"].present? %>
+        <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">مطارات دولية <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <%  airports["int_airports"].each do |airport| %>
+          <li>
+            <%  airport_name = link_to( airport['airport_name_ar'], "#{@host_name}/tourism/airports/ar/"+ "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}",title: airport['airport_name_ar'])  %>
+            <%=  airport_name %>
+          </li>
+          <% end %>
+        </ul>
+        </li>
+        <% end %>
+    </ul>
+  </div>
+</section>

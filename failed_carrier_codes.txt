@@ -1,0 +1,17 @@
+AI-Airmark IndonesianAviation
+KE-Korean Air
+KL-KLM Cityhopper
+LB-Lloyd Aéreo Boliviano
+LH-Lufthansa
+LX-Swiss International AirLines
+MS-Egypt Air
+PK-Pakistan Intl Air
+QF-Eastern Australia Airlines
+QF-Sunstate Airlines
+QF-Qantas
+RA-Nepal Airlines
+SU-Aeroflot-Cargo
+UA-United
+UO-HongKong Express
+US-Piedmont Airlines
+VY-Vueling Airlines

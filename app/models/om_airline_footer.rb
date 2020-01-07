@@ -1,0 +1,2 @@
+class OmAirlineFooter < ApplicationRecord
+end

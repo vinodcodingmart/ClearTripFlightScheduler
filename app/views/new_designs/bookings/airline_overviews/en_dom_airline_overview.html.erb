@@ -1,0 +1,314 @@
+<% use_helper = self.extend ApplicationHelper %>
+<div id="airlines">
+  <%= render partial: "new_designs/bookings/shared/en/main_header", locals: { assets_path: @assets_path, country_code: country_code, host: @host_name, flight_file_name: flight_file_name, page_type: 'flight-booking', application_processor: application_processor} %>
+  <!--/Header Ends Here-->
+  <!-- /Second Header starts here -->
+  <!-- /Second Header starts here -->
+  <%= render partial: "new_designs/bookings/shared/en/booking_header",locals: {popular_routes: header_routes,airports: header_airports,carrier_name_en: @carrier_name,use_helper: use_helper, application_processor: application_processor,customer_support: customer_support,baggages: baggages,brand_type: @meta_page_type,sa_header_routes: rhs_schedule_routes,header_pnr_web_check_in: header_pnr_web_check_in}  %>
+  <!-- /Second Header ends  here -->
+  <div class="clearfix"></div>
+  <!--/contnet Starts Here-->
+  <section id="content">
+    <%= render partial: "new_designs/bookings/shared/en/airline_search_widget_en",locals: {assets_path: @assets_path,carrier_code: @carrier_code,carrier_name_translated: @carrier_name, formated_airline_name: format_airline_name(@carrier_name, I18n.locale) }%>
+    <div class="container content-wrapper">
+      <div class="col-sm-9 pad-lzero m-5">
+        <div class="list-box">
+            <div id="banner" class="lhs-banner"></div>
+        </div>
+        <% if popular_routes['dom_dom'].present? &&  popular_routes['dom_dom'].length>0 %>
+         <% if @carrier_code == "SV" && @carrier_name == "Saudi Arabian Air" && ["SA","AE"].include?(@country_code) %>
+            <h2>	Saudi Arabian Airlines Domestic Booking</h2>
+          <% else %>
+            <h2><%= t('brand.popular_dom_route_title', airline_name: @carrier_name) %></h2>
+          <% end %>
+        <%= render :partial=>"new_designs/bookings/shared/en/airline_overview_schedule_table",:locals=>{:routes=>popular_routes['dom_dom'], :use_helper=>use_helper, :assets_path=>@assets_path, :country_code=> @country_code, :section=> 'dom',currency_code: currency_code(@country_code)} %>
+        <p>&nbsp;</p>
+        <% end %>
+        <% if popular_routes['dom_int'].present? && popular_routes['dom_int'].length>0  %>
+          <% if @carrier_code == "SV" && @carrier_name == "Saudi Arabian Air" && ["SA","AE"].include?(@country_code) %>
+            <h2>	Saudi Arabian Airlines International Booking</h2>
+          <% else %>
+            <h2><%= t('brand.popular_int_route_title', airline_name: @carrier_name) %></h2>
+          <% end %>
+        <%= render :partial=>"new_designs/bookings/shared/en/airline_overview_schedule_table",:locals=>{:routes=>popular_routes['dom_int'], :use_helper=>use_helper, :assets_path=>@assets_path, :country_code=> @country_code, :section=> 'int',currency_code: currency_code(@country_code)} %><!--mobile-view-->
+        <% end %>
+      <div class="airline-cnt">
+
+        <% if @content.present? && @content!= "" %>
+          <%= @content.html_safe %>
+        <% else %>
+            <%= render partial: "bookings/shared/en/overview_templatized_content_en",locals: {airline_name: @carrier_name,host: @host_name,top_sectors: top_sectors} %>
+        <% end%>
+        <div class="clearfix"></div>
+        <% if @review.present? %>
+              <div class="reviews">
+                <div itemscope itemtype="http://schema.org/Product">
+                  <span class="review-logo">
+                    <img itemprop="image" src="<%= @assets_path %>/new_images/airlines/<%= @carrier_code %>.png" alt='<%= @carrier_name %>' />
+                  </span>
+                  <span class="review-names" itemprop="name">
+                    <h2><%= @carrier_name %></h2>
+                  </span>
+                  <div class="review-aggregate" itemprop="aggregateRating"
+                    itemscope itemtype="http://schema.org/AggregateRating">
+                    Rated  <span class="average-rating"><span itemprop="ratingValue" ><%=  @review[:avg_review_rating] %></span>/5</span>
+                    based on <span itemprop="reviewCount">24</span> customer reviews
+                  </div>
+                  <!-- </span> -->
+                  <% @review[:reviews_list].each_with_index do|review,index| %>
+
+                  <div class="mreview">
+                    <div class="review-card">
+                      <% if index==0 %>Customer reviews:<% end %>
+                      <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+                        <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                          <span id="review<%= index+1 %>" class="user-rating"></span>
+                          <span itemprop="ratingValue"><%= review[:rating] %></span>/
+                          <span itemprop="bestRating">5</span>stars
+                        </div>
+                        <span itemprop="description"><%= review[:review_text] %>
+                        </span> -
+                        by <span itemprop="author" itemscope itemtype="http://schema.org/person">
+                          <span itemprop="name">"<%= review[:reviewer_name] %>"</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+        <% elsif @review_content["review_content_presence"] %>
+          <%= render partial: "new_designs/bookings/airline_overviews/reviews_content_en",locals: {review_content: @review_content["review_content"].split("\n")} %>
+
+        <% end %>
+        <div class="clearfix"></div>
+      </div> <!--content-desc-->
+    </div>
+
+  <div class="col-sm-3 pad-zero">
+    <div class="side-bar">
+      <div id="Rside-bar">
+        <div class="blocks banner-section">
+          <div id="banner">
+            <a target="_blank"><img></a>
+          </div>
+          <p></p>
+        </div>
+      </div>
+      <% if @carrier_code == "SV" && ["SA"].include?(@country_code)
+      rhs_airlines = rhs_airlines[:dom_airlines]
+      section = "dom"
+      else
+      rhs_airlines = rhs_airlines[:int_airlines]
+      section = "int"
+      end %>
+      <%= render :partial=>"new_designs/bookings/shared/en/rhs_top_airlines",:locals=>{:top_airlines=>rhs_airlines, use_helper: use_helper,:assets_path=>@assets_path, application_processor: application_processor,section: section} %>
+      <% if rhs_schedule_routes[:int_routes].present? && !rhs_schedule_routes[:int_routes].nil? %>
+      <%= render :partial=>"new_designs/bookings/shared/en/rhs_top_routes",:locals=>{:routes=>rhs_schedule_routes[:int_routes], page_type: 'flight-booking', application_processor: application_processor, :carrier_code=> @carrier_code, :section=>"int",sa_header_routes: rhs_schedule_routes } %>
+      <% end %>
+      <%#= render :partial=>"new_designs/bookings/shared/en/rhs_top_airports",:locals=>{:top_airports=>header_airports["int_airports"], use_helper: use_helper, application_processor: application_processor } %>
+      <% unless @country_code!= "IN" %>
+        <%= render :partial=>"new_designs/bookings/shared/en/rhs_top_hotels",:locals=>{:top_hotels=>rhs_top_hotels[:rhs_top_hotels], use_helper: use_helper, application_processor: application_processor } %>
+      <% end %>
+    </div>
+  </div><!--/Rside-bar-->
+
+  <div class="clearfix"></div>
+
+    <ul class="list-inline bread-crumb">
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="first">
+          <a href="/flights" title="<%= t('breadcrumb.flights') %>" itemprop="url"><span itemprop="title"><%= t('breadcrumb.flights') %></span></a>
+        </li>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a href="<%= @host_name %>/flight-booking/domestic-airlines.html" title="<%= t('breadcrumb.domestic_airlines') %>" itemprop="url">
+            <span itemprop="title"><%= t('breadcrumb.domestic_airlines')%></span>
+          </a>
+        </li>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a href="/flight-booking/<%= url_escape("#{format_overview_link(@carrier_name, I18n.locale)}") %>.html" title="<%= @carrier_name %>">
+            <span itemprop="title"><%= format_airline_name(@carrier_name) %></span>
+          </a>
+        </li>
+      </ul>
+</div>
+</section><!--/contnet-->
+<!--/contnet Ends Here-->
+
+<%= render partial: "new_footers/#{@country_code.downcase}/#{country_code.downcase}_dom_booking_footer_#{@language.downcase}", locals: {country_code: country_code,footer_airline_data: booking_footer[:footer_airline_data],top_airlines: booking_footer[:dom_airlines],section: @section,footer_links_data: booking_footer[:footer_links_data],use_helper: use_helper,page_type: '' } %>
+<%= render "shared/#{country_code.downcase}/#{country_code.downcase}_gac"%>
+</div>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script> -->
+<script type="text/javascript">
+    $(document).ready(function(){
+           <% if @review.present? &&  @review["reviews_list"].present? %>
+              <% @review["reviews_list"].each_with_index do |r,i| %>
+              $("<%= "#review#{i+1}" %>").rateYo({
+                   rating: <%= r["rating"].to_f %>,
+                   readOnly: true,
+                   halfStar:true,
+                   ratedFill: "#f5681e",
+                   starWidth: "18px"
+                 });
+              <% end %> 
+      <% elsif @review_content["review_content_presence"] %>
+      <% review_content =  @review_content["review_content"].split("\n") %>
+      <% if review_content[13].present? %>
+      var overallRating = "<%= review_content[15].split(":")[1].to_f%>";
+      var userRating5 = "<%= review_content[13].split(":")[1].to_f %>";
+       $("#review5").rateYo({
+        rating: userRating5,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+      <% else %>
+      var overallRating = "<%= review_content[12].split(":")[1].to_f%>";
+      <% end %>
+      var userRating1 = "<%= review_content[1].split(":")[1].to_f %>";
+      var userRating2 = "<%= review_content[4].split(":")[1].to_f %>";
+      var userRating3 = "<%= review_content[7].split(":")[1].to_f %>";
+      var userRating4 = "<%= review_content[10].split(":")[1].to_f %>";
+
+      $("#rateYo").rateYo({
+        rating: overallRating ,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review1").rateYo({
+        rating: userRating1,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review2").rateYo({
+        rating: userRating2,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review3").rateYo({
+        rating: userRating3,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+      $("#review4").rateYo({
+        rating: userRating4,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+      <% end %>
+
+
+        
+
+    })
+  </script>
+            <% routes =  popular_routes['dom_dom'] + popular_routes['dom_int']rescue nil%>
+            <% currency = currency_code(@country_code) %>
+            <% currency = "INR" if currency == "₹" %>
+            <% if routes.present? %>
+              <% routes.each do |route| %>
+                <script type="application/ld+json">
+              <% formated_carrier_name =  t("airlines.#{route["carrier_code"]}").downcase.gsub(" ",'-').gsub('--','-') %>
+              <% airline_name =  t("airlines.#{route["carrier_code"]}") %>
+              {
+                  "@context": "http://schema.org",
+                  "@type": "Flight",
+                  "name": "<%= @carrier_name %>",
+                  "flightNumber": "<%= route["flight_no"] %>",
+                  "arrivalAirport": "<%= route["arr_city_name"] %>",
+                  "departureAirport": "<%= route["dep_city_name"] %>",
+                  "arrivalTime": "<%= Time.strptime(route["dep_time"],"%H:%M").to_time.strftime("%I:%M %p") %>",
+                  "departureTime": "<%= Time.strptime(route["arr_time"],"%H:%M").to_time.strftime("%I:%M %p") %>"
+                }
+                </script>
+                <% end %>
+<!-- ----------------------    product schema  ------------------------------------ -->
+                  <% routes.first(3).each do |route| %>
+                   <script type="application/ld+json">
+                   <% formated_carrier_name =  t("airlines.#{route["carrier_code"]}").downcase.gsub(" ",'-').gsub('--','-') %>
+                   <% airline_name =  t("airlines.#{route["carrier_code"]}") %>
+                   <% route_price = route["min_price"] rescue 0 %>
+                    <% if route_price == 0 || route_price == nil || route_price == "" %>
+                    <% route_price = 0 %>
+                    <% end %>
+                {
+                "@context": "http://schema.org",
+                "@type": "Product",
+                "name": "<%= route["dep_city_name"] %> to <%= route["arr_city_name"] %> Flights",
+                "offers":[
+                      {
+                      "@type": "Offer",
+                      "name": "<%= airline_name %>",
+                      "price": "<%= route_price %>",
+                      "priceCurrency": "<%= currency %>",
+                      "aggregateRating": 
+                        {
+                            "@type": "AggregateRating",
+                          "ratingValue": "4",
+                          "reviewCount": "8"
+                         }
+                      }
+                     ]
+                }
+              </script>
+
+        <% end %>
+        <!--------------------- product schema end---------------------------------------- -->
+              <% end %>
+
+
+      
+
+    <script>
+        <% section = @section[3..5] %>
+        <% section_type = section=="dom" ? "domestic" : "international" %>
+        {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "flights",
+          "item": "<%= @host_name %>/flights"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "<%= section_type %> flights",
+          "item": "<%= @host_name %>/flight-booking/<%= section_type %>-airlines.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "<%= @carrier_name %> Cheap Flights",
+          "item": "<%= @host_name %>/flight-booking/<%= flight_file_name %>"
+        }]
+      }
+      </script>
+      
+      <%= render partial: "new_designs/bookings/shared/en/schema_faq_details",locals: {carrier_code: @carrier_code} %>
+      
+
+<script type="text/javascript">
+var country_code='<%= @country_code.downcase%>';
+var section_type='<%= @section.include?("dom") ? "domestic" : "international" %>';
+var page_type="flight-booking";
+var language_type='<%= I18n.locale.downcase.to_s%>';
+var carrier_name= '<%= @carrier_name %>' ;
+var carrier_code= '<%= @carrier_code %>';
+var page_sub_type= "Airline overview";
+var sub_section= 'overview';
+</script>

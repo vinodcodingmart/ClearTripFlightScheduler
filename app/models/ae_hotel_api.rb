@@ -1,0 +1,2 @@
+class AeHotelApi < ApplicationRecord
+end

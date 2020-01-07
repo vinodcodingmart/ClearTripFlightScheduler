@@ -1,0 +1,142 @@
+<h2 class="f16"><%= dep_city_name %> To <%= arr_city_name %> Flight Schedule <span class="weak">( <%= routes.count%> flights found ) </span></h2>
+<div class="normal-list">
+	<div class="sort-bar">
+		<div class="items text-center">
+			<div class="col-xs-2"><a class="sortAsc" href="">Airline</a></div>
+			<div class="col-xs-2"><a href="">Depart</a></div>
+			<div class="col-xs-2"><a href="">Arrival</a></div>
+			<div class="col-xs-2"><a href="">Duration</a></div>
+			<div class="col-xs-2">
+			<%# if path_least_rate.present?%>
+          	<a class="sortDes" href="">Rate <span class="f11">(per adult)</span></a>
+        	<%# end %>
+			</div>
+
+			<div class="col-xs-2"><a href="">&nbsp;</a></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<ul id="airline-lists" class="list-unstyled">
+		<%
+		rc = 0
+		routes.each do |route|
+			rc+=1 %>
+			<li class="<%= rc>10 ? "hide showMore" : "" %>">
+				<div class="airline">
+					<div class="col-xs-2 no-padding">
+						<span class="Domairlogo go">
+							<%= @carrier_code %>
+						</span>
+						<span class="name"><%= route[:flight_no] %> |
+							<% airline_name = link_to( @carrier_name, "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { @carrier_name }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+							<%= airline_name %>
+						</span>
+					</div>
+					<div class="col-xs-2 no-padding pad-10">
+						<span><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+						<span class="type"><%= dep_city_name %></span>
+					</div>
+					<div class="col-xs-2 no-padding pad-10">
+						<span><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+						<span class="type"><%= arr_city_name %></span>
+					</div>
+					<div class="col-xs-2 no-padding pad-10">
+
+						<span>
+							<% if route[:duration].include? (":") %>
+								<%= route[:duration].to_time.strftime("%Hh %Mm") %>
+							<% else %>
+								<%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %>
+							<% end %>
+						</span>
+						<span class="type">Non-stop</span>
+					</div>
+					<div class="col-xs-2 no-padding pad-10">
+						<% if route[:cc_route_min_price].present? && route[:cc_route_min_price] != 0 %>
+							<span><%= currency_code %><%= route[:cc_route_min_price] %></span>
+						<% else %>
+							<span>-NA-</span>
+						<% end %>
+					</div>
+
+					<div class="col-xs-2 no-padding ">
+						<% if route[:cc_route_min_price].present? && route[:cc_route_min_price] != 0 %>
+						<a data-route="<%=@dep_airport_code%>-<%= @arr_airport_code%>-<%= route[:carrier_code]%>" class="booking flight-schedule-booking" data-section="<%= section %>" target="_blank" >Book Now</a>
+						<%else%>
+						<a data-route="<%=route[:dep_airport_code]%>-<%= route[:arr_airport_code]%>" class="booking flight-schedule-booking" data-section="<%= section %>" target="_blank" >Check Price</a>
+						<% end %>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</li>
+			<% end
+			if routes.count>10 %>
+			<li class="more-link">
+				<a href="#" id="show_all_flights">View all flights schedules</a>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="mview-list">
+		<div class="sort-bar mview-list">
+			<div class="items text-center">
+				<div class="col-xs-2 no-padding"><a class="sortAsc" href="">Airline</a></div>
+				<div class="col-xs-4 no-padding text-center "><a href="">Duration</a></div>
+
+				<div class="col-xs-4 text-center no-padding">
+					<a class="sortDes" href="">Rate <span class="f11">(per adult)</span></a>
+				</div>
+				<div class="col-xs-2"><a href="">&nbsp;</a></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+		<ul id="airline-lists" class="list-unstyled mview-list">
+			<%
+			rc = 0
+			routes.each do |route|
+				rc+=1 %>
+				<li <%= rc>10 ? "class=hide" : "" %>>
+					<div class="airline">
+						<div class="col-xs-2 no-padding">
+							<span class="Domairlogo go">
+								<!-- <img src="<%= assets_path%>/new_images/airlines/<%#= route['carrier_code']%>.png" alt=""> -->
+							</span>
+							<span class="name"><%= @carrier_code %> <%= route[:flight_no] %> | <% airline_name = link_to(@carrier_name, "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { @carrier_name }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+								<%= airline_name %></span>
+							</div>
+							<!-- <div class="col-xs-4 no-padding pad-10">
+								<span><%#= Time.parse(route['dep_time'][0...8]).strftime("%H:%M") %> → <%#= Time.parse(route['arr_time'][0...8]).strftime("%H:%M") %></span>
+								<span class="type"><%= dep_city_name %> to <%= arr_city_name %></span>
+							</div> -->
+							<div class="col-xs-4  no-padding pad-10">
+								<span><%=route[:duration]%></span>
+								<span class="type">Non-Stop</span>
+							</div>
+							<div class="col-xs-4 no-padding pad-10">
+								<% if route[:cc_route_min_price].present? && route[:cc_route_min_price] != 0  %>
+									<span><%= currency_code %> <%= route[:cc_route_min_price] %></span>
+								<% else %>
+									<span>-NA-</span>
+								<% end %>
+							</div>
+							<div class="col-xs-2 no-padding ">
+								<a data-route="<%=@dep_airport_code%>-<%=@arr_airport_code%>" class="booking flight-schedule-booking" data-section="<%= section %>">
+								<% if route[:cc_route_min_price].present? && route[:cc_route_min_price] != 0  %>
+								Book
+								<% else %>
+								Check Price
+								<% end %>
+								</a>
+							</div>
+							<div class="clearfix"></div>
+						</div><!--/airline-->
+					</li>
+					<% if rc==10 && routes.count>10 %>
+					<li class="more-link">
+						<a href="#" id="show_all_flights_mobile">View all flights schedules</a>
+					</li>
+					<% end
+					end %>
+				</ul>
+			</div>

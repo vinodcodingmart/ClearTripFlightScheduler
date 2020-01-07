@@ -1,0 +1,2 @@
+class QaFromToContent < ApplicationRecord
+end

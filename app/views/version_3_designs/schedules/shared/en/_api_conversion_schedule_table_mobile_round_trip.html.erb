@@ -1,0 +1,132 @@
+<% application_helper = self.extend ApplicationHelper
+currency_code = application_helper.currency_code(@country_code)
+%>
+<div id="new-response"></div>
+<div id="rwd-mobile-flights">
+  <div class="rwd-lhs">
+    <div class="mobile-sorting ow-sorting">
+      <span><%= dep_city_code%> → <%= arr_city_code %></span>
+      <span class="weak"><span id="result_dep_date"><%= Date.today.to_formatted_s(:short) %></span></span>
+      <ul class="list-inline">
+        <li class="fd-timing" data-row="route_total_fare">
+          <a href="javascript:void(0)" class="sortAsc">Price</a>
+        </li>
+        <li class="f-price" data-row="dep_time">
+          <a href="javascript:void(0)">Time</a>
+        </li>
+      </ul>
+    </div>
+    <% onward_routes = routes.first["onward"]%>
+    <% onward_routes.each_with_index do |route,i|
+      route.stringify_keys!
+      %>
+      <% route_type = route["no_of_stops"] == 0 ? "Non-Stop" : (route["no_of_stops"].to_s + " hop") %>
+      <% airline_name = route["carrier_codes"].first == "AI" ? "Air India" :  t("airlines.#{route["carrier_codes"].first}")
+      link = format_overview_link(airline_name)
+      %>
+      <% if !airline_name.include?("translation missing")%>
+
+      <% formated_carrier_name = route["carrier_codes"].first == "AI" ? "air-india" : t("airlines.#{route["carrier_codes"].first}").downcase.gsub(" ",'-').gsub('--','-') %>
+      <div class="rwd-flights-list <%= 'lhs-selected' if i == 0 %>" data-info=<%= route['unique_flight_key'] %>>
+        <ul class="list-inline">
+          <li class="rwd-marilines">
+            <a href="javascript:void(0)">
+              <span class=" carrier-logo <%= formated_carrier_name%>"></span>
+              <span class="rwd-airline-names"><%#= airline_name %><small><%= route["flight_number"] %></small></span>
+            </a>
+          </li>
+          <li class="rwd-mduration">
+            <span class="rwd-mtiming"><%= route["dep_time"] %> - <%= route["arr_time"] %></span>
+            <span class="rwn-mstop"><%= route_type%> | <%= route["duration"]%></span>
+            <span class="rwd-price"><i class="fa fa-inr"></i> <%= (route["route_total_fare"].present? && route["route_total_fare"].to_i > 0 ) ?  "#{currency_code} " +  route["route_total_fare_formatted"].to_s : "--NA--"%></span>
+          </li>
+
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="rwd-rhs">
+      <div class="mobile-sorting ow-sorting">
+        <span><%= arr_city_code%> → <%= dep_city_code %></span>
+        <span class="weak"><span id="result_arr_date"><%= Date.today.to_formatted_s(:short) %></span></span>
+        <ul class="list-inline">
+          <li class="fd-timing" data-row="route_total_fare">
+            <a href="javascript:void(0)" class="sortAsc">Price</a>
+          </li>
+          <li class="f-price" data-row="dep_time">
+            <a href="javascript:void(0)">Time</a>
+          </li>
+        </ul>
+      </div>
+      <% rtn_routes = routes.first["return"] %>
+      <% rtn_routes.each_with_index do |route,i|
+        route.stringify_keys!   
+        %>
+        <% route_type = route["no_of_stops"] == 0 ? "Non-Stop" : (route["no_of_stops"].to_s + " hop") %>
+        <% airline_name = route["carrier_codes"].first == "AI" ? "Air India" :  t("airlines.#{route["carrier_codes"].first}")
+        link = format_overview_link(airline_name)
+        %>
+        <% if !airline_name.include?("translation missing")%>
+        <% formated_carrier_name = route["carrier_codes"].first == "AI" ? "air-india" : t("airlines.#{route["carrier_codes"].first}").downcase.gsub(" ",'-').gsub('--','-') %>
+
+        <div class="rwd-flights-list <%= 'rhs-selected' if i == 0 %>" data-info=<%= route['unique_flight_key'] %>> 
+          <ul class="list-inline">
+            <li class="rwd-marilines">
+              <a href="javascript:void(0)">
+                <span class=" carrier-logo <%= formated_carrier_name%>"></span>
+                <span class="rwd-airline-names"><%#= airline_name %><small><%= route["flight_number"] %></small></span>
+              </a>
+            </li>
+            <li class="rwd-mduration">
+              <span class="rwd-mtiming"><%= route["dep_time"] %> - <%= route["arr_time"] %></span>
+              <span class="rwn-mstop"><%= route_type %> | <%= route["duration"]%></span>
+              <span class="rwd-price"><i class="fa fa-inr"></i> <%= (route["route_total_fare"].present? && route["route_total_fare"].to_i > 0 ) ?  "#{currency_code} " +  route["route_total_fare_formatted"].to_s : "--NA--"%></span>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <script type="text/x-handlebars-template" id="mobileRndTripCardTpl">
+      <div class="rwd-flights-list {{selectedcls}}" data-info={{unique_flight_key}}>
+        <ul class="list-inline">
+          <li class="rwd-marilines">
+            <a href="">
+              <span class=" carrier-logo {{formated_airline_name}}"></span>
+              <span class="rwd-airline-names"><small>{{dep_flight_key_format}}</small></span>
+            </a>
+          </li>
+          <li class="rwd-mduration">
+            <span class="rwd-mtiming">{{dep_time}} - {{arr_time}}</span>
+            <span class="rwn-mstop">
+             {{#iff no_of_stops '==' 1}} 
+             {{no_of_stops}} Stop
+             {{else iff no_of_stops '>' 1 }}
+             {{no_of_stops}} Stops
+             {{else}}
+             Non Stop
+             {{/iff}}
+           | {{duration}}</span>
+           <span class="rwd-price"><i class="fa fa-inr"></i>  {{route_total_fare_formatted}}</span>
+         </li>
+       </ul>
+       <div class="clearfix"></div>
+     </div>
+   </script>
+
+   <script type="text/x-handlebars-template" id = "airlineCards">
+    <li class="new">
+      <div class="airlines-list">
+        <input type="checkbox" name="airline" id="{{airline_code}}">
+        <label for="{{airline_code}}"><div class="R-airline-logo "><span class="carrier-logo {{airline_code}} {{formated_airline}}"></span></div> {{airline_name}}
+        </label>
+      </div>
+      <div class="clearfix"></div>
+    </li>
+  </script>
+  <div class='emptyCardRndTripMobile' style="display: none;"><h2>No flights to show based on the last filters</h2><ul class='list-inline'><li><button type='button' class='resetFilter ct-btn' >Reset filter</button></li></ul></div>

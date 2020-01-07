@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  carrier_code: MyString
+  dep_time: MyString
+  arr_time: MyString
+  dep_city_code: MyString
+  arr_city_code: MyString
+  dep_country_code: MyString
+  arr_country_code: MyString
+  dep_airport_code: MyString
+  arr_airport_code: MyString
+  mid_city_code: MyString
+  mid_airport_code: MyString
+  mid_country_code: MyString
+  duration: MyString
+  first_flight_no: 1
+  second_flight_no: 1
+  first_carrier_code: MyString
+  second_carrier_code: MyString
+  days_of_operation: MyString
+  unique_hop_route: one
+
+two:
+  carrier_code: MyString
+  dep_time: MyString
+  arr_time: MyString
+  dep_city_code: MyString
+  arr_city_code: MyString
+  dep_country_code: MyString
+  arr_country_code: MyString
+  dep_airport_code: MyString
+  arr_airport_code: MyString
+  mid_city_code: MyString
+  mid_airport_code: MyString
+  mid_country_code: MyString
+  duration: MyString
+  first_flight_no: 1
+  second_flight_no: 1
+  first_carrier_code: MyString
+  second_carrier_code: MyString
+  days_of_operation: MyString
+  unique_hop_route: two

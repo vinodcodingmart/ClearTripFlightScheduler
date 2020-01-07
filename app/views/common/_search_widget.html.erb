@@ -1,0 +1,87 @@
+<div id="search-widget">
+        <form action="/flights/search" errorblockid="flt_err" id="AirSearch" class="search no-action-change removeSelflabels" method="get" target="_blank">
+          <ul class="list-inline trip-type">
+            <li>
+              <label class="encaps" for="rnd_trip">
+                <input type="radio" value="R" checked name="rnd_one" id="rnd_trip">
+                <strong>Round trip</strong>
+              </label>
+            </li>
+            <li>
+              <label class="encaps" for="one_way">
+                <input type="radio" value="O" name="rnd_one" id="one_way">
+                <strong>One way</strong></label>
+              </li>
+            </ul>
+            <ul class="list-inline search-bar">
+              <li class="search-mview">
+                <label class="required" for="origin_autocomplete">From
+                  <span class="weak">(any worldwide city or airport)</span>
+                </label>
+                <input type="text" selflabel="Enter a city or airport" id="origin_autocomplete" autocomplete="off">
+                <input type="hidden" name="from" id="from">
+              </li>
+              <li class="search-mview">
+                <label class="required" for="destination_autocomplete">To
+                  <span class="weak">(any worldwide city or airport)</span>
+                </label>
+                <input type="text" selflabel="Enter a city or airport" id="destination_autocomplete">
+                <input type="hidden" name="to" id="to" value="">
+              </li>
+              <li class="date">
+                <label class="required" for="dpt_date">Depart on</label>
+                <span class="enclosedPicker">
+                  <input readonly="readonly" type="text" size="10" autocomplete="off" id="dpt_date" title="Departure date" name="depart_date" class="datePicker required selflabel" >
+                </span>
+              </li>
+              <li  class="date" id="returnDateSec">
+                <label class="required" for="rtn_date">Return on</label>
+                <span class="enclosedPicker">
+                  <input readonly="readonly" type="text" size="10" id="rtn_date" autocomplete="off" mindatefieldid="dpt_date" title="Return date" name="return_date" class="datePicker second required no_autochange selflabel disabled" >
+                </span>
+              </li>
+              <div class="clearfix mobile-widget-clear"></div>
+              <li class="travellers">
+                <label class="required" for="adults">Adults</label>
+                <select size="1" name="adults" id="adults">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+                <span class="weak">> 12 yrs</span>
+              </li>
+              <li class="travellers">
+                <label for="children">Children</label>
+                <select size="1" name="childs" id="children">
+                  <option value="0" selected="selected">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+                <span class="weak">2-12 yrs</span>
+              </li>
+              <li class="travellers">
+                <label for="infants">Infants</label>
+                <select size="1" name="infants" id="infants">
+                  <option value="0" selected="selected">0</option>
+                  <option value="1">1</option>
+                </select>
+                <span class="weak">< 2 yrs</span>
+              </li>
+              <li class="search-mview">
+                <button type="submit" id="button_flight_search" title="Search" class="booking" >Search flights</button>
+              </li>
+            </ul>
+          </form>
+      </div><!--/search-widget-->

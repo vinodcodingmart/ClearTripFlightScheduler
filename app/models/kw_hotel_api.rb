@@ -1,0 +1,2 @@
+class KwHotelApi < ApplicationRecord
+end

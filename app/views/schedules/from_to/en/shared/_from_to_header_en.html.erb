@@ -1,0 +1,95 @@
+  <%  city_name_formated = city_layout_values["city_name_formated"] %>
+  <section id="Second-menu">
+    <div class="close visible-xs"><i class="fa fa-close"></i></div>
+    <ul class="list-inline">
+      <% if country_code=="IN" && @city_country_code=="IN" %>
+        <li>
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown">About<span class="caret"></span></a>
+          <ul class="list-unstyled dropdown-menu">
+          <% if country_code=="IN"%>
+            <li><%= link_to( "About #{city_name.titleize}", "https://www.cleartrip.com/india/#{city_name_formated}",title: "About #{city_name.titleize}",target: "_blank") %></li>
+          <% end %>
+            <% if city_layout_values["arr_city_featured"]== "yes" %>
+              <li><%= link_to( "Featured Activities in #{city_name.titleize}", "https://www.cleartrip.com/local/#{city_name_formated}/featured-activities-in-#{city_name_formated}",title: " #{city_name.titleize} Featured Activities",target: "_blank" ) %></li> 
+              <li><%= link_to( "Food and Drinks in #{city_name.titleize}", "https://www.cleartrip.com/local/#{city_name_formated}/food-and-drinks-in-#{city_name_formated}",title: "Food and Drinks in #{city_name.titleize}",target: "_blank" ) %></li> 
+            <% end %>
+            <% if city_layout_values["arr_city_event"] == "yes" %>
+              <li><%= link_to( "Events in #{city_name.titleize}", "https://www.cleartrip.com/local/#{city_name_formated}/events-in-#{city_name_formated}",title: "Events in #{city_name.titleize}",target: "_blank" ) %></li> 
+            <% end %>
+            <% if city_layout_values["arr_city_package"] == "yes" %>
+              <li><%= link_to( "Holiday packages in #{city_name.titleize}", "https://www.cleartrip.com/tourism/packages/#{city_name_formated}-packages.html",title: "Holiday Packages in #{city_name.titleize}",target: "_blank" ) %></li> 
+            <% end %>
+            <% if city_layout_values["arr_city_weekend_getaway"] ==  "yes" %>
+              <li><%= link_to( "Weekend getaways in #{city_name.titleize}", "https://www.cleartrip.com/hotels/india/#{city_name_formated}/weekend-getaways/",title: "Weekend getaways in #{city_name.titleize}",target: "_blank" ) %></li> 
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">Flights <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu">
+          <% if section == "to" %>
+            <li><a href="/flight-schedule/flights-from-<%= city_name_formated%>.html" title="Flights from <%=city_name.titleize %>" target="_blank">List of Flights from <%= city_name.titleize %></a></li>
+          <% end %> 
+          <%  if section == "from" %>
+            <li><a href="/flight-schedule/flights-to-<%= city_name_formated %>.html" title="Flights to <%= city_name.titleize %>" target="_blank">List of Flights to <%= city_name.titleize %></a></li>
+          <%end%>  
+        </ul>
+      </li>
+
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">Airport and hotels <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu"> 
+          <li><a href="https://www.cleartrip.com/tourism/airports/<%=city_name_formated%>-airport.html"  title="<%= city_name.titleize%> Airport" target="_blank"><%= city_name.titleize%> Airport</a></li> 
+          <% unless city_layout_values["near_by_airport_hotels"].present? && city_layout_values["near_by_airport_hotels"]!="" %>
+            <% if city_layout_values["hotels_header_list"].present? && city_layout_values["hotels_header_list"]!="" %>
+              <li><span class="high-light-txt"><b>Hotels near <%= city_name %> Aiport</b></span>
+                <% city_layout_values["hotels_header_list"][0..5].each do |hotel| %>
+                  <li>
+                    <%= link_to(hotel["hotel_name"],"https://www.cleartrip.com#{hotel['hotel_link']}",title: "#{hotel["hotel_name"]}",target: "_blank")%>
+                  </li> 
+                <% end %>
+              </li>
+            <% end %>
+            <% else %>
+              <li><span class="high-light-txt"><b>Hotels near <%= city_name %> Aiport</b></span>
+                <% city_layout_values["near_by_airport_hotels"][0..10].each do |hotel| %>
+                  <li>
+                    <%= link_to(hotel["hotel_name"],"https://www.cleartrip.com#{hotel['hotel_link']}",title: "#{hotel["hotel_name"]}",target: "_blank")%>
+                  </li> 
+                <% end %>
+              </li>
+            <% end %>
+        </ul>
+      </li>
+      <% if city_layout_values["hotel_types"].present? && city_layout_values["hotel_types"]!="" && country_code!="SA" %>
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">Types of <%= city_name.titleize %> hotels <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu"> 
+        <% city_layout_values["hotel_types"].each do |hotel| %>
+          <li><%= link_to("#{hotel["name"].titleize}","https://www.cleartrip.com#{hotel["link"]}",title: " #{hotel["name"].titleize} in #{city_name.titleize}",target: "_blank")%></li> 
+         <% end %> 
+         <% hotel_link = city_layout_values["hotel_types"].first["link"].split('/').first(4).join('/')+'/'%>
+            <% if hotel_link.present? %>
+              <li>
+                <%= link_to("#{city_name.titleize} Hotels","https://www.cleartrip.com#{hotel_link}",title: "#{city_name.titleize} Hotels",target: "_blank")%>
+              </li> 
+            <% end %>
+        </ul>
+      </li>
+      <% end %>
+      <li>
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">Offers <span class="caret"></span></a>
+        <ul class="list-unstyled dropdown-menu"> 
+          <li><a href="https://www.cleartrip.com/offers/india/payless" target="_blank" title="Domestic flight offers">Domestic flight offers</a></li> 
+           <li><a href="https://www.cleartrip.com/offers/india/anywhere" target="_blank" title="International flight offers">International flight offers</a></li> 
+           <li><a href="https://www.cleartrip.com/offers/india/awesome-long-weekends-2017" title="Long weekend offers" target="_blank">Long weekend offers</a></li> 
+          <li><a href="https://www.cleartrip.com/offers/india/hdfc-weekends" title="HDFC weekend offers" target="_blank">HDFC weekend offers</a></li> 
+          <li><a href="https://www.cleartrip.com/offers/india/hsbc-offers" title="HSBC offers" target="_blank">HSBC offers</a></li> 
+          <li><a href="https://www.cleartrip.com/offers/india/yes-bank" target="_blank" title="Yes bank offers ">Yes bank offers </a></li> 
+          <li><a href="https://www.cleartrip.com/offers/india/axisbank" target="_blank" title="AXIS bank offers">AXIS bank offers</a></li> 
+          <li><a href="https://www.cleartrip.com/offers/india/amex-tuesday" title="American express offers" target="_blank">American express offers</a></li> 
+        </ul>
+      </li>
+    </ul>
+  </section>

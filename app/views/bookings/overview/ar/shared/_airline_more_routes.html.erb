@@ -1,0 +1,19 @@
+<ul class="linklist list-inline">
+  <% if top_routes.nil? or top_routes.blank? %>
+    <li><%= t('brand.no_top_routes')%></li>
+  <% else %>
+    <% top_routes.each do |route| -%>
+      <% if !route.arr_city_name.blank? && !route.dep_city_name.blank? %>
+        <% airline_code = @carrier_code %>
+        <% airline_name_translated = @carrier_name
+            airline_name_ar = @carrier_name_ar
+         %>
+        <li>
+          <% link = "/ar/flight-booking/#{url_escape("#{airline_name_translated.gsub(' ','-').downcase}-#{route.dep_city_name.gsub(' ','-').downcase}-#{route.arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+          <a href="<%= link %>" title = "<%= airline_name_ar %><%= route.dep_city_name_ar  %><%= route.arr_city_name_ar %>"><%= airline_name_ar %> <%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %></a>
+        </li>
+      <% end %>
+    <% end -%>
+  <% end %>
+</ul>
+<br>

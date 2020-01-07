@@ -1,0 +1,40 @@
+<div class="new-rhs-cards">
+  <h2 class="truncate"><a href="<%= "/tourism/airports/#{schedule_layout_values["dep_city_name_formated"]}-airport.html" %>"><%=dep_city_name %> <%= t('airport.airport_details')%></a></h2>
+  <ul class="list-unstyled airport-details">
+    <% if airport_details["dep_airport_code"].present? %>
+      <li>IATA code : <span><%= airport_details["dep_airport_code"] %></span></li>
+    <% end %>
+    <% if airport_details["dep_airport_address"].present? %>
+      <li>Address : <span><%= airport_details["dep_airport_address"].gsub("\"",'') %></span></li>
+    <% end %>
+    <% if airport_details["dep_airport_country"].present? %>
+      <li>Country : <span><%= airport_details["dep_airport_country"] %></span></li>
+    <% end %>
+    <% if airport_details["dep_airport_latitude"].present?  %>
+      <li>Latitude : <span><%= "#{airport_details["dep_airport_latitude"]}"  %></span></li>
+    <% end %>
+    <% if airport_details["dep_airport_longitude"].present?  %>
+      <li>Longitude : <span><%= "#{airport_details["dep_airport_longitude"]}"  %></span></li>
+    <% end %>
+  </ul>
+</div>
+<div class="new-rhs-cards">
+  <h2 class="truncate"><a href="<%= "/tourism/airports/#{schedule_layout_values["arr_city_name_formated"]}-airport.html" %>"><%=arr_city_name %> <%= t('airport.airport_details')%></a></h2>
+  <ul class="list-unstyled airport-details">
+    <% if airport_details["arr_airport_code"].present? %>
+      <li>IATA code : <span><%= airport_details["arr_airport_code"] %></span></li>
+    <% end %>
+    <% if airport_details["arr_airport_address"].present? %>
+      <li>Address : <span><%= airport_details["arr_airport_address"].gsub("\"",'') %></span></li>
+    <% end %>
+    <% if airport_details["arr_airport_country"].present? %>
+      <li>Country : <span><%= airport_details["arr_airport_country"] %></span></li>
+    <% end %>
+    <% if airport_details["arr_airport_latitude"].present?  %>
+      <li>Latitude : <span><%= "#{airport_details["arr_airport_latitude"]}"  %></span></li>
+    <% end %>
+    <% if airport_details["arr_airport_longitude"].present?  %>
+      <li>Longitude : <span><%= "#{airport_details["arr_airport_longitude"]}"  %></span></li>
+    <% end %>
+  </ul>
+</div>

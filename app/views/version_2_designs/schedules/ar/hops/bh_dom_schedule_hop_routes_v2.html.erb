@@ -1,0 +1,338 @@
+<% use_helper = self.extend ApplicationHelper
+application_processor = ApplicationProcessor.new
+currency = application_processor.currency_name(@country_code)
+%>
+<%= render partial: "version_2_designs/schedules/shared/ar/schedule_header_ar",locals: { dep_city_name: dep_city_name,arr_city_name: arr_city_name,route_dom_airlines: schedule_header["dom_airlines"],route_int_airlines: schedule_header["int_airlines"],int_top_airlines: routes_rhs_top_airlines["int_cc"],dom_top_airlines: routes_rhs_top_airlines["dom_cc"],near_by_airport_hotels: schedule_header["near_by_airport_hotels"],hotels_list: schedule_header["hotels_list"],hotels_header_list: schedule_header["hotels_header_list"],hotel_types: schedule_header["hotel_types"],train_details: schedule_header["train_details"] ,dep_city_name_formated: schedule_layout_values["dep_city_name_formated"],arr_city_name_formated: schedule_layout_values["arr_city_name_formated"],use_helper: use_helper,arr_city_weekend_getaway: schedule_header["arr_city_weekend_getaway"],arr_featured_city: schedule_header["arr_featured_city"],arr_country_code: schedule_layout_values["arr_country_code"],dep_country_code: schedule_layout_values["dep_country_code"],arr_city_package: schedule_header["arr_city_package"],arr_events_city: schedule_header["arr_events_city"],section: schedule_layout_values["section"],country_code: schedule_layout_values["country_code"], flight_file_name: flight_file_name, page_type: 'flight-schedule', application_processor: application_processor} %>
+
+<%= render partial: "version_2_designs/schedules/shared/ar/schedule_routes_search_widget_ar",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: @dep_city_name_ar,arr_city_name: @arr_city_name_ar,search_widget_popular_routes: use_helper.search_widget_popular_routes_ar}%>
+<section id="content-section">
+  <div class="custom-container">
+    <div class="col-sm-9 pad-lzero m-zero">
+      <div class="main-cnt-wrapper">
+          <% if !schedule_layout_values["min30"].nil? && schedule_layout_values["min30"]["ad"].present?  && (Date.parse(schedule_layout_values["min30"]["ad"]) > Date.today) && schedule_layout_values["min30"]["pr"].to_i > 0 %>
+            <h2 class="sub-titles"><%= t("flight_schedule.lowest_fare", dep_city_name: dep_city_name_ar,  arr_city_name: arr_city_name_ar, fare_date: "#{schedule_layout_values["min30"]["ad"].to_date.strftime("%d %b %Y")}", currency: "#{currency}", min_price: "#{schedule_layout_values["min30"]['pr'].to_i}") %></h2>
+            <% end %>
+             <% unless schedule_layout_values['no_price'] %>
+            <% if has_calendar %>
+            <div class="calendar-new" dir="ltr" >
+              <h2 class="<%= 'calendar-title' if schedule_layout_values["min30"].present?  %>"><%= t('cheap_air_fare', dep_city_name: dep_city_name_ar, arr_city_name: arr_city_name_ar) %></h2>
+              <div class="text-right pull-right full-calendar">
+                <span id="fullCalendarShow"><i class="fa fa-calendar"></i> Full Calendar</span>
+              </div>
+              <div class="clearfix"></div>
+              <div id="calendar">
+                <div id="calender_display"></div>
+              </div>
+              <div id="horCalendar">
+                <div id="carousel" class="flexslider">
+                  <ul class="list-inline calendar-v1 slides" id="calendarScroll">
+                    <li id="slider">
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+            <%= render :partial=>"new_designs/schedules/shared/ar/schedule_route_table_ar",locals: {routes: schedule_layout_values["schedule_routes"], schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name_ar,arr_city_name: arr_city_name_ar,country_code: @country_code,application_processor: application_processor} %>
+        <% unless @volume_count < 1000  %>    
+        <div class="unique-content">
+          
+                
+                  <%= render :partial => "new_designs/schedules/bh/directs/direct_routes_templatized_content_ar_bh",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name_ar,arr_city_name: arr_city_name_ar,currency: currency} %>
+
+                
+                <div class="f11">
+                      ملحوظة: يوفر كليرتريب أدنى تقويم فارس الهواء مؤشرا على الأسعار (للشخص الواحد) لمجموعة من التواريخ ، بحيث يمكنك أن ترى أرخص أسعار تذاكر السفر جوا بسهولة. قد لا تكون أسعار تذاكر الطيران المعروضة هنا متوفرة في الوقت الذي تحاول فيه الحجز.
+                </div>
+          
+        </div><!--/unique-content-->
+        <div class="readmore-btn">Read More</div>
+        <% end %>
+        <%= render :partial =>  "version_2_designs/schedules/shared/ar/route_information_ar",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name_ar,arr_city_name: arr_city_name_ar,currency_code: currency, application_processor:application_processor} %>
+          
+
+  <% unless @volume_count < 1000   %>
+      <% if @faq.present? %>
+        <div class="content-desc cnt-odd faq-cnt">
+          <div class="mview-faq-header">
+            <h2><%= t('faq') %></h2>
+            <div class="mview-mf-faqtoggle-btn visible-xs">
+              <i class="fa fa-caret-down"></i>
+            </div>
+          </div>
+          <div class="mview-mf-faqtoggle">
+            <ol>
+              <% @faq.each do|faq| %>
+              <li itemscope="" itemtype="http://schema.org/Question">
+                <div itemprop="name">
+                  <span><%= faq[:question] %></span>
+                </div>
+                <div itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+                  <p itemprop="text"><%= faq[:answer]%></p>
+                </div>
+              </li>
+              <% end %> 
+            </ol>
+          </div>
+        </div>
+        <% else %>
+          <%= render partial: "new_designs/schedules/shared/ar/schedule_faq_ar", locals: { arr_city_name: arr_city_name_ar, dep_city_name: dep_city_name_ar, schedule_layout_values: schedule_layout_values, use_helper: use_helper,currency: currency } %>
+        <% end %>
+      <% end %>
+      
+      <!-- -------------------------------------------------------------------------------------------------- -->
+  <div class="clearfix"></div>
+    <% if @review.present? %>
+          <div class="reviews">
+            <div itemscope itemtype="http://schema.org/Product">
+              <div class="mview-review-header">
+                <span class="review-logo">
+                  <img itemprop="ima
+                  ge" src="<%= @assets_path %>/new_images/airlines/<%= @carrier_code %>.png" alt='<%= @carrier_name_ar %>' />
+                </span>
+                <span class="review-names" itemprop="name">
+                  <h2><%= dep_city_name_ar %> <%= t("to") %> <%= arr_city_name_ar %> <%= t("cms.flight_reviews") %></h2>
+                </span>
+                <div class="mreview-toggle-btn visible-xs">
+                  <i class="fa fa-caret-down"></i>
+                </div>
+              </div>
+              <div class="mreview-toggle-cnt">
+                <div class="review-aggregate" itemprop="aggregateRating"
+                itemscope itemtype="http://schema.org/AggregateRating">
+                <%= t("cms.rated") %>  <span class="average-rating"><span itemprop="ratingValue" ><%=  @review[:avg_review_rating] %></span>/5</span>
+                <%= t("cms.customer_reviews_based_on")%> <span itemprop="reviewCount">24</span>
+              </div>
+              <!-- </span> -->
+              <% @review[:reviews_list].each_with_index do|review,index| %>
+
+              <div class="mreview">
+                <div class="review-card">
+                  <% if index==0 %><%=t("cms.customer_reviews")%>:<% end %>
+                  <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+                    <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                      <span id="review<%= index+1 %>" class="user-rating"></span>
+                      <span itemprop="ratingValue"><%= review[:rating] %></span>/
+                      <span itemprop="bestRating">5</span><%= t("cms.stars")%>
+                    </div>
+                    <span itemprop="description"><%= review[:review_text] %>
+                    </span> -
+                    <%= t("cms.by")%> <span itemprop="author" itemscope itemtype="http://schema.org/person">
+                      <span itemprop="name">"<%= review[:reviewer_name] %>"</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+<% end %>
+        <%= render :partial=>"new_designs/schedules/shared/ar/more_top_schedule_routes_ar",locals: {flights_dep: schedule_layout_values['more_flights_from_dep'],flights_arr: schedule_layout_values['more_flights_to_arr'],arr_city_name_ar: arr_city_name_ar,dep_city_name_en: dep_city_name,arr_city_name_en: arr_city_name, dep_city_name_ar: dep_city_name_ar,use_helper: use_helper} %>
+
+      </div><!--/main-cnt-wrapper-->
+    </div>
+
+
+    <div class="col-sm-3 pad-rzero m-pad">
+      <div class="RHS">
+        <div id="Rside-bar">
+                <div class="blocks banner-section">
+                  <div id="banner">
+                    <a target="_blank"><img></a>
+                  </div>
+                  <p></p>
+                </div>
+              </div><!--/Rside-bar-->
+    </div>
+
+      <%= render :partial=>"new_designs/schedules/shared/ar/schedule_top_airlines",locals: {schedule_layout_values: schedule_layout_values,top_airlines: schedule_layout_values["top_int_airlines"],dep_city_name: dep_city_name_ar,use_helper: use_helper,arr_city_name: arr_city_name_ar} %>
+      <!--airport-outer-->
+      <%= render :partial=>"new_designs/schedules/shared/ar/airport_details_ar_new", locals: {airport_details: schedule_layout_values["airport_details"],dep_city_name_ar: dep_city_name_ar,arr_city_name_ar: arr_city_name_ar} %>
+        <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+
+  <ul class="list-inline bread-crumb">
+    <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="first">
+      <a  itemprop="url" href="/ar/flights" title="<%= t('flight_schedule.breadcrumb_flight_title') %>"><span  itemprop="title"><%= t('breadcrumb.flights') %></span>
+      </a>
+    </li>
+    <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+      <a  itemprop="url"  href="/<%= locale==:en || locale=='en' ? ''.html_safe : "#{locale}/".html_safe %>flight-schedule/flight-schedules-international.html" title="<%= t('flight_schedule.breadcrumb_flight_title') %>">
+        <span itemprop="title">
+          <%= t('flight_schedule.breadcrumb_second_intl') %></span>
+        </a>
+      </li>
+      <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+        <a href="<%= "/ar/flight-schedule/#{url_escape(dep_city_name)}-#{url_escape(arr_city_name)}-flights.html" %>" title="<%= t('flight_schedule.breadcrumb_title', dep_city_name: dep_city_name_ar, arr_city_name: arr_city_name_ar,:arr_city_code=>arr_city_code,:dep_city_code=>dep_city_code) %>">
+          <span itemprop="title"><%= t('flight_schedule.breadcrumb_title', dep_city_name: dep_city_name_ar, arr_city_name: arr_city_name_ar) %></span>
+        </a>
+      </li>
+    </ul>
+            </div>
+</section>
+          <div style="display:none">
+            <div id="departure_city_code"><%= dep_city_code %></div>
+            <div id="arrival_city_code"><%= arr_city_code %></div>
+          </div>
+          <%=render partial: "version_2_footers/#{@country_code.downcase}/bh_dom_schedule_footer_ar", locals: {country_code: @country_code,dep_city_name: dep_city_name_ar,arr_city_name: arr_city_name_ar,dep_city_name_formated: schedule_layout_values["dep_city_name_formated"],arr_city_name_formated: schedule_layout_values["arr_city_name_formated"],page_type: 'schedule-routes',footer_links_data: schedule_footer[:footer_links_data],top_airlines: schedule_footer[:int_airlines],flights_header: schedule_header,section: @section,footer_airline_data: schedule_footer[:footer_airline_data]} %>
+          <!-- footer end -->
+          <%= render "shared/#{country_code.downcase}/#{country_code.downcase}_gac" %>
+          <%= render "common/comscore" %>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+          <% unless @volume_count < 1000   %>
+          <%= render partial: "version_2_designs/schedules/shared/ar/schedule_faq_schema", locals: { arr_city_name: arr_city_name_ar, dep_city_name: dep_city_name_ar, schedule_layout_values: schedule_layout_values, use_helper: use_helper,currency: currency } %>
+          <% end %> 
+
+<script>
+    $(document).ready(function(){
+     // $('#slider').flexslider({
+     //    animation: "slide",
+     //    animationLoop: false,
+     //    itemWidth: 95,
+     //    itemMargin: 5,
+     //    minItems: 2,
+     //    maxItems: 7
+     //  });
+
+       if ($('#back-to-top').length) {
+        var scrollTrigger = 100, // px
+            backToTop = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                }
+                // $(hash).css('margin-top','0');
+            };
+        backToTop();
+        $(window).on('scroll', function () {
+            backToTop();
+      });
+      $('#back-to-top').on('click', function (e) {
+          e.preventDefault();
+          $('html,body').animate({
+              scrollTop: 0
+          }, 700);
+      });
+    }
+  })
+</script>
+
+<% routes = schedule_layout_values["schedule_routes"] rescue nil%>
+        <% currency = "INR" if currency == "₹" %>
+        <% if routes.present? %>
+        <% routes.each do |route| %>
+        <% formated_carrier_name =  t("airlines.#{route[:carrier_code]}").downcase.gsub(" ",'-').gsub('--','-') %>
+          <% airline_name =  t("airlines.#{route[:carrier_code]}") %>
+          <% if airline_name.index("translation missing").nil? %>
+            <script type="application/ld+json">
+              
+              {
+                "@context": "http://schema.org",
+                "@type": "Flight",
+                "name": "<%= airline_name %>",
+                "flightNumber": "<%= route[:flight_no] %>",
+                "arrivalAirport": "<%= arr_city_name_ar %>",
+                "departureAirport": "<%= dep_city_name_ar %>",
+                "arrivalTime": "<%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %>",
+                "departureTime": "<%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %>"
+              }
+            </script>
+          <% end %>
+        <% end %>
+        <!-- ============product schema starts================================ -->
+          <% routes.first(3).each do |route| %>
+            <% formated_carrier_name =  t("airlines.#{route[:carrier_code]}").downcase.gsub(" ",'-').gsub('--','-') %>
+            <% airline_name =  t("airlines.#{route[:carrier_code]}") %>
+            <% if airline_name.index("translation missing").nil? %>
+                <script type="application/ld+json">
+                 <% route_price = route[:cc_min_price] rescue 0 %>
+                 <% if route_price == 0 || route_price == nil || route_price == "" %>
+                 <% route_price = 0 %>
+                 <% end %>
+                 {
+                  "@context": "http://schema.org",
+                  "@type": "Product",
+                  "name": "<%= dep_city_name_ar %> إلى <%= arr_city_name_ar %> رحلات",
+                  "aggregateRating": 
+                    {
+                      "@type": "AggregateRating",
+                      "ratingValue": "4",
+                      "reviewCount": "8"
+                    }
+                }
+              </script>
+            <% end %>
+          <% end %>
+      <!-- ================product schema ends============================ -->
+      <% end %>
+      <script>
+        <% section = @section[3..5] %>
+        <% section_type = section.include? "dom" ? "domestic" : "international" %>
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "<%= t('breadcrumb.flights') %>",
+            "item": "<%= host %>/ar/flights"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": " t('flight_schedule.breadcrumb_second_intl')",
+            "item": "<%= host %>/ar/flight-schedule/flight-schedules-<%= section_type %>.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "<%= dep_city_name_ar %> إلى <%= arr_city_name_ar %> رحلات رخيصة",
+            "item": "<%= host %>/ar/flight-schedule/<%= schedule_layout_values["dep_city_name_formated"] %>-<%= schedule_layout_values["arr_city_name_formated"] %>-flights.html"
+          }]
+        }
+      </script>
+
+
+     
+    <% lang = {
+                            "calender"=>{
+                              "airfare"=>t('calender.airfare'),
+                              "today"=>t('calender.today'),
+                              "cheapest"=>t('calender.cheapest'),
+                              "calendar_note"=>t('calender.calendar_note')
+                              },
+                              "flight_schedule"=>{
+                                "mo"=>t('flight_schedule.mo'),
+                                "tu"=>t('flight_schedule.tu'),
+                                "we"=>t('flight_schedule.we'),
+                                "th"=>t('flight_schedule.th'),
+                                "fr"=>t('flight_schedule.fr'),
+                                "sa"=>t('flight_schedule.sa'),
+                                "su"=>t('flight_schedule.su')
+                                },
+                                "month": ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                "currency"=>currency_name(@country_code)
+                              }
+                           %>
+
+           <script>
+                          // var filter_schedule_values = <%#=  filter_schedule_values.to_json.html_safe %>;
+                          var lang = <%= lang.to_json.html_safe %>;
+                          var country_code= "<%= @country_code.downcase %>";
+                          var section_type= "<%= @section.include?("dom") ? "domestic" : "international" %>";
+                          var page_type="flight-schedule";
+                          var language_type = "<%= @language %>";
+                          var dep_city_code = "<%= schedule_layout_values["dep_city_code"] %>";
+                          var arr_city_code = "<%= schedule_layout_values["arr_city_code"] %>";
+                          var dep_city_name = "<%= dep_city_name %>";
+                          var arr_city_name = "<%= arr_city_name %>";
+                          var page_sub_type = "routes";
+                          var new_mob_templ = true;
+                        </script>

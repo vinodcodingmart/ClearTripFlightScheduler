@@ -1,0 +1,2 @@
+class KwFromToContent < ApplicationRecord
+end

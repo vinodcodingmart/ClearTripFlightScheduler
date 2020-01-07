@@ -1,0 +1,55 @@
+<footer>
+	<div class="more-links">
+		<div class="container pad-lzero">
+		
+			<ul class="list-inline secondaryLinks weaker otherTools footerMenus">
+				<li><strong><%= t('other') %>:</strong></li>
+        <% if page_type == "airline-routes" || page_type == "schedule-routes"  %>
+          <% if dep_city_name.present? && arr_city_name.present?  %>
+            <li>
+              <a href="/ar/flight-tickets/<%=dep_city_name_formated%>-<%=arr_city_name_formated%>-cheap-airtickets.html" title="<%=dep_city_name%> to <%=arr_city_name%> cheap air tickets">
+                <%= t('footer.tickets_url',dep_city_name: dep_city_name,arr_city_name: arr_city_name)%>
+              </a>
+            </li>
+          <%end%>
+        <%end%>
+        <li> <a href="/ar/flights" title="<%= t('footer.dom_flight') %>"><%= t('footer.dom_flight') %></a> </li>
+				<li> <a  class="hidden-xs" href="/ar/international-flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a>
+				<a class="visible-xs" href="/ar/flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a> </li>
+        <li> <a href="/ar/status/" title="<%= t('footer.status') %>"><%= t('footer.status') %></a> </li>
+        <li> <a href="/hotels/united-arab-emirates/" title="<%= t('footer.hotels') %>"><%= t('footer.hotels') %></a> </li>
+        <li> <a href="/ar/flight-tickets/cheap-flight-air-tickets-domestic.html" title="<%= t('footer.dom_air_ticket') %>"><%= t('footer.dom_air_ticket') %></a> </li>
+        <li> <a href="/ar/flight-schedule/flight-schedules-domestic.html" title="<%= t('footer.dom_schedule') %>"><%= t('footer.dom_schedule') %></a> </li>
+        <li> <a href="/ar/flight-booking/domestic-airlines.html" title="<%= t('footer.dom_airlines') %>"><%= t('footer.dom_airlines') %></a> </li>
+        <li> <a href="/tourism/airports/ar/domestic-airports.html" title="<%= t('footer.dom_airports') %>"><%= t('footer.dom_airports') %></a> </li>
+        <li> <a href="/ar/flight-tickets/cheap-flight-air-tickets-international.html" title="<%= t('footer.intl_air_tickets') %>"><%= t('footer.intl_air_tickets') %></a> </li>
+        <li> <a href="/ar/flight-schedule/flight-schedules-international.html" title="<%= t('footer.intl_flight_sched') %>"><%= t('footer.intl_flight_sched') %></a> </li>
+        <li> <a href="/ar/flight-booking/international-airlines.html" title="<%= t('footer.intl_airlines') %>"><%= t('footer.intl_airlines') %></a> </li>
+        <li> <a href="/tourism/airports/ar/international-airports.html" title="<%= t('footer.intl_airport') %>"><%= t('footer.intl_airport') %></a> </li>
+        <li> <a href="/ar/tourism/routes/" title="<%= t('footer.routes') %>"><%= t('footer.routes') %></a> </li>
+			</ul>
+			<div class="clear"></div>
+
+			<ul class="list-inline secondaryLinks weaker footerMenus">
+				<li><strong><%= t('footer.countries')%>:</strong></li>
+				<li> <a href="https://www.cleartrip.com" title="<%= t('footer.in')%>"><%= t('footer.in')%></a> </li>
+				<li> <a href="https://www.cleartrip.ae" title="<%= t('footer.ae')%>"><%= t('footer.ae')%></a> </li>
+				<li> <a href="https://www.cleartrip.sa" title="<%= t('footer.sa')%>"><%= t('footer.sa')%></a> </li>
+				<li> <a href="https://bh.cleartrip.com" title="<%= t('footer.bh')%>"><%= t('footer.bh')%></a> </li>
+				<li> <a href="https://kw.cleartrip.com" title="<%= t('footer.kw')%>"><%= t('footer.kw')%></a> </li>
+				<li> <a href="https://qa.cleartrip.com" title="<%= t('footer.qa')%>"><%= t('footer.qa')%></a> </li>
+				<li> <a href="https://om.cleartrip.com" title="<%= t('footer.om')%>"><%= t('footer.om')%></a> </li>
+			</ul>
+			<div class="footer-bottom">
+				<div class="col-sm-6 pad-lzero f-lft "><%= t('footer.copyright')%></div>
+				<div class="col-sm-6 pad-zero f-rgt ">
+					<ul class="list-inline pull-right" >
+						<li><a rel="nofollow" href="/privacy-policy/"><%= t('footer.privacy')%></a> </li>
+						<li> <a rel="nofollow" href="/security"><%= t('footer.security')%></a> </li>
+						<li> <a rel="nofollow" href="/terms/"><%= t('footer.tou')%></a> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

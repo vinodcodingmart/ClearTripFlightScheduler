@@ -1,0 +1,134 @@
+
+<% has_price = routes.map{ |x| (x['min_price'].present? && x['min_price'] != 0 ) && (x['max_price'].present? &&  x['max_price']!= 0) }.include?(true) %>
+<div class="hidden-xs desktop_top_routes_<%= section %>">
+  <div class="airline-wrapper sorting-bar" >
+    <ul class="list-inline">
+
+      <li class="airline">
+        <span class="airline-names"><%= I18n.t('brand.airline')%></span>
+      </li>
+      <li class="airline-routes">
+        <div class="t-blcok arrival"><%= I18n.t('brand.to')%></div>
+        <div class="t-blcok duration">&nbsp;</div>
+        <div class="t-blcok depart"><%= I18n.t('brand.from')%></div>
+      </li>
+      <% if has_price %>
+        <li class="min-price hide-xs"><%= I18n.t('brand.min_price')%></li>
+        <li class="max-price hide-xs"><%= I18n.t('brand.max_price')%></li>
+      <% else %>
+        <li class="min-price hide-xs"><%= I18n.t('brand.dep_time')%></li>
+        <li class="max-price hide-xs"><%= I18n.t('brand.arr_time')%></li>
+      <% end %>
+      <li class="working-days hide-xs"><%= I18n.t('brand.days') %></li>
+      <div class="clearfix"></div>
+    </ul>
+  </div><!--/airline-->
+   <% route_count = 0 %>
+   <% routes[0...5].each do |route| %>
+   <%  if route['dep_city_name_ar'].present? && route['arr_city_name_ar'].present? %>
+    <% route_count +=1 %>
+      <div class="airline-wrapper <%= route_count>5 ? 'hide showMore' : "" %>" >
+        <ul class="list-inline">
+          <% formated_carrier_name =  t("airlines.#{route['carrier_code']}").downcase.gsub(" ",'-').gsub('--','-') %>
+          <% airline_name =  t("airlines.#{route['carrier_code']}") %>
+          <li class="airline">
+            <span class=" carrier-logo <%= formated_carrier_name%>"></span>
+            <span class="airline-names"><%= @carrier_name_ar %> <small><%= route['flight_no'] %></small></span>
+          </li>
+          <li class="airline-routes">
+            <div class="t-blcok depart"><%= route['dep_city_name_ar'] %></div>
+            <div class="t-blcok duration"> ← </div>
+            <div class="t-blcok arrival"><%= route['arr_city_name_ar'] %></div>
+
+          </li>
+          <%if has_price %>
+            <% if route['min_price'].present? && route['min_price'] > 0 %>
+              <li class="min-price hide-xs"><%= currency_code %> <%= route['min_price'] %></li>
+              <% else %>
+              <li class="min-price hide-xs">-NA-</li>
+            <% end %>
+            <% if route['max_price'].present? && route['max_price'] > 0 %>
+              <li class="max-price hide-xs"><%= currency_code %> <%= route['max_price'] %></li>
+              <% else %>
+              <li class="max-price hide-xs">-NA-</li>
+            <% end %>
+
+          <% else %>
+            <li class="min-price hide-xs"><%= Time.strptime(route['dep_time'],"%H:%M").to_time.strftime("%I:%M %p") %></li>
+            <li class="max-price hide-xs"><%= Time.strptime(route['arr_time'],"%H:%M").to_time.strftime("%I:%M %p") %></li>
+          <% end %>
+          <li class="working-days hide-xs"><%= route['op_days'] %></li>
+
+            <% if (route['min_price'].present? && route['min_price'] > 0) && (route['max_price'].present? && route['max_price'] > 0) %>
+              <li class="book-section">
+                <a  data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%=section%>" target="_blank" class="booking-btn flight-schedule-booking" href='https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= route['dep_airport_code']%>&to=<%= route['arr_airport_code'] %><%= intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=route['carrier_code']%>&domain=<%=domain%>&section=<%=section%>&button_type=book_now_button' >
+                  <%= I18n.t('brand.check')%> <span class="hidden-xs"><%= I18n.t('brand.price')%></span>
+                </a>
+              </li>
+              <% else %>
+              <li class="book-section">
+                <a  data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%=section%>" target="_blank" class="booking-btn flight-schedule-booking" href='https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= route['dep_airport_code']%>&to=<%= route['arr_airport_code'] %><%= intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=route['carrier_code']%>&domain=<%=domain%>&section=<%=section%>&button_type=book_now_button' >
+                  <%= I18n.t('brand.book')%>
+                  <span class="hidden-xs"><%= I18n.t('brand.now')%></span>
+                </a>
+              </li>
+             <% end %>
+              <div class="clearfix"></div>
+            </ul>
+            </div>
+        <% end %><!--/airline-->
+            <div class="clearfix"></div>
+    <% end %>
+
+</div><!--/normal-view-->
+
+<div class="visible-xs mobile_top_routes_<%= section %>">
+   <% route_count = 0 %>
+    <div class="airline-wrapper sorting-bar" >
+          <ul class="list-inline">
+            <li class="airline">
+              <span class="airline-names"><%= I18n.t('brand.airline') %></span>
+            </li>
+            <li class="airline-routes">
+              <div class="t-blcok depart"><%= I18n.t('brand.from') %></div>
+              <div class="t-blcok duration">&nbsp;</div>
+              <div class="t-blcok arrival"><%= I18n.t('brand.to') %></div>
+            </li>
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+   <% routes[0...5].each do |route| %>
+    <%  if route['dep_city_name_ar'].present? && route['arr_city_name_ar'].present? %>
+      <% route_count +=1 %>
+        <div class="airline-wrapper <%= route_count>5 ? 'hide showMore' : "" %>" >
+         <!--/airline-->
+          <ul class="list-inline">
+            <% formated_carrier_name =  t("airlines.#{route['carrier_code']}").downcase.gsub(" ",'-').gsub('--','-') %>
+            <% airline_name =  t("airlines.#{route['carrier_code']}") %>
+            <li class="airline">
+              <span class=" carrier-logo <%= formated_carrier_name%>"></span>
+              <span class="airline-names"><%= @carrier_name_ar %> <small><%= route['flight_no'] %></small></span>
+            </li>
+            <li class="airline-routes">
+              <div class="t-blcok depart"><%= route['dep_city_name_ar'] %></div>
+              <div class="t-blcok duration"> ← <!-- <small>01:10</small> --></div>
+              <div class="t-blcok arrival"><%= route['arr_city_name_ar'] %></div>
+            </li>
+             <li class="book-section">
+              <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%=section%>" target="_blank" class="booking-btn flight-schedule-booking" href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= route['dep_airport_code']%>&to=<%= route['arr_airport_code'] %><%= intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=route['carrier_code']%>&domain=<%=domain%>&section=<%=section%>&button_type=book_now_button">
+              <% if route['min_price'].to_i > 0 %>
+                <%= currency_code %> <%= route['min_price'].to_i %>
+              <% else %>
+               <%=  I18n.t('brand.check') %>
+              <% end %>
+              </a>
+            </li>
+              <div class="clearfix"></div>
+          </ul>
+        </div><!--/airline-->
+      <% end %>
+      <div class="clearfix"></div>
+    <% end %>
+
+</div><!--mobile-view-->
+<div class="clearfix"></div>

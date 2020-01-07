@@ -1,0 +1,56 @@
+<div class="airport-block mt-15">
+    <div class="airport-details">
+        <h2> <%= t('from_city.airport_details')%><%= airport['city_name'] %> </h2>
+        <ul class="list-unstyled ">
+            <li>
+                
+                <span class="pull-left"><%= airport['airport_name_ar'] %></span>
+                <label class="pull-right"> <%= t('from_city.name')%><span >:</span></label>
+            </li>
+            <li>                
+                <span class="pull-left">
+                    <% if airport['airport_address_ar'].present? && airport['airport_address_ar'].length > 5 %>
+                    <%= airport['airport_address_ar'] %>
+                    <% else %>
+                    N/A
+                    <% end %>
+                </span>
+                <label class="pull-right"><%= t('from_city.address')%> <span >:</span></label>
+            </li>
+            <li>
+                
+                <span class="pull-left" >
+                    <% if airport['airport_phone'].present? && airport['airport_phone'].length > 5 %>
+                    <%= airport['airport_phone'] %>
+                    <% else %>
+                    N/A
+                    <% end %>
+                </span>
+                <label class="pull-right"><%= t('from_city.phone')%> <span >:</span></label>
+            </li>
+            <li>
+                
+                <span class="pull-left">
+                    <% if airport['airport_email'].present? && airport['airport_email'].length > 5 %>
+                    <a href="mailto:<%= airport['airport_email'] %>" target="_blank"><%= airport['airport_email'] %></a>
+                    <% else %>
+                    N/A
+                    <% end %>
+                </span>
+                <label class="pull-right"><%= t('from_city.e-mail')%><span >:</span></label>
+            </li>
+            <li>
+             
+                <span class="pull-left">
+                    <% if airport['airport_web'].present? && airport['airport_web'].length > 5 %>
+                    <a href="<%= airport['airport_web'] %>" target="_blank"><%= airport['airport_web'] %></a>
+                    <% else %>
+                    N/A
+                    <% end %>
+                </span>
+                   <label class="pull-right"><%= t('from_city.website')%><span >:</span> </label>
+            </li>
+            <div class="clearfix">
+        </ul>
+    </div>
+</div>

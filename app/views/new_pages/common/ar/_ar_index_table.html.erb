@@ -1,0 +1,100 @@
+<h2><%= I18n.t("index.popular_#{@section}_flights") %></h2>
+<div class="desktop_top_routes hidden-xs">
+  <div class="list-inline airline-wrapper">
+    <div class="text-center">
+      <div class="col-xs-2"><a href="">&nbsp;</a></div>
+      <div class="col-xs-2"><a href=""><%= I18n.t('flight_schedule.duration') %></a></div>
+      <div class="col-xs-2"><a href=""><%= I18n.t('flight_schedule.arrival') %></a></div>
+      <div class="col-xs-2"><a href=""><%= I18n.t('flight_schedule.departure') %></a></div>
+      <div class="col-xs-2"><a href=""><%= I18n.t('flight_schedule.route') %></a></div>
+      <div class="col-xs-2"><a href=""><%= I18n.t('flight_schedule.airline') %></a></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <% consolidated_routes.each do |route | %>
+    <div class="airline-wrapper">
+      <ul id="airline-lists" >
+        <li class="list-inline">
+          <div class="col-xs-2 no-padding pad-10 book-section">
+            <a class="booking-btn flight-schedule-booking" data-section="<%=section[3..5]%>" data-route="<%=route[:dep_city_code]%>-<%= route[:arr_city_code]%>"><%= I18n.t('flight_schedule.book_now_text_btn') %></a>
+          </div>
+          <div class="col-xs-2 no-padding pad-10">
+            <% if route[:duration].include? (":")%>
+              <span> <%= route[:duration].to_time.strftime("%Hh %Mm") %></span>
+            <% else %>
+              <span> <%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %></span>
+            <% end %>
+            <small><%= I18n.t('flight_schedule.non-stop') %></small>
+          </div>
+          <div class="col-xs-2 no-padding pad-10">
+            <span><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+          </div>
+          <div class="col-xs-2 no-padding pad-10">
+            <span><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+          </div>
+          <div class="col-xs-2 no-padding pad-10">
+            <span><%= route[:dep_city_code]%>  →  <%= route[:arr_city_code]%></span>
+            <small><%= route[:dep_city_name_ar].try(:humanize)%> <%= I18n.t('to') %> <%= route[:arr_city_name_ar].try(:humanize)%></small>
+          </div>
+          <div class="col-xs-2 no-padding pad-10">
+            <span class="Domairlogo go">
+            </span>
+            <span>
+              <small><%= route[:carrier_code] %><%= route[:flight_no] %></small>
+              <% airline_name = link_to( t("airlines.#{route[:carrier_code]}"), "/#{I18n.locale.to_s}/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route[:carrier_code]}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+              <%= airline_name%></span>
+          </div>
+          <div class="clearfix"></div>
+          <!--/airline-->
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<!--mobile-view-->
+<div class="mobile_top_routes visible-xs">
+  <div class="list-inline airline-wrapper">
+    <div class="text-center">
+      <div class="col-xs-3 text-center no-padding"><a href="">&nbsp;</a></div>
+      <div class="col-xs-2 no-padding text-center "><a href=""><%= I18n.t('flight_schedule.duration') %></a></div>
+      <div class="col-xs-4 no-padding text-center "><a href=""><%=I18n.t('flight_schedule.route') %></a></div>
+      <div class="col-xs-3 no-padding"><a class="sortAsc" href=""><%= I18n.t('flight_schedule.airline') %></a></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <% consolidated_routes.each do |route | %>
+    <div class="airline-wrapper">
+      <ul id="airline-lists">
+        <li class="list-inline">
+          <div class="col-xs-3 no-padding pad-10 book-section">
+            <a class="booking-btn flight-schedule-booking" data-section="<%=section[3..5]%>" data-route="<%=route[:dep_city_code]%>-<%= route[:arr_city_code]%>"><%= I18n.t('flight_schedule.book_now_text_btn') %></a>
+          </div>
+          <div class="col-xs-3 no-padding pad-10">
+            <% if route[:duration].include? (":")%>
+              <span> <%= route[:duration].to_time.strftime("%Hh %Mm") %></span>
+            <% else %>
+              <span> <%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %></span>
+            <% end %>
+            <span class="type"><small><%= I18n.t('flight_schedule.non-stop') %></small></span>
+          </div>
+          <div class="col-xs-4 no-padding pad-10">
+            <span><%= route[:dep_city_code]%>  →  <%= route[:arr_city_code]%></span>
+            <span class="type"><small><%= route[:dep_city_name_ar].try(:humanize)%> <%= I18n.t('to') %> <%= route[:arr_city_name_ar].try(:humanize)%></small></span>
+          </div>
+          <div class="col-xs-2 no-padding pad-10">
+            <span class="Domairlogo go">
+            </span>
+            <span>
+              <small><%= route[:carrier_code] %><%= route[:flight_no] %></small>
+              <% airline_name = link_to( t("airlines.#{route[:carrier_code]}"), "/#{I18n.locale.to_s}/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route[:carrier_code]}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+              <%= airline_name%>
+            </span>
+          </div>
+          <div class="clearfix"></div>
+          <!--/airline-->
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<!--mobile-view-->

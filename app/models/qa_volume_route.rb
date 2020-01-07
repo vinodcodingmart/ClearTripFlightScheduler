@@ -1,0 +1,2 @@
+class QaVolumeRoute < ApplicationRecord
+end

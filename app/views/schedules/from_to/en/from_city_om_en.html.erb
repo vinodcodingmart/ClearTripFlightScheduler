@@ -1,0 +1,258 @@
+<% use_helper = self.extend ApplicationHelper %>
+<% country_code = @country_code
+   assets_path = "https://d2w5af8s1781.cloudfront.net/waytogo-staging"
+%>
+  <%= render partial: "common/google_tag_manager" %>
+
+  <%= render partial: "common/top_header", locals: { assets_path: assets_path, country_code: country_code, host: host, flight_file_name: @file_name, page_type: 'flight-schedule', application_processor: application_processor} %>
+
+  <!--======Second Header Starts Here==========-->
+    <%= render :partial => "schedules/from_to/en/shared/from_to_header_en",locals: {city_name: @city_name,city_layout_values: city_layout_values,section: @city_section,country_code: @country_code} %>
+  <!--======Second Header Ends Here==========-->
+
+  <!--/contnet Starts Here-->
+  <section id="content">
+    <div class="container-fluid">
+      <ol class="list-inline bread-crumb no-padding">
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a  itemprop="url" href="/flights" title="<%= I18n.t('flight_schedule.breadcrumb_flight_title') %>"><span  itemprop="title"><%= I18n.t('breadcrumb.flights') %></span>
+          </a>
+        </li>
+      <% if @city_country_code == country_code %>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="first">
+          <a  itemprop="url"  href="/flight-schedule/<%= I18n.locale.to_s==:en || I18n.locale.to_s=='en' ? ''.html_safe : "#{I18n.locale.to_s}/".html_safe %>flight-schedules-domestic.html" title="<%= I18n.t('flight_schedule.breadcrumb_flight_title') %>">
+            <span itemprop="title">
+              <%= I18n.t('flight_schedule.domesitc_flight_schedules') %>
+            </span>
+          </a>
+        </li>
+      <% else %>
+         <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a  itemprop="url"  href="/flight-schedule/<%= I18n.locale.to_s==:en || I18n.locale.to_s=='en' ? ''.html_safe : "#{I18n.locale.to_s}/".html_safe %>flight-schedules-international.html" title="<%= I18n.t('flight_schedule.breadcrumb_flight_title') %>">
+            <span itemprop="title">
+              <%= I18n.t('flight_schedule.internatoinal_flight_schedules') %>
+            </span>
+          </a>
+        </li>
+      <% end %>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a  href="/flight-schedule/flights-from-<%= url_escape(@city_name)%>.html" title="<%= t('from_city.breadcrumb_third_from', city_name: @city_name) %>">
+          <span itemprop="title"><%= I18n.t('from_city.breadcrumb_third_from', city_name: @city_name) %></span>
+        </a>
+        </li>
+      </ol>
+      <% if @h1_title.present? %>
+      <h1><%= @h1_title %></h1>
+      <% else %>
+      <h1><%= I18n.t('from_city.header_from', city_name: @city_name) %></h1>
+      <% end %>
+    <%= render :partial=>"common/search_widget" %>
+    <div class="col-lg-9 col-md-9 col-sm-12 mobile-view pad-lzero" id="flight-schedule">
+      <div class="list-box">
+      <% if pagination[:current_page_no] == 0 %>
+          <% if popular_routes["dom"].present? %>
+            <h2>Domestic Flights From <%= @city_name %><span class="weak"> ( <%= I18n.t("from_city.flights_found", count: city_layout_values['dom_route_count']) %> )</span></h2>
+             <%= render :partial=>"schedules/from_to/en/shared/from_to_city_table_en",:locals=>{:routes=> popular_routes["dom"], section: "dom", :country_code=> country_code, :use_helper=>use_helper, :assets_path=>assets_path} %><!--/normal-list-view-->
+            <p>&nbsp;</p>
+          <% end %>
+          <% if popular_routes["int"].present? %>
+            <h2>International Flights From <%= @city_name %><span class="weak"> ( <%= I18n.t("from_city.flights_found", count: city_layout_values['int_route_count']) %> )</span></h2>
+
+             <%= render :partial=>"schedules/from_to/en/shared/from_to_city_table_en",:locals=>{:routes=> popular_routes["int"], section: "int", :country_code=> @country_code, :use_helper=>use_helper, :assets_path=>assets_path} %><!--/normal-list-view-->
+          <% end %>
+
+           <div class="content-desc">
+              
+              <% if @content.present? %>
+                <%= @content.html_safe %>
+              <% elsif city_layout_values["city_from_content"].present? %>
+                <%= raw city_layout_values["city_from_content"] %>
+              <% else %>
+              <h1><%= I18n.t('from_city.flight_from_city_name', city_name: @city_name) %></h1>
+                <p>
+                  <%= render partial: "schedules/from_to/en/contents/from/ae_en_from_city_templatized_content", locals: {city_name: @city_name, host: display_host(@country_code),city_layout_values: city_layout_values} %>
+                </p>
+              <% end %>
+            </div>
+          <% end %>
+          <% if pagination[:routes].present? %>
+            <div class="contnet-desc">
+            <h2>Flights From <%= @city_name %></h2>
+            <%= render :partial=>"schedules/from_to/en/shared/top_more_routes", locals: { top_routes: pagination[:routes] } %>
+              <% if pagination[:total_pages]  > 1 %>
+                <div class="text-center linklist-btn">
+                <% if pagination[:current_page_no] == 0 %>
+                  <a class="no-link" ><%= t('prev') %></a> | <a rel="next" href='<%= "/flight-schedule/#{pagination[:next_url]}" %>' ><%= t('next') %></a>
+                <% elsif pagination[:current_page_no] >= pagination[:total_pages] %>
+                  <a rel="prev" href='<%= "/flight-schedule/#{pagination[:prev_url]}" %>' ><%= t('prev') %></a> | <a class="no-link" ><%= t('next') %></a>
+                <% else %>
+                  <a rel="prev" href='<%= "/flight-schedule/#{pagination[:prev_url]}" %>' ><%= t('prev') %></a> | <a rel="next" href='<%= "/flight-schedule/#{pagination[:next_url]}" %>' ><%= t('next') %></a>
+                <% end%>
+              </div>
+              <% end %>
+            <div class="clearfix"></div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+       <div id="Rside-bar">
+      <div class="col-lg-3 col-md-3 col-sm-12 pad-rzero side-bar">
+        <div class="blocks banner-section">
+          <div id="banner">
+            <a target="_blank"><img></a>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <% if city_layout_values["dom_airlines"].present? %>
+          <%= render :partial=>"schedules/from_to/en/shared/from_to_top_airlines_en",:locals=>{:top_airlines=>city_layout_values["dom_airlines"].uniq, use_helper: use_helper,:assets_path=>assets_path, application_processor: application_processor, section: "dom"  } %>
+          <div class="clearfix"></div>
+        <% end %>
+        <% if city_layout_values["int_airlines"].present? %>
+          <%= render :partial=>"schedules/from_to/en/shared/from_to_top_airlines_en",:locals=>{:top_airlines=>city_layout_values["int_airlines"].uniq, use_helper: use_helper,:assets_path=>assets_path, application_processor: application_processor, section: "int"  } %>
+          <div class="clearfix"></div>
+        <% end %>
+        <% if city_layout_values['airport_address'].present? && city_layout_values['airport_name'].present? %>
+          <%= render :partial=>"schedules/from_to/en/shared/from_to_airport_en",:locals=>{:airport=>city_layout_values } %>
+        <% end %>
+        <div class="blocks banner-section">
+          <%= render :partial=>"common/banner",:locals=>{:country_code=>country_code, application_processor: application_processor} %>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div><!--/Rside-bar-->
+    </div>
+  </section>
+  <!--/contnet Ends Here-->
+  <div style="display:none;">
+    <div id='city_code' class='hidden'><%= @city_code%></div>
+    <div id='country_code' class='hidden'><%= @country_code %></div>
+    <div id="departure_city_code"><%= @city_code%></div>
+  </div>
+  </div>
+  <div id="footer_container">
+  <div id="footer">
+    <%=render partial: "footers/#{@country_code.downcase}/schedule/from_to/en/#{@country_code.downcase}_en_footer", locals: {country_code: country_code,page_type: 'schedule-routes',footer_links_data: schedule_footer[:footer_links_data],top_airlines: schedule_footer[:int_airlines],city_layout_values: city_layout_values,section: @city_section,city_name: @city_name,footer_airline_data: schedule_footer[:footer_airline_data]}%>
+  </div>
+</div>
+
+  <%= render :partial=>"shared/#{country_code.downcase}/#{country_code.downcase}_gac"%>
+  <%=  render partial: "common/comscore" %>
+  <noscript>
+    <img src="https://b.scorecardresearch.com/p?c1=2&c2=7561529&cv=2.0&cj=1" />
+  </noscript>
+  <% lang = {
+    "calender"=>{
+      "airfare"=>t('calender.airfare'),
+      "today"=>t('calender.today'),
+      "cheapest"=>t('calender.cheapest'),
+      "calendar_note"=>t('calender.calendar_note')
+      },
+      "flight_schedule"=>{
+        "mo"=>t('flight_schedule.mo'),
+        "tu"=>t('flight_schedule.tu'),
+        "we"=>t('flight_schedule.we'),
+        "th"=>t('flight_schedule.th'),
+        "fr"=>t('flight_schedule.fr'),
+        "sa"=>t('flight_schedule.sa'),
+        "su"=>t('flight_schedule.su')
+        },
+        "currency"=>application_processor.currency_name(country_code),
+        "month": ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      }
+      %>
+
+     <% all_popular_routes = popular_routes["dom"] + popular_routes["int"] rescue [] %>
+            <% currency = application_processor.currency_name(country_code) %>
+            <% if all_popular_routes.present? %>
+              <% all_popular_routes.each do |route| %>
+              <script type="application/ld+json">
+
+              <% formated_carrier_name =  t("airlines.#{route["carrier_code"]}").downcase.gsub(" ",'-').gsub('--','-') %>
+              <% airline_name =  t("airlines.#{route["carrier_code"]}") %>
+              {
+                  "@context": "http://schema.org",
+                  "@type": "Flight",
+                  "name": "<%= airline_name %>",
+                  "flightNumber": "<%= route["flight_no"] %>",
+                  "arrivalAirport": "<%= route['arr_city_name'] %>",
+                  "departureAirport": "<%= route['dep_city_name'] %>",
+                  "arrivalTime": "<%= route['arr_time'] %>",
+                  "departureTime": "<%= route['dep_time'] %>"
+                }
+              </script>
+              <% end %>
+
+               <!-- product schema starts -->
+              <% if false %>
+              <% all_popular_routes.first(3).each do |route| %>
+                   <script type="application/ld+json">
+                   <% formated_carrier_name =  t("airlines.#{route["carrier_code"]}").downcase.gsub(" ",'-').gsub('--','-') %>
+                   <% airline_name =  t("airlines.#{route["carrier_code"]}") %>
+                   <% route_price = route["min_price"] rescue nil%>
+                    <% if route_price == 0 || route_price == nil || route_price == "" %>
+                    <% route_price = 0 %>
+                    <% end %>                {
+                "@context": "http://schema.org",
+                "@type": "Product",
+                "name": "<%= route['dep_city_name'] %> to <%= route['arr_city_name'] %> Flights",
+                "offers":[
+                      {
+                      "@type": "Offer",
+                      "name": "<%= airline_name %>",
+                      "price": "<%= route_price %>",
+                      "priceCurrency": "OMR",
+                      "aggregateRating": 
+                        {
+                          "@type": "AggregateRating",
+                          "ratingValue": "4",
+                          "reviewCount": "8"
+                         }
+                      }
+                     ]
+                }
+              </script>
+
+        <% end %>
+        <% end %>
+        <!-- product schema ends -->
+
+              <% end %>
+
+
+      <script>
+        <% section_type = @section=="dom" ? "domestic" : "international" %>
+        <% city_name_formatted = @city_name.downcase.gsub(" ",'-').gsub('--','-') %>
+        {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "flights",
+          "item": "<%= host %>/flights"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "<%= section_type %> flights",
+          "item": "<%= host %>/flight-schedule/flight-schedules-<%= section_type %>.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Flights from <%= @city_name %>",
+          "item": "<%= host %>/flight-schedule/flights-from-<%= city_name_formatted %>.html"
+        }]
+      }
+      </script>
+   <script type="text/javascript">
+    var lang = <%= lang.to_json.html_safe %>;
+    var country_code= '<%= country_code.downcase%>';
+    var section_type= '<%= country_code=="IN" ? "domestic" : "international" %>';
+    var page_type= "flight-schedule";
+    var city_code = "<%= @city_code %>";
+    var city_name = "<%= @city_name %>";
+    var language_type = '<%= @language %>';
+    var page_sub_type = '<%= @city_section %>';
+    var main_page_type = '<%= @city_section %>';
+  </script>

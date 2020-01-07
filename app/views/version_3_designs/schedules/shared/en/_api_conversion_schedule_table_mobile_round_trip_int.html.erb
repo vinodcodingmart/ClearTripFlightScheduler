@@ -1,0 +1,112 @@
+<% application_helper = self.extend ApplicationHelper
+currency_code = application_helper.currency_code(@country_code)
+%>
+  <div class="clearfix"></div>
+  <div id="new-response"></div>
+  <div id="after-remove">
+    <% routes.each do |route|
+      route.stringify_keys!
+      route_type = route["dep_country_code"] != country_code || route["arr_country_code"] != country_code ? "int" : "dom"
+      %>
+      <% route_type_on = route["no_of_stops_on"] == 0 ? "Non-Stop" : (route["no_of_stops"].to_s + " hop") %>
+      <% route_type_rn = route["no_of_stops_rn"] == 0 ? "Non-Stop" : (route["no_of_stops"].to_s + " hop") %>
+      <% airline_name = route["carrier_codes"].first == "AI" ? "Air India" :  t("airlines.#{route["carrier_codes"].first}")
+      link = format_overview_link(airline_name)
+      %>
+      <% if !airline_name.include?("translation missing")%>
+      <% formated_carrier_name = route["carrier_codes"].first == "AI" ? "air-india" :  t("airlines.#{route["carrier_codes"].first}").downcase.gsub(" ",'-').gsub('--','-') %>
+      <div class="owd-mflights-list book_button_mobile" data-key="<%= route['unique_flight_key'] %>">
+        <ul class="list-inline">
+          <li class="owd-marilines">
+            <a href="">
+              <span class=" carrier-logo <%= formated_carrier_name%>"></span>
+              <span class="owd-airline-names"><small><%= route["flight_number"] %></small></span>
+            </a>
+          </li>
+          <li class="owd-mduration">
+            <span class="owd-mtiming"><%= route["dep_time_on"] %> - <%= route["arr_time_on"]%></span>
+            <span class="own-mstop"><%= route_type_on%> | <%= route["duration_on"]%></span>
+            <span class="owd-mtiming"><%= route["dep_time_rn"] %> - <%= route["arr_time_rn"]%></span>
+            <span class="own-mstop"><%= route_type_rn%> | <%= route["duration_rn"]%></span>
+          </li>
+          <li class="owd-mprice">
+            <% if route["hbag"] %>
+            <span class="hbag" title="No check-in baggage included">
+            </span>
+          <% end %>
+          <% if route["seat_availability"].present? && route["seat_availability"].to_i > 0%>
+              <span class="seat-count">
+                <%= route["seat_availability"] %> 
+              </span>
+              <span class="seat-txt">LEFT</span>
+            <% end %>
+            <span class="t-blcok">₹ 
+              <%= (route["route_total_fare"].present? && route["route_total_fare"] > 0 ) ?  "#{currency_code} " +  route["route_total_fare_formatted"].to_s : "--NA--"%></span>
+            </li>
+          </ul>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+      <div class="emptyCardMobile" style="display: none;">
+        <h2>No flights to show based on the last filters</h2>
+        <ul class="list-inline">
+          <li><button type="button" class="ct-btn resetFilterMob">Reset Filter</button></li>
+        </ul>
+      </div>
+      <script type="text/x-handlebars-template" id="routeCardMobile">
+        <div class="owd-mflights-list bubble book_button_mobile" data-key={{unique_flight_key}}>
+          <ul class="list-inline">
+            <li class="owd-marilines">
+              <a href="">
+                <span class=" carrier-logo {{formated_airline_name}}"></span>
+                <span class="owd-airline-names"><small>{{dep_flight_key_format}}</small></span>
+              </a>
+            </li>
+            <li class="owd-mduration">
+              <span class="owd-mtiming">{{dep_time_on}} - {{arr_time_on}}</span>
+              <span class="own-mstop">
+                {{#iff no_of_stops_on '==' 1}} 
+                {{no_of_stops_on}} Stop
+                {{else iff no_of_stops_on '>' 1 }}
+                {{no_of_stops_on}} Stops
+                {{else}}
+                Non Stop
+                {{/iff}}
+              | {{duration_on}}</span>
+              <span class="owd-mtiming">{{dep_time_rn}} - {{arr_time_rn}}</span>
+              <span class="own-mstop">
+                {{#iff no_of_stops_rn '==' 1}} 
+                {{no_of_stops_rn}} Stop
+                {{else iff no_of_stops_rn '>' 1 }}
+                {{no_of_stops_rn}} Stops
+                {{else}}
+                Non Stop
+                {{/iff}}
+              | {{duration_rn}}</span>
+            </li>
+            <li class="owd-mprice">
+              {{#if hbag }}
+                <span class="hbag" title="No check-in baggage included"></span>
+              {{/if}}
+              {{#iff seat_availability '>' 0}}
+              <span class="seat-count"> {{seat_availability}} </span>
+              <span class="seat-txt">LEFT</span>
+              {{/iff}}
+              <a href="" class="">
+                <span class="t-blcok">₹ 
+                {{route_total_fare_formatted}}</span></a>
+              </li>
+            </ul>
+          </div>
+        </script>
+        <script type="text/x-handlebars-template" id = "airlineCards">
+          <li class="new">
+            <div class="airlines-list">
+              <input type="checkbox" name="airline" id="{{airline_code}}">
+              <label for="{{airline_code}}"><div class="R-airline-logo "><span class="carrier-logo {{airline_code}} {{formated_airline}}"></span></div> {{airline_name}}
+              </label>
+            </div>
+            <div class="clearfix"></div>
+          </li>
+        </script>

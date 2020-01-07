@@ -1,0 +1,23 @@
+<h3>FAQs</h3><b>1.What are fare rules and Fare Choices?</b>
+<p>Jet Airways offer different Fare Choices, you can select from eight different fare plans across Economy, Première, and First Class. These plans have different benefits and features. It lets you customize your fare and pay only for your travel requirements.</p>
+<b>2.What does the Fare Choices include?</b>
+<p>All the Jet Airways fare choices include free meals, signature Indian hospitality, and free baggage allowance. Cancellations or any changes made will have fees as per fare rules.</p> 
+<b>3.How will I know which Fare Choices are applicable to my bookings?</b>
+<p>If a person wants to know which fare choices are applicable to his/her bookings then he/she should ask the travel agent regarding the fare choices. People booking online will get the fare choices printed on the eTicket.</p>
+<b>4.Can I book different Fare Choices for an infant?</b>
+<p>Tickets for infants should be booked in the same Fare Choices according to that of the adult accompanying them.</p>
+<b>5.What are the documents that will be required for booking?</b>
+<p>All Jet Airways guests will have to provide valid documentation. All the documents related to health requirements, residency, and passport/Visa have to be furnished. The airlines won’t be responsible for any damage as a result of incomplete or improper documentation on the passengers’ part.</p> 
+<b>6.What are the forms of Payments available at Jet Airways?</b>
+<p>Jet Airways provides a number of payment methods to its customers to have a seamless yet effortless payment experience. Some of these methods include:</p><ul>
+<li>Unified payments Interface (UPI)</li>
+<li>Credit cards</li>
+<li>Debit cards</li>
+<li>
+EMI (Available for bookings made on the mobile site and mobile app) </li>
+<li>Maestro/RuPay</li>
+<li>Net banking</li>
+<li>Prepaid wallets</li>
+<li>Pay at counter (or Jet Airways ticketing office)</li>
+</ul>
+

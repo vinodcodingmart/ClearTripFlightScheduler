@@ -1,0 +1,85 @@
+ <% hotel_api = hotel_api.stringify_keys %>
+ <% if hotel_api["hotel_api_stars"].present? || hotel_api["hotel_api_property_types"].present? || hotel_api["local_data_offset"].present? %>
+<div class="city-hotels">
+  <h2>Hotels In <%= arr_city_name%></h2>
+  <ul class="nav nav-tabs">
+    <li class="active" ><a data-toggle="tab" href="#sh">Star hotels</a></li>
+    <% if hotel_api["hotel_api_property_types"].present? %>
+    <li><a data-toggle="tab" href="#pt">Property Type</a></li>
+    <% end %>
+    <% if hotel_api["local_data_offset"].present? %>
+    <li><a data-toggle="tab" href="#lh">Locality hotels</a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% if hotel_api["hotel_api_stars"].present? %>
+    <div id="sh" class="tab-pane fade in active">
+      <ul class="list-inline hotels-list">
+        <% hotel_api["hotel_api_stars"].each do |star| %>
+        
+        <% star_name = 0
+        if star.include?("/stars/")
+          star_name = star.scan(/\d+/).first rescue 0
+          end %>
+          <li>
+            <a href="<%= application_processor.host_name(country_code)+star  %> ">
+              <div class="hotel-card">
+                <div class="hotels-cnt">
+                  <% if star_name != 0 %>
+                  <span title="<%=star_name %> Star hotel" class="fLeft starRating s<%=star_name %>"></span>
+                  <h2><%= star_name %> star hotels in <%= arr_city_name%> </h2>
+                  <% elsif star.include? "/budget-hotels/" %>
+                  <h2> Budget hotels in <%= arr_city_name %></h2>
+                  <% end %>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <% if hotel_api["hotel_api_property_types"].present? %>
+      <div id="pt" class="tab-pane fade">
+        <ul class="list-inline hotels-list">
+          <% hotel_api["hotel_api_property_types"].each do |property| %>
+          <li>
+            <a href="<%=application_processor.host_name(country_code)+property["link"] %>">
+              <div class="hotel-card">
+                <div class="hotels-cnt">
+                  <h2><%= property["name"].capitalize %></h2>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+   
+      <% if hotel_api["local_data_offset"].present? %>
+      <div id="lh" class="tab-pane fade">
+        <ul class="list-inline hotels-list">
+          <% hotel_api["local_data_offset"].each do |local| %>
+          <li>
+            <a href="<%= application_processor.host_name(country_code)+local["link"]%>">
+              <div class="hotel-card">
+                <div class="hotels-cnt">
+                  <h2><%= local["name"] %></h2>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
+
+          

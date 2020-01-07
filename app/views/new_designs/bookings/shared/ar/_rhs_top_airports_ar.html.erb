@@ -1,0 +1,14 @@
+<% if top_airports.present? && !["SA","AE"].include?(@country_code) %>
+<div class="white-card">
+	<h2><%= t('brand.airport')%></h2>
+	<ul class="list-unstyled flight-routes">
+		<% top_airports.each do |airport| %>
+		<li>
+			<% airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/"+ I18n.locale.to_s + "/" + "#{use_helper.url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}")  %>
+			<%=  airport_name %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<%end%>

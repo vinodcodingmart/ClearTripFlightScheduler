@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  airline_footer_en: MyText
+  airline_footer_ar: MyText
+  airline_footer_en_dup: MyText
+  airline_footer_ar_dup: MyText
+  current_count: 1
+
+two:
+  airline_footer_en: MyText
+  airline_footer_ar: MyText
+  airline_footer_en_dup: MyText
+  airline_footer_ar_dup: MyText
+  current_count: 1

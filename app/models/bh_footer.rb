@@ -1,0 +1,2 @@
+class BhFooter < ApplicationRecord
+end

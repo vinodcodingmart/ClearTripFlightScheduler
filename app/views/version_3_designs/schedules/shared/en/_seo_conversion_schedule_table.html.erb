@@ -1,0 +1,102 @@
+
+
+<% application_helper = self.extend ApplicationHelper
+currency_code = application_helper.currency_code(@country_code)
+%>
+<div id="owd-flights" >
+	<div class="owd-top">
+		<% if @round_trip == "R" %>
+			<h3 class="sub-title">Flights for <%= dep_city_name %> ⇄ <%= arr_city_name %> on <span class="result_date"></span></h3>
+		<% else %>
+			<h3 class="sub-title">Flights from <%= dep_city_name %> to <%= arr_city_name %> on <span class="result_date"></span></h3>
+		<% end %>
+		<% unless schedule_layout_values['no_price'] %>
+		<% if @has_calendar %>
+		<span class="owd-right calendar-new "><span id="fullCalendarShow"><a class="ct-btn">Fare Calendar</a></span></span>
+		<div class="clearfix"></div>
+		<div id="calendar">
+			<div id="calender_display"></div>
+		</div>
+		<% end %>
+		<% end %>
+		<div class="clearfix"></div>
+	</div>
+	<div class="clearfix"></div>
+	<div id="new-responses"></div>
+	<div id="after-remove">
+		<% routes.each do |route|
+
+			route.stringify_keys!
+			route_type = route["dep_country_code"] != country_code || route["arr_country_code"] != country_code ? "int" : "dom"
+			%>
+			<% airline_name = route["carrier_code"] == "AI" ? "Air India" :  t("airlines.#{route["carrier_code"]}")
+			link = format_overview_link(airline_name)
+			%>
+			<% if !airline_name.include?("translation missing")%>
+			<% formated_carrier_name = route["carrier_code"] == "AI" ? "air-india" :  t("airlines.#{route["carrier_code"]}").downcase.gsub(" ",'-').gsub('--','-') %>
+
+			<div class="owd-flights-list">
+				<ul class="list-inline">
+					<li class="airline">
+						<a href="/flight-booking/<%= format_overview_link(airline_name) %>.html" title="<%= airline_name %> ">
+							<span class=" carrier-logo <%= formated_carrier_name%>"></span>
+							<span class="airline-names"><%= airline_name %> <small><%= route["flight_no"] %></small></span>
+						</a>
+					</li>
+					<% dep_time = route["dep_time"].gsub(":00","").gsub(":00:00","").length == 2 ? route["dep_time"].gsub(":00:00",":00")  : route["dep_time"].gsub(":00","").gsub(":00:00","") %>
+					<% arr_time = route["arr_time"].gsub(":00","").gsub(":00:00","").length == 2 ? route["arr_time"].gsub(":00:00",":00") : route["arr_time"].gsub(":00","").gsub(":00:00","")%>
+					<li class="airline-routes">
+						<div class="t-blcok depart">
+							<%= dep_time  %>
+							<span class="small-txt airport-code"><%= @dep_city_code %></span>
+						</div>
+
+						<div class="t-blcok duration"> → </div>
+						<div class="t-blcok arrival">
+							<%= arr_time %>
+							<span class="small-txt airport-code"><%= @arr_city_code %></span>
+						</div>
+						<div class="clearfix"></div>
+					</li>
+					<li class="timing">
+						<span class="t-blcok"><%= format_duration(route["duration"]) %></span>
+						<span class="small-txt">Non Stop</span>
+					</li>
+					<li class="prices">
+						<span class="t-blcok">
+							<%if !@is_bot_hit%>
+							<div class="loaders">
+								<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+							</div>
+							<div class="initial-price" style="display: none;">
+								<%= (route["cc_min_price"].present? && route["cc_min_price"] > 0 ) ?  "#{currency_code} " +  route["cc_min_price"].to_s : "--NA--"%>
+							</div>
+							<%else%>
+							<%= (route["cc_min_price"].present? && route["cc_min_price"] > 0 ) ?  "#{currency_code} " +  route["cc_min_price"].to_s : "--NA--"%>
+							<%end%>
+						</span>
+					</li>
+					<li class="book-section">
+						<a data-route="<%=schedule_layout_values["dep_airport_code"]%>-<%= schedule_layout_values["arr_airport_code"]%>-<%= route["carrier_code"] %>" href="" class="ct-btn flight-schedule-booking">
+							<% if route["cc_min_price"].to_i > 0 %>
+							Book
+							<% else %>
+							Check
+							<% end %>
+						</a></li>
+						<%# unless !route["seat_availability"].present? %>
+						<!-- <li class="action-blck">
+							<%# unless (!route["seat_availability"].present?) %>
+							<span class="seat-count"><%#= route["seat_availability"] %></span>
+							<%# end %>
+							<a href="" class="ct-btn">Book Now</a>
+						</li> -->
+						<%# end %>
+					</ul>
+				</div>
+				<% end %>
+				<% end %>
+			</div>
+		</div><!--owd-flights-->
+
+

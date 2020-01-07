@@ -1,0 +1,111 @@
+<h2 class="f16"><%= dep_city_name %> <%= t('to')%> <%= arr_city_name %> <%= t('flight_schedule_text') %> <span class="weak">( <%= routes.count%>
+	<% if  routes.count > 1 %>
+	تم العثور على رحلات الطيران
+	<% else %>
+	تم العثور على رحلة
+	<% end %>
+)</span></h2>
+<div class="hidden-xs desktop_top_routes">
+	<div class="airline-wrapper sorting-bar" >
+		<ul class="list-inline">
+			<li class="airline">
+				<span class="airline-names"><%= t('flight_schedule.airlines') %></span>
+			</li>
+			<li class="timing">
+				<div class="t-blcok depart"><%= t('flight_schedule.departure') %></div>
+				<div class="t-blcok duration"><%= t('flight_schedule.duration') %></div>
+				<div class="t-blcok arrival"><%= t('flight_schedule.arrival') %></div>
+			</li>
+			<li class="min-price"><%= t('flight_schedule.price') %></li>
+			<div class="clearfix"></div>
+		</ul>
+	</div><!--/airline-->
+	<% route_count = 0
+	routes.each do |route|
+		route_type = route[:dep_country_code] != country_code || route[:arr_country_code] != country_code ? "int" : "dom"
+		route_count+=1
+		%>
+		<div class="airline-wrapper <%= route_count>10 ? 'hide showMore' : "" %>" >
+			<ul class="list-inline">
+				<% I18n.locale = :en%>
+				<% formated_carrier_name =  t("airlines.#{route[:carrier_code]}").downcase.gsub(" ",'-').gsub('--','-') %>
+				<% airline_name_en =  t("airlines.#{route[:carrier_code]}") %>
+				<% I18n.locale = :ar %>
+				<% airline_name_ar =  t("airlines.#{route[:carrier_code]}") %>
+				<li class="airline">
+					<a class = "airline_link" href="/ar/flight-booking/amp/<%= format_overview_link(airline_name_en) %>.html" title="<%= airline_name_ar  %>"><span class="carrier-logo <%= formated_carrier_name%>"></span>
+					<span class="airline-names"><%= airline_name_ar %> <small><%= route[:flight_no] %></small></span></a>
+				</li>
+				<li class="timing">
+					<div class="t-blcok depart"><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></div>
+					<% if route[:duration].include? (":") %>
+					<div class="t-blcok duration"> <%= route[:duration].to_time.strftime("%Hh %Mm") %><small>بدون توقف</small></div>
+					<% else %>
+					<div class="t-blcok duration"><%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %><small>بدون توقف</small></div>
+					<% end %>
+					<div class="t-blcok arrival"><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %></div>
+				</li>
+				<li class="min-price">
+					<% if route[:cc_min_price].to_i > 0 %>
+					<%= application_processor.currency_name(@country_code)%> <%= route[:cc_min_price].to_i %>
+					<% else %>
+					N/A
+					<% end %>
+				</li>
+				<% if route[:cc_min_price].to_i > 0 %>
+				<li class="book-section"><a data-route="<%=route[:dep_airport_code]%>-<%= route[:arr_airport_code]%>-<%= route[:carrier_code] %>-<%= route_type %>"
+					href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= schedule_layout_values['dep_airport_code']%>&to=<%= schedule_layout_values['arr_airport_code']%><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=route[:carrier_code] %>&page_type=flight-schedule&domain=<%= domain %>&section=<%=section[3..5]%>&button_type=book_now_button" class="booking-btn flight-schedule-booking">احجز <span class="hidden-xs">الآن</span></a>
+				</li>
+				<%else%>
+				<li class="book-section"><a data-route="<%=route[:dep_airport_code]%>-<%= route[:arr_airport_code]%>-<%= route[:carrier_code] %>-<%= route_type %>"
+					href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= schedule_layout_values['dep_airport_code']%>&to=<%= schedule_layout_values['arr_airport_code']%><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=route[:carrier_code] %>&page_type=flight-schedule&domain=<%= domain %>&section=<%=section[3..5]%>&button_type=book_now_button" class="booking-btn flight-schedule-booking">تأكد <span class="hidden-xs">الان</span></a>
+				</li>
+				<%end%>
+			</ul>
+		</div>
+		<% end %>
+	</div>
+	<div class = "visible-xs mobile_top_routes">
+		<div class="airline-wrapper sorting-bar" >
+			<ul class="list-inline">
+				<li class="airline">
+					<span class="airline-names"><%= t('brand.airline') %></span>
+				</li>
+				<li class="timing">
+					<div class="t-blcok depart"><%= t('flight_schedule.departure') %></div>
+					<div class="t-blcok arrival"><%= t('flight_schedule.arrival') %></div>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+		</div>
+		<% route_count = 0
+		routes.each do |route|
+			route_type = route[:dep_country_code] != country_code || route[:arr_country_code] != country_code ? "int" : "dom"
+			route_count+=1
+			%>
+			<div class="airline-wrapper <%= route_count>10 ? 'hide showMore' : "" %>">
+				<% I18n.locale = :en %>
+				<% formated_carrier_name =  t("airlines.#{route[:carrier_code]}").downcase.gsub(" ",'-').gsub('--','-') %>
+				<% airline_name_en =  t("airlines.#{route[:carrier_code]}") %>
+				<% I18n.locale = :ar %>
+				<% airline_name_ar =  t("airlines.#{route[:carrier_code]}") %>
+				<ul class="list-inline">
+					<li class="airline">
+						<a class = "airline_link" href="/ar/flight-booking/amp/<%= format_overview_link(airline_name_en) %>.html" title="<%= airline_name_ar  %>"><span class="carrier-logo <%= formated_carrier_name%>"></span>
+						<span class="airline-names"><%= airline_name_ar %> <small><%= route[:flight_no] %></small></span></a>
+					</li>
+					<li class="timing">
+						<div class="t-blcok depart"><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></div>
+						<div class="t-blcok arrival"><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %></div>
+					</li>
+					<li class="min-price"><a  data-route="<%=route[:dep_airport_code]%>-<%= route[:arr_airport_code]%>-<%= route[:carrier_code] %>-<%= route_type %>" href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= schedule_layout_values['dep_airport_code']%>&to=<%= schedule_layout_values['arr_airport_code']%><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=route[:carrier_code] %>&page_type=flight-schedule&domain=<%= domain %>&section=<%=section[3..5]%>&button_type=book_now_button"  class="booking-btn flight-schedule-booking">
+						<% if route[:cc_min_price].to_i > 0 %>
+						<%= application_processor.currency_name(@country_code)%> <%= route[:cc_min_price].to_i %>
+						<% else %>
+						تأكد
+						<% end %>
+					</a></li>
+				</ul>
+			</div>
+			<% end %>
+		</div>

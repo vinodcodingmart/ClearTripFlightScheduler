@@ -1,0 +1,49 @@
+<% if flights_dep.present? %>
+<div class="more-flights">
+	<div class="mview-toggle-header depFlights">
+		<h2>
+			المزيد من الرحلات الجوية من <%= dep_city_name_ar %>
+		</h2>
+		<!-- <div class="mview-mf-toggle-btn visible-xs ">
+			<i class="fa fa-caret-down"></i>
+		</div> -->
+	</div><!--/mview-toggle-header-->
+	<div class="mview-mf-toggle depFlightsToggle">
+		<ul class="linklist list-inline">
+			<% flights_dep.each do |route|%>
+			<% if route.dep_city_name_ar.present? && route.arr_city_name_ar.present? %>
+			<li><a href="/ar/flight-schedule/<%= route.url %>" title="<%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %>  <%= t('header.flights')%>"><%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t('header.flights')%></a></li>
+			<% end %>
+			<% end %>
+		</ul>
+	</div>
+	<!-- <p class="more-link">
+		<a href="/ar/flight-schedule/flights-from-<%#=use_helper.url_escape(dep_city_name_en)%>.html"><%#= t("more_flights_from")%> <%#= dep_city_name_ar %></a>
+	</p> -->
+</div>
+<% end %>
+<% if flights_arr.present? %>
+<div class="more-flights">
+	<div class="mview-toggle-header arrFlights">
+		<h2>
+			المزيد من رحلات الطيران إلى <%= arr_city_name_ar %>
+		</h2>
+		<div class="mview-mf-toggle-btn visible-xs ">
+			<i class="fa fa-caret-down"></i>
+		</div>
+	</div>
+	<div class="mview-mf-toggle arrFlightsToggle ">
+		<ul class="linklist list-inline">
+			<% flights_arr.each do |route|%>
+			<% if route.dep_city_name_ar.present? && route.arr_city_name_ar.present? %>
+			<li><a href="/ar/flight-schedule/<%=  route.url %>" title="<%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t('header.flights')%>"><%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t('header.flights') %></a></li>
+			<% end %>
+			<% end %>
+		</ul>
+	</div>
+	<!-- <p class="more-link">
+		<a href="/ar/flight-schedule/flights-to-<%#=use_helper.url_escape(arr_city_name_en)%>.html"><%#= t("more_flights_to")%> <%#= arr_city_name_ar %></a>
+	</p> -->
+	<div class="clearfix"></div>
+</div>
+<% end %>

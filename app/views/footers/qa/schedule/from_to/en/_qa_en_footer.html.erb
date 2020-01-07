@@ -1,0 +1,88 @@
+<% city_name_formated = city_layout_values["city_name_formated"]%>
+  <div>
+    <div class="container-fluid">
+      <div class="sixteen columns alpha">
+
+
+        <div class="clear"></div>
+        <ul class="footerlinkssmall">
+          <% if footer_links_data.present? %>
+    			<ul class="footerlinkssmall">
+    				<li>Popular Routes:</li>
+    				<% footer_links_data.each do |footer| %>
+    				<% link= footer.gsub("-flights.html","").gsub("-"," ").titleize+" Flights"  rescue nil%>
+    				<% if link.present? %>
+    				<li> <%= link_to link, "/flight-schedule/#{footer}" %></li>
+    				<% end %>
+    				<% end %>
+    			</ul>
+    			<% end %>
+        </ul>
+        <ul class="footerlinkssmall list-unstyled">
+          <li> Other Tools:</li>
+
+          <li>
+            <a href="/flights" title=" ClearTrip Flights">Cheap Flights</a>
+          </li>
+
+          <li>
+            <a href="/flights" title="ClearTrip Flights">
+             Flights
+            </a>
+          </li>
+      <li>
+          <a href="/flight-booking/domestic-airlines.html" title="Flight Booking">
+              Flight Booking
+          </a>
+      </li>
+
+
+        <li>
+          <a href="/flight-schedule/flight-schedules-international.html" title="International Flights">
+            International Flights
+          </a>
+        </li>
+
+        <li>
+          <a href="/hotels/qatar/" title="Qatar Hotels">
+            Hotels in Qatar
+          </a>
+        </li>
+
+
+
+        <% if city_layout_values["arr_city_package"] === "yes" %>
+          <li>
+            <a href="/tourism/packages/<%= city_name_formated %>" title="<%= city_name %> Holiday Packages">
+              <%= city_name %> Holiday Packages
+            </a>
+          </li>
+        <% end %>
+
+        <% if city_layout_values["arr_city_things_todo"] == true %>
+          <li>
+            <a href="/local/<%= city_name_formated %>/things-to-do-in-<%= arr_city_name.downcase %>" title="Things to do in <%= city_name %>">
+             Things to do in <%= city_name %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class="clear"></div>
+      <ul class="footerlinkssmall">
+       <li>Countries:</li>
+       <li> <a href="https://www.cleartrip.com" title="India">India</a> </li>
+       <li> <a href="https://www.cleartrip.ae" title="United Arab Emirates">UAE</a> </li>
+       <li> <a href="https://www.cleartrip.sa" title="Saudi Arabia">SA</a> </li>
+       <li> <a href="https://bh.cleartrip.com" title="Bahrain">Bahrain</a> </li>
+       <li> <a href="https://kw.cleartrip.com" title="Kuwait">Kuwait</a> </li>
+       <li> <a href="https://qa.cleartrip.com" title="Qatar">Qatar</a> </li>
+       <li> <a href="https://om.cleartrip.com" title="Oman">Oman</a> </li>
+     </ul>
+     <div class="clear"></div>
+     <ul class="footerlinkssmall list-unstyled" style="width:100%;">
+      <li style="width:80%">&copy;2006-2019 Cleartrip Pvt. Ltd.</li><li> <a rel="nofollow" href="/privacy-policy/">Privacy</a> </li><li> <a rel="nofollow" href="/security">Security</a> </li><li> <a rel="nofollow" href="/terms/">Terms of Use</a> </li>
+    </ul>
+  </div>
+</div>
+</div>

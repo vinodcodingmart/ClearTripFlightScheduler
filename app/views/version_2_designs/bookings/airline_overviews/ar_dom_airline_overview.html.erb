@@ -1,0 +1,207 @@
+<% use_helper = self.extend ApplicationHelper %>
+
+<div id="airlines">
+  <section id="flights-nav">
+    <div class="container-fluid">
+      <div class="ctCol ctProducts mview-header">
+        <a class="ctBrand" href="/">
+          <span class="cleartripLogo" title="Homepage">Home</span>
+        </a>
+        <ul class="productLinks hasProductIcons">
+          <li class="flightApp">
+            <a rel="bToolTip" Flights href="/flights">
+              <span class="productIcon flights">Flights</span>
+            </a>
+          </li>
+          <li class="hotelApp">
+            <a rel="bToolTip" Hotels href="/hotels">
+              <span class="productIcon hotels">Hotels</span>
+            </a>
+          </li>
+
+        </ul>
+        <!-- <div class="Menuicon visible-xs pull-right"> <span></span> <span></span> <span></span></div> -->
+      </div>
+      <div class="ctCol">
+        <ul class="list-inline language">
+          <li class="en first active">
+            <a href="/ar/flight-booking/<%= flight_file_name %>" lang="ar">عربى</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="/flight-booking/<%= flight_file_name %>" lang="en">English</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </section>
+  <!--/Header Ends Here-->
+  <!-- /Second Header starts here -->
+  <!-- /Second Header starts here -->
+  <%= render partial: "new_designs/bookings/shared/ar/booking_header_ar",locals: {popular_routes: header_routes,airports: header_airports,carrier_name_en: @carrier_name,use_helper: use_helper, application_processor: application_processor,customer_support: customer_support,baggages: baggages,brand_type: "overview_page",sa_header_routes: rhs_schedule_routes}  %>
+  <!-- /Second Header ends  here -->
+  <div class="clearfix"></div>
+  <!--/contnet Starts Here-->
+  <section id="content">
+    <%= render partial: "new_designs/bookings/shared/ar/airline_search_widget_ar",locals: {assets_path: @assets_path,carrier_code: @carrier_code,carrier_name_translated: @carrier_name_ar, formated_airline_name: format_airline_name(@carrier_name, I18n.locale) }%>
+    <div class="container content-wrapper">
+      <div class="col-sm-9 pad-lzero m-5">
+        <div class="list-box visible-xs">
+            <div id="banner" class="lhs-banner"></div>
+        </div>
+        <% if popular_routes['dom_dom'].present? &&  popular_routes['dom_dom'].length>0 %>
+        <h2><%= t('brand.popular_dom_route_title', airline_name: @carrier_name_ar) %></h2>
+        <%= render :partial=>"new_designs/bookings/shared/ar/airline_overview_schedule_table_ar",:locals=>{:routes=>popular_routes['dom_dom'], :use_helper=>use_helper, :assets_path=>@assets_path, :country_code=> @country_code, :section=> 'dom',currency_code: currency_code(@country_code)} %>
+        <p>&nbsp;</p>
+        <% end %>
+        <% if popular_routes['dom_int'].present? && popular_routes['dom_int'].length>0  %>
+        <h2><%= t('brand.popular_int_route_title', airline_name: @carrier_name_ar) %></h2>
+        <%= render :partial=>"new_designs/bookings/shared/ar/airline_overview_schedule_table_ar",:locals=>{:routes=>popular_routes['dom_int'], :use_helper=>use_helper, :assets_path=>@assets_path, :country_code=> @country_code, :section=> 'int',currency_code: currency_code(@country_code)} %><!--mobile-view-->
+        <% end %>
+          <div class="airline-cnt">
+          <% if @content["overview_content_ar"].present? && @content["overview_content_ar"] != "" %>
+            <%= @content["overview_content_ar"].html_safe %>
+          <% else %>
+            <%= render partial: "bookings/shared/ar/overview_templatized_content_ar",locals: {airline_name: @carrier_name_ar,host: @host_name,top_sectors: top_sectors} %>
+          <% end %>
+        <div class="clearfix"></div>
+         <% if @review_content["review_content_presence"] %>
+          <%= render partial: "new_designs/bookings/airline_overviews/reviews_content_ar",locals: {review_content: @review_content["review_content"].split("\n")} %>
+        <% end %>
+        
+      </div> <!--content-desc-->
+    </div>
+
+  <div class="col-sm-3 pad-zero">
+    <div class="side-bar">
+      <div id="Rside-bar">
+        <div class="blocks banner-section">
+          <div id="banner">
+            <a target="_blank"><img></a>
+          </div>
+          <p></p>
+        </div>
+      </div>
+
+      <%= render :partial=>"new_designs/bookings/shared/ar/rhs_top_airlines_ar",:locals=>{:top_airlines=>rhs_airlines[:int_airlines], use_helper: use_helper,:assets_path=>@assets_path, application_processor: application_processor,section: "int"} %>
+      <% if rhs_schedule_routes[:int_routes].present? && !rhs_schedule_routes[:int_routes].nil? %>
+      <%= render :partial=>"new_designs/bookings/shared/ar/rhs_top_routes_ar",:locals=>{:routes=>rhs_schedule_routes[:int_routes], page_type: 'flight-booking', application_processor: application_processor, :carrier_code=> @carrier_code, :section=>"int",sa_header_routes: rhs_schedule_routes } %>
+      <% end %>
+      <%= render :partial=>"new_designs/bookings/shared/ar/rhs_top_airports_ar",:locals=>{:top_airports=>header_airports["int_airports"], use_helper: use_helper, application_processor: application_processor } %>
+
+    </div>
+  </div><!--/Rside-bar-->
+
+  <div class="clearfix"></div>
+    <ul class="list-inline bread-crumb">
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="first">
+          <a href="/flights" title="<%= t('breadcrumb.flights') %>" itemprop="url"><span itemprop="title"><%= t('breadcrumb.flights') %></span></a>
+        </li>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a href="<%= @host_name %>/ar/flight-booking/domestic-airlines.html" title="<%= t('breadcrumb.domestic_airlines') %>" itemprop="url">
+            <span itemprop="title"><%= t('breadcrumb.domestic_airlines')%></span>
+          </a>
+        </li>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+          <a href="/ar/flight-booking/<%= url_escape("#{format_overview_link(@carrier_name, I18n.locale)}") %>.html" title="<%= @carrier_name_ar %>">
+            <span itemprop="title"><%= @carrier_name_ar %></span>
+          </a>
+        </li>
+      </ul>
+</div>
+</section><!--/contnet-->
+<!--/contnet Ends Here-->
+
+<%#=render partial: "new_footers/#{@country_code.downcase}/#{country_code.downcase}_int_booking_footer_#{@language.downcase}", locals: {country_code: country_code,footer_airline_data: booking_footer[:footer_airline_data],top_airlines: booking_footer[:int_airlines],section: @section,footer_links_data: booking_footer[:footer_links_data] } %>
+
+<%= render partial: "new_footers/#{country_code.downcase}/#{country_code.downcase}_int_schedule_footer_ar", locals: {country_code: country_code,footer_airline_data: booking_footer[:footer_airline_data],footer_links_data_arabic: booking_footer[:footer_links_data_arabic],page_type: '' } %>
+
+<%= render "shared/#{country_code.downcase}/#{country_code.downcase}_gac" %>
+</div>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+           <% if @review.present? &&  @review["reviews_list"].present? %>
+              <% @review["reviews_list"].each_with_index do |r,i| %>
+              $("<%= "#review#{i+1}" %>").rateYo({
+                   rating: <%= r["rating"].to_f %>,
+                   readOnly: true,
+                   halfStar:true,
+                   ratedFill: "#f5681e",
+                   starWidth: "18px"
+                 });
+              <% end %> 
+      <% elsif @review_content["review_content_presence"] %>
+      <% review_content =  @review_content["review_content"].split("\n") %>
+      <% if review_content[13].present? %>
+      var overallRating = "<%= review_content[15].split(":")[1].to_f%>";
+      var userRating5 = "<%= review_content[13].split(":")[1].to_f %>";
+       $("#review5").rateYo({
+        rating: userRating5,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+      <% else %>
+      var overallRating = "<%= review_content[12].split(":")[1].to_f%>";
+      <% end %>
+      var userRating1 = "<%= review_content[1].split(":")[1].to_f %>";
+      var userRating2 = "<%= review_content[4].split(":")[1].to_f %>";
+      var userRating3 = "<%= review_content[7].split(":")[1].to_f %>";
+      var userRating4 = "<%= review_content[10].split(":")[1].to_f %>";
+
+      $("#rateYo").rateYo({
+        rating: overallRating ,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review1").rateYo({
+        rating: userRating1,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review2").rateYo({
+        rating: userRating2,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review3").rateYo({
+        rating: userRating3,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+      $("#review4").rateYo({
+        rating: userRating4,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+      <% end %>
+
+
+        
+
+    })
+  </script>
+<%#= render partial: "new_designs/bookings/airline_overviews/show_star_reviews_ar" %>
+<script type="text/javascript">
+var country_code='<%= @country_code.downcase%>';
+var section_type='<%= @section.include?("dom") ? "domestic" : "international" %>';
+var page_type="flight-booking";
+var language_type='<%= I18n.locale.downcase.to_s%>';
+var carrier_name= '<%= @carrier_name %>' ;
+var carrier_code= '<%= @carrier_code %>';
+var page_sub_type= "Airline overview";
+var sub_section= 'overview';
+</script>

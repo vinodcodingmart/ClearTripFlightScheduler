@@ -1,0 +1,104 @@
+<div class="content-desc cnt-odd">
+  <h2><%= t('faq') %></h2>
+  <ol>
+  <%if ticket_layout_values["min90"].present?%>
+    <li itemscope="" itemtype="http://schema.org/Question">
+      <div itemprop="text">
+        <span><%= t('flight_schedule.faq_new_changes_ques1',  dep_city_name: dep_city_name, arr_city_name: arr_city_name ,airline_name: ticket_layout_values["min90"]["aln"]) %>
+        </span>
+      </div>
+      <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+        <p itemprop="text">
+        <%= t('flight_schedule.faq_new_changes_ans1', dep_city_name: dep_city_name, arr_city_name: arr_city_name, airline_name: ticket_layout_values["min90"]["aln"]) %></p>
+      </div>
+    </li>
+  <% end %>
+  <li itemscope="" itemtype="http://schema.org/Question">
+    <div itemprop="text">
+      <span><%= t('flight_schedule.faq_new_changes_ques2',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+      </span>
+    </div>
+    <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+      <p itemprop="text">
+      <%= t('flight_schedule.faq_new_changes_ans2', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %>
+      </p>
+    </div>
+  </li>
+  <li itemscope="" itemtype="http://schema.org/Question">
+    <div itemprop="text">
+      <span><%= t('flight_schedule.faq_new_changes_ques3',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+      </span>
+    </div>
+    <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+      <p itemprop="text">
+        <%= t('flight_schedule.faq_new_changes_ans3', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %>
+      </p>
+    </div>
+  </li>
+  <li itemscope="" itemtype="http://schema.org/Question">
+    <div itemprop="text">
+      <span><%= t('flight_schedule.faq_new_changes_ques4',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+      </span>
+    </div>
+    <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+      <p itemprop="text">
+        <%= t('flight_schedule.faq_new_changes_ans4', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %>
+      </p>
+    </div>
+  </li>
+  <!-- <li>
+    <span><%#= t('flight_schedule.faq_new_changes_ques5',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+    </span>
+    <%#= t('flight_schedule.faq_new_changes_ans5', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %>
+  </li> -->
+  <% if ticket_layout_values["min_price"].present?  &&  ticket_layout_values["min_price"].to_i > 0 %>
+    <li itemscope="" itemtype="http://schema.org/Question">
+      <div itemprop="text">
+        <span><%= t('flight_schedule.faq_new_changes_ques6',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+        </span>
+      </div>
+      <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+        <p itemprop="text">
+        <%= t('flight_schedule.faq_new_changes_ans6', dep_city_name: dep_city_name, arr_city_name: arr_city_name, other_airlines: ticket_layout_values["operational_airlines"] , min_price: ticket_layout_values["min_price"],max_price: ticket_layout_values["max_price"],currency_code: currency ) %>
+        </p>
+      </div>
+    </li>
+  <% end %>
+  <li itemscope="" itemtype="http://schema.org/Question">
+    <div itemprop="text">
+      <span><%= t('flight_schedule.faq_new_changes_ques7',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+      </span>
+    </div>
+    <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+      <p itemprop="text">
+      <%= t('flight_schedule.faq_new_changes_ans7', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %>
+      </p>
+    </div>
+  </li>
+  <li itemscope="" itemtype="http://schema.org/Question">
+    <div itemprop="text">
+      <span><%= t('flight_schedule.faq_new_changes_ques8',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+      </span>
+    </div>
+    <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+      <p itemprop="text">
+        <%= t('flight_schedule.faq_new_changes_ans8', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %>
+      </p>
+    </div>
+  </li>
+  <li itemscope="" itemtype="http://schema.org/Question">
+    <div itemprop="text">
+      <span><%= t('flight_schedule.faq_new_changes_ques9',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+    </span>
+    </div>
+    <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+      <p itemprop="text"><%= t('flight_schedule.faq_new_changes_ans9', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %></p>
+    </div>
+  </li>
+ <!--  <li>
+    <span><%= t('flight_schedule.faq_new_changes_ques10',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>
+    </span>
+    <%= t('flight_schedule.faq_new_changes_ans10', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: ticket_layout_values) %>
+  </li> -->
+ </ol>
+</div>

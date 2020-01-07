@@ -1,0 +1,63 @@
+<section id="common-nav-bar">
+  <div class="custom-container">
+
+    <!--Language Links Sections-->
+    <% unless @country_code == "IN" %>
+    <div class="col-sm-2 pad-lzero hidden-xs">
+      <ul class=" lang-menu list-inline text-right">
+        <li><a href="<%= "#{application_processor.host_name(country_code)}/#{@page_type}/#{flight_file_name}" %>">English</a></li>
+        <li><a href="<%= "#{application_processor.host_name(country_code)}/ar/#{@page_type}/#{flight_file_name}" %>">العربية</a></li>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="Menuicon visible-xs pull-left"> 
+      <span></span> 
+      <span></span> 
+      <span></span>
+    </div>
+
+
+    <!--Header Links Sections-->
+    <div class="col-sm-7 pad-lzero common-m-navbar">
+      <div class="main-nav-links">
+        <ul class="list-inline">
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="flights-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">علومات شركة الطيران </span>
+            <div class="dropdown-menu" aria-labelledby="flights-menu">
+              <% unless brand_type == "booking-overview" %>
+                <%= link_to("#{carrier_name_en} Overview","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}.html",title:"#{carrier_name_en} Overview")%>
+                <% end %>
+                <% unless brand_type == "pnr_status" %>
+                <%= link_to("#{@carrier_name_ar} PNR حالة","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-flight-pnr-status.html",title:"#{@carrier_name_ar} PNR حالة") %>
+                <% end %>
+                <% unless brand_type == "web_checkin" %>
+                <%= link_to("#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-web-check-in.html",title:"#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت") %>
+                <% end %>
+                
+                             </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+     <!--Logo Sections-->
+    <div class="col-sm-3 ct-col-3 pad-lzero">
+      <a class="ctBrand" href="/ar/flights">
+        <span class="cleartripLogo" title="Cleartrip ">Home</span>
+      </a>
+      <ul class=" list-inline productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" title="Flights" href="/ar/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" title="Hotels" href="/hotels">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+      </div>
+</section>

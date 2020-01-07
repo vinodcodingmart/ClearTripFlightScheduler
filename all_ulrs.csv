@@ -1,0 +1,25 @@
+flight-booking,overview,dom,www.cleartrip.com/flight-booking/indigo-airlines.html
+flight-booking,overview,int,www.cleartrip.com/flight-booking/air-carnival-airlines.html
+flight-booking,routes,dom,www.cleartrip.com/flight-booking/indigo-bangalore-hyderabad-flights.html
+flight-booking,routes,int,www.cleartrip.com/flight-booking/air-france-atlanta-chicago-flights.html
+flight-booking,pnr,dom,www.cleartrip.com/flight-booking/indigo-airlines-flight-pnr-status.html
+flight-booking,pnr,int,www.cleartrip.com/flight-booking/air-china-airlines-flight-pnr-status.html
+flight-booking,index,dom,www.cleartrip.com/flight-booking/domestic-airlines.html
+flight-booking,index,int,www.cleartrip.com/flight-booking/international-airlines.html
+flight-booking,web chekin,dom,www.cleartrip.com/flight-booking/indigo-airlines-web-check-in.html
+flight-booking,web chekin,int,www.cleartrip.com/flight-booking/air-china-airlines-web-check-in.html
+flight-schedule,routes,dom,www.cleartrip.com/flight-schedule/bangalore-madurai-flights.html
+flight-schedule,routes,int,www.cleartrip.com/flight-schedule/atlanta-miami-flights.html
+flight-schedule,from,dom,www.cleartrip.com/flight-schedule/flights-from-chennai.html
+flight-schedule,from,int,www.cleartrip.com/flight-schedule/flights-from-dubai.html
+flight-schedule,to,dom,www.cleartrip.com/flight-schedule/flights-to-bangalore.html
+flight-schedule,to,int,www.cleartrip.com/flight-schedule/flights-to-dubai.html
+flight-schedule,index,dom,www.cleartrip.com/flight-schedule/flight-schedules-domestic.html
+flight-schedule,index,int,www.cleartrip.com/flight-schedule/flight-schedules-international.html
+flight-tickets,index,dom,https://www.cleartrip.com/flight-tickets/cheap-flight-air-tickets-domestic.html
+flight-tickets,index,int,https://www.cleartrip.com/flight-tickets/cheap-flight-air-tickets-international.html
+flight-tickets,routes,dom,https://www.cleartrip.com/flight-tickets/chennai-bangalore-cheap-airtickets.html
+flight-tickets,routes,int,https://www.cleartrip.com/flight-tickets/singapore-dubai-cheap-airtickets.html
+flight-booking,customer support,dom,https://www.cleartrip.com/flight-booking/indigo-airlines-customer-support.html
+flight-booking,special assistance,dom,https://www.cleartrip.com/flight-booking/indigo-airlines-special-assistance.html
+flight-booking,travel document,dom,https://www.cleartrip.com/flight-booking/indigo-airlines-travel-documents.html

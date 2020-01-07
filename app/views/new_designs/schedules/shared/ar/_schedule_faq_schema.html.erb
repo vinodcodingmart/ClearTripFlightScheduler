@@ -1,0 +1,55 @@
+      <% if @faq.present? %>
+      <script type="application/ld+json">
+
+        {"@context": "https://schema.org","@type": "FAQPage","mainEntity": [
+        <% @faq.each_with_index do|faq,ind| %>
+        {"@type": "Question","name": "<%= faq[:question] %>","acceptedAnswer": {"@type": "Answer","text": "<%= faq[:answer]%></p>"}}<% unless faq==@faq.last%>,<% end %><% end %>
+        ]}
+      </script>
+      <% else %>
+      <script type="application/ld+json">
+        {"@context": "https://schema.org","@type": "FAQPage","mainEntity": [
+        <%  if schedule_layout_values["min90"].present? && schedule_layout_values["min90"]["al"].present? %>
+        <% airline_name = I18n.t("airlines.#{schedule_layout_values["min90"]["al"]}") %>
+        {"@type": "Question","name":  <%= t('flight_schedule.faq_new_changes_ques1',  dep_city_name: dep_city_name, arr_city_name: arr_city_name ,airline_name: airline_name )%>
+        ,"acceptedAnswer": {"@type": "Answer","text":
+        "<%= t('flight_schedule.faq_new_changes_ans1', dep_city_name: dep_city_name, arr_city_name: arr_city_name, airline_name: airline_name )%>"}}, 
+        <% end %>
+        {"@type": "Question","name": "< <%= t('flight_schedule.faq_new_changes_ques2',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>",  
+        "acceptedAnswer": {"@type": "Answer","text":   
+        "<%= t('flight_schedule.faq_new_changes_ans2', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: schedule_layout_values) %>"}},
+      {"@type": "Question","name": "<%= t('flight_schedule.faq_new_changes_ques3',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>",
+      "acceptedAnswer": {"@type": "Answer","text":  
+      "<%= t('flight_schedule.faq_new_changes_ans3', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: schedule_layout_values) %>"}},
+      {"@type": "Question","name": "
+      <%= t('flight_schedule.faq_new_changes_ques4',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>",
+      "acceptedAnswer": {"@type": "Answer","text":  
+      "<%= t('flight_schedule.faq_new_changes_ans4', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: schedule_layout_values) %>"}},    
+    <% if schedule_layout_values["min_price"].present? && schedule_layout_values["airline_names"].present?%>
+    {"@type": "Question","name": "
+     <%= t('flight_schedule.faq_new_changes_ques6',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>",
+    "acceptedAnswer": {"@type": "Answer","text":  
+    "<%= t('flight_schedule.faq_new_changes_ans6', dep_city_name: dep_city_name, arr_city_name: arr_city_name, other_airlines: schedule_layout_values["airline_names"].take(5).to_sentence.gsub("and","و") , min_price: schedule_layout_values["min_price"],max_price: schedule_layout_values["min_price"] + 300 ) %>
+ "}},
+  <% end %>
+  {"@type": "Question","name": "
+   <%= t('flight_schedule.faq_new_changes_ques7',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>",
+  "acceptedAnswer": {"@type": "Answer","text":  
+  "<%= t('flight_schedule.faq_new_changes_ans7', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: schedule_layout_values) %>
+</p>"}},
+{"@type": "Question","name": "
+<%= t('flight_schedule.faq_new_changes_ques8',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>",
+"acceptedAnswer": {"@type": "Answer","text":  
+"<%= t('flight_schedule.faq_new_changes_ans8', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: schedule_layout_values) %>
+</p>"}},
+{"@type": "Question","name": "
+<%= t('flight_schedule.faq_new_changes_ques9',  dep_city_name: dep_city_name, arr_city_name: arr_city_name) %>",
+"acceptedAnswer": {"@type": "Answer","text":  
+"<%= t('flight_schedule.faq_new_changes_ans9', dep_city_name: dep_city_name, arr_city_name: arr_city_name, schedule_values: schedule_layout_values) %>"}}
+]}
+</script>
+<% end %>
+
+
+
+

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  operational_airlines: MyString
+  airline_flight_count: MyString
+  unique_route: one
+
+two:
+  operational_airlines: MyString
+  airline_flight_count: MyString
+  unique_route: two

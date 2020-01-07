@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- clevertap event script -->
+ <script type="text/javascript" async = true  src= "https://d2r1yp2w7bby2u.cloudfront.net/js/a.js"></script>
+ <script type="text/javascript">
+   var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[]};
+   clevertap.account.push({"id": "W8R-KK8-W74Z"});
+ </script>
+ <!-- End of clevertap  -->
+ <!-- Google Tag Manager -->
+ <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+ 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T9S432');</script>
+<!-- End Google Tag Manager -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+<title>Flight Status, Check flight live status, Flights status tracker - Cleartrip</title>
+
+<meta name="description" content="Check live flight status of arrival and departure for each domestic and international airlines.This is the best option to track your flights status & never miss the flight." />
+
+<meta name="robots" content="noodp,noydir"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+<link rel="stylesheet" href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/application.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.0/flexslider.min.css"/>
+
+
+<link rel="shortcut icon" href='https://d2w5af8s1781.cloudfront.net/waytogo-staging/images/cleartrip32x32.ico'>
+<link rel="apple-touch-icon" href='https://d2w5af8s1781.cloudfront.net/waytogo-staging/images/57x57.png'>
+<link rel="apple-touch-icon" sizes="72x72" href='https://d2w5af8s1781.cloudfront.net/waytogo-staging/images/72x72.png' >
+<link rel="apple-touch-icon" sizes="114x114" href='https://d2w5af8s1781.cloudfront.net/waytogo-staging/images/114x114.png'>
+
+<script type="text/javascript">
+  var country_code='in';
+  var section_type='domestic';
+  var page_type="flight-schedule";
+  var language_type = "en";
+  var page_sub_type = 'routes';
+  var dep_city_code ="BLR"
+  var arr_city_code = "HYD"
+</script>
+
+
+<!-- Crazyegg Tracking Code for cleartrip.com -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0011/6454.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+
+<!-- Hotjar Tracking Code for cleartrip.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:332967,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<style>
+.list-inline>li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+  position: relative;
+}
+.airline-info h3{
+  font-size: 18px;
+}
+.airline-info{
+  padding: 0 0 20px;
+}
+.airline-info table.airline-info-table,.airline-info .fare-table,.other-info{
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  border-collapse: collapse;
+
+}
+.local-tile {
+  text-align: center !important;
+}
+.local-tile img{
+  width: 80% !important;
+  height: auto !important;
+}
+.local-cnt h3{
+  font-size: 14px !important
+}
+.airline-info table.airline-info-table td,.fare-table td,.other-info td{
+  padding: 10px;
+  border-bottom: 1px solid #d9d9d9;
+}
+.fare-table th,.other-info th{
+  padding: 10px;
+  background: #eeeeee54;
+  border-bottom: 1px solid #d9d9d9;
+  font-weight: 500;
+}
+.airline-info table.airline-info-table td:nth-child(odd){
+  background: #eeeeee54;
+  font-weight: 500;
+  border-right: 1px solid #d9d9d9;
+}
+.airline-info .booking {
+  padding: 4px 15px;
+}
+.normal-list .dep-time,.normal-list .arr-time{
+  width: 32%;
+  display: inline-block;
+  vertical-align: top;
+}
+.schedule-divide{
+  width: 30px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  top: 5px;
+}
+.show_more{
+  display: inline-block;
+  text-align: center;
+  display: inline-block;
+  padding: 4px 8px;
+  color: #222;
+  background: #f9f9f9;
+  font-size: 14px;
+  border-radius: 3px;
+  margin: 15px 0 0;
+  text-decoration: none;
+  border: 1px solid #d9d9d9;
+}
+.content-desc p{
+  text-align: justify;
+}
+.featured-local-wrapper{
+  border: none !important;
+}
+.list-box{
+  border-bottom: 1px solid #ccc !important;
+  margin: 0 0 10px !important;
+}
+
+.readmore {
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  margin: 0 0 10px;
+  border-radius: 3px;
+  font-weight: 600;
+  color: #36c;
+}
+.main-titles {
+  margin: 15px 0!important;
+}
+@media Screen and (max-width: 468px){
+  .airline-info{
+    width: 100%;
+    overflow-x: auto;
+  }
+  .airline-info table{
+    width: 700px!important;
+  }
+  .lhs-banner{
+    padding: 0 !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+  }
+  iframe{
+    width: auto;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe  src="https://www.googletagmanager.com/ns.html?id=GTM-T9S432"
+    height="0" width="0" ></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    <section id="flights-nav">
+      <div class="container-fluid">
+        <div class="ctCol ctProducts mview-header">
+          <a class="ctBrand" href="/">
+            <span class="cleartripLogo" title="Homepage">Home</span>
+          </a>
+          <ul class="productLinks hasProductIcons">
+            <li class="flightApp">
+              <a rel="bToolTip" Flights href="/flights">
+                <span class="productIcon flights">Flights</span>
+              </a>
+            </li>
+            <li class="hotelApp">
+              <a rel="bToolTip" Hotels href="/hotels">
+                <span class="productIcon hotels">Hotels</span>
+              </a>
+            </li>
+            <li class="trainsApp">
+              <a rel="bToolTip" title="Trains" href="/trains">
+                <span class="productIcon trains">Trains</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ctCol ctCenter mview-center">&nbsp;</div>
+      </div>
+      <div class="clearfix"></div>
+    </section>
+    <div class="clearfix"></div>
+
+
+    <section id="content">
+      <div class="container-fluid">
+        <h1 class="main-titles">Search Flights</h1>
+        <div id="search-widget">
+        <form action="/flights/search" errorblockid="flt_err" id="AirSearch" class="search no-action-change removeSelflabels" method="get" target="_blank">
+          <ul class="list-inline trip-type">
+            <li>
+              <label class="encaps" for="rnd_trip">
+                <input type="radio" value="R" checked name="rnd_one" id="rnd_trip">
+                <strong>Round trip</strong>
+              </label>
+            </li>
+            <li>
+              <label class="encaps" for="one_way">
+                <input type="radio" value="O" name="rnd_one" id="one_way">
+                <strong>One way</strong></label>
+              </li>
+            </ul>
+            <ul class="list-inline search-bar">
+              <li class="search-mview">
+                <label class="required" for="origin_autocomplete">From
+                  <span class="weak">(any worldwide city or airport)</span>
+                </label>
+                <input type="text" selflabel="Enter a city or airport" id="origin_autocomplete" autocomplete="off">
+                <input type="hidden" name="from" id="from">
+              </li>
+              <li class="search-mview">
+                <label class="required" for="destination_autocomplete">To
+                  <span class="weak">(any worldwide city or airport)</span>
+                </label>
+                <input type="text" selflabel="Enter a city or airport" id="destination_autocomplete">
+                <input type="hidden" name="to" id="to" value="">
+              </li>
+              <li class="date">
+                <label class="required" for="dpt_date">Depart on</label>
+                <span class="enclosedPicker">
+                  <input readonly="readonly" type="text" size="10" autocomplete="off" id="dpt_date" title="Departure date" name="depart_date" class="datePicker required selflabel" >
+                </span>
+              </li>
+              <li  class="date" id="returnDateSec">
+                <label class="required" for="rtn_date">Return on</label>
+                <span class="enclosedPicker">
+                  <input readonly="readonly" type="text" size="10" id="rtn_date" autocomplete="off" mindatefieldid="dpt_date" title="Return date" name="return_date" class="datePicker second required no_autochange selflabel disabled" >
+                </span>
+              </li>
+              <div class="clearfix mobile-widget-clear"></div>
+              <li class="travellers">
+                <label class="required" for="adults">Adults</label>
+                <select size="1" name="adults" id="adults">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+                <span class="weak">> 12 yrs</span>
+              </li>
+              <li class="travellers">
+                <label for="children">Children</label>
+                <select size="1" name="childs" id="children">
+                  <option value="0" selected="selected">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+                <span class="weak">2-12 yrs</span>
+              </li>
+              <li class="travellers">
+                <label for="infants">Infants</label>
+                <select size="1" name="infants" id="infants">
+                  <option value="0" selected="selected">0</option>
+                  <option value="1">1</option>
+                </select>
+                <span class="weak">< 2 yrs</span>
+              </li>
+              <li class="search-mview">
+                <button type="submit" id="button_flight_search" title="Search" class="booking" >Search flights</button>
+              </li>
+            </ul>
+          </form>
+      </div><!--/search-widget-->
+        <div class="col-sm-9  mobile-view pad-lzero" id="flight-schedule">
+          <div class="list-box">
+           <div id="banner" class="lhs-banner"></div>
+           <div class="content-desc">
+             <h3> Check flight live status</h3>
+           </div>
+           <iframe src="https://www.flightstats.com/go/weblet?guid=c228b59beca1b817:1fb62a4f:11502c4a893:6b48&imageColor=black&language=English&weblet=status&action=display"  height="400" width="700">
+            <html>
+            <head>
+              <title></title>
+              <script language='JavaScript' type='text/javascript' src='https://dem5xqcn61lj8.cloudfront.net/Weblets/x_all_non_drag.js'></script>
+              <script language="JavaScript" type='text/javascript' src="https://dem5xqcn61lj8.cloudfront.net/Weblets/JavascriptFunctions.js"></script>
+              <script language="JavaScript" type='text/javascript' src="https://dem5xqcn61lj8.cloudfront.net/Weblets/DateFunctions.js"></script>
+              <script type="text/javascript">
+                var flightStatusflightTrackerByFlightGroup1;
+                flightStatusWidgetLoad = function()
+                {
+                  var fsTextbox1 = new AutoSuggestControl(document.getElementById("fsAirline"), new RemoteAirlineSuggestions('https://www.flightstats.com'), null, null, null, null, null, null, 10, true);
+                  var fsTextbox2 = new AutoSuggestControl(document.getElementById("fsDepartureAirport"), new RemoteAirportSuggestions('https://www.flightstats.com'), null, null, null, null, null, null, 10, true);
+                  var fsTextbox3 = new AutoSuggestControl(document.getElementById("fsArrivalAirport"), new RemoteAirportSuggestions('https://www.flightstats.com'), null, null, null, null, null, null, 10, true);
+
+                  var form = xGetElementById("flightStatusByFlightForm");
+                  setDefaultDates(form.flightQueryDate, 1, 1, 'dd-NNN-yyyy');
+                  form = xGetElementById("flightStatusByRouteForm");
+                  setDefaultDates(form.routeQueryDate, 1, 1, 'dd-NNN-yyyy');
+                }
+
+                xAddEventListener(window, 'load', flightStatusWidgetLoad, false);
+              </script>
+            </head>
+
+            <body onload="correctPNG('https://www.flightstats.com');">
+              <form id="flightStatusByFlightForm" style="margin:0px;padding:0px;" method="post" target="_self" action="https://www.flightstats.com/go/weblet?guid=c228b59beca1b817:1fb62a4f:11502c4a893:6b48&weblet=status&action=FlightStatusByFlightProcess">
+                <input type="hidden" name="imageColor" value="black"/>
+                <input type="hidden" name="language" value="English"/>
+                <input type="hidden" name="startAction" value="display" />
+                <table width="100%">
+                  <tr>
+                    <td width="100%" class="header">FLIGHT STATUS BY FLIGHT</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table width="100%">
+                        <tr>
+                          <td colspan="2">
+                            <span class="label">Airline </span>
+                            <span class="error">
+                              The airline code was omitted
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <input type="text" style="width:229px;" name="airline" value="Enter an airline name or code" id="fsAirline" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td  colspan="2" style="line-height:5px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <span class="label">Flight </span>
+                            <span colspan="2" class="error">
+                              The flight number was omitted
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <input style="width:229px;" maxlength="4" name="flightNumber" value=""/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="line-height:5px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" class="label">Departure Date</td>
+                        </tr>
+                        <tr>
+                          <td width="240">
+                            <select name="departureDate" size="1" id="flightQueryDate" style="width:229px;" class="content">
+                              <option value="2006-01-08"></option>
+                              <option value="2006-01-09"></option>
+                              <option value="2006-01-10"></option>
+                            </select>
+                          </td>
+                          <td>
+                            <table>
+                              <tr>
+                                <td><a href="javascript:xGetElementById('flightStatusByFlightForm').submit();">test</a></td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+              <hr>
+              <form style="margin:0px;padding:0px;" method="post" id="flightStatusByRouteForm" target="_self" action="https://www.flightstats.com/go/weblet?guid=c228b59beca1b817:1fb62a4f:11502c4a893:6b48&weblet=status&action=FlightStatusByRouteProcess">
+                <input type="hidden" name="imageColor" value="black"/>
+                <input type="hidden" name="language" value="English"/>
+                <input type="hidden" name="startAction" value="display" />
+                <table width="100%">
+                  <tr>
+                    <td width="100%" class="header">FLIGHT STATUS BY ROUTE</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table width="100%">
+                        <tr>
+                          <td colspan="2">
+                            <span class="label">Departure Airport </span>
+                            <span class="error">
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <input type="text" style="width:229px;" name="departure" value="Enter an airport name or code" id="fsDepartureAirport" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="line-height:5px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <span class="label">Arrival Airport </span>
+                            <span class="error">
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <input type="text" style="width:229px;" name="arrival" value="Enter an airport name or code" id="fsArrivalAirport" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="line-height:5px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" class="label">Departure Date</td>
+                        </tr>
+                        <tr>
+                          <td width="240">
+                            <select name="departureDate" size="1" id="routeQueryDate" style="width:229px;" class="content">
+                              <option value="2006-01-08"></option>
+                              <option value="2006-01-09"></option>
+                              <option value="2006-01-10"></option>
+                            </select>
+                          </td>
+                          <td>
+                            <table>
+                              <tr>
+                                <td valign="middle">Go</td>
+                                <td><a href="javascript:xGetElementById('flightStatusByRouteForm').submit();"><img border=0 src=""></a></td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </body>
+            </html>
+          </iframe>
+          <div class="content-desc">
+            <div id="unique_content">
+              <h3>What is Flight Status?</h3><p>The real-time record about the departure and arrival of flights is called flight status. It gives information about the updates and changes regarding the flight schedule. Flight status information of different airlines can be checked online via online travel sites like Cleartrip and specific airline websites too. Even though every airline operates according to the published schedule of the flights, but bad weather or technical defects can sometimes lead to delay or rescheduling of a flight. In such a situation, real-time flight status can be of great help as it provides an exact update on the real-time arrival and departure of the flight. When you check flight status, you don’t need to assume anything as you have an update about the exact flight departure and arrival time.
+              </p>
+              <div class ="more_content" style="display:none">
+<h3>Checking Flight Status Online</h3><p>In order to plan a trip promptly, it is very important to know the exact status of your flight. As discussed above, there are many factors that determine whether the flights are on time or not. Sometimes due to unavoidable circumstances like bad weather or technical glitches in the aircraft, flight schedule needs to be altered. Hence, if you are taking a flight or are planning to receive someone from the airport, it is suggested that you check the flight status online. This way you can avoid the inconvenience of waiting at the airport. Cleartrip offers real-time flight status service through <b>flights status tracker</b>, which allows one to <b>check flights live status online</b> prior to starting for the airport.  Isn’t this great!</p>
+<h3>How to check the flight status online
+</h3><p>It is quite easy to do <b>flights status check</b> on Cleartrip by following the below-mentioned steps!
+</p>
+<ul style="list-style-type:none">
+<li>1.Key in the flight name / flight code.</li>
+<li>2.Next, fill the right flight number</li>
+<li>3.Enter the departure date.</li>
+</ul>
+<p style="margin-left:10%">OR</p>
+<ul style="list-style-type:none"><li>1.Key in the airport name of the flight departure city.</li>
+<li>2.Fill in the destination city or airport where the flight will arrive.</li>
+<li>3.Enter the departure date.</li>
+</ul>
+<h3>Checking Flight Status of Different Airline Companies</h3>
+<p>In order to check the real-time status of your flight, you must use the instant flight live status service offered by Cleartrip. We not just only help you to check the flight details of one airline, but you can check the status of various airlines.
+</p>
+<h3>What is PNR?</h3>
+<p>PNR or Passenger Name Record is basically the computerized identification number assigned by the airline company to each passenger at the time of flight booking. This is an alphanumeric identification number that contains the complete details of the passenger, seat, flight class, his itinerary, contact details, etc. Most airlines store their PNR databases in a computer reservations system (CRS) or global distribution system (GDS) by companies like Amadeus, Galileo, Sabre, and Worldspan.  The Boarding Pass is issued based on the PNR number. Also, to check your flight status and flight details, you need PNR number.
+</p>
+</div>
+<button class="readmore">Show More</button>
+
+
+
+              <h2>Top Domestic Airlines </h2>
+              <div class="cnt-local-city featured-local-wrapper">
+                <div class="featured_local">
+                  <ul class="slides">
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/jet-airways-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/jet-airways-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>Jet Airways PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/indigo-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/indigo-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>Indigo Airlines PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/air-india-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/air-india-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>Air India PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/spicejet-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/spice-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>SpiceJet PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/goair-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/go-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>GoAir PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <h2>Top International Airlines </h2>
+              <div class="cnt-local-city featured-local-wrapper">
+                <div class="featured_local">
+                  <ul class="slides">
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/british-airways-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/british-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>British Airways PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/etihad-airways-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/etihad-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>Etihad Airways PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/singapore-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/sg-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>Singapore Airlines PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/emirates-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/emirates-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>Emirates Airlines PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="local-tile">
+                        <a href="https://www.cleartrip.com/flight-booking/air-asia-airlines-flight-pnr-status.html">
+                          <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight+status+images/airasia-st.jpg" alt=""  />
+                          <div class="local-cnt">
+                            <h3>Air Asia PNR status</h3>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div><!--content-desc-->
+        </div>
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="list-inline bread-crumb no-padding">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a  itemprop="item" href="/flights" title="Cheap Flights to your destination"><span  itemprop="name">Flights</span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </li>
+
+        <!--   <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a  itemprop="item"  href="/flight-schedule/flight-schedules-domestic.html" title="" itemprop="url">
+              <span itemprop="name">
+                </span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li> -->
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span itemprop="name" class="first">Flight status</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+    <!--     <div id="Rside-bar">
+          <div class="col-lg-3 col-md-3 col-sm-12 pad-rzero side-bar">
+            <div class="blocks banner-section">
+              <div id="banner">
+                <a target="_blank"><img></a>
+              </div>
+            </div>
+
+            <div class="blocks banner-section">
+            </div>
+          </div>
+        </div><!--/Rside-bar-->
+      </div>
+
+      <div class="clearfix"></div>
+
+    </section>
+    <div style="display:none">
+      <div id="departure_city_code">BLR</div>
+      <div id="arrival_city_code">HYD</div>
+    </div>
+    <div id="footer_container">
+      <div id="footer">
+        <div style="background-color:#ffffff">
+  <div class="container-fluid">
+    <div class="sixteen columns alpha">
+
+      <ul class="footerlinkssmall list-unstyled">
+        <li>Domestic Airlines :</li>
+        <li> <a href="/flight-booking/air-india-airlines.html" title="Air India Airlines">Air India Airlines</a> </li>
+        <li> <a href="/flight-booking/air-india-express-airlines.html" title="Air India Express">Air India Express</a> </li>
+        <li> <a href="/flight-booking/goair-airlines.html" title="Go Air">Go Air</a> </li>
+        <li> <a href="/flight-booking/indigo-airlines.html" title="Indigo">Indigo</a> </li>
+        <li> <a href="/flight-booking/jet-airways-airlines.html" title="Jet Airways">Jet Airways</a> </li>
+        <li> <a href="/flight-booking/jet-konnect-airlines.html" title="Jet Konnect">Jet Konnect</a> </li>
+        <li> <a href="/flight-booking/jetlite-airlines.html" title="JetLite">JetLite</a> </li>
+        <li> <a href="/flight-booking/kingfisher-airlines.html" title="Kingfisher ">Kingfisher </a> </li>
+        <li> <a href="/flight-booking/kingfisher-red-airlines.html" title="Kingfisher Red">Kingfisher Red</a> </li>
+        <li> <a href="/flight-booking/spicejet-airlines.html" title="Spice Jet">Spice Jet</a> </li>
+      </ul>
+      <div class="clear"></div>
+
+      <ul class="footerlinkssmall list-unstyled">
+        <li> Other Tools:</li>
+
+
+        <li>
+          <a href="/flights" title="Book cheap flights for travel within India and abroad">
+            Domestic Flights
+          </a>
+        </li>
+        <li>
+          <a href="/international-flights" title="Book cheap flights for travel within India and abroad">
+            International Flights
+          </a>
+        </li>
+        <li>
+          <a href="/status/" title="Flight Status">
+            Flight Status
+          </a>
+        </li>
+        <li>
+          <a href="/hotels/india/" title="Hotels">
+            Hotels
+          </a>
+        </li>
+        <li>
+          <a href="/trains" title="IRCTC Railway Reservation">
+            IRCTC Railway Reservation
+          </a>
+        </li>
+        <li>
+          <a href="/trains/pnr" title="Indian Railways PNR Status">
+            Indian Railways PNR Status
+          </a>
+        </li>
+        <li>
+          <a href="/flight-tickets/cheap-flight-air-tickets-domestic.html" title="Domestic Air Tickets">
+            Domestic Air Tickets
+          </a>
+        </li>
+        <li>
+          <a href="/flight-schedule/flight-schedules-domestic.html" title="Domestic Flight Schedule">
+            Domestic Flight Schedule
+          </a>
+        </li>
+        <li>
+          <a href="/flight-booking/domestic-airlines.html" title="Domestic Airlines">
+            Domestic Airlines
+          </a>
+        </li>
+        <li>
+          <a href="/tourism/airports/" title="Domestic Airports">
+            Domestic Airports
+          </a>
+        </li>
+        <li>
+          <a href="/flight-tickets/cheap-flight-air-tickets-international.html" title="International Air Tickets">
+            International Air Tickets
+          </a>
+        </li>
+        <li>
+          <a href="/flight-schedule/flight-schedules-international.html" title="International Flight Schedule">
+            International Flight Schedule
+          </a>
+        </li>
+        <li>
+          <a href="/flight-booking/international-airlines.html" title="International Airlines">
+            International Airlines
+          </a>
+        </li>
+        <li>
+          <a href="/tourism/airports/international-airports.html" title="International Airports">
+            International Airports
+          </a>
+        </li>
+        <li>
+          <a title="Holiday Packages" href="/tourism/packages/">
+            Holiday Packages
+          </a>
+        </li>
+        <li>
+          <a href="/tourism/packages/international-packages.html" title="International Packages">
+            International Packages
+          </a>
+        </li>
+        <li>
+          <a href="/india" title="India Tourism">
+            India Tourism
+          </a>
+        </li>
+
+        <li> <a title="Bus Booking &amp;amp; Timings" href="/tourism/bus/">Bus Bookings</a> </li><li> <a title="Train Bookings" href="/tourism/train/">Train Bookings</a> </li><li> <a title="Train Routes" href="/tourism/train/routes/">Train Routes</a> </li>
+
+        <li> <a href="/tourism/routes/" title="Travel Routes">Travel Routes</a> </li>
+
+      </ul>
+
+      <div class="clear"></div>
+      <ul class="footerlinkssmall">
+       <li>Countries:</li>
+       <li> <a href="https://www.cleartrip.com" title="India">India</a> </li>
+       <li> <a href="https://www.cleartrip.ae" title="UAE">UAE</a> </li>
+       <li> <a href="https://www.cleartrip.sa" title="Saudi Arabia">Saudi Arabia</a> </li>
+       <li> <a href="https://bh.cleartrip.com" title="Bahrain">Bahrain</a> </li>
+       <li> <a href="https://kw.cleartrip.com" title="Kuwait">Kuwait</a> </li>
+       <li> <a href="https://qa.cleartrip.com" title="Qatar">Qatar</a> </li>
+       <li> <a href="https://om.cleartrip.com" title="Oman">Oman</a> </li>
+     </ul>
+     <div class="clear"></div>
+     <ul class="footerlinkssmall list-unstyled" style="width:100%;">
+      <li style="width:80%">&copy;2006-2018 Cleartrip Pvt. Ltd.</li><li> <a rel="nofollow" href="/privacy-policy/">Privacy</a> </li><li> <a rel="nofollow" href="/security">Security</a> </li><li> <a rel="nofollow" href="/terms/">Terms of Use</a> </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/date_format.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.0/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/ct_custom.js"></script>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/banner_tool_v1.js"></script>
+    <!-- <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/application.js"></script> -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-8292447-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  <script>
+    $(document).ready(function(){
+      $('.Menuicon').click(function(){
+       $("#Second-menu").animate({right: '0'});
+     })
+      $(".readmore").click(function(){
+        var text = $(this).text() == 'Show More' ? "Show Less" : "Show More"
+        $(".more_content").slideToggle();
+        $(this).text(text)
+        if(text =="Show More"){
+            $("html, body").animate({ scrollTop: 800 });
+        }
+     });
+      $('.close').click(function(){
+       $("#Second-menu").animate({right: '-450px'});
+     })
+      $(".featured_local").flexslider({
+        animation: "slide",
+        animationLoop: false,
+        itemWidth: 205,
+        itemMargin: 10,
+        mousewheel: false,
+        rtl: true
+      });
+    })
+
+  </script>
+    <script>
+      var _comscore = _comscore || [];
+      _comscore.push({ c1: "2", c2: "7561529" });
+      (function() {
+        var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+        s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+        el.parentNode.insertBefore(s, el);
+      })();
+    </script>
+    <script type="text/javascript">
+      (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
+      branch.init('key_live_cgeDODFZsneCcLhrQ9wxGomiEqkFtGo9');
+    </script>
+    <script type="text/javascript">
+      $('div.unwrapped').hide();
+      $('p.show_more').on('click', function() {
+        var $this = $(this);
+        console.log($this.data('open'));
+        if ($this.data('open')) {
+          $('div.unwrapped').hide();
+          $this.data('open', 0);
+          $('p.show_more').text('Show more');
+        }
+        else {
+          $('div.unwrapped').show();
+          $this.data('open', 1);
+          $('p.show_more').text('Show less');
+        }
+      });
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,7 @@
+<div class="more-flights">
+  <ul class="list-inline">
+    <% top_routes.each do |route|%>
+      <li><a href="/ar/flight-schedule/<%= route.schedule_route_url%>-flights.html" title="<%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t("flight_schedule.flights")%>"><%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t("flight_schedule.flights")%></a></li>
+    <% end %>
+  </ul>
+</div>

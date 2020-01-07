@@ -1,0 +1,57 @@
+<div class="white-card">
+			<h2><%= dep_city_name_ar %> <%= t('airport.airport_details') %> </h2>
+			<ul class="list-unstyled airport-details">
+				<li>
+					<span class="pull-left" ><%= airport_details["dep_airport_name_ar"] %></span>
+					<label><%= t('airport.name') %><span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left"><%= airport_details["dep_airport_address_ar"] %></span>
+					<label><%= t('airport.address') %> <span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left"><%= airport_details["dep_airport_phone"] %></span>
+					<label ><%= t('airport.phone') %> <span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left"><%= airport_details["dep_airport_email"] %></span>
+					<label><%= t('airport.email') %><span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left"><a rel="nofollow" href="<%= airport_details["dep_airport_website"] %>" target="_blank"><%= airport_details["dep_airport_website"] %></a></span>
+					<label><%= t('airport.website') %> <span >:</span></label>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+</div><!--/white-card-->
+<div class="white-card">
+			<h2><%= arr_city_name_ar %> <%= t('airport.airport_details') %></h2>
+			<ul class="list-unstyled airport-details">
+				<li>
+					<span class="pull-left"><%= airport_details["arr_airport_name_ar"] %></span>
+					<label><%= t('airport.name') %> <span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left"><%= airport_details["arr_airport_address_ar"] %></span>
+					<label><%= t('airport.address') %> <span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left"><%= airport_details["arr_airport_phone"] %></span>
+					<label><%= t('airport.phone') %> <span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left"><%= airport_details["arr_airport_email"] %></span>
+					<label><%= t('airport.email') %> <span >:</span></label>
+				</li>
+				<li>
+					<span class="pull-left" >
+						<a rel="nofollow" href="<%= airport_details["arr_airport_website"] %>" target="_blank">
+							<%= airport_details["arr_airport_website"] %></a>
+					</span>
+					<label> <%= t('airport.website') %><span >:</span></label>
+					</li>
+					<div class="clearfix"></div>
+				</ul>
+			</div>
+		<div class="clearfix"></div>
+</div><!--/white-card-->

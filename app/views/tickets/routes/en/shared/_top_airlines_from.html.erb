@@ -1,0 +1,26 @@
+
+	
+<div class="white-card">
+	<% if ticket_layout_values["dep_country_code"] == @country &&    ticket_layout_values["arr_country_code"] == @country   %>
+		<h2><%= I18n.t('flight_schedule.top_dom_airlines_from')%> <%= dep_city_name%></h2>
+	<% else %>
+		<h2><%= I18n.t('flight_schedule.top_int_airlines_from')%> <%= dep_city_name%></h2>
+	<% end %>
+	<ul class="list-unstyled top-airlines">
+		
+				<% top_airlines.uniq.each do |airline_code| %>
+		<% airline_name =  t("airlines.#{airline_code}")  %>
+		<% formated_carrier_name =  airline_name.downcase.gsub(" ",'-').gsub('--','-') %>
+		<li>
+			<a href="<%= "/flight-booking/"+format_airline_name(airline_name).downcase.gsub(" ", "-").gsub("--","-") + ".html" %>" class="airline-link">
+				<div class="R-airline-logo "><span class="carrier-logo <%= formated_carrier_name %>"></span></div>
+				<div class="R-airline-name"><span><%= airline_name %></span></div>
+			</a>
+			<div class="R-book">
+				<%= link_to( "Book", "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{airline_code}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"booking-btn") %>
+			</div>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>		
+	</ul>
+</div>

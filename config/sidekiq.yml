@@ -1,0 +1,19 @@
+:concurrency: 20
+:logfile: ./log/sidekiq.log
+#:pidfile: tmp/pids/sidekiq.pid
+staging:
+  :concurrency: 25
+development:
+  :concurrency: 20
+production:
+  :concurrency: 25
+
+:queues:
+  - default
+  - insert_unique_routes_worker
+  - identify_flight_schedule_collective_worker
+  - identify_airline_brand_collective_worker
+  - identify_flight_ticket_collective_worker
+  - insert_new_unique_routes_worker
+  - insert_new_unique_routes_worker
+  - identify_airline_route_schedules_worker

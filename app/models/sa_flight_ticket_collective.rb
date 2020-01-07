@@ -1,0 +1,2 @@
+class SaFlightTicketCollective < ApplicationRecord
+end

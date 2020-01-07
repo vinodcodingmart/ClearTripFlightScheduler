@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_code: MyString
+  city_name: MyString
+  city_name_ar: MyString
+  country_code: MyString
+  country_name: MyString
+  total_routes_count: 1
+  routes_data: MyText
+  current_routes_count: MyText
+  routes_data_ar: MyText
+
+two:
+  city_code: MyString
+  city_name: MyString
+  city_name_ar: MyString
+  country_code: MyString
+  country_name: MyString
+  total_routes_count: 1
+  routes_data: MyText
+  current_routes_count: MyText
+  routes_data_ar: MyText

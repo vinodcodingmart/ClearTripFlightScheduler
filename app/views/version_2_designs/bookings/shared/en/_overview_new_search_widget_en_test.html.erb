@@ -1,0 +1,355 @@
+<!--/section-Desktop-Search-wdiget-->
+<section id="Desktop-search-widget">
+  <div class="section-banner airline-banner">
+    <div class="container airline-top-wrapper">
+      <div class="airline-brand">
+        <img itemprop="image" src="<%=assets_path%>/images/airline-logo/<%= carrier_code %>.png" alt='<%= carrier_name_translated %>' />
+      </div>
+      <div class="airline-brand-cnt">
+        <h1><%= @carrier_name %></h1>
+        <span></span>
+      </div>
+    </div>
+    <div class="search-widget-wrapper hidden-xs">
+      <div class="container pad-zero">
+        <form action="/flights/search" errorblockid="flt_err" id="AirSearch" class="search no-action-change removeSelflabels" method="get" target="_blank">
+          <input type="hidden" value="O" name="rnd_one" id="one_way">
+          <div class="trip-types">
+           <ul class="nav nav-tabs list-inline">
+            <li class="active"><a data-toggle="tab" href="" class="toggle_trip one_way">One Way</a></li>
+            <li><a data-toggle="tab" href="" class="toggle_trip rnd_trip">Round Trip</a></li>
+          </ul>
+        </div>
+        <div class="form-fields">
+         <ul class="list-inline">
+          <li class="destination-fields">
+           <input type="text" name=""  id ="origin_autocomplete" class ="ui-autocomplete-input" placeholder="Any Airport or City" autocomplete="off">
+           <input type="hidden" name="from" id="from">
+         </li>
+         <li  class="destination-fields">
+           <input type="text" name=""  id ="destination_autocomplete" class ="ui-autocomplete-input" placeholder="Any Airport or City" autocomplete="off">
+           <input type="hidden" name="to" id="to" value="">
+         </li>
+         <li class="common-fields D-Ddate">
+          <input readonly="readonly" type="text" size="10" autocomplete="off" id="dpt_date" title="Departure date" name="depart_date" class="datePicker required selflabel" >
+        </li>
+        <li class="common-fields D-Rdate">
+         <input readonly="readonly" type="text" size="10" id="rtn_date" autocomplete="off" mindatefieldid="dpt_date" title="Return date" name="return_date" class="datePicker second required no_autochange selflabel disabled" disabled="true" >
+       </li>
+       <li class="common-fields dropdown">
+        <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+          <input type="readonly" name="" placeholder="Travellers" class = "travellers_data" value="2 adults,0 child,0 infants">
+          <input type="hidden" name="adults" value="2">
+          <input type="hidden" name="infants" value="0">
+          <input type="hidden" name="childs" value="0">
+        </div>
+        <ul class="list-unstyled dropdown-menu desktop_travellers">
+          <li>
+            <span>Adults</span>
+            <span class="click-block">
+              <a href="javascript:void(0)">
+                <i class="fa fa-minus decrement adult-decrement"></i>
+              </a>
+              <span class="count adult-count" style="margin-right:5px;">2</span>
+              <a href="javascript:void(0)">
+                <i class="fa fa-plus increment adult-increment"></i>
+              </a>
+            </span>
+          </li>
+          <li>
+            <span>Children</span>
+            <span class="note">
+              (2-12 yrs)
+            </span>
+            <span class="click-block">
+              <a href="javascript:void(0)"><i class="fa fa-minus decrement child-decrement"></i></a>
+              <span class="count child-count" style="margin-right:5px;">0</span>
+              <a href="javascript:void(0)"><i class="fa fa-plus increment child-increment"></i></a>
+            </span>
+          </li>
+          <li>
+            <span>Infants</span>
+            <span class="note">
+              (Below 2yrs)
+            </span>
+            <span class="click-block">
+              <a href="javascript:void(0)">
+                <i class="fa fa-minus decrement infant-decrement"></i>
+              </a>
+              <span class="count infant-count" style="margin-right:5px;">0</span>
+              <a href="javascript:void(0)">
+                <i class="fa fa-plus increment infant-increment"></i>
+              </a>
+            </span>
+          </li>
+          <li><button class="Dtravellers">Done</button></li>
+        </ul>
+      </li>
+      <li>
+       <button type="submit" id="button_flight_search" title="Search" class="booking-btn">Search flights</button>
+     </li>
+   </ul>
+ </div>
+
+</form>
+<div class="clearfix"></div>
+</div>
+</div><!--/search-widget-wrapper-->
+<div class="clearfix"></div>
+</div><!--/section-banner-->
+<!--/ END section-Desktop-Search-wdiget-->
+</section>
+
+
+
+<!-- /mobile-search-widget-new -->
+
+<section id="airline-search-widget-new">
+ <div class="common-top-bar">
+   <h1><%= @carrier_name %></h1>
+ </div>
+  <ul class="nav nav-tabs"> 
+      <li class="active">
+        <a data-toggle="tab" href="" class="toggle_trip one_way">One Way</a>
+      </li> 
+      <li class="">
+        <a data-toggle="tab" href="" class="toggle_trip rnd_trip">Round Trip</a>
+      </li> 
+    </ul>
+ <div class="airline-form-fields">
+   <form action="/flights/search" errorblockid="flt_err" id="AirSearchMob" class="search no-action-change removeSelflabels" method="get" >
+    <input type="hidden" value="O" name="rnd_one" id="one_way_mob">
+    <div class="m-form-fields">
+      <ul class="list-unstyled">
+        <li class="ao-mw-destination">
+          <div class="dpt-date" data-toggle="modal" data-target="#fromCityAutocompleteModel">
+            <label class="fromCityName">From</label>
+            <p class="common-dots origin_autocomplete_dots" >...</p>
+              <input type="text"  name=""  id="origin_autocomplete_mobile" class="ui-autocomplete-input origin_autocomplete_mob hide" placeholder="" >
+            <input type="hidden" name="from" id="from" value="" class="from">
+          </div>
+          <div class="svg-separte">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="19" height="19" viewBox="0 0 19 19" class="TouchAndGo__switch" fill="#36c"><defs><path id="switch-a" d="M4.125 7.874h2.352l-1.663 1.66-.69-1.66zm13.695 6.522H4.125V12.45h16.047c.868 0 1.303 1.047.689 1.66l-5.731 5.721-1.378-1.375 4.068-4.061zm0 0H4.125c-1.3 0-1.3-1.945 0-1.945h16.047c.868 0 1.303 1.047.689 1.66l-5.731 5.721c-.919.917-2.297-.458-1.378-1.375l4.068-4.061zm2.352-6.522c1.3 0 1.3 1.945 0 1.945H4.125c-.868 0-1.303-1.048-.69-1.66l5.732-5.722c.918-.917 2.296.459 1.378 1.376l-4.068 4.06h13.695z"></path></defs><use fill-rule="nonzero" transform="matrix(-1 0 0 1 21.297 -2)" xlink:href="#switch-a"></use></svg>
+          </div>
+          <div class="ar-date"  data-toggle="modal" data-target="#toCityAutocompleteModel">
+            <label class="toCityName">To</label>
+            <p class="common-dots destination_autocomplete_dots">...</p>
+              <input type="text"  id="destination_autocomplete_mobile" placeholder="Choose Arrival" class="hide destination_autocomplete_mob" autocomplete="off">
+            <input type="hidden" name="to" id="to" class="to">
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li class="ao-mw-date-range">
+          <div class="dpt-date">
+            <label>Depart</label>
+            <input type="text"  id ='dpt_date_mob' title="Departure date" name="depart_date" class="datePicker required selflabel" >
+          </div>
+          <div class="ar-date rdate" style="display: none;">
+            <label>Return</label>
+            <input type="text" size="10"  autocomplete="off"  id ="rtn_date_mob" mindatefieldid="dpt_date_mob" class="" title="Return date" name="return_date" class="datePicker second required no_autochange selflabel disabled ">
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li class="ao-mw-travellers">
+          <div class="m-travellers-count travellers-counts" data-toggle="modal" data-target="#travellerModal">
+            <label>Travellers</label>
+            <div class="travellers-wrappers">
+              <span class="adults" ><span class="adultsNumber">1</span><span>Adults,</span></span>
+              <span class="child"><span class="childNumber">0</span><span>Children,</span></span>
+              <span class="infants"><span class="infantsNumber">0</span><span>Infants</span></span>
+              <input type="hidden" name="adults" value="1">
+              <input type="hidden" name="infants" value="0">
+              <input type="hidden" name="childs" value="0">
+            </div>
+          </div>
+        </li>
+        <li class="ao-mw-class">
+          <div class="travellers-counts">
+            <label>Class</label>
+            <select>
+              <option>Economy</option>
+              <option>First Class</option>
+              <option>Business</option>
+            </select>
+          </div>
+        </li>
+        <li class="ao-mw-submit">
+          <!-- <input type="submit" value="Search Flights"> -->
+          <input type="hidden" name="airline" value="<%= carrier_code %>">
+          <button type="submit" id="button_flight_search_mob" title="Search">Search flights</button>
+        </li>
+      </ul>
+      <div class="modal fade" id="travellerModal" tabindex="-1" role="dialog" aria-labelledby="travellerLabel" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="travellerLabel">Pick travellers</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 search-blk">
+                  <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+                    <li>
+                      <span>Adults</span>
+                      <span class="click-block">
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-minus decrement adult-decrement" ></i>
+                        </a>
+                        <span class="count adult-count" style="margin-right:5px;">2</span>
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-plus increment adult-increment"></i>
+                        </a>
+                      </span>
+                    </li>
+                    <li>
+                      <span>Children</span>
+                      <span class="note">
+                        (2-12 yrs)
+                      </span>
+                      <span class="click-block">
+                        <a href="javascript:void(0)"><i class="fa fa-minus decrement child-decrement"></i></a>
+                        <span class="count child-count" style="margin-right:5px;">0</span>
+                        <a href="javascript:void(0)"><i class="fa fa-plus increment child-increment"></i></a>
+                      </span>
+                    </li>
+                    <li>
+                      <span>Infants</span>
+                      <span class="note">
+                        (Below 2yrs)
+                      </span>
+                      <span class="click-block">
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-minus decrement infant-decrement"></i>
+                        </a>
+                        <span class="count infant-count" style="margin-right:5px;">0</span>
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-plus increment infant-increment" ></i>
+                        </a>
+                      </span>
+                    </li>
+                  </ul>
+                  <div class="btn-orange text-center">
+                    <button type="button" data-dismiss="modal" class="btn btn-default booking" style="width: 70%;font-size: 16px;">Continue booking</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="fromCityAutocompleteModel" tabindex="-1" role="dialog" aria-labelledby="cityAutoComplete">
+       <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+            <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+              <svg width="16" version="1.1" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+              <g>
+                <path fill="#ffffff" d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
+              </g>
+            </svg>
+            </span>
+            <span class="modal-title" id="fromCity">Select Origin Airport</span>
+          </div>
+          <div class="modal-body">
+            
+              <div class="search-blk">
+                <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+                  <li>
+                    <input type="text"  name=""  id="origin_autocomplete_mob" class="ui-autocomplete-input" placeholder="Choose Departure city"  >
+                  </li>
+                </ul>
+                
+                 <!--  <div class="btn-orange text-center">
+                    <button type="button" data-dismiss="modal" class="btn btn-default booking" style="width: 70%;font-size: 16px;">Continue booking</button>
+                  </div> -->
+                </div>
+               <!--  <div class="popular-routes">
+                <h4>Popular Cities</h4>
+                <ul class="list-unstyled">
+                  <li><span>DXB</span> Dubai, AE - Dubai International Airport</li>
+                  <li><span>DXB</span> Jeddah, SA - Jeddah</li>
+                  <li><span>DXB</span> Bangalore, IN - Kempegowda International Airport</li>
+                  <li><span>DXB</span> Mumbai, IN - Chatrapati Shivaji Airport</li>
+                </ul>
+              </div> -->
+              <% if @country_code == "BH" %>
+                <div class="popular-routes depCity">
+                   <h4>Popular Cities</h4>
+                  <ul class="list-unstyled cityAutoCompleteData">
+                    <% search_widget_popular_routes.each do |route| %>
+                    <li>
+                      <span class="city_code"><%= route[:city_code]%></span><span class="city_name"><%= route[:city_name]%>, <%= route[:airport_name]%></span>
+                    </li>
+                    <% end %>
+                  </ul>
+                  <ul class="depAutoCompleteCities">
+                    <li></li>
+                  </ul>
+                </div>
+              <% end %>
+              </div>
+  
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="toCityAutocompleteModel" tabindex="-1" role="dialog" aria-labelledby="cityAutoComplete">
+       <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+
+            <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+              <svg width="16" height="16" viewBox="0 0 35 35" fill="#fff"><path fill-rule="evenodd" d="M15.525 17.146L1.383 3.004 3.504.883l14.143 14.142L32.496.175l2.121 2.122-14.85 14.85 14.85 14.849-2.121 2.12-14.85-14.848L2.798 34.117.676 31.996z"></path></svg>
+            </span>
+            <span class="modal-title" id="fromCity">Select Destination Airport</span>
+          </div>
+          <div class="modal-body">
+            
+              <div class="col-md-12 search-blk">
+                <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+                  <li>
+                    <input type="text"  id="destination_autocomplete_mob" placeholder="Choose Arrival city" autocomplete="off">
+                  </li>
+                </ul>
+                 
+                 <!--  <div class="btn-orange text-center">
+                    <button type="button" data-dismiss="modal" class="btn btn-default booking" style="width: 70%;font-size: 16px;">Continue booking</button>
+                  </div> -->
+                </div>
+                <% if @country_code == "BH"  %>
+                <div class="popular-routes arrivalCity">
+                 <h4>Popular Cities</h4>
+                  <ul class="list-unstyled cityAutoCompleteData">
+                    <% search_widget_popular_routes.each do |route| %>
+                      <li>
+                      <span class="city_code"><%= route[:city_code]%></span><span class="city_name"><%= route[:city_name]%>, <%= route[:airport_name]%></span>
+                      </li>
+                    <% end %>
+                </ul>
+                 <ul class="arrAutoCompleteCities">
+                  <li></li>
+                </ul>
+                </div>
+                <% end %>
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/m-form-fields-->
+  </form>
+</div>
+</section>
+
+
+<!-- /end  mobile-search-widget-new -->
+    <div class="mob_errors_container" style="display: none; ">
+      <span class="error-msg">Please fill the required fields</span>
+      <i class="fa fa-close close_error_msg"></i>
+    </div>

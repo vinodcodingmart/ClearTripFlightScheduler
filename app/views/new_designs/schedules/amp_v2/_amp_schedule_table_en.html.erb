@@ -1,0 +1,75 @@
+
+
+	<h2>Flight tickets from <%= @dep_city_name %> to <%= @arr_city_name %></h2>
+	<div class="hidden-xs desktop_top_routes">
+		<% route_count = 0
+		routes.each do |route|
+			route_type = route[:dep_country_code] != country_code || route[:arr_country_code] != country_code ? "int" : "dom"
+			route_count+=1
+			%>
+			<div class="airline-wrapper <%= route_count>10 ? 'hide showMore' : "" %>" >
+				<ul class="list-inline">
+					<% formated_carrier_name =  t("airlines.#{route[:carrier_code]}").downcase.gsub(" ",'-').gsub('--','-') %>
+					<% airline_name =  t("airlines.#{route[:carrier_code]}") %>
+					<li class="airline">
+						<a href="/flight-booking/amp/<%= format_overview_link(airline_name) %>.html" title="<%= airline_name  %>"><span class=" carrier-logo <%= formated_carrier_name%>"></span>
+						<span class="airline-names"><%= airline_name %> <small><%= route[:flight_no] %></small></span></a>
+					</li>
+					<li class="timing">
+						<div class="t-blcok depart"><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></div>
+						<div class="t-blcok duration">
+              <% if route[:duration].include? (":") %>
+                <%= route[:duration].to_time.strftime("%Hh %Mm") %>
+              <% else %>
+                <%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %>
+              <%  end %>
+              <small>Non-Stop</small>
+            </div>
+						<div class="t-blcok arrival"><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %></div>
+					</li>
+					<li class="min-price">
+						<%= (route[:cc_min_price].present? && route[:cc_min_price] > 0) ? "#{currency_code}" + route[:cc_min_price].to_i.to_s : "--NA--"%>
+					</li>
+					<li class="book-section">
+						<a data-route="<%=schedule_layout_values["dep_airport_code"]%>-<%= schedule_layout_values["arr_airport_code"]%>-<%= route[:carrier_code] %>" class="hide-xs booking-btn flight-schedule-booking" data-section="<%=section%>" href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= schedule_layout_values["dep_airport_code"]%>&to=<%= schedule_layout_values["arr_airport_code"] %><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%= route[:carrier_code]%>&page_type=flight-schedule&domain=<%=domain%>&section=<%=section[3..5]%>&button_type=book_now_button">
+							<% if route[:cc_min_price].present? && route[:cc_min_price].to_i > 0 %>
+							Book <span class="hidden-xs">Now</span>
+							<% else %>
+							Check <span class="hidden-xs">Price</span>
+							<% end %>
+						</a></li>
+					</ul>
+				</div>
+				<% end %>
+			</div>
+			<div class = "visible-xs mobile_top_routes">
+				<% route_count = 0
+				routes.each do |route|
+					route_type = route[:dep_country_code] != @country_code || route[:arr_country_code] != @country_code ? "int" : "dom"
+					route_count+=1
+					%>
+					<div class="airline-wrapper <%= route_count>10 ? 'hide showMore' : "" %>">
+						<% formated_carrier_name =  t("airlines.#{route[:carrier_code]}").downcase.gsub(" ",'-').gsub('--','-') %>
+						<% airline_name =  t("airlines.#{route[:carrier_code]}") %>
+						<ul class="list-inline">
+							<li class="airline">
+								<a href="/flight-booking/amp/<%= format_overview_link(airline_name) %>.html" title="<%= airline_name  %>"><span class=" carrier-logo <%= formated_carrier_name%>"></span>
+								<span class="airline-names"><%= airline_name %> <small><%= route[:flight_no] %></small></span></a> %></small></span>
+							</li>
+							<li class="timing">
+								<div class="t-blcok depart"><%= route[:dep_time] %></div>
+								<div class="t-blcok arrival"><%= route[:arr_time] %></div>
+							</li>
+							<li class="min-price">
+								<a data-route="<%=schedule_layout_values["dep_airport_code"]%>-<%= schedule_layout_values["arr_airport_code"]%>-<%= route[:carrier_code] %>" class="booking-btn flight-schedule-booking" data-section="<%=section%>"  href="https://www.cleartrip.com/how-to-reach/flight_search_amp?from=<%= schedule_layout_values["dep_airport_code"]%>&to=<%= schedule_layout_values["arr_airport_code"] %><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%= route[:carrier_code]%>&page_type=flight-schedule&domain=<%=domain%>&section=<%=section[3..5]%>&button_type=book_now_button">
+									<% if route[:cc_min_price].to_i > 0 %>
+									<i class="fa fa-inr"></i> <%= route[:cc_min_price].to_i %>
+									<% else %>
+									Check
+									<% end %>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<% end %>
+				</div>

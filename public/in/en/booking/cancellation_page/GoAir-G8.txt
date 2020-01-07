@@ -1,0 +1,18 @@
+<h3>FAQs</h3><b>1.What is the cancellation/changes policy of GoAir?</b><p>
+Changes/Cancellations can be done up to 2 hours prior to the scheduled time of departure.</p>
+<b>2.Where can I make changes/cancel my GoAir booking?</b>
+<p>Customers can cancel or make changes to their GoAir bookings through the GoAir website, airport ticketing counter, or by calling the GoAir customer call center.</p>
+<b>3.What is the cancellation fee of GoAir?</b>
+<p>The cancellation charge of GoAir is INR 2,950 provided the ticket is canceled at least 2 hours before the flight’s departure.</p>
+<b>4.What is the rebooking fee of GoAir?</b>
+<p>GoAir charges a rebooking fare of INR 2,225 along with the differences in base fare and applicable taxes for GoSmart passengers. GoBusiness passengers have to only pay the difference in base fare along with the applicable taxes.</p> 
+<b>5.What are the payment modes available at GoAir?</b><p>
+Payments can be made through credit and debit cards of HDFC, Axis, SBI, and ICICI for making bookings online. Reservations can also be made at the airport counter in cities where GoAir operates. Here, passengers can pay by cash or any of the above debit or credit cards.</p>
+<b>6.When does GoAir declare a passenger as ‘No Show’?</b>
+<p>Passengers who fail to show up at least 45 minutes before the check-in counter closes or at the boarding gate, 25 minutes prior to the scheduled time of departure will be declared as a ‘No Show’.</p> 
+<b>7.Will I get a refund for ‘No Show’?</b><p>
+The customer will get a refund of the User Development Fee (UDF) and the Passenger Service Fee (PSF) but the rest of the gross fare will be forfeited. The UDF and PSF will be given in the same mode of payment as received originally and will only be refunded after receiving a request from the customer in writing under 15 days from the date of ‘No Show’. </p>
+<b>8.Can I get a duplicate print of itinerary?</b><p>
+Yes, you can get a duplicate print-out of the itinerary at the reservation counter at the airport. You will be required to pay an additional fee of INR 50 per print-out for the duplicate itinerary.</p>
+<b>9.How much time does GoAir take to process the refund?</b>
+<p>Credit card payments take 7 days to get refunded after the cancellation of the reservation. Payments done with cash will be refunded immediately by the office at which the reservation was made. In case of bookings done through a portal or travel agent, the refund will be processed within 30 working days.</p>

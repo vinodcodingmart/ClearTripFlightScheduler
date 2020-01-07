@@ -1,0 +1,67 @@
+<% review_content =  @content %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    <% if review_content && review_content[19].present? %>
+    var overallRating = "<%= review_content[18].split(":")[1].to_f%>";
+    var userRating6 = "<%= review_content[16].split(":")[1].to_f %>";
+    <% else %>
+    var overallRating = "<%= review_content[15].split(":")[1].to_f%>";
+    <% end %>
+    var userRating1 = "<%= review_content[1].split(":")[1].to_f %>";
+    var userRating2 = "<%= review_content[4].split(":")[1].to_f %>";
+    var userRating3 = "<%= review_content[7].split(":")[1].to_f %>";
+    var userRating4 = "<%= review_content[10].split(":")[1].to_f %>";
+    var userRating5 = "<%= review_content[13].split(":")[1].to_f %>";
+    $("#rateYo").rateYo({
+      rating: overallRating ,
+      readOnly: true,
+      halfStar:true,
+      ratedFill: "#f5681e",
+        starWidth: "18px"
+    });
+    $("#review1").rateYo({
+      rating: userRating1,
+      readOnly: true,
+      halfStar:true,
+      ratedFill: "#f5681e",
+        starWidth: "18px"
+    });
+    $("#review2").rateYo({
+      rating: userRating2,
+      readOnly: true,
+      halfStar:true,
+      ratedFill: "#f5681e",
+        starWidth: "18px"
+    });
+    $("#review3").rateYo({
+      rating: userRating3,
+      readOnly: true,
+      halfStar:true,
+      ratedFill: "#f5681e",
+      starWidth: "18px"
+    });
+    $("#review4").rateYo({
+      rating: userRating4,
+      readOnly: true,
+      halfStar:true,
+      ratedFill: "#f5681e",
+      starWidth: "18px"
+    });
+    $("#review5").rateYo({
+      rating: userRating5,
+      readOnly: true,
+      halfStar:true,
+      ratedFill: "#f5681e",
+      starWidth: "18px"
+    });
+    <% if review_content[19].present? %>
+    $("#review6").rateYo({
+      rating: userRating6,
+      readOnly: true,
+      halfStar:true,
+      ratedFill: "#f5681e",
+      starWidth: "18px"
+    });
+    <% end %>
+  })
+</script>

@@ -1,0 +1,21 @@
+<div class="ttd">
+  <h2>Things to do in<%=arr_city_name.titleize%></h2>
+  <div class="featured_locals">
+  <ul class="list-inline hotels-list slides">
+    <% things_todo[:activities_data].each do |img| %>
+    <li>
+      <a href="<%=img["map_url"]%>">
+        <div class="hotel-card">
+          <img src="<%= img["collection_image"] %>" alt="">
+          <div class="hotels-cnt">
+            <h2><%=img["name"]%></h2>
+            <span class="count"><%= img["ttd_count"] %> Experience</span>
+          </div>
+        </div>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</div>
+</div>
+<!--/things-to-do-->

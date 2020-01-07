@@ -1,0 +1,24 @@
+
+<div class="blocks">
+	<h2><%= t("brand.top_#{section}_airlines")%></h2>
+	<ul class="list-unstyled top-airlines">
+		<% top_airlines.uniq.each do |cc| %>
+		<li>
+			
+			<div class="col-xs-8 pad-5">
+				<% airline_name = link_to( t("airlines.#{cc}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+				<%= airline_name %>
+			</div>
+			<div class="col-xs-4 pad-rzero">
+				<% if I18n.locale==:en %>
+				<%= link_to( "Book", "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"booking") %>
+				<% elsif I18n.locale==:hi %>
+				<%= link_to( "बुक", "/flight-booking/"+"#{I18n.locale.to_s}/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html",:class=>"booking") %>
+				<% end %>
+
+			</div>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+</div>

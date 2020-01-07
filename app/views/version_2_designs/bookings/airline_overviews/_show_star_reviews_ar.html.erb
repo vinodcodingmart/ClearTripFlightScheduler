@@ -1,0 +1,15 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    <% if @review.present? %>
+        <% @review["reviews_list"].each_with_index do |r,i| %>
+        $("<%= "#review#{i+1}" %>").rateYo({
+             rating: <%= r["rating"].to_f %>,
+             readOnly: true,
+             halfStar:true,
+             ratedFill: "#f5681e",
+             starWidth: "18px"
+           });
+   <% end %>
+   <% end %>
+  }
+</script>

@@ -1,0 +1,100 @@
+<section id="common-nav-bar">
+  <div class="custom-container">
+
+    <!--Language Links Sections-->
+    <% unless @country_code == "IN" %>
+    <div class="col-sm-2 pad-lzero hidden-xs">
+      <ul class=" lang-menu list-inline text-right">
+        <li><a href="#{application_processor.host_name(country_code)}/#{@page_type}/#{flight_file_name}">English</a></li>
+        <li><a href="<%= "#{application_processor.host_name(country_code)}/ar/#{@page_type}/#{flight_file_name}" %>">العربية</a></li>
+      </ul>
+    </div>
+    <% end %>
+
+    
+
+
+    <!--Header Links Sections-->
+    <div class="col-sm-7 pad-lzero common-m-navbar">
+      <div class="main-nav-links">
+        <ul class="list-inline">
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="flights-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">علومات شركة الطيران </span>
+            <div class="dropdown-menu" aria-labelledby="flights-menu">
+              <% unless brand_type == "booking-overview" %>
+                <%= link_to("#{carrier_name_en} Overview","/flight-booking/#{url_escape("#{format_overview_link(carrier_name_en, I18n.locale)}")}.html",title:"#{carrier_name_en} Overview")%>
+                <% end %>
+                <% unless brand_type == "pnr_status" %>
+                <%= link_to("#{@carrier_name_ar} PNR حالة","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-flight-pnr-status.html",title:"#{@carrier_name_ar} PNR حالة") %>
+                <% end %>
+                <% unless brand_type == "web_checkin" %>
+                <%= link_to("#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت","/ar/flight-booking/#{url_escape("#{format_overview_link(@carrier_name, I18n.locale)}")}-web-check-in.html",title:"#{@carrier_name_ar} تسجيل الدخول للرحلة عبر الإنترنت") %>
+                <% end %>
+                
+                             </div>
+          </li>
+
+        <% if airports["dom_airports"].present? && !["SA","AE"].include?(@country_code) %>
+          <li class="dropdown">
+              <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">مطارات داخلية</span>
+              <div class="dropdown-menu" aria-labelledby="airlines-menu">
+                <% airports["dom_airports"].each do |airport|%>
+                  <%  airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/ar/"+ "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}", title: airport['airport_name_ar']) %>
+            <%=  airport_name %>
+                <% end %>
+              </div>
+          </li>
+        <% end %>
+
+        <% if airports["int_airports"].present? && !["SA","AE"].include?(@country_code) %>
+         <li class="dropdown">
+              <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">International Airports</span>
+              <div class="dropdown-menu" aria-labelledby="airlines-menu">
+                <% airports["int_airports"].each do |airport|%>
+                   <%  airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/ar/"+ "#{url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}",title: airport['airport_name_ar'])  %>
+            <%=  airport_name %>
+                <% end %>
+              </div>
+            </li>
+        <% end %>
+
+          
+          <% if @country_code == "IN" %>
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="offers-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Offers</span>
+            <div class="dropdown-menu" aria-labelledby="offers-menu">
+              <a href="https://www.cleartrip.com/offers/india/payless" target="_blank" title="Domestic flight offers">Domestic flight offers</a>
+             <a href="https://www.cleartrip.com/offers/india/anywhere" target="_blank" title="International flight offers">International flight offers</a>
+             <a href="https://www.cleartrip.com/offers/india/awesome-long-weekends-2017" title="Long weekend offers" target="_blank">Long weekend offers</a>
+            <a href="https://www.cleartrip.com/offers/india/hdfc-weekends" title="HDFC weekend offers" target="_blank">HDFC weekend offers</a>
+            <a href="https://www.cleartrip.com/offers/india/hsbc-offers" title="HSBC offers" target="_blank">HSBC offers</a>
+            <a href="https://www.cleartrip.com/offers/india/yes-bank" target="_blank" title="Yes bank offers ">Yes bank offers </a>
+            <a href="https://www.cleartrip.com/offers/india/axisbank" target="_blank" title="AXIS bank offers">AXIS bank offers</a>
+            <a href="https://www.cleartrip.com/offers/india/amex-tuesday" title="American express offers" target="_blank">American express offers</a>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+     <!--Logo Sections-->
+    <div class="col-sm-3 ct-col-3 pad-lzero">
+      <a class="ctBrand" href="/">
+        <span class="cleartripLogo" title="Cleartrip ">Home</span>
+      </a>
+      <ul class=" list-inline productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" title="Flights" href="/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" title="Hotels" href="/hotels">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+      </div>
+</section>

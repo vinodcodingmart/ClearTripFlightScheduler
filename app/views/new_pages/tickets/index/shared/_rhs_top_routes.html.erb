@@ -1,0 +1,24 @@
+<% if top_sectors.present? %>
+  <div class="white-card">
+    <h2><%= t("flight_ticket.cheap_air_tickets")%></h2>
+    <ul class="list-unstyled flight-routes">
+      <% top_sectors.each do |r| %>
+        <% if I18n.locale == :en %>
+          <li><a href="/flight-tickets/<%= url_escape(r.dep_city_name) %>-<%= url_escape(r.arr_city_name) %>-cheap-airtickets.html" 
+      title="<%= r.dep_city_name %> <%= r.arr_city_name %> Cheap Air Tickets">
+              <%= r.dep_city_name %> to  <%= r.arr_city_name %>
+            </a>
+          </li>
+        <% else %>
+          <% if r.dep_city_name_ar.present? && r.arr_city_name_ar.present? %>
+            <li><a href="/ar/flight-tickets/<%= url_escape(r.dep_city_name) %>-<%= url_escape(r.arr_city_name) %>-cheap-airtickets.html" 
+        title="<%= r.dep_city_name %> <%= r.arr_city_name %> Flights">
+                <%= r.dep_city_name_ar %> <%= t('to') %>  <%= r.arr_city_name_ar %>
+              </a>
+            </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

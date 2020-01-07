@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  carrier_code: MyString
+  carrier_name: MyString
+  country_code: MyString
+  content_en_in: MyText
+  content_en_ae: MyText
+  content_en_sa: MyText
+  content_en_bh: MyText
+  content_en_kw: MyText
+  content_en_qa: MyText
+  content_en_om: MyText
+  content_hi_in: MyText
+  content_ar_ae: MyText
+  content_ar_sa: MyText
+  content_ar_bh: MyText
+  content_ar_kw: MyText
+  content_ar_qa: MyText
+  content_ar_om: MyText
+
+two:
+  carrier_code: MyString
+  carrier_name: MyString
+  country_code: MyString
+  content_en_in: MyText
+  content_en_ae: MyText
+  content_en_sa: MyText
+  content_en_bh: MyText
+  content_en_kw: MyText
+  content_en_qa: MyText
+  content_en_om: MyText
+  content_hi_in: MyText
+  content_ar_ae: MyText
+  content_ar_sa: MyText
+  content_ar_bh: MyText
+  content_ar_kw: MyText
+  content_ar_qa: MyText
+  content_ar_om: MyText

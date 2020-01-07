@@ -1,0 +1,28 @@
+<div class="more-flights">
+	<h2>
+		<%= t('flights.more_flights_from')%> <%= dep_city_name %>
+	</h2>
+	<ul class="list-inline">
+		<% flights_dep.each do |route|%>
+		<li><a href="/flight-tickets/<%= route.url.gsub('-flights.html','')%>-cheap-airtickets.html" title="<%= route.dep_city_name_en %> <%= route.arr_city_name_en %> Flights"><%= route.dep_city_name_en %> <%= route.arr_city_name_en %> <%= t('flight_ticket.cheap_air_tickets')%></a></li>
+		<% end %>
+	</ul>
+	<p class="more-link">
+	 	<a href="/flight-schedule/flights-from-<%=url_escape(dep_city_name)%>.html" title="More Flights From <%= dep_city_name%>"><%= I18n.t('flight_schedule.more_flights_from')%> <%= dep_city_name%></a>
+	</p>
+</div>
+
+<div class="more-flights">
+	<h2>
+		<%= t('flights.more_flights_to')%> <%= arr_city_name %>
+	</h2>
+	<ul class="list-inline">
+		<% flights_arr.each do |route|%>
+		<li><a href="/flight-tickets/<%= route.url.gsub('-flights.html','') %>-cheap-airtickets.html" title="<%= route.dep_city_name_en %> <%= route.arr_city_name_en %> Flights"><%= route.dep_city_name_en %> <%= route.arr_city_name_en %> <%= t('flight_ticket.cheap_air_tickets')%></a></li>
+		<% end %>
+	</ul>
+	<p class="more-link">
+		 <a href="/flight-schedule/flights-to-<%=use_helper.url_escape(arr_city_name)%>.html" title="More Flights To <%= arr_city_name%>"><%= I18n.t('flight_schedule.more_flights_to')%> <%= arr_city_name%></a>
+	</p> 
+	<div class="clearfix"></div>
+</div>

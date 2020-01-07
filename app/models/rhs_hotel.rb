@@ -1,0 +1,2 @@
+class RhsHotel < ApplicationRecord
+end

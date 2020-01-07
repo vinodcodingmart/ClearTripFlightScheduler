@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  airline_code: MyString
+  flight_no: 1
+  dep_time: MyString
+  arr_time: MyString
+  duration: MyString
+  days_of_operation: MyString
+  dep_city_code: MyString
+  arr_city_code: MyString
+  dep_country_code: MyString
+  arr_country_code: MyString
+  unique_route: one
+
+two:
+  airline_code: MyString
+  flight_no: 1
+  dep_time: MyString
+  arr_time: MyString
+  duration: MyString
+  days_of_operation: MyString
+  dep_city_code: MyString
+  arr_city_code: MyString
+  dep_country_code: MyString
+  arr_country_code: MyString
+  unique_route: two

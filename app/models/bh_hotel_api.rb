@@ -1,0 +1,2 @@
+class BhHotelApi < ApplicationRecord
+end

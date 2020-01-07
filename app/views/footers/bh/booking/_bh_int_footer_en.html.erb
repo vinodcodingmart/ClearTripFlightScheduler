@@ -1,0 +1,51 @@
+
+<footer>
+	<div class="container-fluid">
+	  <div class="sixteen columns alpha">
+	  <ul class="footerlinkssmall list-unstyled">
+	    <% title = section.include?("dom") ? "Domestic Airlines:" : "International Airlines:" %>
+	        <li><%= title %></li>
+	        <% top_airlines.each do |cc| %>
+	          <li>
+	            <% airline_name = link_to( t("airlines.#{cc}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+	            <%= airline_name %>
+	        </li>
+	    <% end %>
+	    </ul>
+	    <ul class="footerlinkssmall">
+          <li>International Flights :</li>
+          <li class="first"> <a href="/flight-schedule/abu-dhabi-new-delhi-flights.html" title="Abu Dhabi New Delhi Flights">Abu Dhabi New Delhi Flights</a> </li>
+          <li> <a href="/flight-schedule/abu-dhabi-kuwait-flights.html" title="Abu Dhabi Kuwait Flights">Abu Dhabi Kuwait Flights</a> </li>
+          <li> <a href="/flight-schedule/abu-dhabi-bahrain-flights.html" title=" Abu Dhabi Bahrain Flights">Abu Dhabi Bahrain Flights</a> </li>
+          <li> <a href="/flight-schedule/dubai-muscat-flights.html" title="Dubai Muscat Flights">Dubai Muscat Flights</a> </li>
+          <li> <a href="/flight-schedule/dubai-doha-flights.html" title="Dubai Doha Flights">Dubai Doha Flights</a> </li>
+          <li> <a href="/flight-schedule/abu-dhabi-muscat-flights.html" title="Abu Dhabi Muscat Flights">Abu Dhabi Muscat Flights</a> </li>
+          <li> <a href="/flight-schedule/abu-dhabi-london-flights.html" title="Abu Dhabi London Flights">Abu Dhabi London Flights</a> </li>
+          <li> <a href="/flight-schedule/dubai-london-flights.html" title="Dubai London Flights">Dubai London Flights</a> </li>
+          <li> <a href="/flight-schedule/dubai-kuwait-flights.html" title="Dubai Kuwait Flights">Dubai Kuwait Flights</a> </li>
+          <li> <a href="/flight-schedule/abu-dhabi-sydney-flights.html" title="Abu Dhabi Sydney Flights">Abu Dhabi Sydney Flights</a> </li>
+          <li> <a href="/flight-schedule/abu-dhabi-manchester-flights.html" title="Abu Dhabi Manchester Flights">Abu Dhabi Manchester Flights</a> </li>
+        </ul>
+	    <ul class="footerlinkssmall">
+        <li><%= t('other')%>:</li>
+        <li> <a href="/flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.dom_flight')%></a> </li><li> <a href="/international-flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a> </li><li> <a href="/status/" title="<%= t('footer.status')%>"><%= t('footer.status')%></a> </li><li> <a href="/hotels/united-arab-emirates/" title="<%= t('footer.hotels')%>"><%= t('footer.hotels')%></a> </li><li> <a href="/flight-schedule/flight-schedules-domestic.html" title="<%= t('footer.dom_schedule')%>"><%= t('footer.dom_schedule')%></a> </li><li> <a href="/flight-booking/domestic-airlines.html" title="<%= t('footer.dom_airlines')%>"><%= t('footer.dom_airlines')%></a> </li><li> <a href="/tourism/airports/" title="<%= t('footer.dom_airports')%>"><%= t('footer.dom_airports')%></a></li><li> <a href="/flight-schedule/flight-schedules-international.html" title="<%= t('footer.intl_flight_sched')%>"><%= t('footer.intl_flight_sched')%></a> </li><li> <a href="/flight-booking/international-airlines.html" title="<%= t('footer.intl_airlines')%>"><%= t('footer.intl_airlines')%></a> </li><li> <a href="/tourism/airports/international-airports.html" title="<%= t('footer.intl_airport')%>"><%= t('footer.intl_airport')%></a> </li><li> <a href="/tourism/routes/" title="<%= t('footer.routes')%>"><%= t('footer.routes')%></a> </li></ul>
+	    <ul class="footerlinkssmall">
+	      <li><%= I18n.t('footer.countries')%>:</li>
+	      <li> <a href="https://www.cleartrip.com" title="<%= I18n.t('footer.in')%>"><%= I18n.t('footer.in')%></a> </li>
+	      <li> <a href="https://www.cleartrip.ae/ar/" title="<%= I18n.t('footer.in')%>"><%= I18n.t('footer.ae')%></a> </li>
+	      <li> <a href="https://www.cleartrip.sa/ar/" title="<%= I18n.t('footer.sa')%>"><%= I18n.t('footer.sa')%></a> </li>
+	      <li> <a href="https://bh.cleartrip.com" title="<%= I18n.t('footer.bh')%>"><%= I18n.t('footer.bh')%></a> </li>
+	      <li> <a href="https://kw.cleartrip.com" title="<%= I18n.t('footer.kw')%>"><%= I18n.t('footer.kw')%></a> </li>
+	      <li> <a href="https://qa.cleartrip.com" title="<%= I18n.t('footer.qa')%>"><%= I18n.t('footer.qa')%></a> </li>
+	      <li> <a href="https://om.cleartrip.com" title="<%= I18n.t('footer.om')%>"><%= I18n.t('footer.om')%></a> </li>
+    	</ul>
+    	<div class="clearfix"></div>
+      <ul class="footerlinkssmall" style="width:100%;">
+        <li style="width:80%">&copy;2006-2019 Cleartrip Pvt. Ltd.</li>
+        <li> <a rel="nofollow" href="/privacy-policy/">Privacy</a> </li>
+        <li> <a rel="nofollow" href="/security">Security</a> </li>
+        <li> <a rel="nofollow" href="/terms/">Terms of Use</a> </li>
+      </ul>
+	 	</div>
+	</div>
+</footer>

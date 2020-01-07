@@ -1,0 +1,2 @@
+class PopularRouteInfo < ApplicationRecord
+end

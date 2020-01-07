@@ -1,0 +1,248 @@
+<amp-state id="fromLocations"
+src="https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=<%= dep_city_name %>"
+[src]="'https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=' + (ampSearchwidget.departureCityQuery || '')">
+</amp-state>
+<amp-state id="toLocations"
+src="https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=<%= arr_city_name %>"
+[src]="'https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=' + (ampSearchwidget.departureCityQuery || '')">
+</amp-state>
+<amp-state id="ampSearchwidget">
+  <script type="application/json">
+    {
+      "oneWayselect": false,
+      "from": "<%= dep_city_code %>",
+      "to": "<%= arr_city_code %>",
+      "departureCityQuery": "<%= dep_city_name %><%=dep_country_code %>",
+      "fromLocation": {"k": "<%= dep_city_code %>","v": "<%= dep_city_name %>"},
+      "arrivalCityQuery": "<%= arr_city_name %><%=arr_country_code %>",
+      "toLocation": {"k": "<%= arr_city_code %>","v": "<%= arr_city_name %>"},
+      "adults":1,
+      "childrens":0,
+      "infants": 0,
+      "travellerstext":"1 الكبار,0 الأطفال,0 الرضع",
+      "rndtrip": false,
+      "depart_date":"",
+      "return_date":""
+    }
+  </script>
+</amp-state>
+<section class="search-widget-wrapper">
+  <div class="search-widget">
+    <div class="container1">
+      <form  class="p2" action="https://www.cleartrip.com/how-to-reach/amp_new_search_dynamic" target="_top">
+       <div class="trip-type">
+        <!-- one way or rount trip -->
+        <span  on="tap:AMP.setState({ampSearchwidget:{oneWayselect: false,rndtrip:true}})" role="option" tabindex="0"  class="selected" [class]="ampSearchwidget.oneWayselect ? '' : 'selected'"><%= t("round_trip")%> </span>
+        <span  on="tap:AMP.setState({ampSearchwidget:{oneWayselect: true,rndtrip: false,return_date:''}})"  [class]="ampSearchwidget.oneWayselect ? 'selected' : ''" role="option" tabindex="1" ><%= t("one_way") %></span>
+        <!-- end of one way or round trip -->
+      </div>
+      <ul class="search-field">
+        <!-- auto complete for departure city  -->
+        <li class="destination-fields">
+          <input type="text" placeholder="اسم مدينة المغادرة"  name="dep_city_name"  [value] ="ampSearchwidget.departureCityQuery ? ampSearchwidget.departureCityQuery  : '' "
+          on="input-debounced:AMP.setState({
+          ampSearchwidget:{
+          departureCityQuery: showdepdropdown ? event.value : ampSearchwidget.departureCityQuery,
+          fromLocation: showdepdropdown ? false : ampSearchwidget.departureCityQuery
+        }
+      });
+      tap:AMP.setState({
+      showdepdropdown:true,
+      showarrdropdown:false,
+      showTravellers:false
+    })" required>
+    <input type="hidden" value="<%= dep_city_code %>"  name="from" [value]="ampSearchwidget.from ? ampSearchwidget.from : '' ">
+    <input type="hidden" name="rnd_one" value="R" [value] ="ampSearchwidget.oneWayselect ? 'O' : 'R'">
+    <!-- Query Departure Selection Box -->
+    <div class="hidden" [class]="showdepdropdown && ampSearchwidget.departureCityQuery && fromLocations && fromLocations.length > 0 ? 'form-suggest-container' : 'hidden'">
+      <amp-list class="form-autosuggest-box" layout="fixed-height" height="168" src="https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=<%= dep_city_name %>"
+        [src]="'https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=' + (ampSearchwidget.departureCityQuery ? ampSearchwidget.departureCityQuery : '')" single-item items=".">
+        <template type="amp-mustache">
+          {{#.}}
+          <div class="location-item no-outline" on="
+          tap:
+          AMP.setState({
+          ampSearchwidget: {
+          from: '{{code}}',
+          departureCityQuery: '{{arabic}}',
+          fromLocation: fromLocations.length > 0 ? fromLocations.filter(x=>x.code == '{{code}}')[0] : []
+        },
+        showTravellers:false,
+        showdepdropdown: false
+      })">
+      <div class="location-item-name">{{arabic}}</div>
+    </div>
+    {{/.}}
+  </template>
+</amp-list>
+</div>
+</li>
+<!--  end of auto complete for departure city  -->
+<!-- auto complete for arrival city  -->
+<li class="destination-fields">
+  <input type="text" placeholder="اسم مدينة الوصول"  name="arr_city_name"  [value] ="ampSearchwidget.arrivalCityQuery ? ampSearchwidget.arrivalCityQuery  : '' "
+  on="input-debounced:AMP.setState({
+  ampSearchwidget:{
+  arrivalCityQuery: showarrdropdown ? event.value : ampSearchwidget.arrivalCityQuery,
+  toLocation: showarrdropdown ? false : ampSearchwidget.arrivalCityQuery
+}
+});
+tap:AMP.setState({
+showdepdropdown:false,
+showarrdropdown:true,
+showTravellers:false
+})" required>
+<input type="hidden" value="<% dep_city_code %>"  name = "to" [value]="ampSearchwidget.to ? ampSearchwidget.to : '' ">
+<!-- Query Departure Selection Box -->
+<div class="hidden" [class]="showarrdropdown && ampSearchwidget.arrivalCityQuery && toLocations && toLocations.length > 0 ? 'form-suggest-container' : 'hidden'">
+  <amp-list class="form-autosuggest-box" layout="fixed-height" height="168" src="https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=<%= arr_city_name %>"
+    [src]="'https://www.cleartrip.sa/suggest/airports?expectedNumberOfRecords=10&outputLanguages=ARABIC&inputText=' + (ampSearchwidget.arrivalCityQuery ? ampSearchwidget.arrivalCityQuery : '')" single-item items=".">
+    <template type="amp-mustache">
+      {{#.}}
+      <div class="location-item no-outline" on="
+      tap:
+      AMP.setState({
+      ampSearchwidget: {
+      to: '{{code}}',
+      arrivalCityQuery: '{{arabic}}',
+      toLocation: toLocations.length > 0 ? toLocations.filter(x=>x.code == '{{code}}')[0] : []
+    },
+    showarrdropdown: false,
+    showTravellers:false
+  })">
+  <div class="location-item-name">{{arabic}}</div>
+</div>
+{{/.}}
+</template>
+</amp-list>
+</div>
+</li>
+<!--  end of auto complete for arrival city  -->
+<li class="common-fields D-Ddate">
+  <label><%=t("depart_on") %></label>
+  <amp-date-picker
+  type="single"
+  mode="overlay"
+  layout="container"
+  format="DD/MM/YYYY"
+  input-selector="[name=depart_date]" on="select:AMP.setState({
+  ampSearchwidget:{
+  depart_date:event.date
+},
+showTravellers:false,
+showdepdropdown:false,
+showarrdropdown:false
+})">
+<input type="text" name="depart_date" placeholder="dd/mm/yyyy"  [value]="ampSearchwidget.depart_date" on="tap:AMP.setState({
+showTravellers:false,
+showdepdropdown:false,
+showarrdropdown:false
+})" required>
+</amp-date-picker>
+</li>
+<li class="common-fields D-Ddate">
+  <label><%=t("return_on") %></label>
+  <amp-date-picker
+  type="single"
+  mode="overlay"
+  layout="container"
+  format="DD/MM/YYYY"
+  input-selector="[name=return_date]" on="select:AMP.setState({
+  ampSearchwidget:{
+  return_date:event.date
+},
+showTravellers:false,
+showdepdropdown:false,
+showarrdropdown:false
+})">
+<input type="text" name="return_date" placeholder="dd/mm/yyyy" [value]="ampSearchwidget.return_date"  [class]="ampSearchwidget.oneWayselect ? 'returndisabled' : ''" on="tap:AMP.setState({
+showTravellers:false,
+showdepdropdown:false,
+showarrdropdown:false
+})">
+</amp-date-picker>
+</li>
+<li class="common-fields dropdown">
+  <input type="text" name="travellers" value="1 الكبار,0 الأطفال,0 الرضع"  [value] = "ampSearchwidget.travellerstext ? ampSearchwidget.travellerstext : '1 adults,0 child,0 infants' " on="tap:AMP.setState({
+  showTravellers: true,
+  showdepdropdown:false,
+  showarrdropdown:false,
+})">
+<div class="hidden" [class]="showTravellers ? 'dropdown-menu' : 'hidden'">
+ <ul>
+  <li><%= t("adults") %>
+    <span class="click-block">
+      <span class="adultincr" [class]="ampSearchwidget.adults &amp;&amp; ampSearchwidget.adults > 1 ? 'adultincr' : 'adultincr disablestravellers'" on="tap:AMP.setState({
+        ampSearchwidget:{
+        adults: ampSearchwidget.adults > 1 ? ampSearchwidget.adults-1 : 1,
+        infants: ampSearchwidget.adults > 1 &amp;&amp; ampSearchwidget.infants == ampSearchwidget.adults ? ampSearchwidget.infants-1 : ampSearchwidget.infants
+      }
+    })">-</span><span class="count adult-count" style="margin-right:5px;" [text]="ampSearchwidget.adults">9</span><span class="adultincr disablestravellers" [class]="ampSearchwidget.adults + ampSearchwidget.childrens < 9 ?  'adultincr' :'adultincr disablestravellers'" on="tap:AMP.setState({
+    ampSearchwidget:{
+    adults: ampSearchwidget.adults + ampSearchwidget.childrens < 9 ? ampSearchwidget.adults+1 : ampSearchwidget.adults
+  }
+})">+</span></span>
+</li>
+<li><span class="note"><%= t("children")%>
+  (2-12 yrs)
+</span>
+<span class="click-block">
+  <span class="chlddecr disablestravellers" [class]="ampSearchwidget.childrens >0 ? 'chlddecr' : 'chlddecr disablestravellers'" on="tap:AMP.setState({
+    ampSearchwidget:{
+    childrens: ampSearchwidget.childrens >0 ? ampSearchwidget.childrens-1 : 0
+  }
+})">-</span>
+<span class="count adult-count" [text]="ampSearchwidget.childrens">0</span>
+<span class="chldincr disablestravellers" [class]="ampSearchwidget.adults+ampSearchwidget.childrens <9 ? 'chldincr' : 'chldincr disablestravellers'" on="tap:AMP.setState({
+ampSearchwidget:{
+childrens: ampSearchwidget.adults+ampSearchwidget.childrens < 9 ? ampSearchwidget.childrens+1 : ampSearchwidget.childrens
+}
+})">+</span>
+</span>
+<div class="clearfix"></div>
+</li>
+<li><span class="note"><%= t("infants")%>
+
+   <%= t("below_2_yrs")%>
+ </span>
+ <span class="click-block">
+  <span class="infntsdecr" [class]="ampSearchwidget.infants >0 ? 'infntsdecr' : 'infntsdecr disablestravellers'" on="tap:AMP.setState({
+    ampSearchwidget:{
+    infants: ampSearchwidget.infants >0 ? ampSearchwidget.infants-1 : ampSearchwidget.infants
+  }
+})">-</span>
+<span class="count adult-count" [text]="ampSearchwidget.infants">9</span>
+<span class="infntsincr disablestravellers" [class]="ampSearchwidget.infants < ampSearchwidget.adults ? 'infntsincr' : 'infntsincr disablestravellers'" on="tap:AMP.setState({
+ampSearchwidget:{
+infants:ampSearchwidget.infants < ampSearchwidget.adults ? ampSearchwidget.infants+1 : ampSearchwidget.infants
+}
+})">+</span>
+</span>
+<div class="clearfix"></div>
+</li>
+<li>
+  <span class="t-btn" on="tap:AMP.setState({
+ampSearchwidget:{
+travellerstext: ampSearchwidget.adults+' adults, ' +ampSearchwidget.childrens +' child, ' +ampSearchwidget.infants +' infant'
+},
+showTravellers:false
+})"> Done</span>
+</li>
+</ul>
+</div>
+</li>
+<input type="hidden" name="adults" value="1" [value] ="ampSearchwidget.adults">
+<input type="hidden" name="childs" value="0" [value] ="ampSearchwidget.childrens">
+<input type="hidden" name="infants" value="0" [value] ="ampSearchwidget.infants">
+<input type="hidden" name="domain" value="<%= @host_name.gsub("https://",'') %>">
+<input type="hidden" name="section" value="<%= section[3..5] %>">
+<input type="hidden" name="country_code" value="<%= country_code %>">
+<input type="hidden" name="page_type" value="<%= page_type %>">
+<input type="hidden" name="carrier_code" value="<%= @carrier_code %>">
+<input type="hidden" name="button_type" value="page_search_button">
+<li><input type="submit" value="<%= t('search')%>" class="ampstart-btn booking-btn caps"></li>
+</ul>
+</div>
+</form>
+</div>
+</section>

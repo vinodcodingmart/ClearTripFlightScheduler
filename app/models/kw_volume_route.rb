@@ -1,0 +1,2 @@
+class KwVolumeRoute < ApplicationRecord
+end

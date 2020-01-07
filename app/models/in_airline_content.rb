@@ -1,0 +1,2 @@
+class InAirlineContent < ApplicationRecord
+end

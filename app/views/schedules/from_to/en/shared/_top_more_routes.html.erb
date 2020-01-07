@@ -1,0 +1,15 @@
+<ul class="linklist list-inline">
+  <% if top_routes.nil? or top_routes.blank? %>
+    <li><%= t('brand.no_top_routes')%></li>
+  <% else %>
+    <% top_routes.each do |route| -%>
+      <% if !route.arr_city_name_en.blank? && !route.dep_city_name_en.blank? %>
+        <li>
+          <% link = "/flight-schedule/#{route.url}" %>
+          <%= I18n.t('flight_schedule.flights_routes_html', dep_city_name: route.dep_city_name_en, arr_city_name: route.arr_city_name_en, link: link).html_safe %>
+        </li>
+      <% end %>
+    <% end -%>
+  <% end %>
+</ul>
+<br>

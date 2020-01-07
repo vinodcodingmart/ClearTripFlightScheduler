@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  carrier_code: MyString
+  carrier_name: MyString
+  country_code: MyString
+  icoa_code: MyString
+  meta_title_en: MyString
+  meta_title_ar: MyString
+  meta_description_en: MyString
+  meta_description_ar: MyString
+  overview_content_en: MyText
+  overview_content_ar: MyText
+  baggage_content_en: MyText
+  baggage_content_ar: MyText
+  cancellation_content_en: MyText
+  cancellation_content_ar: MyText
+  customer_support_content_en: MyText
+
+two:
+  carrier_code: MyString
+  carrier_name: MyString
+  country_code: MyString
+  icoa_code: MyString
+  meta_title_en: MyString
+  meta_title_ar: MyString
+  meta_description_en: MyString
+  meta_description_ar: MyString
+  overview_content_en: MyText
+  overview_content_ar: MyText
+  baggage_content_en: MyText
+  baggage_content_ar: MyText
+  cancellation_content_en: MyText
+  cancellation_content_ar: MyText
+  customer_support_content_en: MyText

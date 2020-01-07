@@ -1,0 +1,630 @@
+<% use_helper = self.extend ApplicationHelper
+domain = application_processor.host_name(country_code)
+amp_domain = domain.gsub("https://",'')
+currency = application_processor.currency_code(country_code)%>
+<% intl =  section.include?("int") ? "&intl=y" : ""%>
+<!DOCTYPE html>
+<html amp lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  <% meta_info = use_helper.seo_header %>
+  <title><%= meta_info[:title] %></title>
+  <meta name="description" content="<%= meta_info[:description] %>" />
+  <meta name="keywords" content="<%= meta_info[:keywords] %>" />
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <link rel="canonical" href="<%= "#{application_processor.host_name(country_code)}/#{@page_type}/#{flight_file_name}" %>">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta content="origin" name="referrer" />
+  <meta name="google" content="notranslate">
+  <meta http-equiv="Content-Language" content="en">
+  <meta name="apple-mobile-web-app-title" content="">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta property="og:site_name" content="Cleartrip Flights"/>
+  <meta property="og:image" content="https://s3.amazonaws.com/ctp-images/uploads/CleartripLogo(nodotcom)-1.png"/>
+  <meta property="og:url" content="<%= "#{application_processor.host_name(country_code)}/flight-schedule/#{flight_file_name}" %>"/>
+  <meta property="og:publisher" content="https://www.facebook.com/cleartrip"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <meta name="google-site-verification" content="ZpTI71xKZu31T17eN0r66mskYFtkUK4q2SFUx23o24Q" />
+  <link rel="icon" href="" type="image/jpeg">
+  <link rel="dns-prefetch" href="">
+
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom>
+   body{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,Arial,sans-serif;
+    background: #eee;
+  }
+  .productIcon, .flagIcon, .cleartripLogo, .searchIcon, .secondaryProduct, i {
+    content: " ";
+    background-image: url(http://waytogo-assets.s3.amazonaws.com/waytogo-production/waytogo/images/iconSprite37.png);
+    background-repeat: no-repeat;
+  }
+  .productLinks li {
+    display: inline-block;
+  }
+  .productLinks li a {
+    padding: 10px 7px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 300;
+    text-decoration: none;
+    text-shadow: 0px 2px #fff;
+    color: #7e7e7e;
+    display: block;
+  }
+  .productIcon {
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    text-indent: -9999px;
+  }
+  .productLinks .flights, .search-block .flights {
+    background-position: -30px -654px;
+  }
+  .productLinks .hotels, .search-block .hotels {
+    background-position: -64px -654px;
+  }
+  .productLinks .packages {
+    background-position: -144px -654px;
+  }
+  .productLinks .trains {
+    background-position: -106px -654px;
+  }
+  .cleartripLogo {
+    float: left;
+    margin-top: 8px;
+    width: 135px;
+    height: 30px;
+    background-position: 0px 0px;
+    text-indent: -9999px;
+  }
+  .productLinks {
+    margin: 0;
+  }
+  #flights-nav {
+    background: #fff;
+    padding: 5px 20px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  }
+  .navigation {
+    list-style-type: none;
+    padding: 5px 0 0 20px;
+    margin: 0;
+  }
+  .navigation li{
+    display: inline-block;
+    padding: 0 15px 0 0;
+    position: relative;
+  }
+  .navigation li:before {
+    content: "\00bb";
+    position: absolute;
+    left: -15px;
+    font-size: 15px;
+    top: 9px;
+  }
+  .navigation li:first-child:before{
+    display: none;
+  }
+  .navigation a {
+    color: #36c;
+    font-size: 13px;
+    text-decoration: none;
+    float: left;
+    margin: 10px 7px 0 0;
+  }
+  #content {
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    padding: 20px 7px;
+    margin: 0 15px 5px;
+    font-size: 15px;
+    line-height: 27px;
+  }
+  #content h1 {
+    font-size: 26px;
+    margin: 0 0 15px;
+    font-weight: bold;
+    line-height: 24px;
+  }
+  #content h2 {
+    font-size: 16px;
+  }
+  .airline-no {
+    display: block;
+    font-size: 14px;
+    line-height: 9px;
+    text-align: center;
+    padding: 0 0 5px;
+  }
+  .airline-name {
+    display: block;
+    font-size: 14px;
+    line-height: 9px;
+    text-align: center;
+    color: #36c;
+  }
+  .airline-name a {
+    color: #36c;
+  }
+  .airline-list th,.airline-list td {
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #F3F9FF;
+    box-shadow: 0 1px rgba(255,255,255,0.8) inset;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .airline-list td{
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 10px 0 15px;
+  }
+  .airline-list {
+    border-collapse: collapse;
+    text-align: center;
+    color: #666;
+    font-size: 10px;
+    width: 100%;
+    margin: 0 0 25px;
+    border: 1px solid #d9d9d9;
+  }
+  .airline-list .type{
+    font-size: 14px;
+    color: #999;
+    display: block;
+    line-height: 9px;
+
+  }
+  .airline-list .route {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 9px;
+    margin: 0 0 15px;
+    display: inline-block;
+  }
+  .airline-list  tr:last-child td {
+    border: none;
+  }
+
+  .airline-list .link,.link{
+    cursor: pointer;
+    overflow: visible;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    color: #f9f9f9;
+    padding: 4px 8px;
+    width: 90px;
+    word-break: break-all;
+    border: none;
+    border-bottom-color: #b32d00;
+    text-shadow: 0 -1px 0 #cc3300;
+    background-color: #ff7e33;
+    background-image: -moz-linear-gradient(rgba(204,80,31,0), #cc501f);
+    background-image: -webkit-linear-gradient(rgba(204,80,31,0), #cc501f);
+    background-image: linear-gradient(rgba(204,80,31,0), #cc501f);
+    border-radius: 3px;
+    outline: none;
+    word-wrap: break-word;
+    display: inline-block;
+
+  }
+  .content-desc{
+    color: rgb(68, 68, 68);
+    font-size: 16px;
+    line-height: 27px;
+  }
+  .content-desc p {
+    margin: 0 0 15px;
+  }
+  footer{
+    text-align: center;
+    background: #fff;
+    padding: 15px 0;
+    color: #555;
+    font-size: 12px;
+  }
+  .bread-crumb li{
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    padding: 0 18px 0 0;
+  }
+  .bread-crumb{
+    padding: 0 0 0 5px;
+    margin: 15px 0 0;
+  }
+  .bread-crumb li:before {
+    content: "\00bb";
+    position: absolute;
+    left: -15px;
+  }
+  .bread-crumb li:first-child:before {
+
+    display: none;
+  }
+  .bread-crumb li a {
+    text-decoration: none;
+    color: #36c;
+  }
+  .cnt-odd ol li span {
+    display: block;
+    font-weight: bold;
+  }
+  .airline-info h3{
+    font-size: 18px;
+  }
+  .airline-info{
+    padding: 0 0 20px;
+  }
+  .airline-info table.airline-info-table,.airline-info .fare-table,.other-info{
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #d9d9d9;
+    border-collapse: collapse;
+
+  }
+  .airline-info table.airline-info-table td,.fare-table td,.other-info td{
+    padding: 10px;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .fare-table th,.other-info th{
+    padding: 10px;
+    background: #eeeeee54;
+    border-bottom: 1px solid #d9d9d9;
+    font-weight: 500;
+    text-align: left;
+  }
+  .airline-info table.airline-info-table td:nth-child(odd){
+    background: #eeeeee54;
+    font-weight: 500;
+    border-right: 1px solid #d9d9d9;
+  }
+  .airline-info .booking {
+    padding: 4px 15px;
+  }
+  .normal-list .dep-time,.normal-list .arr-time{
+    width: 32%;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .schedule-divide{
+    width: 30px;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    top: 5px;
+  }
+  .banner {
+    padding: 0 0 20px;
+  }
+  .container-left{
+    width: 1024px;
+  }
+  .search-field{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+  .search-field li{
+    display: inline-block;
+    padding: 0 10px 0 0;
+  }
+  .search-field li label{
+    display: block;
+    padding: 0 0 4px;
+  }
+  .search-field li input{
+    padding: 5px;
+    border: 1px solid #d9d9d9;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+  #search-widget{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
+    border-color: #fc0;
+    background: #fcfce1;
+    margin: 25px 15px 0;
+  }
+  #search-widget .link {
+    cursor: pointer;
+    overflow: visible;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    color: #f9f9f9;
+    padding: 6px 8px;
+    width: 120px;
+    word-break: break-all;
+    border: none;
+    border-bottom-color: #b32d00;
+    text-shadow: 0 -1px 0 #cc3300;
+    background-color: #ff7e33;
+    background-image: -moz-linear-gradient(rgba(204,80,31,0), #cc501f);
+    background-image: -webkit-linear-gradient(rgba(204,80,31,0), #cc501f);
+    background-image: linear-gradient(rgba(204,80,31,0), #cc501f);
+    border-radius: 3px;
+    outline: none;
+    word-wrap: break-word;
+    display: inline-block;
+    text-align: center;
+  }
+
+  #search-widget select{
+    background-color: rgb(248, 248, 248);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(166, 166, 166);
+    border-image: initial;
+  }
+  #search-widget a {
+    color: #000;
+    text-decoration:  none;
+  }
+
+  .featured_local li{
+    display: inline-block;
+    width: 200px;
+  }
+  .featured_local ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .local-tile {
+    border: 1px solid #d9d9d9;
+    box-shadow: 2px 3px 3px rgba(0,0,0,0.09);
+    margin: 0 5px 30px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.25);
+  }
+
+  .local-tile img
+  {
+    width:100%;
+    height:140px;
+    object-fit:cover
+  }
+  .local-tile  a:hover,.local-tile  a{
+    text-decoration: none;
+  }
+  .local-tile:hover{
+    -webkit-transform:translateY(-2px);
+    -ms-transform:translateY(-2px);
+    transform:translateY(-2px);
+    -webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;
+    -webkit-box-shadow:0 0 6px rgba(0,0,0,.35);
+  }
+  .local-cnt{
+    padding:10px 7px;
+    background:#fff;
+    text-align: center;
+  }
+  .local-cnt h3{
+    font-size:13px;
+    text-transform:capitalize;
+    margin:0;
+    line-height:21px;
+    font-weight:600;
+    color:#0009;
+    display:block;
+    display:-webkit-box;
+    max-width:400px;
+    height:44px;
+    margin:0 auto;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align:center
+  }
+
+  .airline-info-table a,.local-cnt a {
+    color: #36c;
+  }
+  .mbanner{
+      display:none;
+    }
+  @media Screen and (max-width: 468px){
+    .airline-info{
+      width: 100%;
+      overflow-x: auto;
+    }
+    .airline-info table.airline-info-table, .airline-info .fare-table,.other-info{
+      width: 700px;
+    }
+    .header-wrapper,.Modify{
+      float: none;
+      width: 100%;
+    }
+    .Modify{
+      text-align: center;
+    }
+    .container-left{width: auto}
+  }
+  @media screen and (max-width: 468px){
+    .hide-xs {
+      display: none;
+    }
+    #content{
+      margin: 0 0 5px;
+    }
+    #content h1{
+      font-size: 18px;
+    }
+    .content-desc{
+      font-size: 15px;
+    }
+    .airline-list .link{
+      padding: 2px;
+      font-size: 12px;
+      width: 65px;
+    }
+    .airline-list .route {
+      font-size: 12px;
+      margin: 0 0 10px;
+    }
+    .airline-list .type{
+      font-size: 13px;
+      line-height: 16px;
+    }
+    .airline-name {
+      font-size: 12px;
+    }
+    .date{
+
+      width: 43%;
+      margin: 0 4px 0 0;
+    }
+    #search-widget .date input{
+      width: 100%;
+      background: #fff url(https://d2w5af8s1781.cloudfront.net/waytogo-staging/images/calendar_icon.png) no-repeat 100px center;
+    }
+    #search-widget{
+      padding: 10px;
+    }
+    #search-widget .travellers{
+      width: 25%;
+      margin: 5px 0 0;
+
+    }
+    #search-widget select{
+      background: #eee;
+    }
+    #search-widget .link{
+      margin: 10px 0 0;
+    }
+    #search-widget .from{
+      width: 43%;
+
+      margin: 0 4px 10px 0;
+    }
+    #search-widget .from input{
+      width: 100%;
+    }
+    .link{
+      width: 70px;
+    }
+    #search-widget{
+      margin: 25px 0 0;
+    }
+    .featured_local li{
+      display: block;
+      width: 75%;
+      margin: 0 auto;
+    }
+    .banner{
+      display: none;
+    }
+    .mbanner{
+      display: block;
+    }
+  }
+  </style>
+</head>
+<body>
+  <!--/Header Starts Here-->
+  <section id="flights-nav">
+    <div class="container-fluid">
+      <div class="ctCol ctProducts mview-header">
+        <a class="ctBrand" href="/">
+          <span class="cleartripLogo" title="Cleartrip ">Home</span>
+        </a>
+        <ul class="productLinks hasProductIcons">
+          <li class="flightApp">
+            <a rel="bToolTip" title="Flights" href="/flights">
+              <span class="productIcon flights">Flights</span>
+            </a>
+          </li>
+          <li class="hotelApp">
+            <a rel="bToolTip" title="Hotels" href="/hotels">
+              <span class="productIcon hotels">Hotels</span>
+            </a>
+          </li>
+          <li class="packagesApp">
+            <a rel="bToolTip" title="Packages" href="/packages">
+              <span class="productIcon packages">Packages</span>
+            </a>
+          </li>
+          <li class="trainsApp">
+            <a rel="bToolTip" title="Trains" href="/trains">
+              <span class="productIcon trains">Trains</span>
+            </a>
+          </li>
+        </ul>
+      </div><!--/ctProducts-->
+    </div>
+    <div class="clearfix"></div>
+  </section><!--/flights-nav-->
+  <!--/Header Ends Here-->
+  <div class="clearfix"></div>
+
+  <!--/ Breadcrumb ends here -->
+  <!--/contnet Starts Here-->
+  <%= render partial: "common/amp_search_widget_en",locals: {dep_city_name: dep_city_name, arr_city_name: arr_city_name,schedule_layout_values: schedule_layout_values,intl: intl,domain: amp_domain} %>
+  <section id="content" class="container-left">
+
+  <div class="content-desc" >
+    <h1><%= t('flight_schedule.header_1', dep_city_name: @dep_city_name, arr_city_name: @arr_city_name,:arr_city_code=>arr_city_code,:dep_city_code=>dep_city_code) %></h1>
+
+    <%= render partial: "new_designs/schedules/shared/en/schedule_table_amp_en",:locals=>{:routes=>schedule_layout_values['schedule_routes'], country_code: country_code, section: @section,
+      dep_city_name: @dep_city_name, :use_helper=>use_helper, arr_city_name: @arr_city_name, :no_price=>schedule_layout_values['no_price'],domain: amp_domain,intl: intl,currency_code: currency,schedule_layout_values: schedule_layout_values} %>
+      <% unless @volume_count < 1000 %>
+        <%= render partial: "new_designs/schedules/#{country_code.downcase}/amp/#{country_code.downcase}_#{@language.downcase}_templatized_content",locals: {country: I18n.t("footer.#{country_code.downcase}"),dep_city_name: @dep_city_name,arr_city_name: @arr_city_name,min_price: schedule_layout_values['min_price'].try(:to_f).try(:round),max_price: schedule_layout_values['max_price'].try(:to_f).try(:round),weekly_flights_count: schedule_layout_values['total_flights'],number_of_airlines: schedule_layout_values["operational_airlines_count"],duration: schedule_layout_values["max_duration"],arr_airport_name: schedule_layout_values['arr_airport_name'],schedule_layout_values: schedule_layout_values,currency_code: currency} %>
+      <% end %>
+
+      <% if !schedule_layout_values.blank? %>
+        <%= render :partial =>  "new_designs/schedules/shared/en/route_information_en",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name} %>
+      <% end %>
+      <%# if schedule_layout_values['things_to_do'][:activities_data].present? && !schedule_layout_values['things_to_do'][:activities_data].nil? %>
+        <%#= render partial:"new_designs/schedules/shared/en/things_to_do_amp",locals:{arr_city_name: @arr_city_name,things_todo: schedule_layout_values["things_to_do"]} %>
+      <%# end %>
+      <%= render partial:"new_designs/schedules/shared/en/hotels_and_localities_amp",locals:{arr_city_name: @arr_city_name,hotel_api: schedule_layout_values["locality_hotels"],application_processor: application_processor,country_code: country_code} %>
+      <% unless @volume_count < 1000 %>
+        <%= render partial: "new_designs/schedules/shared/en/schedule_faq_en", locals: { arr_city_name: arr_city_name, dep_city_name: dep_city_name, schedule_layout_values: schedule_layout_values, use_helper: use_helper,currency: currency } %>
+      <% end %>
+    </div>
+
+  </section>
+  <footer >
+   &copy 2006-2018 Cleartrip Pvt. Ltd.
+ </footer>
+
+ <amp-analytics type=googleanalytics> <script type="application/json">
+ {
+   "vars": {
+     "account": "UA-16109308-2"
+   },
+   "triggers": {
+     "trackPageview": {
+       "on": "visible",
+       "request": "pageview"
+     },
+     "trackBookEvent": {
+       "selector": ".flight-schedule-booking",
+       "on": "click",
+       "request`": "event",
+       "vars": {
+         "eventCategory": "ui-components",
+         "eventAction": "click"
+       }
+     }
+   }
+ }
+</script> </amp-analytics>
+</body>
+</html>

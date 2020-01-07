@@ -1,0 +1,45 @@
+<% review_content =  @content["review_content"].split("\n") %>
+<script type="text/javascript">
+      $(document).ready(function(){
+      var overallRating = "<%= review_content[12].split(":")[1].to_f%>";
+      var userRating1 = "<%= review_content[1].split(":")[1].to_f %>";
+      var userRating2 = "<%= review_content[4].split(":")[1].to_f %>";
+      var userRating3 = "<%= review_content[7].split(":")[1].to_f %>";
+      var userRating4 = "<%= review_content[10].split(":")[1].to_f %>";
+      $("#rateYo").rateYo({
+        rating: overallRating ,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review1").rateYo({
+        rating: userRating1,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review2").rateYo({
+        rating: userRating2,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+          starWidth: "18px"
+      });
+      $("#review3").rateYo({
+        rating: userRating3,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+      $("#review4").rateYo({
+        rating: userRating4,
+        readOnly: true,
+        halfStar:true,
+        ratedFill: "#f5681e",
+        starWidth: "18px"
+      });
+})
+</script>

@@ -1,0 +1,22 @@
+<amp-analytics type=googleanalytics> <script type="application/json">
+ {
+   "vars": {
+   "account": "UA-16109308-8"
+ },
+ "triggers": {
+ "trackPageview": {
+ "on": "visible",
+ "request": "pageview"
+},
+"trackBookEvent": {
+"selector": ".flight-schedule-booking",
+"on": "click",
+"request": "event",
+"vars": {
+"eventCategory": "ui-components",
+"eventAction": "click"
+}
+}
+}
+}
+</script> </amp-analytics>

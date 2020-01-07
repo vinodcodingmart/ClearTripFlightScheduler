@@ -1,0 +1,14 @@
+<section id="search-widget">
+    <a  href="http://52.77.239.110/flight_search?from=<%= schedule_layout_values['dep_airport_code']%>&to=<%= schedule_layout_values['arr_airport_code'] %><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=%>&domain=<%=domain%>&section=<%=@section[3..5]%>" class="modify-link">
+      <ul class="search-field">
+        <li class="from"><label>From</label><input type="text" name="from" placeholder="From City" value="<%= dep_city_name.titleize %>"></li>
+      <li class="from"><label>To</label><input type="text" name="to" placeholder="To City" value="<%= arr_city_name.titleize %>"></li>
+        <li class="date"><label>Depart On</label><input type="text" name="" placeholder=""></li>
+        <li class="date"><label>Return On</label><input type="text" name="" placeholder=""></li>
+        <li class="travellers"><label>Adutls</label><select><option value="0" selected="selected">1</option></select></li>
+        <li class="travellers"><label>Childrens</label><select><option value="0" selected="selected">0</option></select></li>
+        <li class="travellers"><label>Infants</label><select><option value="0" selected="selected">0</option></select></li>
+        <li><div><a href="http://52.77.239.110/flight_search?from=<%= schedule_layout_values['dep_airport_code']%>&to=<%= schedule_layout_values['arr_airport_code'] %><%=intl%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=%>&domain=<%=domain%>&section=<%=@section[3..5]%>" class="link">Modify Search</a></div></li>
+      </ul>
+    </a>
+  </section>

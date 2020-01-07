@@ -1,0 +1,48 @@
+<% I18n.locale = :ar %>
+<div class="Domestic-airlines">
+  <ul class="list-unstyled airline-lists">
+    <% airline_codes.each do |ac| %>
+      <br>
+      <% airline_name_ar = I18n.t("airlines.#{ac}") %>
+      <li>
+        <div class="col-sm-12 col-xs-12">
+          <div class="airline-desc">
+            <h2><%= airline_name_ar %></h2>
+            <p class="truncate">
+              <%
+                key = "#{country_code.downcase}_#{ac.upcase}_content"
+                if I18n.t("airline_brand_content.#{key}").index("translation missing").nil?
+                  content = I18n.t("airline_brand_content.#{key}") rescue ""
+                else
+                   I18n.locale = :ar
+                    content = I18n.t("booking_index.content_arabic",airline_name: airline_name_ar)
+                end
+              %>
+              <% if content.index("translation_missing").nil? %>
+                <%= raw content[0,250] + "..."  %>
+              <% end %>
+            </p>
+            <% I18n.locale = "en"
+              airline_name_en = I18n.t("airlines.#{ac}")
+              I18n.locale = "ar"
+            %>
+            <ul class="list-inline airline-status">
+              <li>
+                <%= link_to format_airline_name(airline_name_ar,I18n.locale) ,"/ar/flight-booking/#{url_escape(format_overview_link(airline_name_en))}.html" %>
+                <span> |</span>
+              </li>
+              <li>
+                <%= link_to t('brand.pnr_status',airline_name:  airline_name_ar) ,"/ar/flight-booking/#{url_escape(format_overview_link(airline_name_en))}-flight-pnr-status.html" %>
+                <span> |</span>
+              </li>
+              <li> <%= link_to t('brand.web_check_in',airline_name:  airline_name_ar) , "/ar/flight-booking/#{url_escape(format_overview_link(airline_name_en))}-web-check-in.html" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<!--/Domestic-airlines-->

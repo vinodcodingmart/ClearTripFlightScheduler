@@ -1,0 +1,18 @@
+<h3>FAQs</h3>
+<b>1.Can I get refunds on cancellation of my booking and how?</b>
+<p>While IndiGo Airlines gives you refunds on the cancellation of your tickets, it has some cancellation charges accordingly. Cancellation of your booking should be made at least 2 hours before for domestic flights and 4 hours before for international flights. Refunds at IndiGo takes 7 to 10 working days and will be processed after the deduction of the cancellation fees.</p>
+<b>2.What is the refund policy for people who booked through travel agency?</b>
+<p>For the people who have booked tickets through a travel agency, the refund amount will get deposited in the travel agency account from where they booked the tickets. The individual will have to contact the agency to claim the refund.</p>
+<b>3.Will I get refunds for unused tickets?</b>
+<p>IndiGo may refund the taxes for unused or no show tickets. This includes statutory taxes and User Development Fee (UDF), Passenger Service Fee (PSF), and Airport Development Fee (ADF).</p>
+<b>What are the charges for cancellations?</b>
+<ul>
+<li><b>Domestic flights</b>
+<p>
+The cancellation fee per person is INR 3,000 if it is changed or canceled 2 hours before the scheduled departure. In case of a no-show, the ticket amount will be forfeited and only taxes will be refunded.</p></li>
+<li><b>International flights</b>
+<p>Cancellation fee for International flights is INR 3,500 per passenger if the booking is changed or canceled before 4 hours from the scheduled departure. No show charges will be levied if cancellation or changes are made between 0 to 4 hours from the scheduled departure.</p></li></ul>
+<b>4.How can I make changes in my bookings?</b>
+<p>After the confirmation of the bookings, a passenger can make changes by contacting the IndiGo call center, or the person can go to the IndiGo website and IndiGo airport counters. The changes or rescheduling should be done 4 hours before the scheduled departure for International flights and 2 hours before the scheduled departure for domestic flights. At present, IndiGo does not allow passengers to change their origin and destination or transfer their ticket to another person.<p> 
+<b>5.What is the fee for rescheduling a flight?</b>
+<p>The fee for rescheduling for an international flight is INR 2,500 per passenger per segment and for a domestic flight, it is 2,250 per person per segment.</p>

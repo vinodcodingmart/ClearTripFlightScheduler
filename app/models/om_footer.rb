@@ -1,0 +1,2 @@
+class OmFooter < ApplicationRecord
+end

@@ -1,0 +1,143 @@
+
+<% has_price = routes.map{ |x| (x['min_price'].present? && x['min_price'] != 0 ) && (x['max_price'].present? &&  x['max_price']!= 0) }.include?(true) %>
+<div class="hidden-xs desktop_top_routes_<%= section %>">
+  <div class="airline-wrapper sorting-bar text-center" >
+    <ul class="list-inline">
+      <li class="airline">
+        <span class="airline-names">Airline</span>
+      </li>
+      <li class="airline-routes">
+        <div class="t-blcok depart">From</div>
+        <div class="t-blcok duration">&nbsp;</div>
+        <div class="t-blcok arrival">To</div>
+      </li>
+      <% if has_price %>
+        <li class="min-price">Min Price</li>
+
+        <li class="max-price">Max Price</li>
+      <% else %>
+        <li class="min-price">Dep Time</li>
+
+        <li class="max-price">Arr Time</li>
+      <% end %>
+      <li class="working-days">Days</li>
+      <li class="working-days">&nbsp;</li>
+      <div class="clearfix"></div>
+    </ul>
+  </div><!--/airline-->
+   <% route_count = 0 %>
+   <% routes.each do |route| %>
+   <%  if route['dep_city_name'].present? && route['arr_city_name'].present? %>
+    <% route_count +=1 %>
+      <div class="airline-wrapper <%= route_count>5 ? 'hide showMore' : "" %>" >
+        <ul class="list-inline">
+              <% formated_carrier_name =  t("airlines.#{route['carrier_code']}").downcase.gsub(" ",'-').gsub('--','-') %>
+              <% airline_name =  t("airlines.#{route['carrier_code']}") %>
+              <li class="airline">
+                <span class=" carrier-logo <%= formated_carrier_name%>"></span>
+                <span class="airline-names"><%= @carrier_name %> <small><%= route['flight_no'] %></small></span>
+              </li>
+
+              <li class="airline-routes">
+                <div class="t-blcok depart"><%= route['dep_city_name'] %></div>
+                <div class="t-blcok duration">→ </div>
+                <div class="t-blcok arrival"><%= route['arr_city_name'] %></div>
+              </li>
+
+              <%if has_price %>
+                <% if route['min_price'].present? && route['min_price'] > 0 %>
+                  <li class="min-price"><%= currency_code %> <%= route['min_price'] %></li>
+                  <% else %>
+                  <li class="min-price">-NA-</li>
+                <% end %>
+
+                <% if route['max_price'].present? && route['max_price'] > 0 %>
+                  <li class="max-price"><%= currency_code %> <%= route['max_price'] %></li>
+                  <% else %>
+                  <li class="max-price">-NA-</li>
+                <% end %>
+              <% else %>
+                <li class="min-price"><%= Time.strptime(route['dep_time'],"%H:%M").to_time.strftime("%I:%M %p") %></li>
+                <li class="max-price"><%= Time.strptime(route['arr_time'],"%H:%M").to_time.strftime("%I:%M %p") %></li>
+              <% end %>
+              <li class="working-days"><%= route['op_days'] %></li>
+
+              <% if (route['min_price'].present? && route['min_price'] > 0) && (route['max_price'].present? && route['max_price'] > 0) %>
+
+                <li class="book-section">
+                  <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%=section%>" target="_blank" class="booking-btn flight-schedule-booking">Book <span class="hidden-xs">Now</span></a>
+                </li>
+                <% else %>
+                <li class="book-section">
+                  <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%=section%>" target="_blank" class="booking-btn flight-schedule-booking">Check <span class="hidden-xs">Price</span></a>
+                </li>
+               <% end %>
+              <div class="clearfix"></div>
+            </ul>
+            </div>
+        <% end %><!--/airline-->
+            <div class="clearfix"></div>
+    <% end %>
+    <% if routes.count>5 %>
+      <p class="text-right viewall">
+        <a href="#" id="show_all_flights_new_<%= section %>">View All Flights Schedules</a>
+      </p>
+      <% end %>
+</div><!--/normal-view-->
+
+<div class="visible-xs mobile_top_routes_<%= section %>">
+   
+   <div class="ao-filter">
+    <div class="ao-routes-date">Routes</div>
+    <div class="ao-routes-day">Working Days</div>
+    <div class="clearfix"></div>
+  </div>
+  <% route_count = 0 %>
+   <% routes.each do |route| %> 
+   <%  if route['dep_city_name'].present? && route['arr_city_name'].present? %>
+    <% route_count +=1 %>
+      <div class="ao-new-wrapper <%= route_count>5 ? 'hide showMore' : "" %>">
+        <div class="ao-routes">
+          <div class="ao-from">
+            <div class="ao-city-wrapper">
+              <span class="ao-place"><%= route['dep_city_name'] %></span>
+              <span class="ao-divider">→</span>
+              <span class="ao-place to-place"><%= route['arr_city_name'] %></span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="ao-routes-time">
+              <span class="ao-f-time"><%= Time.strptime(route['dep_time'],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+              <span class="ao-routes-timing">&nbsp;</span>
+              <span class="ao-to-time"><%= Time.strptime(route['arr_time'],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+            </div>
+            
+          </div>
+          
+        </div>
+        <div class="ao-days">
+          <%= route['op_days'] %>
+        </div>
+        <div class="ao-book-section">
+          <a data-route="<%=route['dep_airport_code']%>-<%= route['arr_airport_code']%>-<%= route['carrier_code'] %>" data-section="<%=section%>" target="_blank" class="ao-booking-btn flight-schedule-booking">
+            <% if route['min_price'].to_i > 0 %>
+              <%= currency_code %> <%= route['min_price'].to_i %>
+            <% else %>
+             Check
+            <% end %>     
+          </a>
+        </div>
+        <% end %>
+        <div class="clearfix"></div>
+      </div><!--/ao-new-wrapper-->
+      <% end %>
+      <% if routes.count > 5 %>
+      <p class="text-right viewall">
+        <a href="#" id="show_all_flights_mobile_new_<%= section %>">View All Flights Schedules</a>
+      </p>
+      <% end %>
+
+
+
+     
+</div><!--mobile-view-->
+<div class="clearfix"></div>

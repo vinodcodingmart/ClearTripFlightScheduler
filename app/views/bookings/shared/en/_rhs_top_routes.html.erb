@@ -1,0 +1,17 @@
+<% if routes.present? && !routes.nil? %>
+<div class="blocks">
+	<h2><%= t("brand.top_#{section}_flight_schedule_title") %></h2>
+	<ul class="list-unstyled top-airlines">
+		<% routes.each do |route| %>
+		<li>
+			<% link = link_to( "#{route['dep_city_name']} to #{route['arr_city_name']} Flights", "/flight-schedule/" + "#{route['schedule_route_url']}" + "-flights.html") %>
+			
+			<%= link %>
+			
+
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>

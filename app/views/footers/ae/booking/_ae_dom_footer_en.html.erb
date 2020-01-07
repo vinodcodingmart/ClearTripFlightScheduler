@@ -1,0 +1,45 @@
+
+<footer>
+	<div class="container-fluid">
+	  <div class="sixteen columns alpha">
+	    <ul class="footerlinkssmall list-unstyled">
+	      <% title = section.include?("dom") ? "Domestic Airlines:" : "International Airlines:" %>
+	        <li><%= title %></li>
+	        <% top_airlines.each do |cc| %>
+	          <li>
+	            <% airline_name = link_to( t("airlines.#{cc}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+	            <%= airline_name %>
+	          </li>
+	        <% end %>
+	    </ul>
+	   	<ul class="footerlinkssmall">
+        <li><%= t('other')%>:</li>
+        <li> <a href="/flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.dom_flight')%></a> </li><li> <a href="/international-flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a> </li><li> <a href="/status/" title="<%= t('footer.status')%>"><%= t('footer.status')%></a> </li>
+
+        <li> <a href="/hotels/" title="<%= t('footer.hotels')%>"><%= t('footer.hotels')%></a> </li>
+         <li>
+          <a href="/hotels/united-arab-emirates/dubai/" title="<%= t('footer.dubai_hotels')%>">
+            <%= t('footer.dubai_hotels')%>
+          </a>
+        </li>
+         <li>
+          <a href="/hotels/united-arab-emirates/united-arab-emirates/abu-dhabi/" title="<%= t('footer.abu_dhabi_hotels')%>">
+            <%= t('footer.abu_dhabi_hotels')%>
+          </a>
+        </li>
+
+
+        <li> <a href="/flight-schedule/flight-schedules-domestic.html" title="<%= t('footer.dom_schedule')%>"><%= t('footer.dom_schedule')%></a> </li><li> <a href="/flight-booking/domestic-airlines.html" title="<%= t('footer.dom_airlines')%>"><%= t('footer.dom_airlines')%></a> </li><li> <a href="/tourism/airports/" title="<%= t('footer.dom_airports')%>"><%= t('footer.dom_airports')%></a> </li><li> <a href="/flight-schedule/flight-schedules-international.html" title="<%= t('footer.intl_flight_sched')%>"><%= t('footer.intl_flight_sched')%></a> </li><li> <a href="/flight-booking/international-airlines.html" title="<%= t('footer.intl_airlines')%>"><%= t('footer.intl_airlines')%></a> </li><li> <a href="/tourism/airports/international-airports.html" title="<%= t('footer.intl_airport')%>"><%= t('footer.intl_airport')%></a> </li><li> <a href="/tourism/routes/" title="<%= t('footer.routes')%>"><%= t('footer.routes')%></a> </li></ul>
+	    <ul class="footerlinkssmall">
+	       <li><%= t('footer.countries')%>:</li>
+	       <li> <a href="https://www.cleartrip.com" title="<%= t('footer.in')%>"><%= t('footer.in')%></a> </li>
+	       <li> <a href="https://www.cleartrip.ae/ar/" title="<%= t('footer.in')%>"><%= t('footer.ae')%></a> </li>
+	       <li> <a href="https://www.cleartrip.sa/ar/" title="<%= t('footer.sa')%>"><%= t('footer.sa')%></a> </li>
+	       <li> <a href="https://bh.cleartrip.com" title="<%= t('footer.bh')%>"><%= t('footer.bh')%></a> </li>
+	       <li> <a href="https://kw.cleartrip.com" title="<%= t('footer.kw')%>"><%= t('footer.kw')%></a> </li>
+	       <li> <a href="https://qa.cleartrip.com" title="<%= t('footer.qa')%>"><%= t('footer.qa')%></a> </li>
+	       <li> <a href="https://om.cleartrip.com" title="<%= t('footer.om')%>"><%= t('footer.om')%></a> </li>
+      </ul>
+	  </div>
+	</div>
+</footer>

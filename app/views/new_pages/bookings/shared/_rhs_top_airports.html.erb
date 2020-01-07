@@ -1,0 +1,18 @@
+<% if top_airports.present? %>
+  <div class="white-card">
+    <h2><%= t('brand.airport')%></h2>
+    <ul class="list-unstyled flight-routes">
+      <% top_airports.uniq.each do |airport| %>
+        <li>
+          <% if I18n.locale.to_s == "en" %>
+            <%  airport_name = link_to( airport['airport_name'], "/tourism/airports/"+ "#{use_helper.url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}")  %>
+          <% else %>
+            <% airport_name = link_to( airport['airport_name_ar'], "/tourism/airports/"+ I18n.locale.to_s + "/" + "#{use_helper.url_escape(airport['city_name'])+'-airport.html'.gsub('%2F','/')}")  %>
+          <% end %>
+          <%=  airport_name %>
+          <div class="clearfix"></div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

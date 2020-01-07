@@ -1,0 +1,11 @@
+<div class="white-card">
+	<h2>Activities in  <%= arr_city_name %></h2>
+	<ul class="list-unstyled flight-routes">
+		<% arr_city_activities.each do |a| %>
+		<li>
+			<%= link_to "#{a[0]}" , "#{a[1]}",title: "#{a[0]}" %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+</div><!--/white-card-->

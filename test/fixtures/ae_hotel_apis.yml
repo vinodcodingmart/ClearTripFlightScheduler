@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_name: MyString
+  country_code: MyString
+  country_name: MyString
+  hotel_data: MyText
+  properties: MyText
+  star_data: MyText
+  local_cities_data: MyText
+  local_activities: MyText
+  current_iteration_count: 1
+  total_iteration_count: 1
+  wayto_go: MyText
+  local_activities_total: 1
+  local_activities_current: 1
+
+two:
+  city_name: MyString
+  country_code: MyString
+  country_name: MyString
+  hotel_data: MyText
+  properties: MyText
+  star_data: MyText
+  local_cities_data: MyText
+  local_activities: MyText
+  current_iteration_count: 1
+  total_iteration_count: 1
+  wayto_go: MyText
+  local_activities_total: 1
+  local_activities_current: 1

@@ -1,0 +1,20 @@
+	<h2>Things To Do in <%=arr_city_name.titleize%></h2>
+	<div class="cnt-local-city featured-local-wrapper">
+		<div class="featured_local">
+			<ul class="slides">
+				<% things_todo[:activities_data].each do |img| %>
+				<li>
+					<div class="local-tile">
+						<a href="https://www.cleartrip.ae<%=img["map_url"]%>">
+							<img src="<%= img["collection_image"] %>" alt="" height="140" />
+							<div class="local-cnt">
+								<h3><%=img["name"]%></h3>
+								<small style="display: block;text-align: center;"><%= img["ttd_count"] %> Experiences</small>
+							</div>
+						</a>
+					</div>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>

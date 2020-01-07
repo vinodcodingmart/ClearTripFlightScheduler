@@ -1,0 +1,53 @@
+<footer>
+	<div class="more-links">
+		<div class="custom-container pad-lzero">
+     <!-- <ul class="list-inline secondaryLinks weaker footerMenus"> <li><strong>Domestic Airlines :</strong></li><li> <a href="/flight-booking/saudi-arabian-air-airlines.html" title="Saudi Airlines">Saudi Airlines</a> </li><li> <a href="/flight-booking/nas-air-airlines.html" title="FlyNas">FlyNas</a> </li></ul> -->
+     <%# if footer_links_data.present? %>
+     <!-- <ul class="list-inline secondaryLinks weaker footerMenus">
+       <li><strong>Popular Routes:</strong></li>
+       <%# footer_links_data.each do |footer| %>
+       <%# link= footer.gsub("-flights.html","").gsub("-"," ").titleize+" Flights"  rescue nil%>
+       <%# if link.present? %>
+       <li> <%#= link_to link, "/flight-schedule/#{footer}" %></li>
+       <%# end %>
+       <%# end %>
+     </ul> -->
+     <%# end %>
+     <!--  <ul class="list-inline secondaryLinks weaker footerMenus"> <li><strong>Domestic Flights :</strong></li><li class="first"> <a href="/flight-schedule/riyadh-jeddah-flights.html" title="Riyadh Jeddah flights">Riyadh Jeddah flights</a> </li><li> <a href="/flight-schedule/dammam-riyadh-flights.html" title="Dammam Riyadh flights">Dammam Riyadh flights</a> </li><li> <a href="/flight-schedule/dammam-jeddah-flights.html" title="Dammam Jeddah flights">Dammam Jeddah flights</a> </li><li> <a href="/flight-schedule/riyadh-abha-flights.html" title="Riyadh Abha flights">Riyadh Abha flights</a> </li><li><a href="/flight-schedule/madinah-riyadh-flights.html"title="Madinah Riyadh flights">Madinah Riyadh flights</a></li><li><a href="/flight-schedule/madinah-jeddah-flights.html"title="Madinah Jeddah flights">Madinah Jeddah flights</a></li><li><a href="/flight-schedule/jeddah-abha-flights.html"title="Jeddah Abha flights">Jeddah Abha flights</a></li><li><a href="/flight-schedule/riyadh-gizan-flights.html"title="Riyadh Gizan flights">Riyadh Gizan flights</a></li><li><a href="/flight-schedule/gizan-jeddah-flights.html"title="Gizan Jeddah flights">Gizan Jeddah flights</a></li>
+      <li><a href="/flight-schedule/hail-riyadh-flights.html"title="Hail Riyadh flights">Hail Riyadh flights</a></li></ul> -->
+     <ul class="list-inline secondaryLinks weaker footerMenus"> 
+      <li><strong>Other Tools:</strong></li>
+      <li> <a href="/flights" title="Book cheap flights for travel within Saudi Arabia and abroad">Domestic Flights</a> </li>
+      <li>
+		   <a class="hidden-xs" href="/flights" title="<%= t('footer.flight_desc')%>">
+		     <%= t('footer.international_flight')%>
+		   </a>
+		   <a class="visible-xs" href="/flights" title="<%= t('footer.flight_desc')%>">
+		     <%= t('footer.international_flight')%>
+		   </a>
+
+		 </li>
+    
+      <!--  <li> <a href="/status/" title="Flight Status">Flight Status</a> </li><li> <a href="/hotels/saudi-arabia/" title="Hotels">Hotels</a> </li>
+       <li> <a href="/flight-tickets/cheap-flight-air-tickets-domestic.html" title="Domestic Air Tickets">Domestic Air Tickets</a> </li>
+       <li> <a href="/flight-schedule/flight-schedules-domestic.html" title="Domestic Flight Schedules">Domestic Flight Schedule</a> </li>
+       --> <li> <a href="/flight-booking/domestic-airlines.html" title="Domestic Airlines ">Domestic Airlines</a> </li>
+       <!-- <li> <a href="/tourism/airports/" title="Domestic Airports">Domestic Airports</a> </li><li> <a href="/flight-tickets/cheap-flight-air-tickets-international.html" title="International Air Tickets">International Air Tickets</a> </li> -->
+       <!-- <li> <a href="/flight-schedule/flight-schedules-international.html" title="International Flight Schedules">International Flight Schedule</a> </li> -->
+       <li> <a href="/flight-booking/international-airlines.html" title="International Airlines">International Airlines</a> </li>
+       <li> <a href="/hotels/saudi-arabia/" title="International Airlines">Hotels</a> </li>
+       <!-- <li> <a href="/tourism/routes/" title="Travel Routes">Travel Routes</a> </li> -->
+      </ul> <div class="clear"></div>
+     <div class="footer-bottom">
+       <div class="col-sm-6 pad-lzero">©2006-2019 Cleartrip Pvt. Ltd.</div>
+       <div class="col-sm-6 pad-zero">
+         <ul class="list-inline pull-right" >
+           <li><a rel="nofollow" href="/privacy-policy/">Privacy</a> </li>
+           <li> <a rel="nofollow" href="/security">Security</a> </li>
+           <li> <a rel="nofollow" href="/terms/">Terms of Use</a> </li>
+         </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+</footer>

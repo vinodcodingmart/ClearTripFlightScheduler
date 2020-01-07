@@ -1,0 +1,2 @@
+class OmVolumeRoute < ApplicationRecord
+end

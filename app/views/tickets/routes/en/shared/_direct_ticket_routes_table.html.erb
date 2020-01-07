@@ -1,0 +1,52 @@
+<h2 class=" container mview-title"> <%= ticket_layout_values["dep_city_name"] %> to <%= ticket_layout_values["arr_city_name"] %> Flight Schedule ( <%= ticket_layout_values["ticket_routes"].count %> flights found)</h2>
+<% application_helper = self.extend ApplicationHelper
+currency_code = application_helper.currency_code(@country_code)
+%>
+
+<div class="hidden-xs desktop_top_routes">
+	
+<% ticket_layout_values["ticket_routes"].each do |route| %>
+<div class="airline-wrapper">
+   <ul class="list-inline">
+				<% formated_carrier_name =  t("airlines.#{route[:carrier_code]}").downcase.gsub(" ",'-').gsub('--','-') %>
+				<% airline_name =  t("airlines.#{route[:carrier_code]}")
+				   link = format_overview_link(airline_name)
+				 %>
+				<li class="airline">
+					<a href="/flight-booking/<%= format_overview_link(airline_name) %>.html" title="<%= airline_name  %>"><span class=" carrier-logo <%= formated_carrier_name%>"></span>
+					<span class="airline-names"><%= airline_name %> <small><%= route[:flight_no] %></small></span></a>
+				</li>
+				<li class="timing">
+					<div class="t-blcok depart"><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></div>
+          <% if route[:duration].include? (":") %>
+            <div class="t-blcok duration"> <%= route[:duration].to_time.strftime("%Hh %Mm") %><small>Non-Stop</small></div>
+          <% else %>
+            <div class="t-blcok duration"><%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %><small>Non-Stop</small></div>
+          <% end %>
+					<div class="t-blcok arrival"><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p")  %></div>
+				</li>
+               
+               	<li class="min-price">
+
+           <% if route[:cc_min_price].present? %>
+
+               <%=currency_code%> <%=   route[:cc_min_price].to_i.floor %>
+               
+                <%else%>
+
+                 --NA--
+                 <%end%>
+				</li>
+				
+				<li class="book-section">
+					
+						 <a data-route="<%=ticket_layout_values["dep_airport_code"]%>-<%= ticket_layout_values["arr_airport_code"]%>-<%= route[:carrier_code] %>" class="booking flight-schedule-booking" >Book Now</a>
+						</li>
+			</ul>
+		</div>
+<% end %>
+
+</div>
+
+
+	

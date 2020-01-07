@@ -1,0 +1,2 @@
+class QaFooter < ApplicationRecord
+end

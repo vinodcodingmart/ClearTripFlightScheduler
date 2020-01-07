@@ -1,0 +1,2 @@
+class SaFooter < ApplicationRecord
+end

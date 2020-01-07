@@ -1,0 +1,2 @@
+class QaAirlineFooter < ApplicationRecord
+end

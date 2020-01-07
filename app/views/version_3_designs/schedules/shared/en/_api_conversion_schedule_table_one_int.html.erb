@@ -1,0 +1,295 @@
+
+
+<% application_helper = self.extend ApplicationHelper
+currency_code = application_helper.currency_code(@country_code)
+%>
+<div class="desk-sorting ow-sorting">
+		<ul class="list-inline">
+			<li class="f-airline" data-row="">
+				<a href="javascript:void(0)">Airline</a>
+			</li>
+			<li class="fd-timing" data-row="dep_time">
+				<a href="javascript:void(0)">Departure</a>
+			</li>
+			<li class="fa-timing" data-row="arr_time">
+				<a href="javascript:void(0)">Arrival</a>
+			</li>
+			<li class="f-duration" data-row="duration">
+				<a href="javascript:void(0)">Duration</a>
+			</li>
+			<li class="f-price" data-row="route_total_fare">
+				<a href="javascript:void(0)" class="sortAsc">Price</a>
+			</li>
+		</ul>
+	</div>
+	<!--desktop-sorting-->
+
+<!-- <div id="owd-flights"> -->
+	<div class="one-way-sticky">
+	<% routes = routes[0...10].reject{|r| r["flight_itinerary"].empty? } %>
+	<% routes.each_with_index do |route,i|
+		route.stringify_keys!
+		%>
+		<% route_type = route["no_of_stops"] == 0 ? "Non-Stop" : (route["no_of_stops"].to_s + " hop") %>
+		<% airline_name = route["carrier_codes"].first == "AI" ? "Air India" :  t("airlines.#{route["carrier_codes"].first}")
+		link = format_overview_link(airline_name)
+		%>
+		<% if !airline_name.include?("translation missing")%>
+			<% formated_carrier_name = route["carrier_codes"].first == "AI" ? "air-india" :  t("airlines.#{route["carrier_codes"].first}").downcase.gsub(" ",'-').gsub('--','-') %>
+			<div class="owd-flights-list <%='last' if i+1 == routes.length %>">
+				
+				<ul class="list-inline">
+				<li class="airline">
+					<a href="javascript:void(0)">
+						<span class=" carrier-logo <%= formated_carrier_name%>"></span>
+						<!-- <span class="airline-names"><%= airline_name %> <small><%#= route["flight_number"] %>
+						</small></span> -->
+						<span class="f-details airline-names">Flight Details</span>
+					</a>
+				</li>
+				<li class="airline-routes">
+				<div class="t-blcok depart">
+						<%= route["dep_time"] %>
+						<span class="small-txt airport-code"><%= route["dep_city_code"] %></span>
+					</div>
+
+					<div class="t-blcok duration"> → </div>
+					<div class="t-blcok arrival">
+						<%= route["arr_time"] %>
+						<span class="small-txt airport-code"><%= route["arr_city_code"] %></span>
+					</div>
+					<div class="clearfix"></div>
+				</li>
+				<li class="timing">
+					<span class="t-blcok"><%= route["duration_on"] %></span>
+					<span class="small-txt"><%= route_type  %></span>
+				</li>
+				<li class="prices">
+					<% if route["hbag"] %>
+						<span class="hbag" title="No check-in baggage included">
+							
+						</span>
+					<% end %>
+					<% if route["seat_availability"].present? && route["seat_availability"].to_i > 0%>
+						<span class="seat-count">
+							<%= route["seat_availability"] %> 
+						</span>
+						<span class="seat-txt">LEFT</span>
+							<% end %>
+					<span class="t-blcok">₹ 
+						<%= (route["route_total_fare"].present?) ?  "#{currency_code} " +  route["route_total_fare_formatted"].to_s : "--NA--"%></span>
+					</li>
+					
+					<li class="action-blck">
+						
+							<button class="ct-btn book_button" data-key="<%= route["unique_flight_key"]%>">Book</button>
+						</li>
+						
+					</ul>
+
+
+					<% route["flight_itinerary"].each do |i_item|%>
+					<% i_item = i_item.stringify_keys %>
+					<% carrier_name = route["carrier_codes"].first == "AI" ? "Air India" :  t("airlines.#{route["carrier_codes"].first}")
+						link = format_overview_link(carrier_name)
+					%>
+					<% if !carrier_name.include?("translation missing")%>
+						<% logo_carrier_name = route["carrier_codes"].first == "AI" ? "air-india" :  t("airlines.#{route["carrier_codes"].first}").downcase.gsub(" ",'-').gsub('--','-') %>
+					 <div class="owd-flight-details">
+              <div class="owd-routes-header">
+                <div class="col-sm-6 pad-lzero owd-route-code"><%= i_item["from_city_code"] %> → <%= i_item["to_city_code"] %> <span class="owdr-date"><%= i_item["arrival_date_formated"]%></span></div>
+                <div class="col-sm-6 pad-rzero">
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="owd-routes-info">
+                <div class="col-sm-9 pad-lzero">
+                  <ul class="list-inline">
+                    <li  class="owd-flight-number">
+                      
+                      <span class=" carrier-logo <%= logo_carrier_name %>"></span>
+                      <span class="air-number"><%= i_item["flight_number"] %></span>
+                      <span class="air-class">Economy</span>
+                    
+                    </li>
+                    <li class="owd-flight-dep">
+                      <span class="owd-dt"><%= i_item["from_city_code"]%> <span><%= i_item["departure_time"]%></span></span>
+                      <div class="dpt-dates"><%= i_item["departure_date_formated"] %></div>
+                      <div class="dept-airport">
+	                      <%= i_item["dep_airport_name"]%>,  <%=i_item["from_city_name"]%>
+	                      	<% if i_item["depart_terminal"].present? %>
+	                      	,Terminal <%= i_item["depart_terminal"]%>
+	                      <% end %>
+                      </div>
+                      
+                    </li>
+                    <li class="owd-flight-time"><i class="fa fa-clock-o"></i> <span class="trip-timing"><%= i_item["duration"]%></span></li>
+                    <li class="owd-flight-arr">
+                      <span class="owd-arr"><%= i_item["to_city_code"]%> <span><%= i_item["arrival_time"]%></span></span>
+                      <div class="arr-dates"><%= i_item["arrival_date_formated"] %></div>
+                      <div class="arr-airport"><%= i_item["arr_airport_name"] %>, <%=i_item["to_city_name"]%>
+                      	<% if i_item["arrival_terminal"].present? %>
+                      		,Terminal <%= i_item["arrival_terminal"]%>
+                      	<% end %>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 pad-zero">
+                  <div class="baggage-details">
+                    <ul class="list-unstyled">
+                      <!-- <li><label>Check-in Baggage</label> 30 kg</li> -->
+                      <!-- <li><label>Cabin Baggage</label> 7 kg</li> -->
+                    </ul>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div><!--/owd-flight-details-->
+           <% end %>
+					<% end %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+			<!-- </div> -->
+			<!--owd-flights-->
+			<div class="emptyCard" style="display: none;">
+				<h2>No flights to show based on the last filters</h2>
+				<ul class="list-inline">
+					<li><button type="button" class=" ct-btn resetFilter">Reset Filter</button></li>
+				</ul>
+			</div>
+			<!-- handlebar template start here -->
+			<script type="text/x-handlebars-template" id="RouteCard-template">
+					<div class="owd-flights-list bubble one-way-sticky">
+				
+						<ul class="list-inline">
+						<li class="airline">
+							<a href="javascript:void(0)">
+								<span class=" carrier-logo {{formated_airline_name}}"></span>
+								<span class="f-details airline-names">Flight Details</span>
+							</a>
+						</li>
+						<li class="airline-routes">
+						<div class="t-blcok depart">
+								{{dep_time}}
+								<span class="small-txt airport-code">{{dep_city_code}}</span>
+							</div>
+
+							<div class="t-blcok duration"> → </div>
+							<div class="t-blcok arrival">
+								{{arr_time}}
+								<span class="small-txt airport-code">{{arr_city_code}}</span>
+							</div>
+							<div class="clearfix"></div>
+						</li>
+						<li class="timing">
+							<span class="t-blcok">{{duration_on}}</span>
+							{{#iff no_of_stops '==' 1}}
+							<span class="small-txt">{{no_of_stops}} Stop </span>
+							{{else iff no_of_stops '>' 1}}
+							<span class="small-txt">{{no_of_stops}} Stops </span>
+							{{else}}
+							<span class="small-txt">Non Stop</span>
+							{{/iff}}
+						</li>
+						<li class="prices">
+							{{#if hbag}}
+								<span class="hbag" title="No check-in baggage included"></span>
+							{{/if}}
+							{{#iff seat_availability '>' 0}}
+							<span class="seat-count"> {{seat_availability}}</span>
+							<span class="seat-txt">LEFT</span>
+							{{/iff}}
+							<span class="t-blcok">₹ 
+								{{route_total_fare_formatted}}</span>
+							</li>
+							
+							<li class="action-blck">
+								
+							<button class="ct-btn book_button" data-key={{unique_flight_key}}>Book</button>
+
+								</li>
+								
+							</ul>
+
+				{{#each flight_itinerary}}
+					 <div class="owd-flight-details" style="display: none;">
+		              <div class="owd-routes-header">
+		                <div class="col-sm-6 pad-lzero owd-route-code">{{from_city_code}} → {{to_city_code}} <span class="owdr-date">{{arrival_date_formated}}</span></div>
+		                <div class="col-sm-6 pad-rzero">
+		                </div>
+		                <div class="clearfix"></div>
+		              </div>
+		              <div class="owd-routes-info">
+		                <div class="col-sm-9 pad-lzero">
+		                  <ul class="list-inline">
+		                    <li  class="owd-flight-number">
+		                      
+		                      <span class="carrier-logo {{../formated_airline_name}}"></span>
+		                      <span class="air-number">{{flight_number}}</span>
+		                      <span class="air-class">Economy</span>
+		                    
+		                    </li>
+		                    <li class="owd-flight-dep">
+		                      <span class="owd-dt">{{from_city_code}} <span>{{departure_time}}</span></span>
+		                      <div class="dpt-dates">{{departure_date_formated}}</div>
+		                      <div class="dept-airport">{{dep_airport_name}}, {{from_city_name}}
+			                      {{#iff depart_terminal '!=' 0}}
+			                     		,Terminal {{depart_terminal}}
+			                     	{{/iff}}
+		                      </div>
+		                     
+		                    </li>
+		                    <li class="owd-flight-time"><i class="fa fa-clock-o"></i> <span class="trip-timing">{{duration}}</span></li>
+		                    <li class="owd-flight-arr">
+		                      <span class="owd-arr">{{to_city_code}} <span>{{arrival_time}}</span></span>
+		                      <div class="arr-dates">{{arrival_date_formated}}</div>
+		                      <div class="arr-airport">{{arr_airport_name}}, {{to_city_name}}
+		                      	{{#iff arrival_terminal '!=' 0}}
+		                      		,Terminal {{arrival_terminal}}
+		                      	{{/iff}}
+		                      </div>
+		                      
+		                    </li>
+		                  </ul>
+		                </div>
+		                <div class="col-sm-3 pad-zero">
+		                  <div class="baggage-details">
+		                    <ul class="list-unstyled">
+		                     
+		                    </ul>
+		                  </div>
+		                </div>
+		                <div class="clearfix"></div>
+		              </div>
+		            </div>
+				{{/each}}
+			</script>
+			<!-- 
+			<li>
+					<div class="airlines-list">
+						<input type="checkbox" name="airline" id="{{airline_code}}">
+						<label for="{{airline_code}}"><div class="R-airline-logo "><span class="carrier-logo {{formated_airline}}"></span></div>{{airline_name}}</label>
+						<span id = airline-{{airline_code}} data-airinekey={{unique_flight_key}}>Rs.{{carrier_min_price}}</span>
+					</div>
+					<div class="clearfix"></div>
+				</li>
+			 -->
+			<script type="text/x-handlebars-template" id="available-airlines">
+				<li>
+			        <div class="airlines-list">
+			          <label class="custom-checkbox">
+			            <input type="checkbox" name="airline" id="{{airline_code}}">
+			            <span class="checkmark"></span>
+			            <span ><div class="R-airline-logo "><span class="carrier-logo {{formated_airline}}"></span></div> {{airline_name}}</span>
+			            <span id = airline-{{airline_code}} data-airinekey={{unique_flight_key}}>Rs.{{carrier_min_price_formatted}}</span>
+			          </label>
+			        </div>
+			        <div class="clearfix"></div>
+		      	</li>
+			</script>
+			<!-- End Handlebars -->
+
+

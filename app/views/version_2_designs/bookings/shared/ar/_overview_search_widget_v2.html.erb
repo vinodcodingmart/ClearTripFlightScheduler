@@ -1,0 +1,435 @@
+
+
+<!--common-banner Starts-->
+<section id="airline-banner">
+  <div class="custom-container">
+
+    <div class="banner-top-cnt">
+      <div class="airline-brand">
+        <img itemprop="image" src="<%=assets_path%>/images/airline-logo/<%= carrier_code %>.png" alt="<%= carrier_name_translated %>">
+      </div>
+      <div class="airline-brand-cnt">
+        <% if @h1_title.present? && @h1_title != "" %>
+         <h1 class="main-title"><%= @h1_title %></h1>
+        <% elsif @carrier_code=="SV" && ["IN","AE"].include?(@country_code) %>
+          <h1 class="main-title">الخطوط الجوية العربية السعودية</h1>
+        <% else %>
+          <h1  class="main-title"><%= @carrier_name_ar %></h1>
+        <% end %>
+        <% if @review.present? %>
+        <div class="mobile-airline-review">
+          <span id="ao-search-review"></span>
+          <span class="average-rating"><%=  @review[:avg_review_rating] %>/5</span> <span class="review-ct-text">مراجعات العملاء على أساس
+            <% if  @review[:total_reviews_count].to_i > 0 %>
+               <span>24</span>
+            <% else %>
+              <span>24</span>
+            <% end %>
+             استعراض</span>
+        </div>
+        <% elsif @review_content["review_content_presence"] %>
+        <div class="mobile-airline-review">
+          <span id="ao-search-review"></span>
+          <span class="average-rating">
+            <% review_content = @review_content["review_content"].split("\n") %>
+            <span class="review-ct-text">مقدر</span>
+            <% if review_content[13].present? %>
+            <%= review_content[15].split(":")[1].to_f %>
+            <% else %>
+            <%= review_content[12].split(":")[1].to_f %>
+            <% end %>/5</span> <span class="review-ct-text"> مراجعات العملاء على أساس <span>24</span>استعراض</span>
+          </div>
+          <% end %>
+        
+      </div>
+      <div class="clearfix"></div> 
+    </div><!--/banner-top-cnt-->
+
+    <!--/new-srp-widget-->
+    <div class="new-srp-widget hidden-xs">
+      <form action="/flights/search" errorblockid="flt_err" id="AirSearch" class="search no-action-change removeSelflabels" method="get" target="_blank">
+        <ul class="list-inline trip-type">
+          <li class="active">
+            <input id="oneway" type="radio"  value="O" class="toggle_trip one_way" name="rnd_one"> <label for="oneway">ذهاب فقط</label>
+          </li>
+          <li>
+            <input id="rnd-trip" type="radio" value="R" class="toggle_trip rnd_trip" name="rnd_one"><label for="rnd-trip" >رحلة ذهاب وعودة</label>
+          </li>
+        </ul>
+        <div class="form-fields">
+          <ul class="list-inline">
+            <li>
+              <input type="text" id="origin_autocomplete" placeholder="أدخل اسم مدينة أو مطار" autocomplete="off" >
+              <input type="hidden" name="from" class="from">
+            </li>
+            <li class="trip-swap">
+              <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/trip-swap.svg" alt="" class="flip">
+            </li>
+            <li>
+              <input type="text" name="" id ="destination_autocomplete" class ="ui-autocomplete-input" placeholder="أدخل اسم مدينة أو مطار" autocomplete="off">
+              <input type="hidden" name="to" class="to" value="">
+            </li>
+            <li class="calendar D-Ddate">
+              <input type="text" readonly="readonly" id="dpt_date" title="Departure date" name="depart_date" placeholder="Depart On" class="datePicker required selflabel" >
+            </li>
+            <li class="calendar D-Rdate">
+              <input type="text" readonly="readonly" placeholder="Return On" size="10" id="rtn_date" autocomplete="off" mindatefieldid="rtn_date" title="Return date" name="return_date" class="datePicker second required no_autochange selflabel disabled">
+            </li>
+            <li class="pax-count common-fields">
+              <i class="fa fa-caret-down"></i>
+              <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                <input type="text" readonly="readonly" name="" placeholder="مسافرين" class="travellers_data" value="01 مسافرين">
+                <input type="hidden" name="adults" value="1">
+                <input type="hidden" name="infants" value="0">
+                <input type="hidden" name="childs" value="0">
+              </div>
+              <ul class="list-unstyled dropdown-menu desktop_travellers">
+                <li>
+                  <span>البالغون</span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-minus decrement adult-decrement"></i>
+                    </a>
+                    <span class="count adult-count" style="margin-right:5px;">1</span>
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-plus increment adult-increment"></i>
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>الأطفال</span>
+                  <span class="note">
+                    من 2- إلى12سنة
+                  </span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)"><i class="fa fa-minus decrement child-decrement"></i></a>
+                    <span class="count child-count" style="margin-right:5px;">0</span>
+                    <a href="javascript:void(0)"><i class="fa fa-plus increment child-increment"></i></a>
+                  </span>
+                </li>
+                <li>
+                  <span>الرضّع</span>
+                  <span class="note">
+                    أقل من عامين
+                  </span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-minus decrement infant-decrement"></i>
+                    </a>
+                    <span class="count infant-count" style="margin-right:5px;">0</span>
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-plus increment infant-increment"></i>
+                    </a>
+                  </span>
+                </li>
+                <li><button type="button" class="Dtravellers">فعله</button></li>
+              </ul>
+            </li>
+            <input type="hidden" name="airline" value="<%= carrier_code %>">
+            <li>
+             <button type="submit" id="button_flight_search" title="Search" class="booking-btn">البحث عن الرحلات الجوية</button>
+           </li>
+         </ul>
+       </div>
+     </form>
+   </div>
+   <!--/new-srp-widget Ends-->
+   
+
+
+   <!--===Airline Mobile Widget==-->
+   <div id="airline-search-widget-new">
+
+    <div class="airline-form-fields">
+      <form action="/flights/search"  errorblockid="flt_err" id="AirSearchMob" class="search no-action-change removeSelflabels" method="get" target="_blank">
+        <ul class="nav nav-tabs"> 
+          <li class="mobile_radioBtn">
+          <input id="rnd_trip_mob" type="radio" value="R" class="toggle_trip rnd_trip" name="rnd_one"><label for="rnd-trip">رحلة ذهاب وعودة</label>
+        </li>
+          <li class="mobile_radioBtn">
+           <input id="one_way_mob" type="radio" value="O" class="toggle_trip one_way" name="rnd_one"> <label for="oneway" checked=checked>ذهاب فقط</label>
+         </li> 
+          
+      </ul>
+      <div class="m-form-fields">
+        <ul class="list-unstyled">
+          <li class="route-info">
+            <div class="col-xs-6 pad-rzero ar-r-m-5">
+             <div class="ar-city clickable" id="ar-city">
+              <a href="#" data-toggle="modal" data-target="#arrCityAutocompleteModel">
+                <span class="airport-code arr_city_code"></span>
+                <span class="city-ac">
+                  <p class="placeholder-txt to-cityname">إلى</p>
+                  <input type="hidden" name="to"  value="" class="to">
+
+                </span>
+                <div class="clearfix"></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-6 pad-lzero ar-m-5">
+            <div class="dpt-city clickable">
+              <a href="#" data-toggle="modal" data-target="#depCityAutocompleteModel">
+                <span class="airport-code dep_city_code"></span>
+                <span class="city-ac">
+                  <p class="placeholder-txt from-cityname">من عند</p>
+                  <input type="hidden" name="from"  value="" class="from">
+                </span>
+                <div class="clearfix"></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </li>
+        <li class="ao-mw-date-range">
+          <div class="dpt-date">
+            <input type="text" id="dt_date_mob"  title="المغادرة في" class="datePicker" readonly='true'>
+            <input type="hidden"  name="depart_date" value="" id="form_dep_date" >
+          </div>
+          <div class="ar-date">
+            <input type="text" id="rn_date_mob" mindatefieldid="dt_date_mob"  class="datePicker" title="العودة في" readonly='true'>
+            <input type="hidden"  name="return_date" value="" id="form_rtn_date" >
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li class="ao-mw-travellers-info">
+          <div class="travellers-counts clickable">
+
+            <a href="#" data-toggle="modal" data-target="#travellerModal">
+              <div class="travellers-count">
+            <!--    <span class="adults"><span class="adultsNumber">1</span><span>البالغون,</span></span>
+               <span class="child"><span class="childNumber">0</span><span>الأطفال,</span></span>
+               <span class="infants"><span class="infantsNumber">0</span><span>الرضّع</span></span> -->
+               <span class="totTravellers">01 مسافرين</span>
+               <span class="travelClass">الدرجة السياحية</span>
+               <input type="hidden" name="adults" value="1">
+               <input type="hidden" name="infants" value="0">
+               <input type="hidden" name="childs" value="0">
+             </div>
+           </a>
+           <input type="hidden" name="class" value="Economy" id="travelClassInput">
+           <!-- <input type="text" placeholder="" name="" value="1 Adult, 0 Child, 0 Infant, Economy"> -->
+         </div>
+                <!-- <div class="flight-class">
+                    <label>Class</label>
+                    <select name="class">
+                      <option value="Economy">Economy</option>
+                      <option value="Business">Business</option>
+                      <option value="Premium Economy">Premium Economy</option>
+                    </select>
+                  </div> -->
+                </li>
+
+                <li class="ao-mw-submit">
+                  <input type="submit" name="" value="البحث عن رحلات جوية" id="button_flight_search_mob">
+                </li>
+              </ul>
+            </div><!--/m-form-fields-->
+          </form>
+        </div>
+      </div>
+      <!--===Airline Mobile Widget Ends==-->
+
+
+
+      <!-- mobile Traveller model starting -->
+      <div class="modal fade" id="travellerModal" tabindex="-1" role="dialog" aria-labelledby="travellerModal" style="display: none;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="travellerLabel">اختيار المسافرين</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 search-blk">
+                  <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+                    <li>
+                      <span>الكبار</span>
+                      <span class="click-block">
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-minus decrement adult-decrement"></i>
+                        </a>
+                        <span class="count adult-count" style="margin-right:5px;">1</span>
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-plus increment adult-increment"></i>
+                        </a>
+                      </span>
+                    </li>
+                    <li>
+                      <span>الأطفال</span>
+                      <span class="note">
+                        (2-12 سنة)
+                      </span>
+                      <span class="click-block">
+                        <a href="javascript:void(0)"><i class="fa fa-minus decrement child-decrement"></i></a>
+                        <span class="count child-count" style="margin-right:5px;">0</span>
+                        <a href="javascript:void(0)"><i class="fa fa-plus increment child-increment"></i></a>
+                      </span>
+                    </li>
+                    <li>
+                      <span>الرضع</span>
+                      <span class="note">
+                        (أقل من عامين)
+                      </span>
+                      <span class="click-block">
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-minus decrement infant-decrement"></i>
+                        </a>
+                        <span class="count infant-count" style="margin-right:5px;">0</span>
+                        <a href="javascript:void(0)">
+                          <i class="fa fa-plus increment infant-increment"></i>
+                        </a>
+                      </span>
+                    </li>
+                    <li>
+                     <div class="popup-travellers flight-class">
+                      <label>Class</label>
+                      <select name="class" class="travellerClassSelect">
+                        <option value="Economy" selected="selected">الدرجة السياحية</option>
+                        <option value="Business">درجة رجال الأعمال</option>
+                        <option value="Premium Economy">الدرجة السياحية المميزة</option>
+                      </select>
+                      <i class="fa fa-caret-down"></i>
+
+                    </div>
+                  </li>
+                </ul>
+                <div class="btn-orange text-center">
+                  <button type="button" data-dismiss="modal" class="btn btn-default booking" style="width: 70%;font-size: 16px;">مواصلة الحجز</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- mobile traveller model code ends here -->
+
+    <!-- from city auto complete  model code -->
+    <div class="modal fade" id="depCityAutocompleteModel" tabindex="-1" role="dialog" aria-labelledby="cityAutoComplete">
+     <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+            <svg width="16" version="1.1" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+              <g>
+                <path fill="#ffffff" d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
+              </g>
+            </svg>
+          </span>
+          <span class="modal-title" id="fromCity">حدد المصدر المطار</span>
+        </div>
+        <div class="modal-body">
+          <div class="search-blk">
+            <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+              <li>
+                <input type="text"  name=""  id="origin_autocomplete_mob" class="ui-autocomplete-input origin_autocomplete_mob" placeholder="اختر مدينة المغادرة"  >
+              </li>
+            </ul>
+          </div>
+          <% if search_widget_popular_routes.any?  %>
+          <div class="popular-routes depCity">
+           <h4>مدن شعبية</h4>
+           <ul class="list-unstyled cityAutoCompleteData">
+             <% search_widget_popular_routes.each do |route| %>
+             <li>
+              <span class="city_code"><%= route[:city_code] %> </span><span class="city_name"><%= route[:city_name]%>, <%= route[:airport_name]%></span>
+            </li>
+            <% end %>
+          </ul>
+          <ul class="depAutoCompleteCities">
+            <li></li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of from city auto complete  model code   -->
+
+
+
+<!-- To city auto complete model Code starting -->
+<div class="modal fade" id="arrCityAutocompleteModel" tabindex="-1" role="dialog" aria-labelledby="cityAutoComplete">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 35 35" fill="#fff"><path fill-rule="evenodd" d="M15.525 17.146L1.383 3.004 3.504.883l14.143 14.142L32.496.175l2.121 2.122-14.85 14.85 14.85 14.849-2.121 2.12-14.85-14.848L2.798 34.117.676 31.996z"></path></svg>
+      </span>
+      <span class="modal-title" id="fromCity">حدد مطار الوجهة</span>
+    </div>
+    <div class="modal-body">
+      <div class="col-md-12 search-blk">
+        <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+          <li>
+            <input type="text"  id="destination_autocomplete_mob"  class="destination_autocomplete_mob" placeholder="اختر مدينة الوصول" autocomplete="off">
+          </li>
+        </ul>
+      </div>
+      <% if search_widget_popular_routes.any?  %>
+      <div class="popular-routes arrivalCity">
+       <h4>مدن شعبية</h4>
+       <ul class="list-unstyled cityAutoCompleteData">
+        <% search_widget_popular_routes.each do |route| %>
+        <li>
+          <span class="city_code"><%= route[:city_code] %> </span><span class="city_name"><%= route[:city_name]%>, <%= route[:airport_name]%></span>
+        </li>
+        <% end %>
+      </ul>
+      <ul class="arrAutoCompleteCities">
+        <li></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
+<!-- End of To city auto complete model Code -->
+
+<!--/new-srp-widget-->
+<!--/trust-icons-wrapper-->
+<div class="trust-icons-wrapper hidden-xs">
+  <div class="trust-icons">
+    <div class="trust-icon">
+      <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/lp.png" alt="">
+    </div>
+    <div class="trust-cnt">
+      <span>ضمان أقل الأسعار</span>
+      <p>ضمان أقل سعر على تذاكر الطيران</p>
+    </div>
+
+  </div>
+  <div class="trust-icons">
+    <div class="trust-icon">
+      <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/sb.png" alt="">
+    </div>
+    <div class="trust-cnt">
+      <span>الحجز الآمن</span>
+      <p>جميع حجوزات الطيران آمنة ومأمونة بنسبة 100 ٪</p>
+    </div>
+
+  </div>
+  <div class="trust-icons">
+    <div class="trust-icon">
+      <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/r.png" alt="">
+    </div>
+    <div class="trust-cnt">
+      <span>المكافآت</span>
+      <p>احجز أكثر واحصل على رحلات مجانية وإقامة في الفندق</p>
+    </div>
+
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!--/trust-icons-wrapper-->
+
+</div>
+</section>
+<!--/common-banner ends-->

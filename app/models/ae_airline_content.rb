@@ -1,0 +1,2 @@
+class AeAirlineContent < ApplicationRecord
+end

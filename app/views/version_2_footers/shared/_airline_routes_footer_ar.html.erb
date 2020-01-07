@@ -1,0 +1,70 @@
+<footer>
+  <div class="more-links">
+    <div class="container pad-lzero">
+        <%if footer_airline_data.present? %>
+        <ul class="list-inline secondaryLinks weaker footerMenus">
+          <% footer_airline_data.each_with_index do |airline,index| %>
+          <% if I18n.t("airlines.#{airline[1]}").index('translation missing').nil? %>
+          <% if index == 0 %>
+          <li><strong><%= t('footer.intl_airlines') %> :</strong></li>
+          <li><%= link_to t("airlines.#{airline[1]}"), "/flight-booking/#{airline[0]}",title: t("airlines.#{airline[1]}") %></li>
+          <% else %>
+          <li><%= link_to t("airlines.#{airline[1]}"), "/flight-booking/#{airline[0]}",title: t("airlines.#{airline[1]}") %></li>
+          <% end %>
+          <% end %>
+          <% end %>
+        </ul>
+        <%end%>
+        <div class="clear"></div>
+        <% if footer_links_data.present? %>
+        <ul class="list-inline secondaryLinks weaker footerMenus">
+          <li><strong><%= t("footer.popular_routes")%>:</strong></li>
+          <% footer_links_data.each do |footer| %>
+          <% link= " #{footer[:dep_city_name_ar]} #{footer[:arr_city_name_ar]}  #{t("header.flights")}"  rescue nil%>
+          <% if link.present? %>
+          <li> <%= link_to link, "/flight-schedule/#{footer[:url]}" %></li>
+          <% end %>
+          <% end %>
+        </ul>
+        <% end %>
+        <div class="clear"></div>
+        <ul class="list-inline secondaryLinks weaker otherTools footerMenus">
+  				<li><strong><%= t('other')%></strong></li>
+  				<li> <a  class="hidden-xs" href="/international-flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a>
+  				<a class="visible-xs" href="/flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a> </li>
+  				<li> <a href="/ar/flight-booking/domestic-airlines.html" title="<%= t('footer.dom_airlines')%>"><%= t('footer.dom_airlines')%></a> </li>
+        <li> <a href="/ar/flight-booking/international-airlines.html" title="<%= t('footer.intl_airlines')%>"><%= t('footer.intl_airlines')%></a> </li>
+        <% if @country_code == "AE" %>
+          <li>
+            <a href="/hotels/" title="<%= t('footer.hotels')%>">
+              <%= t('footer.hotels')%>
+            </a>
+          </li>
+           <li>
+            <a href="/hotels/united-arab-emirates/dubai/" title="<%= t('footer.dubai_hotels')%>">
+              <%= t('footer.dubai_hotels')%>
+            </a>
+          </li>
+           <li>
+            <a href="/hotels/united-arab-emirates/united-arab-emirates/abu-dhabi/" title="<%= t('footer.abu_dhabi_hotels')%>">
+              <%= t('footer.abu_dhabi_hotels')%>
+            </a>
+          </li>
+        <% end %>
+  			</ul>
+       
+       <div class="clear"></div>
+       <div class="footer-bottom">
+ 				<div class="col-sm-6 pad-lzero f-lft"><%= t('footer.copyright')%></div>
+ 				<div class="col-sm-6 pad-zero f-rgt">
+ 					<ul class="list-inline pull-right" >
+ 						<li><a rel="nofollow" href="/privacy-policy/"><%= t('footer.privacy')%></a> </li>
+ 						<li> <a rel="nofollow" href="/security"><%= t('footer.security')%></a> </li>
+ 						<li> <a rel="nofollow" href="/terms/"><%= t('footer.tou')%></a> </li>
+ 					</ul>
+ 				</div>
+ 				<div class="clearfix"></div>
+ 			</div>
+    </div>
+  </div>
+</footer>

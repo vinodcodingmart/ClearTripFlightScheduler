@@ -1,0 +1,2 @@
+class InFromToContent < ApplicationRecord
+end

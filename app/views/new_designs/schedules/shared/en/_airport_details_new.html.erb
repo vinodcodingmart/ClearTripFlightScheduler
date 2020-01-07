@@ -1,0 +1,88 @@
+<% if airport_details["dep_airport_name"].present? &&  airport_details["dep_airport_address"].present? %>
+	<div class="white-card">
+		<h2><a href="<%= "/tourism/airports/#{schedule_layout_values["dep_city_name_formated"]}-airport.html" %>"><%=dep_city_name %> <%= t('airport.airport_details')%></a></h2>
+		<ul class="list-unstyled airport-details">
+			<%# if airport_details["dep_airport_name"].present? %>
+			<!-- <li><a href="<%#= "/tourism/airports/#{schedule_layout_values["dep_city_name_formated"]}-airport.html" %>"><%#= airport_details["dep_airport_name"] %></a></li> -->
+			<%# end %>
+			<% if airport_details["dep_airport_code"].present? %>
+			<li>IATA code : <span><%= airport_details["dep_airport_code"] %></span></li>
+			<% end %>
+
+			<% if airport_details["dep_airport_address"].present? %>
+			<li>Address : <span><%= airport_details["dep_airport_address"].gsub("\"",'') %></span></li>
+			<% end %>
+			<% if airport_details["dep_airport_country"].present? %>
+			<li>Country : <span><%= airport_details["dep_airport_country"] %></span></li>
+			<% end %>
+			<% if airport_details["dep_airport_latitude"].present?  %>
+			<li>Latitude : <span><%= "#{airport_details["dep_airport_latitude"]}"  %></span></li>
+			<% end %>
+			<% if airport_details["dep_airport_longitude"].present?  %>
+			<li>Longitude : <span><%= "#{airport_details["dep_airport_longitude"]}"  %></span></li>
+			<% end %>
+
+
+
+
+
+
+
+			<%# if airport_details["dep_airport_phone"].present? %>
+			<!-- <li><i class="fa fa-phone"></i> <%#= airport_details["dep_airport_phone"] %></li> -->
+			<%# end %>
+			<%# if airport_details["dep_airport_email"].present? %>
+			<!-- <li><i class="fa fa-envelope"></i> <span class="airport-email"><%#= airport_details["dep_airport_email"] %></span></li> -->
+			<%# end %>
+			<%# if airport_details["dep_airport_address"].present? %>
+			<!-- <li><i class="fa fa-map-marker"></i> <span class="airport-email"><a target="_blank" href="<%#= "http://maps.google.com/maps?q=loc:#{airport_details["dep_airport_latitude"]},#{airport_details["dep_airport_longitude"]}" %>"><%#= airport_details["dep_airport_address"].gsub("\"",'') %></a></span></li> -->
+			<%# end %>
+			
+			<%# if airport_details["dep_airport_longitude"].present? && airport_details["dep_airport_latitude"].present? %>
+			<!-- <li><i class="fa fa-map-marker"></i><span class="airport-email"><%#= "lat:#{airport_details["dep_airport_latitude"]} long:#{airport_details["dep_airport_longitude"]}"  %></span></li> -->
+			<%# end %>
+			<!-- <li><i class="fa fa-globe"></i><span class="airport-email"><a href="" rel="nofollow"><%#= link_to "#{host_name(@country_code)}/tourism/airports/#{schedule_layout_values["dep_city_name_formated"]}-airport.html","#{host_name(@country_code)}/tourism/airports/#{schedule_layout_values["dep_city_name_formated"]}-airport.html" %></a></span></li> -->
+		</ul>
+	</div><!--/white-card-->
+<% end %>
+<% if airport_details["arr_airport_name"].present? &&  airport_details["arr_airport_address"].present? %>
+	<div class="white-card">
+		<h2><a href="<%= "/tourism/airports/#{schedule_layout_values["arr_city_name_formated"]}-airport.html" %>"><%= arr_city_name %> <%= t('airport.airport_details')%></a></h2>
+		<ul class="list-unstyled airport-details">
+			<% if airport_details["arr_airport_code"].present? %>
+			<li>IATA code : <span><%= airport_details["arr_airport_code"] %></span></li>
+			<% end %>
+			<% if airport_details["arr_airport_address"].present? %>
+			<li>Address : <span><%= airport_details["arr_airport_address"].gsub("\"",'') %></span></li>
+			<% end %>
+			<% if airport_details["arr_airport_country"].present? %>
+			<li>Country : <span><%= airport_details["arr_airport_country"] %></span></li>
+			<% end %>
+			<% if airport_details["arr_airport_latitude"].present?  %>
+			<li>Latitude : <span><%= "#{airport_details["arr_airport_latitude"]}"  %></span></li>
+			<% end %>
+			<% if airport_details["arr_airport_longitude"].present?  %>
+			<li>Longitude : <span><%= "#{airport_details["arr_airport_longitude"]}"  %></span></li>
+			<% end %>
+
+			<%# if airport_details["arr_airport_name"].present? %>
+			<!-- <li><a href="<%#= "/tourism/airports/#{schedule_layout_values["dep_city_name_formated"]}-airport.html" %>"><%#=airport_details["arr_airport_name"] %></a></li> -->
+			<%# end %>
+			<%# if  airport_details["arr_airport_phone"].present? %>
+			<!-- <li><i class="fa fa-phone"></i> <%#= airport_details["arr_airport_phone"] %></li> -->
+			<%# end %>
+			<%# if airport_details["arr_airport_email"].present? %>
+			<!-- <li><i class="fa fa-envelope"></i> <span class="airport-email"><%#= airport_details["arr_airport_email"] %></span></li> -->
+			<%# end %>
+			<%# if airport_details["arr_airport_address"].present? %>
+			<!-- <li><i class="fa fa-map-marker"></i> <span class="airport-email"><a target="_blank" href="<%#= "http://maps.google.com/maps?q=loc:#{airport_details["arr_airport_latitude"]},#{airport_details["arr_airport_longitude"]}" %>"><%#= airport_details["arr_airport_address"].gsub("\"",'') %></a></span></li> -->
+			<%# end %>
+			<%# if airport_details["arr_airport_longitude"].present? && airport_details["arr_airport_latitude"].present? %>
+			<!-- <li><i class="fa fa-map-marker"></i><span class="airport-email"><%#= "lat:#{airport_details["arr_airport_latitude"]} long:#{airport_details["arr_airport_longitude"]}"  %></span></li> -->
+			<%# end %>
+			<!-- <li><i class="fa fa-globe"></i><span class="airport-email"><a href="" rel="nofollow"><%#= link_to "#{host_name(@country_code)}/tourism/airports/#{schedule_layout_values["arr_city_name_formated"]}-airport.html","#{host_name(@country_code)}/tourism/airports/#{schedule_layout_values["arr_city_name_formated"]}-airport.html" %></a></span></li> -->
+		</ul>
+	</div><!--/white-card-->
+	<% end %>
+
+

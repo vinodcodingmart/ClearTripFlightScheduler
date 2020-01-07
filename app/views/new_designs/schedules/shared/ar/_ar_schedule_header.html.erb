@@ -1,0 +1,62 @@
+<% if route_dom_airlines.present? ||   route_int_airlines.present? %>
+ <section id="Second-menu">
+ 	<div class="container">
+ 		<ul class="list-inline">
+ 			<li>
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%= t('header.flights') %><span class="caret"></span></a>
+      <ul class="list-unstyled dropdown-menu">
+        <li><a href="<%= host %>/ar/flight-schedule/flights-from-<%= url_escape(dep_city_name)%>.html" title="رحلات طيران من <%= dep_city_name_ar %>" target="_blank"><%= t('header.list_of_flights_from',dep_city_name: dep_city_name_ar) %></a></li>
+        <li><a href="<%= host %>/ar/flight-schedule/flights-to-<%= url_escape(arr_city_name) %>.html" title="رحلات جوية إلى <%= arr_city_name_ar %>" target="_blank"><%= t('header.list_of_flights_to',arr_city_name: arr_city_name_ar) %></a></li>
+      </ul>
+    </li>
+    <% if route_dom_airlines.present? %>
+    <li>
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%#= dep_city_name.titleize%>  <%#= arr_city_name.titleize %> <%= t('header.domestic_airlines') %> <span class="caret"></span></a>
+      <ul class="list-unstyled dropdown-menu">
+        <% route_dom_airlines[0..5].each do |cc| %>
+        <%
+        if I18n.locale ==:ar
+          I18n.locale = :en
+          airline_name = I18n.t("airlines.#{cc}")
+          I18n.locale =:ar
+          airline_name_arabic = I18n.t("airlines.#{cc}")
+        end
+        link = "#{host}/ar/flight-booking/#{url_escape("#{airline_name.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+        <li><%= t('brand_flights_routes_html', dep_city_name: dep_city_name, airline_name: airline_name_arabic, arr_city_name: arr_city_name, link: link,airline_name_arabic: airline_name_arabic,title: "#{airline_name_arabic} #{dep_city_name} #{arr_city_name} flights",target: "_blank") %></li>
+        <% end %>
+      </ul>
+    </li>
+    <% end %>
+    <% if route_int_airlines.present? %>
+    <li>
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%#= dep_city_name.titleize%>  <%#= arr_city_name.titleize %> <%=  t('header.international_airlines') %> <span class="caret"></span></a>
+      <ul class="list-unstyled dropdown-menu">
+        <% route_int_airlines[0..5].each do |cc| %>
+        <%
+        if I18n.locale ==:ar
+          I18n.locale = :en
+          airline_name = I18n.t("airlines.#{cc}")
+          I18n.locale =:ar
+          airline_name_arabic = I18n.t("airlines.#{cc}")
+        end
+
+        link = "#{host}/ar/flight-booking/#{url_escape("#{airline_name.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+        <li><%= t('brand_flights_routes_html', dep_city_name: dep_city_name_ar, airline_name: airline_name_arabic, airline_name_arabic: airline_name_arabic,arr_city_name: arr_city_name_ar, link: link,title: "#{airline_name_arabic} #{dep_city_name_ar} #{arr_city_name_ar} #{t("flight_schedule.flights")}",target: "_blank") %></li>
+        <% end %>
+      </ul>
+    </li>
+    <% end %>
+    <% if @country_code != "SA" %>
+    <li>
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown"><%= t('header.airport_and_hotels') %> <span class="caret"></span></a>
+      <ul class="list-unstyled dropdown-menu">
+        <li><a href="<%= host %>/tourism/airports/ar/<%= dep_city_name_formated.downcase%>-airport.html" title="<%= dep_city_name_ar %> أيربوت" target="_blank"><%= dep_city_name_ar %> أيربوت</a></li>
+        <li><a href="<%= host %>/tourism/airports/ar/<%= arr_city_name_formated.downcase%>-airport.html"  title="<%= arr_city_name%> أيربوت" target="_blank"><%= arr_city_name_ar %> أيربوت</a></li>
+      </ul>
+    </li>
+    <% end %>
+ 		</ul>
+ 	</div>
+ </section>
+<div class="clearfix"></div>
+<%end%>

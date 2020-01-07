@@ -1,0 +1,31 @@
+<div class="more-flights">
+	<h2>
+		المزيد من الرحلات الجوية من <%= dep_city_name_ar %>
+	</h2>
+	<ul class="list-inline">
+		<% flights_dep.each do |route|%>
+		<% if route.dep_city_name_ar.present? && route.arr_city_name_ar.present? %>
+		<li><a href="/ar/flight-tickets/<%= route.url.gsub('-flights.html','') %>-cheap-airtickets.html" title="<%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %>  <%= t('flight_ticket.cheap_airtickets')%>"><%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t('flight_ticket.cheap_airtickets')%></a></li>
+		<% end %>
+		<% end %>
+	</ul>
+	<p class="more-link">
+		<a href="/ar/flight-schedule/flights-from-<%=use_helper.url_escape(dep_city_name_en)%>.html"><%= t("more_flights_from")%> <%= dep_city_name_ar %></a>
+	</p>
+</div>
+<div class="top-routes">
+	<h2>
+		المزيد من رحلات الطيران إلى <%= arr_city_name_ar %>
+	</h2>
+	<ul class="list-inline">
+		<% flights_arr.each do |route|%>
+		<% if route.dep_city_name_ar.present? && route.arr_city_name_ar.present? %>
+		<li><a href="/ar/flight-tickets/<%=  route.url.gsub('-flights.html','')%>-cheap-airtickets.htmls" title="<%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t('flight_ticket.cheap_airtickets')%>"><%= route.dep_city_name_ar %> <%= route.arr_city_name_ar %> <%= t('flight_ticket.cheap_airtickets') %></a></li>
+		<% end %>
+		<% end %>
+	</ul>
+	<p class="more-link">
+		<a href="/ar/flight-schedule/flights-to-<%=use_helper.url_escape(arr_city_name_en)%>.html"><%= t("more_flights_to")%> <%= arr_city_name_ar %></a>
+	</p>
+	<div class="clearfix"></div>
+</div>

@@ -1,0 +1,33 @@
+
+<% top_routes = sa_header_routes[:header_routes].present? && @country_code == "SA" ? sa_header_routes[:header_routes]  :  [] %>
+  <% if top_routes.present? && !top_routes.nil? %>
+	  <div class="white-card">
+			<h2><h2><%= t("brand.top_int_flight_schedule_title") %></h2></h2>
+		<% top_routes.uniq.last(6).each do |route| %>
+			<ul class="list-unstyled flight-routes">
+				<% if route["dep_city_name_ar"] != "" && route["arr_city_name_ar"] != "" %>
+				<li>
+					<% link = link_to( "#{t('brand.flights')} #{route['dep_city_name_ar']} #{t("to")} #{route['arr_city_name_ar']} ", "/ar/flight-schedule/" + "#{route['url']}" )  %>
+					<%= link %>
+					<div class="clearfix"></div>
+				</li>
+				<% end %>
+			</ul>
+			<% end %>
+		</div><!--/white-card-->
+ <% else %>
+	<% if routes.present? && !routes.nil? %>
+	<div class="white-card">
+		<h2><h2><%= t("brand.top_#{section}_flight_schedule_title") %></h2></h2>
+		<% routes.uniq.last(6).each do |route| %>
+			<ul class="list-unstyled flight-routes">
+				<li>
+					<% link = link_to( "#{t('brand.flights')} #{route[:dep_city_name_ar]} #{t('to')} #{route[:arr_city_name_ar]}", "/ar/flight-schedule/" + "#{route['schedule_route_url']}" + "-flights.html")  %>
+					<%= link %>
+					<div class="clearfix"></div>
+				</li>
+			</ul>
+			<% end %>
+	</div><!--/white-card-->
+	<% end %>
+<% end %>

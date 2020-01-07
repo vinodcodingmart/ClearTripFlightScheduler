@@ -1,0 +1,81 @@
+<%currency_code = ApplicationProcessor.new.currency_code(country_code)%>
+<div class="one-way-price">
+
+  <div class="depart-details">
+    <div class="cta-depart">
+      <a href="/flight-booking/<%= best_price['link'] %>.html">
+        <span class=" carrier-logo <%= best_price["formated_airline_name"] %>"></span>
+        <!-- <span class="airline-names"> <%= best_price["formated_airline"]%> <small><%=best_price["flight_number"]%></small></span> -->
+      </a>
+    </div>
+    <ul class="list-inline depart-airport-details">
+      <li><span class="ac1"><%= best_price["dep_city_code"]%></span> → <span class="ac2"><%= best_price["arr_city_code"]%></span> <span class="air-num"><%= best_price["formated_airline"]%> <small><%=best_price["flight_number"]%></small></span></li>
+    </ul>
+    <ul  class="list-inline depart-tinfo">
+      <li><%= best_price["dep_time"] %></li>
+      <li>-</li>
+      <li><%= best_price["arr_time"] %></li>
+      <li><%= best_price["duration"] %></li>
+      <li>-</li>
+      <li><%= best_price["no_of_stops"] == 0 ? "Non Stop" : "1-Hop" %></li>
+    </ul>
+    
+  </div><!--/depart-details-->
+  <div class="cta-action-block">
+    <ul  class="list-inline">
+
+     <li class="cheap-txt"><b>Cheapest Fare</b> for <span class="bst_card_date"></span></li>
+      <li><span class="prices"><%= currency_code %><%=best_price["route_total_fare_formatted"] %></span>
+        <span><button class="ct-btn book_button book_now" data-key="<%= best_price["unique_flight_key"]%>">Book Now</button></span></li>
+      </ul>
+    </div>
+
+
+  </div><!--/one-way-price-->
+  <script type="text/x-handlebars-template" id="one_price_card">
+    <div class="one-way-price">
+
+      <div class="depart-details">
+        <div class="cta-depart">
+          <a href="/flight-booking/{{link}}.html">
+            <span class=" carrier-logo {{formated_airline_name}}"></span>
+          </a>
+        </div>
+        <ul class="list-inline depart-airport-details">
+          <li><span class="ac1">{{dep_city_code}}</span> → <span class="ac2">{{arr_city_code}}</span> <span class="air-num">{{formated_airline}} <small>{{flight_number}}</small></span></li>
+        </ul>
+        <ul  class="list-inline depart-tinfo">
+          <li>{{dep_time}}</li>
+          <li>-</li>
+          <li>{{arr_time}}</li>
+          <li>{{duration}}</li>
+          <li>-</li>
+          <li>
+            {{#iff no_of_stops '==' 1}}
+            <span class="small-txt">{{no_of_stops}} Stop </span>
+            {{else iff no_of_stops '>' 1}}
+            <span class="small-txt">{{no_of_stops}} Stops </span>
+            {{else}}
+            <span class="small-txt">Non Stop</span>
+            {{/iff}}
+          </li>
+        </ul>
+        
+      </div>
+      <div class="cta-action-block">
+        <ul  class="list-inline">
+         <li class="cheap-txt"><b>Cheapest Fare</b> for <span class="bst_card_date"></span></li>
+          <li><span class="prices"><%= currency_code %>{{route_total_fare}}</span>
+            <span><button class="ct-btn book_button book_now" data-key="{{unique_flight_key}}">Book Now</button></span></li>
+          </ul>
+      </div>
+
+      
+    </div>  
+  </script>
+
+
+
+
+
+

@@ -1,0 +1,2 @@
+class BhVolumeRoute < ApplicationRecord
+end

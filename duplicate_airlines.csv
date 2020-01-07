@@ -1,0 +1,1434 @@
+carrier_code,publish_status,table_airline_name,table_url,yml_airline_name,yml_url
+0B,active,Blue Air,blue-air-airlines,Blue Air,blue-air-airlines
+0D,inactive,Darwin Airlines,,translation missing: en.airlines.0D,translation-missing-en0d-airlines
+2B,active,Bahrain Air,bahrain-air-airlines,Ak Bars Aero,ak-bars-aero-airlines
+2B,inactive,Ak Bars Aero,,Ak Bars Aero,ak-bars-aero-airlines
+2E,active,AVE.com,avecom-airlines,Smokey Bay Air,smokey-bay-air-airlines
+2G,active,Cargoitalia,cargoitalia-airlines,Angara Airlines,angara-airlines
+2G,inactive,Angara Airlines,,Angara Airlines,angara-airlines
+2I,active,Star Peru,star-peru-airlines,Star Peru,star-peru-airlines
+2J,active,Air Burkina,air-burkina-airlines,Air Burkina,air-burkina-airlines
+2K,active,Avianca Ecuador,avianca-ecuador-airlines,Aero Galapagos,aero-galapagos-airlines
+2L,active,Helvetic Airways,helvetic-airways-airlines,Helvetic Airways,helvetic-airways-airlines
+2M,active,Moldavian Airlines,moldavian-airlines,Moldavian Airlines,moldavian-airlines
+2N,active,Yuzmashavia,yuzmashavia-airlines,NextJet,nextjet-airlines
+2N,inactive,NextJet,,NextJet,nextjet-airlines
+2O,active,Redemption Inc,redemption-inc-airlines,Island Air Service,island-air-service-airlines
+2P,active,PAL Express,pal-express-airlines,Philippines Corp,philippines-corp-airlines
+2S,active,Air Carnival,air-carnival-airlines,Air Carnival,air-carnival-airlines
+2T,inactive,TruJet,,translation missing: en.airlines.2T,translation-missing-en2t-airlines
+2W,inactive,Welcome Air,,translation missing: en.airlines.2W,translation-missing-en2w-airlines
+2Z,active,Changan Airlines,changan-airlines,Changan Airlines,changan-airlines
+3B,active,Central Connect Airlines,central-connect-airlines,Binter Cabo Verde,binter-cabo-verde-airlines
+3F,active,Pacific Airways,pacific-airways-airlines,Pacific Airways Inc,pacific-airways-inc-airlines
+3G,active,Gambia Bird,gambia-bird-airlines,Gambia Bird,gambia-bird-airlines
+3H,active,Air Inuit,air-inuit-airlines,Air Inuit,air-inuit-airlines
+3J,active,Jubba Airways,jubba-airways-airlines,Jubba Airways,jubba-airways-airlines
+3L,inactive,ky Luftfahrt,,translation missing: en.airlines.3L,translation-missing-en3l-airlines
+3M,active,Gulfstream Intl,gulfstream-intl-airlines,Silver Airways Llc,silver-airways-llc-airlines
+3P,active,Tiara Air Aruba,tiara-air-aruba-airlines,Tiara Air Aruba,tiara-air-aruba-airlines
+3P,inactive,TransGlobal Airways,,Tiara Air Aruba,tiara-air-aruba-airlines
+3R,active,Moskovia Airlines,moskovia-airlines,Moskovia Airlines,moskovia-airlines
+3S,active,Aeroland Airways,aeroland-airways-airlines,Air Antilles Express,air-antilles-express-airlines
+3S,inactive,Air Antilles Express,,Air Antilles Express,air-antilles-express-airlines
+3U,active,Sichuan Airlines,sichuan-airlines,Sichuan Airlines,sichuan-airlines
+3Z,active,Zoom Airways,zoom-airways-airlines,Travel Service Polska,travel-service-polska-airlines
+3Z,inactive,Travel Service Polska,,Travel Service Polska,travel-service-polska-airlines
+4B,active,Aviastar-TU,aviastar-tu-airlines,Boutique Air,boutique-air-airlines
+4B,inactive,Perimeter Aviation,,Boutique Air,boutique-air-airlines
+4D,active,Air Sinai,air-sinai-airlines,Air Sinai,air-sinai-airlines
+4E,active,Stabo Air Limited,stabo-air-limited-airlines,Stabo Air Limited,stabo-air-limited-airlines
+4G,active,Gazpromavia,gazpromavia-airlines,Gazpromavia,gazpromavia-airlines
+4H,inactive,United Airways,,translation missing: en.airlines.4H,translation-missing-en4h-airlines
+4K,active,Kenn Borek Air,kenn-borek-air-airlines,Kenn Borek Air,kenn-borek-air-airlines
+4M,active,LAN Argentina,lan-argentina-airlines,LAN Argentina,lan-argentina-airlines
+4N,active,Air North Yukons,air-north-yukons-airlines,Air North Yukons,air-north-yukons-airlines
+4O,active,Interjet,interjet-airlines,Interjet,interjet-airlines
+4Q,active,Safi Airways,safi-airways-airlines,Safi Airways,safi-airways-airlines
+4T,inactive,Belair Airlines,,translation missing: en.airlines.4T,translation-missing-en4t-airlines
+4U,active,Germanwings,germanwings-airlines,Germanwings,germanwings-airlines
+4Y,inactive,Blue Line,,translation missing: en.airlines.4Y,translation-missing-en4y-airlines
+4Y,inactive,Yute Air,,translation missing: en.airlines.4Y,translation-missing-en4y-airlines
+5C,active,Nature Air,nature-air-airlines,C.A.L. Cargo Airlines,cal-cargo-airlines
+5C,inactive,C.A.L. Cargo Airlines,,C.A.L. Cargo Airlines,cal-cargo-airlines
+5E,active,Nok Mini,nok-mini-airlines,Nok Mini,nok-mini-airlines
+5E,inactive,Equaflight Services,,Nok Mini,nok-mini-airlines
+5G,active,Skyservice Airlines,skyservice-airlines,Aerocuahonte Sa De Cv,aerocuahonte-sa-de-cv-airlines
+5H,active,Fly540,fly540-airlines,Fly540,fly540-airlines
+5J,active,Cebu Pacific Air,cebu-pacific-air-airlines,Cebu Pacific Air,cebu-pacific-air-airlines
+5M,active,Sibaviatrans,sibaviatrans-airlines,Montserrat Airways,montserrat-airways-airlines
+5M,inactive,Montserrat Airways,,Montserrat Airways,montserrat-airways-airlines
+5N,active,Nordavia,nordavia-airlines,Nordavia,nordavia-airlines
+5O,active,Europe Airpost,europe-airpost-airlines,Europe Airpost,europe-airpost-airlines
+5P,active,Pena Transportes Aéreos,pena-transportes-areos-airlines,Aerolinea Principal Chile,aerolinea-principal-chile-airlines
+5P,inactive,Aerolinea Principal Chile,,Aerolinea Principal Chile,aerolinea-principal-chile-airlines
+5Q,inactive,BQB Lineas Aereas,,translation missing: en.airlines.5Q,translation-missing-en5q-airlines
+5V,active,Lviv Airlines,lviv-airlines,Lviv Airlines,lviv-airlines
+5V,inactive,Everts Air,,Lviv Airlines,lviv-airlines
+5W,active,Astraeus Ltd.,astraeus-ltd-airlines,Astraeus Ltd.,astraeus-ltd-airlines
+6A,active,Aviacsa,aviacsa-airlines,Aviacsa,aviacsa-airlines
+6E,active,IndiGo,indigo-airlines,IndiGo,indigo-airlines
+6H,active,Israir Airlines,israir-airlines,Israir Airlines,israir-airlines
+6I,active,Aviast Air,aviast-air-airlines,Air Alsie,air-alsie-airlines
+6I,inactive,Air Alsie,,Air Alsie,air-alsie-airlines
+6L,active,Aklak Air,aklak-air-airlines,Aklak Air,aklak-air-airlines
+6W,active,Saratov Airlines,saratov-airlines,Saratov Airlines,saratov-airlines
+6Y,active,Smartlynx Airlines,smartlynx-airlines,Smartlynx Airlines,smartlynx-airlines
+7C,active,Coyne Airways,coyne-airways-airlines,Jeju Air,jeju-air-airlines
+7C,inactive,Jeju Air,,Jeju Air,jeju-air-airlines
+7D,inactive,Donbassaero Airlines,,translation missing: en.airlines.7D,translation-missing-en7d-airlines
+7E,active,Sylt Air,sylt-air-airlines,Sylt Air,sylt-air-airlines
+7F,active,First Air,first-air-airlines,First Air,first-air-airlines
+7G,active,Star Flyer,star-flyer-airlines,Star Flyer,star-flyer-airlines
+7I,active,Insel Air,insel-air-airlines,Insel Air,insel-air-airlines
+7L,active,Aero Caribbean,aero-caribbean-airlines,Silk Way West Airlines,silk-way-west-airlines
+7M,active,Mistral Air,mistral-air-airlines,Mistral Air,mistral-air-airlines
+7P,active,Air Panama,air-panama-airlines,Air Panama,air-panama-airlines
+7P,inactive,Batavia Air,,Air Panama,air-panama-airlines
+7R,active,RusLine,rusline-airlines,RusLine,rusline-airlines
+7R,inactive,BRA Transportes Aéreos,,RusLine,rusline-airlines
+7S,active,Ryan Air,ryan-air-airlines,Ryan Air,ryan-air-airlines
+7V,active,Pelican Air Services,pelican-air-services-airlines,Federal Airlines,federal-airlines
+7V,inactive,Federal Air,,Federal Airlines,federal-airlines
+8A,inactive,AtlasBlue,,translation missing: en.airlines.8A,translation-missing-en8a-airlines
+8B,active,Business Air,business-air-airlines,Business Air,business-air-airlines
+8D,active,FITS Air,fits-air-airlines,FITS Air,fits-air-airlines
+8E,active,Bering Air,bering-air-airlines,Bering Air,bering-air-airlines
+8F,active,STP Airways,stp-airways-airlines,STP Airways,stp-airways-airlines
+8L,active,Lucky Air,lucky-air-airlines,Lucky Air,lucky-air-airlines
+8M,active,Myanmar Intl,myanmar-intl-airlines,Myanmar Intl,myanmar-intl-airlines
+8P,active,Pacific Coastal,pacific-coastal-airlines,Pacific Coastal,pacific-coastal-airlines
+8Q,active,Onur Air,onur-air-airlines,Onur Air,onur-air-airlines
+8R,inactive,SOL Lineas Aereas,,translation missing: en.airlines.8R,translation-missing-en8r-airlines
+8R,inactive,TRIP Linhas Aéreas,,translation missing: en.airlines.8R,translation-missing-en8r-airlines
+8T,active,Air Tindi,air-tindi-airlines,Air Tindi,air-tindi-airlines
+8U,active,Afriqiyah Airways,afriqiyah-airways-airlines,Afriqiyah Airways,afriqiyah-airways-airlines
+8V,active,Wright Air Service,wright-air-service-airlines,Wright Air Service,wright-air-service-airlines
+8V,inactive,Astral Aviation,,Wright Air Service,wright-air-service-airlines
+9C,active,Spring Airlines,spring-airlines,Spring Airlines,spring-airlines
+9C,inactive,Wimbi Dira Airways,,Spring Airlines,spring-airlines
+9D,inactive,Toumai Air Tchad,,translation missing: en.airlines.9D,translation-missing-en9d-airlines
+9E,active,XL Airways Germany,xl-airways-germany-airlines,Endeavor Air,endeavor-air-airlines
+9H,active,Dutch Antilles,dutch-antilles-airlines,Dutch Antilles,dutch-antilles-airlines
+9J,active,Dana Airlines,dana-airlines,Dana Airlines,dana-airlines
+9K,active,Cape Air,cape-air-airlines,Cape Air,cape-air-airlines
+9M,active,Central Mountain,central-mountain-airlines,Central Mountain,central-mountain-airlines
+9N,active,ANA & JP Express,ana-jp-express-airlines,Tropic Air,tropic-air-airlines
+9N,inactive,Tropic Air,,Tropic Air,tropic-air-airlines
+9Q,active,Pbair,pbair-airlines,Caicos Express Airways,caicos-express-airways-airlines
+9R,active,SATENA,satena-airlines,SATENA,satena-airlines
+9R,inactive,Phuket Air,,SATENA,satena-airlines
+9U,active,Air Moldova,air-moldova-airlines,Air Moldova,air-moldova-airlines
+9V,active,AMC Airlines,amc-airlines,Avior Airlines,avior-airlines
+9V,inactive,Avior Airlines,,Avior Airlines,avior-airlines
+9W,active,Jet Airways,jet-airways-airlines,Jet Airways,jet-airways-airlines
+9W-K,inactive,Jet Konnect,,translation missing: en.airlines.9W-K,translation-missing-en9w-k-airlines
+9Y,inactive,Fly Georgia,,translation missing: en.airlines.9Y,translation-missing-en9y-airlines
+A2,active,Astra Airlines,astra-airlines,Astra Airlines,astra-airlines
+A2,inactive,Cielos Airlines,,Astra Airlines,astra-airlines
+A3,active,Aegean Airlines,aegean-airlines,Aegean Airlines,aegean-airlines
+A4,active,Aerocon,aerocon-airlines,Aerocon,aerocon-airlines
+A5,active,Airlinair,airlinair-airlines,Airlinair,airlinair-airlines
+A7,active,Air Comet,air-comet-airlines,Calafia Airlines,calafia-airlines
+A8,active,Ameriflight,ameriflight-airlines,Ameriflight,ameriflight-airlines
+A8,inactive,Benin Golf Air,,Ameriflight,ameriflight-airlines
+A9,active,Georgian Airways,georgian-airways-airlines,Airzena Georgian,airzena-georgian-airlines
+AA,active,American Airlines,american-airlines,American Airlines,american-airlines
+AB,active,Air Berlin,air-berlin-airlines,Air Berlin,air-berlin-airlines
+AC,active,Air Canada,air-canada-airlines,Air Canada,air-canada-airlines
+AD,active,Azul Brazilian Airlines,azul-brazilian-airlines,Azul Brazilian Airlines,azul-brazilian-airlines
+AE,active,Mandarin Airlines,mandarin-airlines,Mandarin Airlines,mandarin-airlines
+AF,active,Air France,air-france-airlines,Air France,air-france-airlines
+AH,active,Air Algerie,air-algerie-airlines,Air Algerie,air-algerie-airlines
+AI,active,Air India,air-india-airlines,Air India,air-india-airlines
+AI,inactive,Airmark IndonesianAviation,,Air India,air-india-airlines
+AK,active,Air Asia,air-asia-airlines,Air Asia,air-asia-airlines
+AM,active,Aeromexico,aeromexico-airlines,Aeromexico,aeromexico-airlines
+AP,active,Air One,air-one-airlines,Air One,air-one-airlines
+AR,active,Aerolineas Argentinas,aerolineas-argentinas-airlines,Aerolineas Argentinas,aerolineas-argentinas-airlines
+AS,active,Alaska Airlines,alaska-airlines,Alaska Airlines,alaska-airlines
+AT,active,Royal Air Maroc,royal-air-maroc-airlines,Royal Air Maroc,royal-air-maroc-airlines
+AV,active,Avianca Aerovias,avianca-aerovias-airlines,Avianca Aerovias,avianca-aerovias-airlines
+AW,active,Dirgantara Air Service,dirgantara-air-service-airlines,Africa World Airlines,africa-world-airlines
+AW,inactive,Africa World Airlines,,Africa World Airlines,africa-world-airlines
+AY,active,Finnair,finnair-airlines,Finnair,finnair-airlines
+AZ,active,Alitalia,alitalia-airlines,Alitalia,alitalia-airlines
+B2,active,Belavia,belavia-airlines,Belavia,belavia-airlines
+B3,active,Bellview Airlines,bellview-airlines,Bellview Airlines,bellview-airlines
+B5,active,Flightline,flightline-airlines,East African Safari Air,east-african-safari-air-airlines
+B5,inactive,East African Safari Air,,East African Safari Air,east-african-safari-air-airlines
+B6,active,JetBlue Airways,jetblue-airways-airlines,JetBlue Airways,jetblue-airways-airlines
+B7,active,Uni Air,uni-air-airlines,UNI Corporation,uni-corporation-airlines
+B8,active,Eritrean Airlines,eritrean-airlines,Eritrean Airlines,eritrean-airlines
+BA,active,British Airways,british-airways-airlines,British Airways,british-airways-airlines
+BB,active,Seaborne Airlines,seaborne-airlines,Seaborne Airlines,seaborne-airlines
+BC,active,Skymark Airlines,skymark-airlines,Skymark Airlines,skymark-airlines
+BE,active,FlyBe,flybe-airlines,FlyBe,flybe-airlines
+BF,active,Aéro-Service,aro-service-airlines,Bluebird Cargo,bluebird-cargo-airlines
+BF,inactive,Bluebird Cargo,,Bluebird Cargo,bluebird-cargo-airlines
+BG,active,Biman Bangladesh,biman-bangladesh-airlines,Biman Bangladesh,biman-bangladesh-airlines
+BH,active,Hawkair,hawkair-airlines,Hawkair,hawkair-airlines
+BI,active,Royal Brunei Air,royal-brunei-air-airlines,Royal Brunei Air,royal-brunei-air-airlines
+BJ,active,Nouvelair,nouvelair-airlines,Nouvelair,nouvelair-airlines
+BK,active,Okay Airways,okay-airways-airlines,Okay Airways,okay-airways-airlines
+BL,active,Jetstar Pacific Airlines,jetstar-pacific-airlines,Pacific Airlines,pacific-airlines
+BM,active,British Midland Regional,british-midland-regional-airlines,British Midland Regional,british-midland-regional-airlines
+BP,active,Air Botswana Corp,air-botswana-corp-airlines,Air Botswana Corp,air-botswana-corp-airlines
+BR,active,EVA Corporation,eva-corporation-airlines,EVA Corporation,eva-corporation-airlines
+BT,active,Air Baltic,air-baltic-airlines,Air Baltic,air-baltic-airlines
+BV,active,Blue Panorama Air,blue-panorama-air-airlines,Blue Panorama Air,blue-panorama-air-airlines
+BW,active,Carribean Airlines,carribean-airlines,Carribean Airlines,carribean-airlines
+BX,active,Air Busan,air-busan-airlines,Air Busan,air-busan-airlines
+C7,active,Rico Linhas Aéreas,rico-linhas-areas-airlines,Cinnamon Air,cinnamon-air-airlines
+C7,inactive,Samarkand Airways,,Cinnamon Air,cinnamon-air-airlines
+C7,inactive,Cinnamon Air,,Cinnamon Air,cinnamon-air-airlines
+C8,active,Cargolux Italia,cargolux-italia-airlines,Cargolux Italia,cargolux-italia-airlines
+C9,active,Cirrus Airlines,cirrus-airlines,Cirrus Airlines,cirrus-airlines
+CA,active,Air China,air-china-airlines,Community  Airlines,community-airlines
+CA,inactive,Community  Airlines,,Community  Airlines,community-airlines
+CF,active,City Airline AB,city-ab-airlines,City Airline AB,city-ab-airlines
+CG,active,PNG Air,png-air-airlines,Papua New Guinea,papua-new-guinea-airlines
+CI,active,China Airlines,china-airlines,China Airlines,china-airlines
+CM,active,Copa Airlines,copa-airlines,COPA Panama,copa-panama-airlines
+CN,active,Grand China Air,grand-china-air-airlines,Grand China Air,grand-china-air-airlines
+CO,active,Continental,continental-airlines,Continental,continental-airlines
+CT,active,Alitalia CityLiner,alitalia-cityliner-airlines,Alitalia CityLiner,alitalia-cityliner-airlines
+CU,active,Cubana de Aviacion,cubana-de-aviacion-airlines,Cubana de Aviacion,cubana-de-aviacion-airlines
+CX,active,Cathay Pacific,cathay-pacific-airlines,Cathay Pacific,cathay-pacific-airlines
+CY,active,Cyprus Airways,cyprus-airways-airlines,Cyprus Airways,cyprus-airways-airlines
+CZ,active,China Southern,china-southern-airlines,China Southern,china-southern-airlines
+D2,active,Severstal Aircompany,severstal-aircompany-airlines,Dynamic Airways,dynamic-airways-airlines
+D2,inactive,Dynamic Airways,,Dynamic Airways,dynamic-airways-airlines
+D3,active,Daallo Airlines,daallo-airlines,Daallo Airlines,daallo-airlines
+D4,active,Alidaunia,alidaunia-airlines,Alidaunia,alidaunia-airlines
+D6,inactive,Interair S. Africa,,translation missing: en.airlines.D6,translation-missing-end6-airlines
+D7,active,Air Asia X,air-asia-x-airlines,Air Asia X,air-asia-x-airlines
+DC,active,Braathens Regional,braathens-regional-airlines,Braathens Regional,braathens-regional-airlines
+DD,active,Nok Air,nok-air-airlines,Nok Air,nok-air-airlines
+DE,active,Condor,condor-airlines,Condor,condor-airlines
+DG,active,South East Asian Airlines,south-east-asian-airlines,South East Asian Airlines,south-east-asian-airlines
+DL,active,Delta,delta-airlines,Delta,delta-airlines
+DN,inactive,Deccan Charters,,translation missing: en.airlines.DN,translation-missing-endn-airlines
+DO,inactive,Air Vallée,,translation missing: en.airlines.DO,translation-missing-endo-airlines
+DS,active,easyJet Switzerland,easyjet-switzerland-airlines,easyJet Switzerland,easyjet-switzerland-airlines
+DT,active,TAAG Angola Airlines,taag-angola-airlines,TAAG Angola Airlines,taag-angola-airlines
+DV,active,SCAT Air,scat-air-airlines,SCAT Air,scat-air-airlines
+DX,active,Danish Air Transport,danish-air-transport-airlines,Danish Air Transport,danish-air-transport-airlines
+DY,active,Norwegian Shuttle,norwegian-shuttle-airlines,Norwegian Shuttle,norwegian-shuttle-airlines
+E3,active,Domodedovo Air,domodedovo-air-airlines,Domodedovo Air,domodedovo-air-airlines
+E5,active,Samara Airlines,samara-airlines,Samara Airlines,samara-airlines
+E8,inactive,Brighton City Airways,,translation missing: en.airlines.E8,translation-missing-ene8-airlines
+EA,active,Horizon Air,horizon-air-airlines,Eastern Air Lines Group Inc.,eastern-group-inc-airlines
+EF,inactive,Eznis Airways,,translation missing: en.airlines.EF,translation-missing-enef-airlines
+EG,active,Enerjet,enerjet-airlines,Enerjet,enerjet-airlines
+EI,active,Aer Lingus,aer-lingus-airlines,Aer Lingus,aer-lingus-airlines
+EK,active,Emirates,emirates-airlines,Emirates,emirates-airlines
+EL,active,Air Nippon Co,air-nippon-co-airlines,Air Nippon Co,air-nippon-co-airlines
+EN,active,Air Dolomiti,air-dolomiti-airlines,Air Dolomiti,air-dolomiti-airlines
+EP,active,Iran Aseman Airlines,iran-aseman-airlines,Iran Aseman Airlines,iran-aseman-airlines
+EQ,active,TAME Linea Aerea del Ecuador,tame-linea-aerea-del-ecuador-airlines,TAME Linea Aerea del Ecuador,tame-linea-aerea-del-ecuador-airlines
+ET,active,Ethiopian Air,ethiopian-air-airlines,Ethiopian Air,ethiopian-air-airlines
+EU,active,Chengdu Airlines,chengdu-airlines,Chengdu Airlines,chengdu-airlines
+EW,active,Eurowings,eurowings-airlines,Eurowings,eurowings-airlines
+EY,active,Etihad Airways,etihad-airways-airlines,Etihad Airways,etihad-airways-airlines
+F2,active,Safarilink Aviation,safarilink-aviation-airlines,Safarilink Aviation,safarilink-aviation-airlines
+F9,active,Frontier,frontier-airlines,Frontier,frontier-airlines
+FB,active,Bulgaria Air,bulgaria-air-airlines,Bulgaria Air,bulgaria-air-airlines
+FE,active,Far Eastern Air Transport,far-eastern-air-transport-airlines,Far Eastern Air Transport,far-eastern-air-transport-airlines
+FG,active,Ariana Afghan Airlines,ariana-afghan-airlines,Ariana Afghan Airlines,ariana-afghan-airlines
+FI,active,Icelandair,icelandair-airlines,Icelandair,icelandair-airlines
+FJ,active,Fiji Airways,fiji-airways-airlines,Fiji Airways,fiji-airways-airlines
+FL,active,AirTran,airtran-airlines,AirTran,airtran-airlines
+FM,active,Shanghai Air,shanghai-air-airlines,Shanghai Air,shanghai-air-airlines
+FN,active,Regional Air Lines,regional-airlines,Regional Air Lines,regional-airlines
+FO,inactive,Felix Airways,,translation missing: en.airlines.FO,translation-missing-enfo-airlines
+FS,active,Syphax Airlines,syphax-airlines,Syphax Airlines,syphax-airlines
+FT,active,Siem Reap Airways International,siem-reap-airways-international-airlines,Siem Reap Airways International,siem-reap-airways-international-airlines
+FW,active,IBEX Airlines,ibex-airlines,IBEX Airlines,ibex-airlines
+FY,active,Firefly,firefly-airlines,Firefly,firefly-airlines
+FZ,active,Flydubai,flydubai-airlines,Flydubai,flydubai-airlines
+G5,active,China Express Airlines,china-express-airlines,China Express Airlines,china-express-airlines
+G7,active,GoJet Airlines,gojet-airlines,GoJet Airlines,gojet-airlines
+G8,active,GoAir,goair-airlines,GoAir,goair-airlines
+G9,active,Air Arabia,air-arabia-airlines,Air Arabia,air-arabia-airlines
+GA,active,Garuda Indonesia,garuda-indonesia-airlines,Garuda Indonesia,garuda-indonesia-airlines
+GE,active,TransAsia Corp,transasia-corp-airlines,TransAsia Corp,transasia-corp-airlines
+GF,active,Gulf Air,gulf-air-airlines,Gulf Air,gulf-air-airlines
+GJ,active,Eurofly S.p.A.,eurofly-spa-airlines,Eurofly S.p.A.,eurofly-spa-airlines
+GK,active,Jetstar Japan,jetstar-japan-airlines,Jetstar Japan,jetstar-japan-airlines
+GL,active,Air Greenland,air-greenland-airlines,Air Greenland,air-greenland-airlines
+GQ,active,Big Sky Airlines,big-sky-airlines,Big Sky Airlines,big-sky-airlines
+GR,active,Aurigny Air,aurigny-air-airlines,Aurigny Air,aurigny-air-airlines
+GS,active,Tianjin Airlines,tianjin-airlines,Grant Aviation,grant-aviation-airlines
+GU,active,AVIATECA,aviateca-airlines,AVIATECA,aviateca-airlines
+GV,active,Sky Gabon,sky-gabon-airlines,Sky Gabon,sky-gabon-airlines
+GZ,active,Air Rarotonga,air-rarotonga-airlines,Air Rarotonga,air-rarotonga-airlines
+H2,active,Sky Airline,sky-airlines,Sky Airline,sky-airlines
+H7,active,Eagle Air,eagle-air-airlines,Eagle Air,eagle-air-airlines
+HD,active,Air Do,air-do-airlines,Air Do,air-do-airlines
+HF,active,Air Cote DIvoire,air-cote-divoire-airlines,Air Cote DIvoire,air-cote-divoire-airlines
+HG,active,FlyNiki,flyniki-airlines,FlyNiki,flyniki-airlines
+HH,active,Taban Airlines,taban-airlines,Taban Airlines,taban-airlines
+HI,active,Papillon Airways,papillon-airways-airlines,Papillon Airways,papillon-airways-airlines
+HK,active,Hamburg Airways,hamburg-airways-airlines,Hamburg Airways,hamburg-airways-airlines
+HK,inactive,Four Star Air Cargo,,Hamburg Airways,hamburg-airways-airlines
+HM,active,Air Seychelles,air-seychelles-airlines,Air Seychelles,air-seychelles-airlines
+HO,active,Juneyao Airlines,juneyao-airlines,Juneyao Airlines,juneyao-airlines
+HR,active,Hahn Air,hahn-air-airlines,Hahn Air Lines,hahn-airlines
+HU,active,Hainan Airlines,hainan-airlines,Hainan Airlines,hainan-airlines
+HV,active,Transavia Airlines,transavia-airlines,Transavia Airlines,transavia-airlines
+HW,active,North Wright Airways,north-wright-airways-airlines,North Wright Airways,north-wright-airways-airlines
+HY,active,Uzbekistan,uzbekistan-airlines,Uzbekistan,uzbekistan-airlines
+HZ,active,SAT Airlines,sat-airlines,Jsc Aurora Airlines,jsc-aurora-airlines
+HZ,inactive,Aurora Airlines,,Jsc Aurora Airlines,jsc-aurora-airlines
+I6,inactive,MexicanaLink,,translation missing: en.airlines.I6,translation-missing-eni6-airlines
+I6,inactive,Air Indus,,translation missing: en.airlines.I6,translation-missing-eni6-airlines
+I9,active,Air Italy,air-italy-airlines,Air Italy,air-italy-airlines
+IB,active,Iberia,iberia-airlines,Iberia,iberia-airlines
+IC,inactive,Air India IC,,translation missing: en.airlines.IC,translation-missing-enic-airlines
+ID,active,Interlink,interlink-airlines,Interlink,interlink-airlines
+IE,active,Solomon Airlines,solomon-airlines,Solomon Airlines,solomon-airlines
+IF,active,Islas Airways,islas-airways-airlines,Islas Airways,islas-airways-airlines
+IG,active,Meridiana,meridiana-airlines,Meridiana,meridiana-airlines
+IK,active,Imair Airline,imair-airlines,Imair Airline,imair-airlines
+IL,active,Trigana Air Service,trigana-air-service-airlines,Trigana Air Service,trigana-air-service-airlines
+IN,active,MAT Macedonian  Airlines,mat-macedonian-airlines,MAT Macedonian  Airlines,mat-macedonian-airlines
+IO,active,IrAero,iraero-airlines,IrAero,iraero-airlines
+IR,active,Iran Air,iran-air-airlines,Iran Air,iran-air-airlines
+IT,active,Kingfisher,kingfisher-airlines,Tigerair Taiwan Co. Ltd,tigerair-taiwan-co-ltd-airlines
+IT-RED,inactive,Kingfisher Red,,translation missing: en.airlines.IT-RED,translation-missing-enit-red-airlines
+IV,active,Wind Jet S.p.A.,wind-jet-spa-airlines,Wind Jet S.p.A.,wind-jet-spa-airlines
+IX,active,Air India Express,air-india-express-airlines,Air India Express,air-india-express-airlines
+IY,active,Yemenia Yemen,yemenia-yemen-airlines,Yemenia Yemen,yemenia-yemen-airlines
+IZ,active,Arkia Israeli,arkia-israeli-airlines,Arkia Israeli,arkia-israeli-airlines
+J2,active,Azal Avia Cargo,azal-avia-cargo-airlines,Azerbaijan Airlines,azerbaijan-airlines
+J2,inactive,Azerbaijan Airlines,,Azerbaijan Airlines,azerbaijan-airlines
+J3,active,Northwestern Air,northwestern-air-airlines,Northwestern Air,northwestern-air-airlines
+J4,active,Buffalo Airways,buffalo-airways-airlines,Badr Airlines,badr-airlines
+J4,inactive,Badr Airlines,,Badr Airlines,badr-airlines
+J5,active,Donghai Airlines,donghai-airlines,Alaska Seaplane,alaska-seaplane-airlines
+J8,active,Berjaya Air Bhd,berjaya-air-bhd-airlines,Berjaya Air Bhd,berjaya-air-bhd-airlines
+J9,active,Jazeera Airways,jazeera-airways-airlines,Jazeera Airways,jazeera-airways-airlines
+JA,active,Jagson Airlines,jagson-airlines,BH Airlines,bh-airlines
+JA,inactive,BH Airlines,,BH Airlines,bh-airlines
+JC,active,JAL Express,jal-express-airlines,JAL Express,jal-express-airlines
+JD,active,Beijing Capital Airlines,beijing-capital-airlines,Beijing Capital Airlines,beijing-capital-airlines
+JF,active,LAB Flying,lab-flying-airlines,LAB Flying,lab-flying-airlines
+JG,active,Jetgo Australia,jetgo-australia-airlines,Jetgo Australia,jetgo-australia-airlines
+JH,active,Fuji Dream Airlines,fuji-dream-airlines,Fuji Dream Airlines,fuji-dream-airlines
+JH,inactive,FLEX Linhas Aéreas,,Fuji Dream Airlines,fuji-dream-airlines
+JJ,active,Aviogenex,aviogenex-airlines,TAM Linhas Aereas,tam-linhas-aereas-airlines
+JJ,inactive,TAM Linhas Aereas,,TAM Linhas Aereas,tam-linhas-aereas-airlines
+JK,inactive,Spanair S.A.,,translation missing: en.airlines.JK,translation-missing-enjk-airlines
+JL,active,Japan Airlines,japan-airlines,Japan Airlines,japan-airlines
+JM,active,Air Jamaica,air-jamaica-airlines,Air Jamaica,air-jamaica-airlines
+JO,active,JALways Co. Ltd.,jalways-co-ltd-airlines,JALways Co. Ltd.,jalways-co-ltd-airlines
+JP,active,Adria Airways,adria-airways-airlines,Adria Airways,adria-airways-airlines
+JQ,active,Jetstar,jetstar-airlines,Jetstar,jetstar-airlines
+JR,active,Joy Air,joy-air-airlines,Joy Air,joy-air-airlines
+JS,active,Air Koryo,air-koryo-airlines,Air Koryo,air-koryo-airlines
+JT,active,Lion Airlines,lion-airlines,Lion Airlines,lion-airlines
+JU,active,Air Serbia,air-serbia-airlines,Air Serbia,air-serbia-airlines
+JU,inactive,Jat Airways,,Air Serbia,air-serbia-airlines
+JV,active,Bearskin Airlines,bearskin-airlines,Bearskin Airlines,bearskin-airlines
+JW,active,Vanilla Air,vanilla-air-airlines,Vanilla Air,vanilla-air-airlines
+JW,inactive,Vanilla Air,,Vanilla Air,vanilla-air-airlines
+JY,active,Intercaribbean Airways,intercaribbean-airways-airlines,Intercaribbean Airways,intercaribbean-airways-airlines
+K2,active,Eurolot,eurolot-airlines,Airlift Alaska,airlift-alaska-airlines
+K2,inactive,Kyrgyzstan  Airlines,,Airlift Alaska,airlift-alaska-airlines
+K3,active,Taquan Air,taquan-air-airlines,Taquan Air,taquan-air-airlines
+K5,active,Wings of Alaska,wings-of-alaska-airlines,Wings of Alaska,wings-of-alaska-airlines
+K6,active,Cambodia Angkor Air,cambodia-angkor-air-airlines,Cambodia Angkor Air,cambodia-angkor-air-airlines
+K6,inactive,Bravo Air Congo,,Cambodia Angkor Air,cambodia-angkor-air-airlines
+K7,active,Air KBZ,air-kbz-airlines,Air KBZ,air-kbz-airlines
+K8,active,Kan Air,kan-air-airlines,Kan Air,kan-air-airlines
+KA,active,Dragonair,dragonair-airlines,Dragonair,dragonair-airlines
+KB,active,Druk Air,druk-air-airlines,Druk Air,druk-air-airlines
+KC,active,Air Astana,air-astana-airlines,Air Astana,air-astana-airlines
+KE,active,Korean Air,korean-air-airlines,Korean Air Lines,korean-airlines
+KF,inactive,Blue1 Oy,,translation missing: en.airlines.KF,translation-missing-enkf-airlines
+KG,active,Key Lime Air,key-lime-air-airlines,Key Lime Air,key-lime-air-airlines
+KK,active,Atlasjet,atlasjet-airlines,Atlasjet,atlasjet-airlines
+KL,active,KLM Cityhopper,klm-cityhopper-airlines,KLM Royal Dutch,klm-royal-dutch-airlines
+KL,inactive,KLM Royal Dutch,,KLM Royal Dutch,klm-royal-dutch-airlines
+KM,active,Air Malta,air-malta-airlines,Air Malta,air-malta-airlines
+KN,active,China United Airlines,china-united-airlines,China United Airlines,china-united-airlines
+KO,active,KHORS Air,khors-air-airlines,KHORS Air,khors-air-airlines
+KO,inactive,Kabo Air,,KHORS Air,khors-air-airlines
+KO,inactive,Alaska Central Express,,KHORS Air,khors-air-airlines
+KP,active,ASKY,asky-airlines,ASKY,asky-airlines
+KQ,active,Kenya Airways,kenya-airways-airlines,Kenya Airways,kenya-airways-airlines
+KR,inactive,Air Bishkek,,translation missing: en.airlines.KR,translation-missing-enkr-airlines
+KR,inactive,Comores Aviation International,,translation missing: en.airlines.KR,translation-missing-enkr-airlines
+KS,active,PenAir,penair-airlines,PenAir,penair-airlines
+KU,active,Kuwait Airways,kuwait-airways-airlines,Kuwait Airways,kuwait-airways-airlines
+KX,active,Cayman Airways,cayman-airways-airlines,Cayman Airways,cayman-airways-airlines
+KY,active,Kunming Airlines,kunming-airlines,Kunming Airlines,kunming-airlines
+L5,active,Linea Aerea Cuencana,linea-aerea-cuencana-airlines,Linea Aerea Cuencana,linea-aerea-cuencana-airlines
+L6,active,Mauritanian Airlines International,mauritanian-international-airlines,Mauritanian Airlines International,mauritanian-international-airlines
+L9,active,Belle Air Europe,belle-air-europe-airlines,Bristow U.S. Llc,bristow-us-llc-airlines
+LA,active,LAN Airlines,lan-airlines,LAN Airlines,lan-airlines
+LB,active,Air Costa,air-costa-airlines,Air Costa,air-costa-airlines
+LB,inactive,Lloyd Aéreo Boliviano,,Air Costa,air-costa-airlines
+LC,inactive,Equatorial Congo Airlines (ECAIR),,translation missing: en.airlines.LC,translation-missing-enlc-airlines
+LC,inactive,Varig Log,,translation missing: en.airlines.LC,translation-missing-enlc-airlines
+LF,active,FlyNordic,flynordic-airlines,FlyNordic / NordicAirlink,flynordic-nordicairlink-airlines
+LG,active,Luxair,luxair-airlines,Luxair,luxair-airlines
+LH,active,Lufthansa,lufthansa-airlines,Lufthansa,lufthansa-airlines
+LH,inactive,Lufthansa Cargo,,Lufthansa,lufthansa-airlines
+LI,active,LIAT,liat-airlines,LIAT,liat-airlines
+LJ,active,Jin Air,jin-air-airlines,Jin Air,jin-air-airlines
+LJ,inactive,Sierra National Airlines,,Jin Air,jin-air-airlines
+LM,active,Loganair,loganair-airlines,Loganair,loganair-airlines
+LM,inactive,Livingston,,Loganair,loganair-airlines
+LN,active,Libyan Airlines,libyan-airlines,Libyan Airlines,libyan-airlines
+LO,active,LOT Polish Air,lot-polish-air-airlines,LOT Polish Air,lot-polish-air-airlines
+LP,active,Lan Peru S.A.,lan-peru-sa-airlines,Lan Peru S.A.,lan-peru-sa-airlines
+LR,active,LACSA,lacsa-airlines,LACSA,lacsa-airlines
+LT,active,LTU  InternationalAirways,ltu-internationalairways-airlines,LTU  InternationalAirways,ltu-internationalairways-airlines
+LV,inactive,Albanian Airlines,,translation missing: en.airlines.LV,translation-missing-enlv-airlines
+LW,active,Pacific Wings,pacific-wings-airlines,Pacific Wings,pacific-wings-airlines
+LX,active,Swiss International Airlines,swiss-international-airlines,Swiss International Airlines,swiss-international-airlines
+LX,inactive,Swiss Global Air Lines,,Swiss International Airlines,swiss-international-airlines
+LY,active,El Al Israel Air,el-al-israel-air-airlines,El Al Israel Air,el-al-israel-air-airlines
+LZ,active,Belle Air,belle-air-airlines,Belle Air,belle-air-airlines
+M3,active,North Flying,north-flying-airlines,LATAM Cargo Brasil,latam-cargo-brasil-airlines
+M3,inactive,Tucson International Airport,,LATAM Cargo Brasil,latam-cargo-brasil-airlines
+M3,inactive,LATAM Cargo Brasil,,LATAM Cargo Brasil,latam-cargo-brasil-airlines
+M4,active,Nova Air,nova-air-airlines,Smart Aviation Company,smart-aviation-company-airlines
+M4,inactive,Smart Aviation Company,,Smart Aviation Company,smart-aviation-company-airlines
+M7,active,MasAir,masair-airlines,MasAir,masair-airlines
+M7,inactive,Marsland Aviation,,MasAir,masair-airlines
+M9,active,Motor Sich,motor-sich-airlines,Motor Sich,motor-sich-airlines
+MA,inactive,Malev Hungarian,,translation missing: en.airlines.MA,translation-missing-enma-airlines
+MD,active,Air Madagascar,air-madagascar-airlines,Air Madagascar,air-madagascar-airlines
+MF,active,Xiamen Airlines,xiamen-airlines,Xiamen Airlines,xiamen-airlines
+MH,active,Malaysia Airlines,malaysia-airlines,Malaysia Airlines,malaysia-airlines
+MI,active,SilkAir,silkair-airlines,SilkAir (S) Pte,silkair-s-pte-airlines
+MJ,inactive,Mihin Lanka,,translation missing: en.airlines.MJ,translation-missing-enmj-airlines
+MK,active,Air Mauritius,air-mauritius-airlines,Air Mauritius,air-mauritius-airlines
+ML,inactive,Air Mediterranee,,translation missing: en.airlines.ML,translation-missing-enml-airlines
+MM,active,Peach Aviation,peach-aviation-airlines,Peach Aviation,peach-aviation-airlines
+MM,inactive,Peach Aviation,,Peach Aviation,peach-aviation-airlines
+MM,inactive,SAM Colombia,,Peach Aviation,peach-aviation-airlines
+MO,active,Calm Air Intl,calm-air-intl-airlines,Calm Air Intl,calm-air-intl-airlines
+MP,active,Martinair Holland,martinair-holland-airlines,Martinair Holland,martinair-holland-airlines
+MR,active,Air Mauritanie,air-mauritanie-airlines,Hunnu Air,hunnu-air-airlines
+MS,active,EgyptAir,egyptair-airlines,Egyptair Express,egyptair-express-airlines
+MS,inactive,Egyptair Express,,Egyptair Express,egyptair-express-airlines
+MU,active,China Eastern Air,china-eastern-air-airlines,China Eastern Air,china-eastern-air-airlines
+MW,active,Mokulele,mokulele-airlines,Mokulele,mokulele-airlines
+MW,inactive,Maya Island Air,,Mokulele,mokulele-airlines
+MX,inactive,Mexicana,,translation missing: en.airlines.MX,translation-missing-enmx-airlines
+MY,inactive,Midwest Airlines,,translation missing: en.airlines.MY,translation-missing-enmy-airlines
+N3,inactive,Aerolineas MAS,,translation missing: en.airlines.N3,translation-missing-enn3-airlines
+N3,inactive,Omskavia,,translation missing: en.airlines.N3,translation-missing-enn3-airlines
+N7,active,Lagun Air,lagun-air-airlines,Lagun Air,lagun-air-airlines
+NA,active,Teebah  Airlines,teebah-airlines,Teebah  Airlines,teebah-airlines
+NB,active,Sterling  Airlines,sterling-airlines,Sterling  Airlines,sterling-airlines
+NF,active,Air Vanuatu,air-vanuatu-airlines,Vanuatu,vanuatu-airlines
+NK,active,Spirit Airlines,spirit-airlines,Spirit Airlines,spirit-airlines
+NL,active,Shaheen Air,shaheen-air-airlines,Shaheen Air,shaheen-air-airlines
+NP,active,Nile Air,nile-air-airlines,Nile Air,nile-air-airlines
+NQ,active,Air Japan,air-japan-airlines,Air Japan,air-japan-airlines
+NS,active,Hebei Airlines,hebei-airlines,Hebei Airlines,hebei-airlines
+NT,active,Binter Canarias,binter-canarias-airlines,Binter Canarias,binter-canarias-airlines
+NU,active,Japan Transocean Air,japan-transocean-air-airlines,Japan Transocean Air,japan-transocean-air-airlines
+NV,active,Air Central,air-central-airlines,Air Central,air-central-airlines
+NW,inactive,Northwest  Airlines,,translation missing: en.airlines.NW,translation-missing-ennw-airlines
+NX,active,Air Macau Limited,air-macau-limited-airlines,Air Macau Limited,air-macau-limited-airlines
+NY,active,Air Iceland,air-iceland-airlines,Air Iceland,air-iceland-airlines
+NZ,active,Air New Zealand,air-new-zealand-airlines,Air New Zealand,air-new-zealand-airlines
+O4,active,Antrak Air,antrak-air-airlines,Antrak Air,antrak-air-airlines
+O6,active,Avianca Brazil,avianca-brazil-airlines,Avianca Brazil,avianca-brazil-airlines
+O9,active,Nova Airways,nova-airways-airlines,Nova Airways,nova-airways-airlines
+OA,active,Olympic Airlines,olympic-airlines,Olympic Airlines,olympic-airlines
+OB,active,Boliviana de Aviación,boliviana-de-aviacin-airlines,Boliviana de Aviación,boliviana-de-aviacin-airlines
+OC,active,Oriental Air Bridge,oriental-air-bridge-airlines,Oriental Air Bridge,oriental-air-bridge-airlines
+OD,active,Malindo Air,malindo-air-airlines,Malindo Air,malindo-air-airlines
+OG,inactive,Air Onix,,translation missing: en.airlines.OG,translation-missing-enog-airlines
+OG,inactive,One-Two-GO Airlines,,translation missing: en.airlines.OG,translation-missing-enog-airlines
+OK,active,Czech Airlines,czech-airlines,Czech Airlines,czech-airlines
+OL,active,OLT Express Germany,olt-express-germany-airlines,OLTOstfriesische,oltostfriesische-airlines
+OM,active,MIAT Mongolian,miat-mongolian-airlines,MIAT Mongolian,miat-mongolian-airlines
+ON,active,Nauru Airlines,nauru-airlines,translation missing: en.airlines.ON,translation-missing-enon-airlines
+OS,active,Austrian Airlines,austrian-airlines,Austrian Airlines,austrian-airlines
+OU,active,Croatia Airlines,croatia-airlines,Croatia Airlines,croatia-airlines
+OV,active,Estonian Air,estonian-air-airlines,Estonian Air,estonian-air-airlines
+OX,active,Orient Thai Airlines,orient-thai-airlines,Orient Thai Airlines,orient-thai-airlines
+OY,active,Andes Líneas Aéreas,andes-lneas-areas-airlines,Omni Air Express,omni-air-express-airlines
+OY,inactive,Omni Air Express,,Omni Air Express,omni-air-express-airlines
+OZ,active,Asiana Airlines,asiana-airlines,Asiana Airlines,asiana-airlines
+P2,active,Airkenya Express,airkenya-express-airlines,Airkenya Express,airkenya-express-airlines
+P4,active,AerolÃ­neas Sosa,aerolneas-sosa-airlines,Aerolíneas Sosa,aerolneas-sosa-airlines
+P6,active,Pascan Aviation,pascan-aviation-airlines,Pascan Aviation,pascan-aviation-airlines
+P9,active,Asia Pacific Airlines,asia-pacific-airlines,Asia Pacific Airlines,asia-pacific-airlines
+PA,active,Airblue,airblue-airlines,Airblue,airblue-airlines
+PB,active,Provincial Air,provincial-air-airlines,Provincial Air,provincial-air-airlines
+PC,active,Continental Airways,continental-airways-airlines,Pegasus Airlines,pegasus-airlines
+PC,inactive,Pegasus Airlines,,Pegasus Airlines,pegasus-airlines
+PC,inactive,Air Fiji,,Pegasus Airlines,pegasus-airlines
+PD,active,Porter Airlines,porter-airlines,Porter Airlines,porter-airlines
+PE,active,Peoples Viennaline,peoples-viennaline-airlines,Peoples Viennaline,peoples-viennaline-airlines
+PG,active,Bangkok Airways,bangkok-airways-airlines,Bangkok Airways,bangkok-airways-airlines
+PJ,active,Air St. Pierre,air-st-pierre-airlines,Air St. Pierre,air-st-pierre-airlines
+PK,active,Pakistan International Airlines,pakistan-international-airlines,Pakistan Intl Air,pakistan-intl-air-airlines
+PL,active,Airstars,airstars-airlines,Southern Air Charters,southern-air-charters-airlines
+PL,inactive,Southern Air Charters,,Southern Air Charters,southern-air-charters-airlines
+PM,active,CanaryFly,canaryfly-airlines,CanaryFly,canaryfly-airlines
+PN,active,West Air,west-air-airlines,West Air,west-air-airlines
+PR,active,Philippine Airlines,philippine-airlines,Philippine Airlines,philippine-airlines
+PS,active,Ukraine International Airlines,ukraine-international-airlines,Ukraine Intl Air,ukraine-intl-air-airlines
+PU,active,Pluna Uruguayas,pluna-uruguayas-airlines,Pluna Uruguayas,pluna-uruguayas-airlines
+PV,active,PAN Air,pan-air-airlines,PAN Air,pan-air-airlines
+PW,active,Precision Air,precision-air-airlines,Precision Air,precision-air-airlines
+PX,active,Air Niugini Pty,air-niugini-pty-airlines,Air Niugini Pty,air-niugini-pty-airlines
+PY,active,Surinam Airways,surinam-airways-airlines,Surinam Airways,surinam-airways-airlines
+PZ,active,TAM Mercosur,tam-mercosur-airlines,TAM Mercosur,tam-mercosur-airlines
+Q2,active,Maldivian,maldivian-airlines,Maldivian,maldivian-airlines
+Q3,active,Trans Anguilla Airways,trans-anguilla-airways-airlines,Trans Anguilla Airways,trans-anguilla-airways-airlines
+Q6,active,Aero Condor Peru,aero-condor-peru-airlines,Skytrans Airlines,skytrans-airlines
+Q6,inactive,Skytrans Airlines,,Skytrans Airlines,skytrans-airlines
+Q7,active,Sky Bahamas,sky-bahamas-airlines,Sky Bahamas,sky-bahamas-airlines
+Q8,active,Pacific East Asia Cargo Airlines,pacific-east-asia-cargo-airlines,Pacific East Asia Cargo Airlines,pacific-east-asia-cargo-airlines
+Q9,active,Afrinat International Airlines,afrinat-international-airlines,Afrinat International Airlines,afrinat-international-airlines
+QC,active,Cameroon Airlines,cameroon-airlines,Cameroon Airlines,cameroon-airlines
+QF,active,Eastern Australia Airlines,eastern-australia-airlines,Sunstate Airlines,sunstate-airlines
+QF,inactive,Sunstate Airlines,,Sunstate Airlines,sunstate-airlines
+QF,inactive,Qantas,,Sunstate Airlines,sunstate-airlines
+QG,active,Citilink,citilink-airlines,Citilink,citilink-airlines
+QH,active,Air Kyrgyzstan,air-kyrgyzstan-airlines,Kyrgyzstan Airlines,kyrgyzstan-airlines
+QI,inactive,Cimber Air,,translation missing: en.airlines.QI,translation-missing-enqi-airlines
+QM,active,Air Malawi,air-malawi-airlines,Air Malawi,air-malawi-airlines
+QN,inactive,Air Armenia,,translation missing: en.airlines.QN,translation-missing-enqn-airlines
+QR,active,Qatar Airways,qatar-airways-airlines,Qatar Airways,qatar-airways-airlines
+QS,active,Travel Service Airlines,travel-service-airlines,Travel Service Airlines,travel-service-airlines
+QU,active,East African Airlines,east-african-airlines,UTair-Ukraine,utair-ukraine-airlines
+QU,inactive,Azur Air Ukraine,,UTair-Ukraine,utair-ukraine-airlines
+QV,active,Lao Aviation,lao-aviation-airlines,Lao Aviation,lao-aviation-airlines
+R2,active,Orenair,orenair-airlines,Transair Senegal,transair-senegal-airlines
+R3,active,Yakutia Airlines,yakutia-airlines,Yakutia Airlines,yakutia-airlines
+R7,active,Aserca Airlines,aserca-airlines,Aserca Airlines,aserca-airlines
+RA,active,Nepal Airlines,nepal-airlines,Royal Nepal Corp,royal-nepal-corp-airlines
+RB,active,Syrian Arab Air,syrian-arab-air-airlines,Syrian Arab Air,syrian-arab-air-airlines
+RC,active,Atlantic Airways,atlantic-airways-airlines,Atlantic Faroe Is,atlantic-faroe-is-airlines
+RE,active,Aer Arann,aer-arann-airlines,Aer Arann,aer-arann-airlines
+RG,active,Varig S.A.,varig-sa-airlines,Varig S.A.,varig-sa-airlines
+RI,inactive,Tigerair Mandala,,translation missing: en.airlines.RI,translation-missing-enri-airlines
+RJ,active,Royal Jordanian,royal-jordanian-airlines,Royal Jordanian,royal-jordanian-airlines
+RO,active,Tarom,tarom-airlines,Tarom,tarom-airlines
+RQ,active,Kam Air,kam-air-airlines,Kam Air,kam-air-airlines
+RT,active,RAK Airways,rak-airways-airlines,RAK Airways,rak-airways-airlines
+RX,active,Regent Airways,regent-airways-airlines,Regent Airways,regent-airways-airlines
+RZ,active,Sansa Airlines,sansa-airlines,Sansa Airlines,sansa-airlines
+S2,active,JetLite,jetlite-airlines,JetLite,jetlite-airlines
+S3,active,Santa Barbara Air,santa-barbara-air-airlines,Santa Barbara Air,santa-barbara-air-airlines
+S4,active,Azores Airlines,azores-airlines,SATA Intl Servicos,sata-intl-servicos-airlines
+S7,active,Siberia Airlines,siberia-airlines,Siberia Airlines,siberia-airlines
+S9,active,Starbow,starbow-airlines,Starbow,starbow-airlines
+SA,active,South African,south-african-airlines,South African,south-african-airlines
+SC,active,Shandong Airlines,shandong-airlines,Shandong Airlines,shandong-airlines
+SD,active,Sudan Airways Co,sudan-airways-co-airlines,Sudan Airways Co,sudan-airways-co-airlines
+SG,active,SpiceJet,spicejet-airlines,SpiceJet,spicejet-airlines
+SH,active,Sharp Airlines,sharp-airlines,Sharp Airlines,sharp-airlines
+SI,active,Air Arabia Jordan,air-arabia-jordan-airlines,Sierra Pacific Airlines,sierra-pacific-airlines
+SI,inactive,Blue Islands,,Sierra Pacific Airlines,sierra-pacific-airlines
+SI,inactive,Sierra Pacific Airlines,,Sierra Pacific Airlines,sierra-pacific-airlines
+SJ,active,Sriwijaya Air,sriwijaya-air-airlines,Sriwijaya Air,sriwijaya-air-airlines
+SJ,inactive,Seagle Air,,Sriwijaya Air,sriwijaya-air-airlines
+SK,active,Scandinavian SAS,scandinavian-sas-airlines,Scandinavian SAS,scandinavian-sas-airlines
+SK,inactive,SAS Braathens,,Scandinavian SAS,scandinavian-sas-airlines
+SN,active,Brussels Airlines,brussels-airlines,Brussels Airlines,brussels-airlines
+SP,active,SATA - Air Acores,sata-air-acores-airlines,SATA - Air Acores,sata-air-acores-airlines
+SQ,active,Singapore Airlines,singapore-airlines,Singapore Airlines,singapore-airlines
+ST,active,Germania,germania-airlines,Germania,germania-airlines
+SU,active,Aeroflot-Cargo,aeroflot-cargo-airlines,Aeroflot Russian Airlines,aeroflot-russian-airlines
+SU,inactive,Aeroflot Russian Airlines,,Aeroflot Russian Airlines,aeroflot-russian-airlines
+SV,active,Saudi Arabian Air,saudi-arabian-air-airlines,Saudi Arabian Air,saudi-arabian-air-airlines
+SW,active,Air Namibia,air-namibia-airlines,Air Namibia,air-namibia-airlines
+SX,active,Sky Work Airlines,sky-work-airlines,Sky Work Airlines,sky-work-airlines
+SX,inactive,Macedonian Airlines,,Sky Work Airlines,sky-work-airlines
+SY,active,Sun Country Air,sun-country-air-airlines,Sun Country Air,sun-country-air-airlines
+SZ,active,Somon Air,somon-air-airlines,Somon Air,somon-air-airlines
+T3,active,Eastern Airways,eastern-airways-airlines,Eastern Airways,eastern-airways-airlines
+T5,active,Turkmenistan Airlines,turkmenistan-airlines,Turkmenistan Airlines,turkmenistan-airlines
+T7,active,Twin Jet,twin-jet-airlines,Twin Jet,twin-jet-airlines
+TA,active,TACA Airlines,taca-airlines,Taca Intl Air,taca-intl-air-airlines
+TC,active,Air Tanzania,air-tanzania-airlines,Air Tanzania,air-tanzania-airlines
+TD,active,Atlantis European Airways,atlantis-european-airways-airlines,Atlantis European Airways,atlantis-european-airways-airlines
+TE,active,Lithuanian  Airlines,lithuanian-airlines,Lithuanian  Airlines,lithuanian-airlines
+TF,active,Malmo Aviation,malmo-aviation-airlines,Malmo Aviation,malmo-aviation-airlines
+TG,active,Thai Airways,thai-airways-airlines,Thai Airways,thai-airways-airlines
+TJ,active,Tradewinds Airlines,tradewinds-airlines,Tradewind Aviation,tradewind-aviation-airlines
+TK,active,Turkish Airlines,turkish-airlines,Turkish Airlines,turkish-airlines
+TL,active,Airnorth Regional,airnorth-regional-airlines,Airnorth Regional,airnorth-regional-airlines
+TLR,active,Air Libya,air-libya-airlines,Air Libya,air-libya-airlines
+TM,active,LAM Mozambique Airlines,lam-mozambique-airlines,LAM Mocambique,lam-mocambique-airlines
+TN,active,Air Tahiti Nui,air-tahiti-nui-airlines,Air Tahiti Nui,air-tahiti-nui-airlines
+TP,active,TAP Portugal,tap-portugal-airlines,TAP Portugal,tap-portugal-airlines
+TQ,active,Tandem Aero,tandem-aero-airlines,Tandem Aero,tandem-aero-airlines
+TR,active,Tiger Airways,tiger-airways-airlines,Tiger Airways,tiger-airways-airlines
+TS,active,Air Transat,air-transat-airlines,Air Transat,air-transat-airlines
+TU,active,Tunisair,tunisair-airlines,Tunisair,tunisair-airlines
+TW,active,Tway Airlines,tway-airlines,Tway Airlines,tway-airlines
+TX,active,Air Caraibes,air-caraibes-airlines,Air Caraibes,air-caraibes-airlines
+TY,active,Air Calédonie,air-caldonie-airlines,Air Calédonie,air-caldonie-airlines
+U2,active,easyJet,easyjet-airlines,easyJet,easyjet-airlines
+U5,active,USA3000,usa3000-airlines,USA3000,usa3000-airlines
+U6,active,Ural Airlines,ural-airlines,Ural Airlines,ural-airlines
+U9,inactive,Tatarstan Airlines,,translation missing: en.airlines.U9,translation-missing-enu9-airlines
+UA,active,United,united-airlines,United,united-airlines
+UD,inactive,HexAir,,translation missing: en.airlines.UD,translation-missing-enud-airlines
+UF,inactive,UM Airlines,,translation missing: en.airlines.UF,translation-missing-enuf-airlines
+UG,active,SevenAir,sevenair-airlines,TunisAir Express,tunisair-express-airlines
+UG,inactive,TunisAir Express,,TunisAir Express,tunisair-express-airlines
+UJ,active,AlMasria Universal Airlines,almasria-universal-airlines,AlMasria Universal Airlines,almasria-universal-airlines
+UJ,inactive,Magnicharters,,AlMasria Universal Airlines,almasria-universal-airlines
+UK,active,Vistara Airlines,vistara-airlines,Vistara Airlines,vistara-airlines
+UL,active,SriLankan Airlines,srilankan-airlines,SriLankan Airlines,srilankan-airlines
+UM,active,Air Zimbabwe (Pvt),air-zimbabwe-pvt-airlines,Air Zimbabwe (Pvt),air-zimbabwe-pvt-airlines
+UN,active,Transaero Airlines,transaero-airlines,Transaero Airlines,transaero-airlines
+UO,active,HongKong Express,hongkong-express-airlines,HongKong Express,hongkong-express-airlines
+UP,active,Bahamasair,bahamasair-airlines,Bahamasair,bahamasair-airlines
+UR,inactive,UTair Express,,translation missing: en.airlines.UR,translation-missing-enur-airlines
+US,inactive,US Airways,,US Airways,us-airways-airlines
+US,inactive,Piedmont Airlines,,US Airways,us-airways-airlines
+UT,active,UTair,utair-airlines,UTair,utair-airlines
+UU,active,Air Austral,air-austral-airlines,Air Austral,air-austral-airlines
+UX,active,Air Europa,air-europa-airlines,Air Europa,air-europa-airlines
+V0,active,ConViasa,conviasa-airlines,ConViasa,conviasa-airlines
+V3,active,Carpatair S.A.,carpatair-sa-airlines,Carpatair S.A.,carpatair-sa-airlines
+V4,active,Vensecar Internacional,vensecar-internacional-airlines,Vensecar Internacional,vensecar-internacional-airlines
+V5,active,Avolar Aerolíneas,avolar-aerolneas-airlines,Aerovias Dap S.A.,aerovias-dap-sa-airlines
+V5,inactive,Pace Airlines,,Aerovias Dap S.A.,aerovias-dap-sa-airlines
+V7,active,Air Senegal Intl,air-senegal-intl-airlines,Air Senegal Intl,air-senegal-intl-airlines
+V8,active,Atran,atran-airlines,Atran,atran-airlines
+V9,active,Van Air Europe,van-air-europe-airlines,Van Air Europe,van-air-europe-airlines
+VA,active,Virgin Australia,virgin-australia-airlines,Virgin Australia,virgin-australia-airlines
+VB,active,Aeroenlaces Nacionale,aeroenlaces-nacionale-airlines,Aeroenlaces Nacionale,aeroenlaces-nacionale-airlines
+VF,active,Valuair Ltd.,valuair-ltd-airlines,Valuair Ltd.,valuair-ltd-airlines
+VG,inactive,VLM  Airlines,,translation missing: en.airlines.VG,translation-missing-envg-airlines
+VH,inactive,Aeropostal Alas de Venezuela,,translation missing: en.airlines.VH,translation-missing-envh-airlines
+VJ,active,VietJet Air,vietjet-air-airlines,VietJet Air,vietjet-air-airlines
+VJ,inactive,Jatayu Airlines,,VietJet Air,vietjet-air-airlines
+VK,inactive,Virgin Nigeria,,translation missing: en.airlines.VK,translation-missing-envk-airlines
+VM,active,Macair Jet,macair-jet-airlines,Max Air,max-air-airlines
+A0,active,Avianca Argentina,avianca-argentina-airlines,Avianca Argentina,avianca-argentina-airlines
+VN,active,Vietnam Airlines,vietnam-airlines,Vietnam Airlines,vietnam-airlines
+VP,active,VASP,vasp-airlines,VASP Viação Aérea São Paulo,vasp-viao-area-so-paulo-airlines
+VS,active,Virgin Atlantic,virgin-atlantic-airlines,Virgin Atlantic,virgin-atlantic-airlines
+VT,active,Air Tahiti,air-tahiti-airlines,Air Tahiti,air-tahiti-airlines
+VV,active,AeroSvit  Airlines,aerosvit-airlines,AeroSvit  Airlines,aerosvit-airlines
+VW,active,Aeromar,aeromar-airlines,Aeromar,aeromar-airlines
+VX,active,Virgin America,virgin-america-airlines,Virgin America,virgin-america-airlines
+VY,active,Vueling Airlines,vueling-airlines,Vueling Airlines,vueling-airlines
+W2,active,Flexflight,flexflight-airlines,Flexflight,flexflight-airlines
+W2,inactive,White Eagle Aviation,,Flexflight,flexflight-airlines
+W3,active,Swiftair,swiftair-airlines,Swiftair,swiftair-airlines
+W3,inactive,Arik Air,,Swiftair,swiftair-airlines
+W3,inactive,DOT LT,,Swiftair,swiftair-airlines
+W4,active,LC Perú,lc-per-airlines,LC Perú,lc-per-airlines
+W4,inactive,Aero Services Executive,,LC Perú,lc-per-airlines
+W5,active,Mahan Airlines,mahan-airlines,Mahan Airlines,mahan-airlines
+W6,active,Wizz Air,wizz-air-airlines,Wizz Air,wizz-air-airlines
+W9,inactive,Air Bagan,,translation missing: en.airlines.W9,translation-missing-enw9-airlines
+WB,active,Rwandair Express,rwandair-express-airlines,Rwandair Express,rwandair-express-airlines
+WC,inactive,Islena Airlines,,translation missing: en.airlines.WC,translation-missing-enwc-airlines
+WEW,active,West Wind Aviation,west-wind-aviation-airlines,West Wind Aviation,west-wind-aviation-airlines
+WF,active,Wideroes Fly,wideroes-fly-airlines,Wideroes Fly,wideroes-fly-airlines
+WG,active,Sunwing Airlines,sunwing-airlines,Sunwing Airlines,sunwing-airlines
+WH,inactive,West African Airline,,translation missing: en.airlines.WH,translation-missing-enwh-airlines
+WJ,inactive,Labrador Limited,,translation missing: en.airlines.WJ,translation-missing-enwj-airlines
+WM,active,Windward Is Intl,windward-is-intl-airlines,Windward Is Intl,windward-is-intl-airlines
+WO,inactive,World Airways,,translation missing: en.airlines.WO,translation-missing-enwo-airlines
+WP,active,Hawaii Island Air,hawaii-island-air-airlines,Island Air,island-air-airlines
+WR,active,Aviaprad  Airlines,aviaprad-airlines,Aviaprad  Airlines,aviaprad-airlines
+WS,active,WestJet,westjet-airlines,WestJet,westjet-airlines
+WT,active,Wasaya Airways,wasaya-airways-airlines,Wasaya Airways,wasaya-airways-airlines
+WU,active,Wizz Air Ukraine,wizz-air-ukraine-airlines,Wizz Air Ukraine,wizz-air-ukraine-airlines
+WW,active,bmiBaby,bmibaby-airlines,bmiBaby,bmibaby-airlines
+WY,active,Oman Air,oman-air-airlines,Oman Air,oman-air-airlines
+X01,inactive,Zexus Air,,translation missing: en.airlines.X01,translation-missing-enx01-airlines
+X02,inactive,Zav Airways,,translation missing: en.airlines.X02,translation-missing-enx02-airlines
+X05,inactive,Premier Airways,,translation missing: en.airlines.X05,translation-missing-enx05-airlines
+X3,active,TUIfly,tuifly-airlines,TUIfly,tuifly-airlines
+X7,inactive,Chitaavia,,translation missing: en.airlines.X7,translation-missing-enx7-airlines
+X7,inactive,Air Service Gabon,,translation missing: en.airlines.X7,translation-missing-enx7-airlines
+X9,active,Avion Express,avion-express-airlines,Avion Express,avion-express-airlines
+XE,active,ExpressJet  Airlines,expressjet-airlines,ExpressJet  Airlines,expressjet-airlines
+XF,inactive,Vladivostok Air,,translation missing: en.airlines.XF,translation-missing-enxf-airlines
+XG,active,Clickair,clickair-airlines,Sunexpress Deutschland Gmbh,sunexpress-deutschland-gmbh-airlines
+XK,active,Air Corsica,air-corsica-airlines,Compagnie Corse,compagnie-corse-airlines
+XL,active,Lan Ecuador Aero,lan-ecuador-aero-airlines,Lan Ecuador Aero,lan-ecuador-aero-airlines
+XQ,active,SunExpress,sunexpress-airlines,SunExpress,sunexpress-airlines
+XU,active,African Express Airways,african-express-airways-airlines,African Express Airways,african-express-airways-airlines
+XV,inactive,BVI Airways,,translation missing: en.airlines.XV,translation-missing-enxv-airlines
+XY,active,FlyNas Airlines,flynas-airlines,FlyNas Airlines,flynas-airlines
+Y4,active,Volaris,volaris-airlines,Volaris,volaris-airlines
+Y5,active,Golden Myanmar Airlines,golden-myanmar-airlines,Golden Myanmar Airlines,golden-myanmar-airlines
+Y5,inactive,Asia Wings,,Golden Myanmar Airlines,golden-myanmar-airlines
+Y9,active,Trans Air Congo,trans-air-congo-airlines,Trans Air Congo,trans-air-congo-airlines
+Y9,inactive,Kish Airlines,,Trans Air Congo,trans-air-congo-airlines
+YC,active,Yamal Airlines,yamal-airlines,Yamal Airlines,yamal-airlines
+YI,inactive,Air Sunshine,,translation missing: en.airlines.YI,translation-missing-enyi-airlines
+YJ,active,Asian Wings Airways,asian-wings-airways-airlines,Asian Wings Airways,asian-wings-airways-airlines
+YK,active,Cyprus Turkish,cyprus-turkish-airlines,Cyprus Turkish,cyprus-turkish-airlines
+YM,active,Montenegro Air,montenegro-air-airlines,Montenegro Air,montenegro-air-airlines
+YN,active,Air Creebec,air-creebec-airlines,Air Creebec,air-creebec-airlines
+YO,active,Heli Air Monaco,heli-air-monaco-airlines,Heli Air Monaco,heli-air-monaco-airlines
+YQ,active,Polet Airlines,polet-airlines,Polet Airlines,polet-airlines
+YR,active,Grand Canyon Airlines,grand-canyon-airlines,Grand Canyon Airlines,grand-canyon-airlines
+YT,active,Yeti Airlines,yeti-airlines,Yeti Airlines,yeti-airlines
+YV,active,Mesa Airlines Inc.,mesa-inc-airlines,Mesa Airlines Inc.,mesa-inc-airlines
+YX,active,Midwest,midwest-airlines,Midwest,midwest-airlines
+YZ,inactive,Flywell Airlines / Zimbabwe Airlink,,translation missing: en.airlines.YZ,translation-missing-enyz-airlines
+Z2,active,AirAsia Zest,airasia-zest-airlines,Philippines Airasia Inc.,philippines-airasia-inc-airlines
+Z3,active,Avient Aviation,avient-aviation-airlines,Avient Aviation,avient-aviation-airlines
+Z5,active,GMG Airlines,gmg-airlines,GMG Airlines Ltd.,gmg-ltd-airlines
+Z6,inactive,Dniproavia,,translation missing: en.airlines.Z6,translation-missing-enz6-airlines
+Z8,active,Linea Aerea Amaszonas,linea-aerea-amaszonas-airlines,Linea Aerea Amaszonas,linea-aerea-amaszonas-airlines
+Z9,active,BEKAIR,bekair-airlines,BEKAIR,bekair-airlines
+ZA,active,INTERAVIA Airlines,interavia-airlines,SKYWINGS ASIA AIRLINES,skywings-asia-airlines
+ZA,inactive,Sky Angkor Airlines,,SKYWINGS ASIA AIRLINES,skywings-asia-airlines
+ZB,inactive,Monarch Airlines,,translation missing: en.airlines.ZB,translation-missing-enzb-airlines
+ZC,active,Korongo Airlines,korongo-airlines,Korongo Airlines,korongo-airlines
+ZE,active,Arcus-Air Logistic,arcus-air-logistic-airlines,Arcus-Air Logistic,arcus-air-logistic-airlines
+ZE,inactive,Eastar Jet,,Arcus-Air Logistic,arcus-air-logistic-airlines
+ZH,active,Shenzhen Airlines,shenzhen-airlines,Shenzhen Airlines,shenzhen-airlines
+ZH,inactive,Ecuato Guineana de Aviacion,,Shenzhen Airlines,shenzhen-airlines
+ZI,active,Aigle Azur,aigle-azur-airlines,Aigle Azur,aigle-azur-airlines
+ZM,active,Manas Air,manas-air-airlines,Manas Air,manas-air-airlines
+ZM,inactive,CityLine Hungary,,Manas Air,manas-air-airlines
+ZS,inactive,Sama  Airlines,,Sama  Airlines,sama-airlines
+ZV,active,Air Midwest,air-midwest-airlines,Air Midwest,air-midwest-airlines
+0B,inactive,Blue Air,,Blue Air,blue-air-airlines
+0J,active,Premium Jet Ag,premium-jet-ag-airlines,Premium Jet Ag,premium-jet-ag-airlines
+0V,active,Vietnam Air Service Company,vietnam-air-service-company-airlines,Vietnam Air Service Company,vietnam-air-service-company-airlines
+1I,active,Netjets Aviation,netjets-aviation-airlines,"Netjets Aviation, Inc.",netjets-aviation-inc-airlines
+1X,active,Branson Airexpress,branson-airexpress-airlines,Branson Airexpress,branson-airexpress-airlines
+2A,active,Deutsche Bahn Ag,deutsche-bahn-ag-airlines,Deutsche Bahn Ag,deutsche-bahn-ag-airlines
+2B,inactive,Albawings,,Ak Bars Aero,ak-bars-aero-airlines
+2C,active,Sncf,sncf-airlines,Sncf,sncf-airlines
+2D,active,Dynamic International Airways,dynamic-international-airways-airlines,Dynamic International Airways,dynamic-international-airways-airlines
+2E,inactive,Smokey Bay Air,,Smokey Bay Air,smokey-bay-air-airlines
+2F,active,Fair Aviation (Pty) Ltd,fair-aviation-pty-ltd-airlines,Fair Aviation (Pty) Ltd,fair-aviation-pty-ltd-airlines
+2M,inactive,Maya Island Air,,Moldavian Airlines,moldavian-airlines
+2Q,active,Air Cargo Carriers,air-cargo-carriers-airlines,Air Cargo Carriers,air-cargo-carriers-airlines
+2R,active,Via Rail Canada,via-rail-canada-airlines,Via Rail Canada,via-rail-canada-airlines
+2S,inactive,Air Carnival,,Air Carnival,air-carnival-airlines
+2U,active,Sun D'or International Airlines,sun-dor-international-airlines,Sun D'or International Airlines,sun-dor-international-airlines
+2V,active,Amtrak,amtrak-airlines,Amtrak,amtrak-airlines
+2Y,active,My Indo Airlines,my-indo-airlines,"My Indo Airlines, Pt",my-indo-pt-airlines
+2Z,inactive,Passaredo,,Changan Airlines,changan-airlines
+3A,active,Chu Kong Passenger Transport Co Ltd.,chu-kong-passenger-transport-co-ltd-airlines,Chu Kong Passenger Transport Co Ltd.,chu-kong-passenger-transport-co-ltd-airlines
+3B,inactive,Binter Cabo Verde,,Binter Cabo Verde,binter-cabo-verde-airlines
+3E,active,Multi Aero,multi-aero-airlines,"Multi Aero, Inc. D/B/A Air Choice One",multi-aero-inc-d-b-a-air-choice-one-airlines
+3G,inactive,Asia Cargo Express,,Gambia Bird,gambia-bird-airlines
+3J,inactive,Jubba Airways Ltd,,Jubba Airways,jubba-airways-airlines
+3K,active,Jetstar Asia,jetstar-asia-airlines,Jetstar Asia,jetstar-asia-airlines
+3M,inactive,Silver Airways Llc,,Silver Airways Llc,silver-airways-llc-airlines
+3N,active,Air Urga,air-urga-airlines,Air Urga,air-urga-airlines
+3O,active,Air Arabia Maroc,air-arabia-maroc-airlines,Air Arabia Maroc,air-arabia-maroc-airlines
+3P,inactive,Air Philip,,Tiara Air Aruba,tiara-air-aruba-airlines
+3R,inactive,Avior Regional,,Moskovia Airlines,moskovia-airlines
+3T,active,Tarco Air,tarco-air-airlines,Tarco Air,tarco-air-airlines
+3V,active,Asl Airlines Belgium,asl-belgium-airlines,Asl Airlines Belgium,asl-belgium-airlines
+3W,active,Malawian Airlines,malawian-airlines,Malawian Airlines,malawian-airlines
+3X,active,Premier Trans Aire,premier-trans-aire-airlines,Premier Trans Aire,premier-trans-aire-airlines
+3Y,active,Baseops International,baseops-international-airlines,"Baseops International, Inc.",baseops-international-inc-airlines
+4A,active,Aerodynamics,aerodynamics-airlines,"Aerodynamics, Inc",aerodynamics-inc-airlines
+4B,active,Boutique Air,boutique-air-airlines,Boutique Air,boutique-air-airlines
+4C,active,Latam Airlines Colombia,latam-colombia-airlines,Latam Airlines Colombia,latam-colombia-airlines
+4I,active,Izair,izair-airlines,Izair,izair-airlines
+4L,active,Lineas Aereas Suramericanas,lineas-aereas-suramericanas-airlines,Lineas Aereas Suramericanas,lineas-aereas-suramericanas-airlines
+4R,active,Renfe Viajeros,renfe-viajeros-airlines,Renfe Viajeros,renfe-viajeros-airlines
+4S,active,Solar Cargo,solar-cargo-airlines,Solar Cargo,solar-cargo-airlines
+4V,active,Bvi Airways,bvi-airways-airlines,Bvi Airways,bvi-airways-airlines
+4W,active,Warbelow's Air Ventures Inc.,warbelows-air-ventures-inc-airlines,Warbelow's Air Ventures Inc.,warbelows-air-ventures-inc-airlines
+4X,active,Mercury World Cargo,mercury-world-cargo-airlines,Mercury World Cargo,mercury-world-cargo-airlines
+4Z,active,South African Airlink,south-african-airlink-airlines,South African Airlink,south-african-airlink-airlines
+5A,active,Alpine Aviation Inc.,alpine-aviation-inc-airlines,Alpine Aviation Inc.,alpine-aviation-inc-airlines
+5B,active,Bassaka Air,bassaka-air-airlines,Bassaka Air,bassaka-air-airlines
+5D,active,Aeromexico Connect,aeromexico-connect-airlines,Aeromexico Connect,aeromexico-connect-airlines
+5E,inactive,East Coast Flight Services,,Nok Mini,nok-mini-airlines
+5F,active,Fly One,fly-one-airlines,Fly One,fly-one-airlines
+5G,inactive,Aerocuahonte Sa De Cv,,Aerocuahonte Sa De Cv,aerocuahonte-sa-de-cv-airlines
+5I,active,Alsa Grupo Slu,alsa-grupo-slu-airlines,Alsa Grupo Slu,alsa-grupo-slu-airlines
+5K,active,Hi Fly Transportes Aereos,hi-fly-transportes-aereos-airlines,Hi Fly Transportes Aereos,hi-fly-transportes-aereos-airlines
+5P,inactive,Small Planet Airlines Gmbh,,Aerolinea Principal Chile,aerolinea-principal-chile-airlines
+5R,active,Rutaca,rutaca-airlines,Rutaca,rutaca-airlines
+5S,active,Global Aviation And Service Group,global-aviation-and-service-group-airlines,Global Aviation And Service Group,global-aviation-and-service-group-airlines
+5T,active,Canadian North,canadian-north-airlines,Canadian North,canadian-north-airlines
+5U,active,Tag Airlines (T A Guatemaltecos),tag-t-a-guatemaltecos-airlines,Tag Airlines (T A Guatemaltecos),tag-t-a-guatemaltecos-airlines
+5W,inactive,Westbahn,,Astraeus Ltd.,astraeus-ltd-airlines
+5X,active,United Parcel Service Co.,united-parcel-service-co-airlines,United Parcel Service Co.,united-parcel-service-co-airlines
+5Y,active,Atlas Air,atlas-air-airlines,Atlas Air,atlas-air-airlines
+5Z,active,Cemair,cemair-airlines,Cemair,cemair-airlines
+6A,inactive,Armenia Airways Cjsc,,Aviacsa,aviacsa-airlines
+6C,active,Air Timor S. A.,air-timor-s-a-airlines,Air Timor S. A.,air-timor-s-a-airlines
+6D,active,Travel Service Slovensko S.R.O,travel-service-slovensko-sro-airlines,Travel Service Slovensko S.R.O,travel-service-slovensko-sro-airlines
+6F,active,Primera Air Nordic,primera-air-nordic-airlines,Primera Air Nordic,primera-air-nordic-airlines
+6G,active,Executive Express Aviation Llc,executive-express-aviation-llc-airlines,Executive Express Aviation Llc,executive-express-aviation-llc-airlines
+6J,active,Solaseed,solaseed-airlines,Solaseed,solaseed-airlines
+6L,inactive,Aklak Air,,Aklak Air,aklak-air-airlines
+6N,active,Niger Airlines,niger-airlines,Niger Airlines,niger-airlines
+6O,active,Orbest,orbest-airlines,Orbest,orbest-airlines
+6Q,active,Cham Wings Airlines,cham-wings-airlines,Cham Wings Airlines,cham-wings-airlines
+6R,active,Alrosa Air Company,alrosa-air-company-airlines,Alrosa Air Company,alrosa-air-company-airlines
+6S,active,Saudi Gulf Airlines,saudi-gulf-airlines,Saudi Gulf Airlines,saudi-gulf-airlines
+6T,active,Air Mandalay Ltd,air-mandalay-ltd-airlines,Air Mandalay Ltd,air-mandalay-ltd-airlines
+6V,active,Avanza,avanza-airlines,Avanza,avanza-airlines
+6Z,active,Euro Asia Air,euro-asia-air-airlines,Euro Asia Air,euro-asia-air-airlines
+73A,active,Alliance Airlines Inc,alliance-inc-airlines,Alliance Airlines Inc,alliance-inc-airlines
+73S,active,Aerologic Gmbh,aerologic-gmbh-airlines,Aerologic Gmbh,aerologic-gmbh-airlines
+74W,active,Allied Air Cargo,allied-air-cargo-airlines,Allied Air Cargo,allied-air-cargo-airlines
+75C,active,C.A.L. Cargo Airlines,cal-cargo-airlines,C.A.L. Cargo Airlines,cal-cargo-airlines
+76R,active,Aerounion,aerounion-airlines,Aerounion,aerounion-airlines
+77C,active,Coyne Airways,coyne-airways-airlines,Coyne Airways,coyne-airways-airlines
+78F,active,Pt Cardig Air,pt-cardig-air-airlines,Pt Cardig Air,pt-cardig-air-airlines
+78V,active,Astral Aviation,astral-aviation-airlines,Astral Aviation,astral-aviation-airlines
+7A,active,Express Air Cargo,express-air-cargo-airlines,Express Air Cargo,express-air-cargo-airlines
+7C8,active,Cargolux Italia S.P.A.,cargolux-italia-spa-airlines,Cargolux Italia S.P.A.,cargolux-italia-spa-airlines
+70000000,active,Estafeta Carga Aerea,estafeta-carga-aerea-airlines,Estafeta Carga Aerea,estafeta-carga-aerea-airlines
+7G,inactive,Star Flyer,,Star Flyer,star-flyer-airlines
+7H,active,Corvus Airlines,corvus-airlines,Corvus Airlines,corvus-airlines
+7J,active,Tajik Air,tajik-air-airlines,Tajik Air,tajik-air-airlines
+7K3,active,Sac (K) Limited,sac-k-limited-airlines,Sac (K) Limited,sac-k-limited-airlines
+7KO,active,Alaska Central Express Inc,alaska-central-express-inc-airlines,Alaska Central Express Inc,alaska-central-express-inc-airlines
+7L,inactive,Silk Way West Airlines,,Silk Way West Airlines,silk-way-west-airlines
+7M,inactive,Mayair,,Mistral Air,mistral-air-airlines
+7N,active,Pawa Dominicana,pawa-dominicana-airlines,Pawa Dominicana,pawa-dominicana-airlines
+7O,active,Travel Service Hungary,travel-service-hungary-airlines,Travel Service Hungary,travel-service-hungary-airlines
+7P9,active,Asia Pacific Airlines,asia-pacific-airlines,Asia Pacific Airlines,asia-pacific-airlines
+7PE,active,Pacific Air Express,pacific-air-express-airlines,Pacific Air Express,pacific-air-express-airlines
+7Q,active,Elite Airways,elite-airways-airlines,Elite Airways,elite-airways-airlines
+7T,active,Trans Am Aero Exp. Del Ecuador Cia.Ltda,trans-am-aero-exp-del-ecuador-cialtda-airlines,Trans Am Aero Exp. Del Ecuador Cia.Ltda,trans-am-aero-exp-del-ecuador-cialtda-airlines
+7U,active,Commercial Aviation Services,commercial-aviation-services-airlines,"Commercial Aviation Services, Llc",commercial-aviation-services-llc-airlines
+7V4,active,Vensecar Internacional,vensecar-internacional-airlines,"Vensecar Internacional, C.A.",vensecar-internacional-ca-airlines
+7W,active,Wind Rose Aviation,wind-rose-aviation-airlines,Wind Rose Aviation,wind-rose-aviation-airlines
+7WE,active,Centurion Air Cargo,centurion-air-cargo-airlines,Centurion Air Cargo,centurion-air-cargo-airlines
+7Y,active,Mann Yadanarpon Airlines,mann-yadanarpon-airlines,Mann Yadanarpon Airlines,mann-yadanarpon-airlines
+7YH,active,Sunsplash Aviation Llc,sunsplash-aviation-llc-airlines,Sunsplash Aviation Llc,sunsplash-aviation-llc-airlines
+7Z,active,Ameristar Air Cargo,ameristar-air-cargo-airlines,"Ameristar Air Cargo, Inc",ameristar-air-cargo-inc-airlines
+7ZP,active,Silk Way Airlines,silk-way-airlines,Silk Way Airlines,silk-way-airlines
+8B,inactive,Transnusa,,Business Air,business-air-airlines
+8C,active,Cotai Ferry Company,cotai-ferry-company-airlines,Cotai Ferry Company,cotai-ferry-company-airlines
+8G,active,Fly Mid Africa,fly-mid-africa-airlines,Fly Mid Africa,fly-mid-africa-airlines
+8H,active,Bh Air Ltd,bh-air-ltd-airlines,Bh Air Ltd,bh-air-ltd-airlines
+8J,active,Ecojet,ecojet-airlines,Ecojet,ecojet-airlines
+8K,active,K Mile Air Co,k-mile-air-co-airlines,K Mile Air Co,k-mile-air-co-airlines
+8N,active,Regional Air Services,regional-air-services-airlines,Regional Air Services,regional-air-services-airlines
+8S,active,Turbojet,turbojet-airlines,Turbojet,turbojet-airlines
+8T,inactive,Air Tindi Ltd,,Air Tindi,air-tindi-airlines
+8W,active,Fly Always N.V.,fly-always-nv-airlines,Fly Always N.V.,fly-always-nv-airlines
+8Y,active,Astro Air Int Dba Pan Pacific Airlines,astro-air-int-dba-pan-pacific-airlines,Astro Air Int Dba Pan Pacific Airlines,astro-air-int-dba-pan-pacific-airlines
+8Z,active,Congo Airways,congo-airways-airlines,Congo Airways,congo-airways-airlines
+9A,active,Eaglexpress Air Charter,eaglexpress-air-charter-airlines,Eaglexpress Air Charter,eaglexpress-air-charter-airlines
+9B,active,Accesrail Inc.,accesrail-inc-airlines,Accesrail Inc.,accesrail-inc-airlines
+9E,inactive,Endeavor Air,,Endeavor Air,endeavor-air-airlines
+9F,active,Eurostar International,eurostar-international-airlines,Eurostar International,eurostar-international-airlines
+9G,active,Airport Express Rail,airport-express-rail-airlines,Airport Express Rail,airport-express-rail-airlines
+9H,inactive,Changan Airlines,,Dutch Antilles,dutch-antilles-airlines
+9I,active,Alliance Air,alliance-air-airlines,Alliance Air,alliance-air-airlines
+9L,active,Airtanker Services Limited,airtanker-services-limited-airlines,Airtanker Services Limited,airtanker-services-limited-airlines
+9P,active,Air Arabia Jordan,air-arabia-jordan-airlines,Air Arabia Jordan,air-arabia-jordan-airlines
+9Q,inactive,Caicos Express Airways,,Caicos Express Airways,caicos-express-airways-airlines
+9S,active,Southern Air Inc.,southern-air-inc-airlines,Southern Air Inc.,southern-air-inc-airlines
+9T,active,Act Airlines Inc,act-inc-airlines,Act Airlines Inc,act-inc-airlines
+9X,active,Southern Airways Express,southern-airways-express-airlines,Southern Airways Express,southern-airways-express-airlines
+A0,inactive,Avian Lineas Aereas   Avianca Argentina,,Avianca Argentina,avianca-argentina-airlines
+A4,inactive,Azimuth Airlines,,Aerocon,aerocon-airlines
+A5,inactive,Hop!,,Airlinair,airlinair-airlines
+A6,active,Yunnan Hong Tu Airlines Co. Ltd.,yunnan-hong-tu-co-ltd-airlines,Yunnan Hong Tu Airlines Co. Ltd.,yunnan-hong-tu-co-ltd-airlines
+A7,inactive,Calafia Airlines,,Calafia Airlines,calafia-airlines
+A8,inactive,Aerolink Uganda Ltd,,Ameriflight,ameriflight-airlines
+AEH,active,Aero4 M D.O.O,aero4-m-doo-airlines,Aero4 M D.O.O,aero4-m-doo-airlines
+AG,active,Aruba Airlines,aruba-airlines,Aruba Airlines,aruba-airlines
+AJ,active,Aztec Airways,aztec-airways-airlines,Aztec Airways,aztec-airways-airlines
+AJA,active,Afghan Jet International,afghan-jet-international-airlines,Afghan Jet International,afghan-jet-international-airlines
+AL,active,Air Leisure,air-leisure-airlines,Air Leisure,air-leisure-airlines
+ALC,active,American Linehaul Corporation,american-linehaul-corporation-airlines,American Linehaul Corporation,american-linehaul-corporation-airlines
+ALV,active,Aeropostal Alas De Venezuela S.A.,aeropostal-alas-de-venezuela-sa-airlines,Aeropostal Alas De Venezuela S.A.,aeropostal-alas-de-venezuela-sa-airlines
+AMB,active,Deutsche Rettungsflugwacht,deutsche-rettungsflugwacht-airlines,Deutsche Rettungsflugwacht,deutsche-rettungsflugwacht-airlines
+AMV,active,Amc Airlines,amc-airlines,Amc Airlines,amc-airlines
+AN,active,Advanced Air,advanced-air-airlines,"Advanced Air, Llc",advanced-air-llc-airlines
+AO,active,Air Juan,air-juan-airlines,Air Juan,air-juan-airlines
+AP,inactive,Alba Star,,Air One,air-one-airlines
+APP,active,Aeroperlas,aeroperlas-airlines,Aeroperlas,aeroperlas-airlines
+AQ,active,9 Air,9-air-airlines,9 Air,9-air-airlines
+ATM,active,Par Avion Airlines,par-avion-airlines,Par Avion Airlines,par-avion-airlines
+AU,active,Austral,austral-airlines,Austral,austral-airlines
+AUN,active,Flyservus,flyservus-airlines,Flyservus,flyservus-airlines
+AWN,active,Air Niamey,air-niamey-airlines,Air Niamey,air-niamey-airlines
+AX,active,Trans States Airlines,trans-states-airlines,Trans States Airlines,trans-states-airlines
+B0,active,La Compagnie,la-compagnie-airlines,La Compagnie,la-compagnie-airlines
+B3,inactive,Bhutan Airlines,,Bellview Airlines,bellview-airlines
+B4,active,Zanair,zanair-airlines,Zanair,zanair-airlines
+B9,active,Iran Airtour Airlines,iran-airtour-airlines,Iran Airtour Airlines,iran-airtour-airlines
+BBD,active,Bluebird Cargo,bluebird-cargo-airlines,Bluebird Cargo,bluebird-cargo-airlines
+BD,active,Bayon Airlines,bayon-airlines,Bayon Airlines,bayon-airlines
+BF,inactive,French Blue,,Bluebird Cargo,bluebird-cargo-airlines
+BFL,active,Buffalo Airways,buffalo-airways-airlines,Buffalo Airways,buffalo-airways-airlines
+BGT,active,Bergen Air Transport,bergen-air-transport-airlines,Bergen Air Transport,bergen-air-transport-airlines
+BH,inactive,Bismillah Airlines,,Hawkair,hawkair-airlines
+BHP,active,Belair Airlines,belair-airlines,Belair Airlines,belair-airlines
+BLF,active,Blue1,blue1-airlines,Blue1,blue1-airlines
+BLX,active,Tuifly Nordic Ab,tuifly-nordic-ab-airlines,Tuifly Nordic Ab,tuifly-nordic-ab-airlines
+BN,active,Air Inter Transport Co. Ltd,air-inter-transport-co-ltd-airlines,Air Inter Transport Co. Ltd,air-inter-transport-co-ltd-airlines
+BOB,active,Powdair,powdair-airlines,Powdair,powdair-airlines
+BRP,active,Aerobratsk,aerobratsk-airlines,Aerobratsk,aerobratsk-airlines
+BS,active,Us Bangla Airlines,us-bangla-airlines,Us Bangla Airlines,us-bangla-airlines
+BU,active,Compagnie Africaine D'aviation,compagnie-africaine-daviation-airlines,Compagnie Africaine D'aviation,compagnie-africaine-daviation-airlines
+BYK,active,Skybus Airlines,skybus-airlines,Skybus Airlines,skybus-airlines
+BZ,active,Blue Dart Aviation Limited,blue-dart-aviation-limited-airlines,Blue Dart Aviation Limited,blue-dart-aviation-limited-airlines
+C2,active,Ceiba Intercontinental S.A.,ceiba-intercontinental-sa-airlines,Ceiba Intercontinental S.A.,ceiba-intercontinental-sa-airlines
+C3,active,Trade Air Ltd,trade-air-ltd-airlines,Trade Air Ltd,trade-air-ltd-airlines
+C4,active,Conquest Air Inc.,conquest-air-inc-airlines,Conquest Air Inc.,conquest-air-inc-airlines
+C5,active,Commutair,commutair-airlines,Commutair,commutair-airlines
+C6,active,Canjet Airlines,canjet-airlines,Canjet Airlines,canjet-airlines
+C8,inactive,Cronosair,,Cargolux Italia,cargolux-italia-airlines
+C9,inactive,Skywise Airline,,Cirrus Airlines,cirrus-airlines
+CAT,active,Copenhagen Air Taxi,copenhagen-air-taxi-airlines,Copenhagen Air Taxi,copenhagen-air-taxi-airlines
+CB,active,Trans Caribbean Air,trans-caribbean-air-airlines,Trans Caribbean Air,trans-caribbean-air-airlines
+CC,active,Cm Airlines,cm-airlines,Cm Airlines,cm-airlines
+CE,active,Chalair,chalair-airlines,Chalair,chalair-airlines
+CF,inactive,China Postal Airlines,,City Airline AB,city-ab-airlines
+CH,active,Bemidji Airlines,bemidji-airlines,Bemidji Airlines,bemidji-airlines
+CHQ,active,Chautauqua Airlines,chautauqua-airlines,"Chautauqua Airlines, Inc.",chautauqua-inc-airlines
+CJ,active,Ba Cityflyer,ba-cityflyer-airlines,Ba Cityflyer,ba-cityflyer-airlines
+CJC,active,Colgan Air,colgan-air-airlines,Colgan Air,colgan-air-airlines
+CK,active,China Cargo Airlines,china-cargo-airlines,China Cargo Airlines,china-cargo-airlines
+CL,active,Lufthansa Cityline Gmbh,lufthansa-cityline-gmbh-airlines,Lufthansa Cityline Gmbh,lufthansa-cityline-gmbh-airlines
+CND,active,Corendon Dutch Airlines,corendon-dutch-airlines,Corendon Dutch Airlines,corendon-dutch-airlines
+CNO,active,Sas Norway,sas-norway-airlines,Sas Norway,sas-norway-airlines
+CO,inactive,Cobalt Aero,,Continental,continental-airlines
+CP,active,Compass Airlines,compass-airlines,"Compass Airlines, Inc.",compass-inc-airlines
+CPN,active,Caspian Airlines,caspian-airlines,Caspian Airlines,caspian-airlines
+CPR,active,Aerolinea Del Caribe   Peru S.A.C.,aerolinea-del-caribe-peru-sac-airlines,Aerolinea Del Caribe   Peru S.A.C.,aerolinea-del-caribe-peru-sac-airlines
+CQ,active,Coastal Aviation,coastal-aviation-airlines,Coastal Aviation,coastal-aviation-airlines
+CRN,active,Aerocaribbean,aerocaribbean-airlines,Aerocaribbean,aerocaribbean-airlines
+CS,active,Comlux Aruba Nv,comlux-aruba-nv-airlines,Comlux Aruba Nv,comlux-aruba-nv-airlines
+CV,active,Cargolux Airlines International,cargolux-international-airlines,Cargolux Airlines International,cargolux-international-airlines
+CVA,active,Air Chathams,air-chathams-airlines,Air Chathams,air-chathams-airlines
+CW,active,Air Cargo Global,air-cargo-global-airlines,Air Cargo Global,air-cargo-global-airlines
+CWM,active,Air Marshall Islands,air-marshall-islands-airlines,Air Marshall Islands,air-marshall-islands-airlines
+D0,active,Dhl Air,dhl-air-airlines,Dhl Air,dhl-air-airlines
+D3,inactive,Daallo Airlines,,Daallo Airlines,daallo-airlines
+D4,inactive,Dart Ltd,,Alidaunia,alidaunia-airlines
+D5,active,Dhl Aero Expreso S.A.,dhl-aero-expreso-sa-airlines,Dhl Aero Expreso S.A.,dhl-aero-expreso-sa-airlines
+D8,active,Norwegian,norwegian-airlines,Norwegian,norwegian-airlines
+DAV,active,Dornier Aviation Nigeria,dornier-aviation-nigeria-airlines,Dornier Aviation Nigeria,dornier-aviation-nigeria-airlines
+DCP,active,Air Direct Connect Ltd,air-direct-connect-ltd-airlines,Air Direct Connect Ltd,air-direct-connect-ltd-airlines
+DCT,active,Directflight,directflight-airlines,Directflight,directflight-airlines
+DF,active,Condor Berlin,condor-berlin-airlines,Condor Berlin,condor-berlin-airlines
+DG,inactive,Cebgo,,South East Asian Airlines,south-east-asian-airlines
+DH,active,Norwegian Air Norway As,norwegian-air-norway-as-airlines,Norwegian Air Norway As,norwegian-air-norway-as-airlines
+DI,active,Norwegian Air Uk Ltd,norwegian-air-uk-ltd-airlines,Norwegian Air Uk Ltd,norwegian-air-uk-ltd-airlines
+DJ,active,Airasia Japan,airasia-japan-airlines,Airasia Japan,airasia-japan-airlines
+DK,active,Thomas Cook Scandinavia,thomas-cook-scandinavia-airlines,Thomas Cook Scandinavia,thomas-cook-scandinavia-airlines
+DNM,active,Denim Air,denim-air-airlines,Denim Air,denim-air-airlines
+DP,active,Pobeda,pobeda-airlines,Pobeda,pobeda-airlines
+DR,active,Ruili Airlines,ruili-airlines,Ruili Airlines,ruili-airlines
+DTO,active,Aerodesierto Sa,aerodesierto-sa-airlines,Aerodesierto Sa,aerodesierto-sa-airlines
+DU,active,Air Liaison,air-liaison-airlines,Air Liaison,air-liaison-airlines
+DVR,active,Divi Divi Air,divi-divi-air-airlines,Divi Divi Air,divi-divi-air-airlines
+DW,active,Dominican Wings S.A.,dominican-wings-sa-airlines,Dominican Wings S.A.,dominican-wings-sa-airlines
+DZ,active,Donghai Airlines,donghai-airlines,Donghai Airlines,donghai-airlines
+E2,active,Eurowings Europe,eurowings-europe-airlines,Eurowings Europe,eurowings-europe-airlines
+E3,inactive,Newgen Airways,,Domodedovo Air,domodedovo-air-airlines
+E4,active,Enter Air Spolka Z.O.O.,enter-air-spolka-zoo-airlines,Enter Air Spolka Z.O.O.,enter-air-spolka-zoo-airlines
+E5,inactive,Air Arabia Egypt,,Samara Airlines,samara-airlines
+E6,active,Bringer Air Cargo Taxi Aereo,bringer-air-cargo-taxi-aereo-airlines,Bringer Air Cargo Taxi Aereo,bringer-air-cargo-taxi-aereo-airlines
+E7,active,Equaflight,equaflight-airlines,Equaflight,equaflight-airlines
+E9,active,Evelop Airlines S.L.,evelop-sl-airlines,Evelop Airlines S.L.,evelop-sl-airlines
+EA,inactive,Eastern Air Lines Group Inc.,,Eastern Air Lines Group Inc.,eastern-group-inc-airlines
+EB,active,Wamos Air S.A.,wamos-air-sa-airlines,Wamos Air S.A.,wamos-air-sa-airlines
+EC,active,Openskies,openskies-airlines,Openskies,openskies-airlines
+ED,active,Air Explore,air-explore-airlines,Air Explore,air-explore-airlines
+EE,active,Regional Jet,regional-jet-airlines,Regional Jet,regional-jet-airlines
+EG,inactive,Ernest Airline,,Enerjet,enerjet-airlines
+EGU,active,Eagle Air,eagle-air-airlines,Eagle Air,eagle-air-airlines
+EH,active,Ana Wings Co.,ana-wings-co-airlines,"Ana Wings Co., Ltd",ana-wings-co-ltd-airlines
+EHN,active,East Horizon Airlines,east-horizon-airlines,East Horizon Airlines,east-horizon-airlines
+EL,inactive,Ellinair S.A.,,Air Nippon Co,air-nippon-co-airlines
+EM,active,Empire Airlines,empire-airlines,Empire Airlines,empire-airlines
+EMU,active,East Asia Airlines,east-asia-airlines,East Asia Airlines,east-asia-airlines
+EO,active,Air Go,air-go-airlines,Air Go,air-go-airlines
+EPR,active,Express Airways,express-airways-airlines,Express Airways,express-airways-airlines
+ER,active,Serene Air,serene-air-airlines,Serene Air,serene-air-airlines
+ES,active,Dhl Aviation Eemea B.S.C,dhl-aviation-eemea-bsc-airlines,Dhl Aviation Eemea B.S.C,dhl-aviation-eemea-bsc-airlines
+ESJ,active,Eastern Skyjets,eastern-skyjets-airlines,Eastern Skyjets,eastern-skyjets-airlines
+ETR,active,Estelar Latinoamerica C.A.,estelar-latinoamerica-ca-airlines,Estelar Latinoamerica C.A.,estelar-latinoamerica-ca-airlines
+EV,active,Expressjet Airlines,expressjet-airlines,"Expressjet Airlines, Inc.",expressjet-inc-airlines
+EXT,active,Nightexpress,nightexpress-airlines,Nightexpress,nightexpress-airlines
+EZ,active,Sun Air Of Scandinavia,sun-air-of-scandinavia-airlines,Sun Air Of Scandinavia,sun-air-of-scandinavia-airlines
+F3,active,Flyadeal,flyadeal-airlines,Flyadeal,flyadeal-airlines
+F4,active,Air Flamenco,air-flamenco-airlines,Air Flamenco,air-flamenco-airlines
+F5,active,Aerotranscargo,aerotranscargo-airlines,Aerotranscargo,aerotranscargo-airlines
+F6,active,Fly Compass Service,fly-compass-service-airlines,Fly Compass Service,fly-compass-service-airlines
+F7,active,Darwin Airline,darwin-airlines,Darwin Airline,darwin-airlines
+F8,active,Flair Airlines,flair-airlines,Flair Airlines,flair-airlines
+FA,active,Safair,safair-airlines,Safair,safair-airlines
+FAT,active,Farnair Switzerland Ag,farnair-switzerland-ag-airlines,Farnair Switzerland Ag,farnair-switzerland-ag-airlines
+FC,active,Fly Corporate,fly-corporate-airlines,Fly Corporate,fly-corporate-airlines
+FD,active,Thai Airasia,thai-airasia-airlines,Thai Airasia,thai-airasia-airlines
+FDK,active,Flydamas,flydamas-airlines,Flydamas,flydamas-airlines
+FDM,active,Freedom Airlines,freedom-airlines,"Freedom Airlines, Inc",freedom-inc-airlines
+FEI,active,Eagle Air Iceland,eagle-air-iceland-airlines,Eagle Air Iceland,eagle-air-iceland-airlines
+FH,active,Freebird Airlines,freebird-airlines,Freebird Airlines,freebird-airlines
+FK,active,Kf Cargo,kf-cargo-airlines,Kf Cargo,kf-cargo-airlines
+FLJ,active,Surf Air Europe,surf-air-europe-airlines,Surf Air Europe,surf-air-europe-airlines
+FN,inactive,Fastjet Airlines,,Regional Air Lines,regional-airlines
+FNA,active,Norlandair,norlandair-airlines,Norlandair,norlandair-airlines
+FP,active,Pelican Airlines,pelican-airlines,Pelican Airlines,pelican-airlines
+FQ,active,Fenix Airways,fenix-airways-airlines,Fenix Airways,fenix-airways-airlines
+FR,active,Ryanair,ryanair-airlines,Ryanair,ryanair-airlines
+FRN,active,First Nation Airways,first-nation-airways-airlines,First Nation Airways,first-nation-airways-airlines
+FS,inactive,Flyglobal Charter Sdn. Bhd.,,Syphax Airlines,syphax-airlines
+FT,inactive,Flyegypt,,Siem Reap Airways International,siem-reap-airways-international-airlines
+FTA,active,Frontier Flying Service,frontier-flying-service-airlines,Frontier Flying Service,frontier-flying-service-airlines
+FU,active,Fuzhou Airlines Co.,fuzhou-co-airlines,"Fuzhou Airlines Co., Ltd",fuzhou-co-ltd-airlines
+FV,active,Rossiya Airlines,rossiya-airlines,Rossiya Airlines,rossiya-airlines
+FX,active,Fedex,fedex-airlines,Fedex,fedex-airlines
+FXX,active,Felix Airways,felix-airways-airlines,Felix Airways,felix-airways-airlines
+G2,active,Galeyr Airline,galeyr-airlines,Galeyr Airline,galeyr-airlines
+G3,active,Gol Linhas Aereas S.A.,gol-linhas-aereas-sa-airlines,Gol Linhas Aereas S.A.,gol-linhas-aereas-sa-airlines
+G4,active,Allegiant Air Llc,allegiant-air-llc-airlines,Allegiant Air Llc,allegiant-air-llc-airlines
+G6,active,Aura Airlines,aura-airlines,Aura Airlines,aura-airlines
+GAL,active,Albatros Airlines,albatros-airlines,Albatros Airlines,albatros-airlines
+GB,active,Abx Air,abx-air-airlines,"Abx Air, Inc.",abx-air-inc-airlines
+GC,active,Global Feeder Services,global-feeder-services-airlines,Global Feeder Services,global-feeder-services-airlines
+GE,inactive,Global Aviation Operations,,TransAsia Corp,transasia-corp-airlines
+GG,active,Skylease,skylease-airlines,Skylease,skylease-airlines
+GH,active,Globus Llc,globus-llc-airlines,Globus Llc,globus-llc-airlines
+GHN,active,Air Ghana,air-ghana-airlines,Air Ghana,air-ghana-airlines
+GI,active,Guangdong Longhao Airlines Co.,guangdong-longhao-co-airlines,"Guangdong Longhao Airlines Co., Ltd",guangdong-longhao-co-ltd-airlines
+GJ,inactive,Zhejiang Loong Airlines Co. Ltd,,Eurofly S.p.A.,eurofly-spa-airlines
+GM,active,Germania Flug Ag,germania-flug-ag-airlines,Germania Flug Ag,germania-flug-ag-airlines
+GO,active,Uls Airlines Cargo,uls-cargo-airlines,Uls Airlines Cargo,uls-cargo-airlines
+GP,active,Apg Airlines,apg-airlines,Apg Airlines,apg-airlines
+GQ,inactive,Sky Express S.A.,,Big Sky Airlines,big-sky-airlines
+GT,active,Air Guilin Co. Ltd,air-guilin-co-ltd-airlines,Air Guilin Co. Ltd,air-guilin-co-ltd-airlines
+GUM,active,Gum Air,gum-air-airlines,Gum Air,gum-air-airlines
+GV,inactive,Grant Aviation,,Sky Gabon,sky-gabon-airlines
+GW,active,Go Fly,go-fly-airlines,"Go Fly, Llc.",go-fly-llc-airlines
+GX,active,Guangxi Beibu Gulf Airlines,guangxi-beibu-gulf-airlines,Guangxi Beibu Gulf Airlines,guangxi-beibu-gulf-airlines
+GY,active,Colorful Guizhou Airlines,colorful-guizhou-airlines,Colorful Guizhou Airlines,colorful-guizhou-airlines
+GZ,inactive,Air Rarotonga,,Air Rarotonga,air-rarotonga-airlines
+H1,active,Hahn Air Systems,hahn-air-systems-airlines,Hahn Air Systems,hahn-air-systems-airlines
+H4,active,Raven Air,raven-air-airlines,"Raven Air, Llc Dba Island Hoppers",raven-air-llc-dba-island-hoppers-airlines
+H6,active,Hageland Aviation Services Inc,hageland-aviation-services-inc-airlines,Hageland Aviation Services Inc,hageland-aviation-services-inc-airlines
+H7,inactive,Taron Avia,,Eagle Air,eagle-air-airlines
+H9,active,Himalaya Airlines,himalaya-airlines,Himalaya Airlines,himalaya-airlines
+HA,active,Hawaiian Airlines,hawaiian-airlines,Hawaiian Airlines,hawaiian-airlines
+HB,active,Asia Atlantic Airlines,asia-atlantic-airlines,Asia Atlantic Airlines,asia-atlantic-airlines
+HBR,active,Hebridean Air Services,hebridean-air-services-airlines,Hebridean Air Services,hebridean-air-services-airlines
+HE,active,Luftfahrt Gesellschaft Walter,luftfahrt-gesellschaft-walter-airlines,Luftfahrt Gesellschaft Walter,luftfahrt-gesellschaft-walter-airlines
+HH,inactive,Taban Air,,Taban Airlines,taban-airlines
+HHK,active,Sky Shuttle,sky-shuttle-airlines,Sky Shuttle,sky-shuttle-airlines
+HJ,active,Tasman Cargo Airlines Pty Ltd,tasman-cargo-pty-ltd-airlines,Tasman Cargo Airlines Pty Ltd,tasman-cargo-pty-ltd-airlines
+HK,inactive,Skippers Aviation,,Hamburg Airways,hamburg-airways-airlines
+HP,active,Amapola Flyg Ab,amapola-flyg-ab-airlines,Amapola Flyg Ab,amapola-flyg-ab-airlines
+HQ,active,Thomas Cook Airlines Belgium N.V,thomas-cook-belgium-nv-airlines,Thomas Cook Airlines Belgium N.V,thomas-cook-belgium-nv-airlines
+HS,active,Heli Securite Helicopter Airline,heli-securite-helicopter-airlines,Heli Securite Helicopter Airline,heli-securite-helicopter-airlines
+HTK,active,Ningxia Cargo Airlines Co.,ningxia-cargo-co-airlines,"Ningxia Cargo Airlines Co., Ltd.",ningxia-cargo-co-ltd-airlines
+HTY,active,Helity,helity-airlines,Helity,helity-airlines
+HX,active,Hong Kong Airlines,hong-kong-airlines,Hong Kong Airlines,hong-kong-airlines
+I2,active,Iberia Express,iberia-express-airlines,Iberia Express,iberia-express-airlines
+I3,active,Ata Airlines,ata-airlines,Ata Airlines,ata-airlines
+I4,active,Scott Air Llc,scott-air-llc-airlines,Scott Air Llc,scott-air-llc-airlines
+I5,active,Airasia India,airasia-india-airlines,Airasia India,airasia-india-airlines
+I7,active,Inter Iles Air,inter-iles-air-airlines,Inter Iles Air,inter-iles-air-airlines
+I8,active,Izhavia,izhavia-airlines,Izhavia,izhavia-airlines
+IA,active,Iraqi Airways,iraqi-airways-airlines,Iraqi Airways,iraqi-airways-airlines
+IAX,active,Island Express Air Inc,island-express-air-inc-airlines,Island Express Air Inc,island-express-air-inc-airlines
+ID,inactive,Batik Air,,Interlink,interlink-airlines
+IF,inactive,Fly Baghdad Airlines,,Islas Airways,islas-airways-airlines
+IFA,active,Fai Rent A Jet Aktiengesellschaft,fai-rent-a-jet-aktiengesellschaft-airlines,Fai Rent A Jet Aktiengesellschaft,fai-rent-a-jet-aktiengesellschaft-airlines
+II,active,Ibc Airways,ibc-airways-airlines,Ibc Airways,ibc-airways-airlines
+IJ,active,Spring Airlines Japan,spring-japan-airlines,Spring Airlines Japan,spring-japan-airlines
+IK,inactive,Air Kiribati,,Imair Airline,imair-airlines
+IM,active,Jsc Aircompany Atma,jsc-aircompany-atma-airlines,Jsc Aircompany Atma,jsc-aircompany-atma-airlines
+IN,inactive,Nam Air,,MAT Macedonian  Airlines,mat-macedonian-airlines
+IOS,active,Isles Of Scilly Skybus,isles-of-scilly-skybus-airlines,Isles Of Scilly Skybus,isles-of-scilly-skybus-airlines
+IQ,active,Qazaq Air,qazaq-air-airlines,Qazaq Air,qazaq-air-airlines
+IS,active,Ais Airlines,ais-airlines,Ais Airlines,ais-airlines
+ISV,active,Islena Airlines,islena-airlines,Islena Airlines,islena-airlines
+IT,inactive,Tigerair Taiwan Co. Ltd,,Tigerair Taiwan Co. Ltd,tigerair-taiwan-co-ltd-airlines
+IU,active,Sw Italia S.P.A.,sw-italia-spa-airlines,Sw Italia S.P.A.,sw-italia-spa-airlines
+IV,inactive,Cardiff Aviation Malta,,Wind Jet S.p.A.,wind-jet-spa-airlines
+IW,active,Wings Air,wings-air-airlines,Wings Air,wings-air-airlines
+IZG,active,Zagros Airlines,zagros-airlines,Zagros Airlines,zagros-airlines
+J1,active,Onejet,onejet-airlines,Onejet,onejet-airlines
+J5,inactive,Alaska Seaplanes,,Alaska Seaplane,alaska-seaplane-airlines
+J6,active,Seawings,seawings-airlines,Seawings,seawings-airlines
+J7,active,Afrijet,afrijet-airlines,Afrijet,afrijet-airlines
+JA,inactive,Jetsmart,,BH Airlines,bh-airlines
+JAB,active,Air Bagan,air-bagan-airlines,Air Bagan,air-bagan-airlines
+JB,active,Helijet International Inc,helijet-international-inc-airlines,Helijet International Inc,helijet-international-inc-airlines
+JC,inactive,Japan Air Commuter,,JAL Express,jal-express-airlines
+JE,active,Mango,mango-airlines,Mango,mango-airlines
+JF,inactive,Jet Asia Airways,,LAB Flying,lab-flying-airlines
+JI,active,Meraj Air,meraj-air-airlines,Meraj Air,meraj-air-airlines
+JM,inactive,Jambojet,,Air Jamaica,air-jamaica-airlines
+JN,active,Joon,joon-airlines,Joon,joon-airlines
+JO,inactive,Royal Wings,,JALways Co. Ltd.,jalways-co-ltd-airlines
+JON,active,Jonair,jonair-airlines,Jonair,jonair-airlines
+JTG,active,Jettime,jettime-airlines,Jettime,jettime-airlines
+JX,active,Dac Aviation,dac-aviation-airlines,Dac Aviation,dac-aviation-airlines
+JZ,active,Jubba Airways,jubba-airways-airlines,Jubba Airways,jubba-airways-airlines
+K2,inactive,Airlift Alaska,,Airlift Alaska,airlift-alaska-airlines
+K4,active,Kalitta Air,kalitta-air-airlines,Kalitta Air,kalitta-air-airlines
+K5,inactive,Silverstone Air Services,,Wings of Alaska,wings-of-alaska-airlines
+K9,active,Kalitta Charters,kalitta-charters-airlines,"Kalitta Charters, L.L.C.",kalitta-charters-llc-airlines
+KAI,active,Kaiserair,kaiserair-airlines,Kaiserair,kaiserair-airlines
+KAR,active,Pegas Fly,pegas-fly-airlines,Pegas Fly,pegas-fly-airlines
+KD,active,Kalstar Aviation,kalstar-aviation-airlines,Kalstar Aviation,kalstar-aviation-airlines
+KDC,active,Kd Air Corporation,kd-air-corporation-airlines,Kd Air Corporation,kd-air-corporation-airlines
+KH,active,Aloha Air Cargo,aloha-air-cargo-airlines,Aloha Air Cargo,aloha-air-cargo-airlines
+KI,active,Krasavia,krasavia-airlines,Krasavia,krasavia-airlines
+KJ,active,Air Incheon,air-incheon-airlines,Air Incheon,air-incheon-airlines
+KO,inactive,Komiaviatrans,,KHORS Air,khors-air-airlines
+KT,active,Fly Kiss,fly-kiss-airlines,Fly Kiss,fly-kiss-airlines
+KTB,active,Transaviabaltika,transaviabaltika-airlines,Transaviabaltika,transaviabaltika-airlines
+KV,active,Sky Regional,sky-regional-airlines,Sky Regional,sky-regional-airlines
+KW,active,Korea Express Airlines,korea-express-airlines,Korea Express Airlines,korea-express-airlines
+KZ,active,Nippon Cargo Airlines,nippon-cargo-airlines,Nippon Cargo Airlines,nippon-cargo-airlines
+KZH,active,Zhezair,zhezair-airlines,Zhezair,zhezair-airlines
+L2,active,Lynden Air Cargo,lynden-air-cargo-airlines,Lynden Air Cargo,lynden-air-cargo-airlines
+L3,active,Dhl De Guatemala,dhl-de-guatemala-airlines,"Dhl De Guatemala, S.A.",dhl-de-guatemala-sa-airlines
+L5,inactive,Atlas Atlantique Airlines,,Linea Aerea Cuencana,linea-aerea-cuencana-airlines
+L7,active,Latam Cargo Colombia,latam-cargo-colombia-airlines,Latam Cargo Colombia,latam-cargo-colombia-airlines
+L9,inactive,Bristow U.S. Llc,,Bristow U.S. Llc,bristow-us-llc-airlines
+LAL,active,Air Labrador,air-labrador-airlines,Air Labrador,air-labrador-airlines
+LB,inactive,Bul Air Ltd.,,Air Costa,air-costa-airlines
+LBQ,active,Quest Air,quest-air-airlines,Quest Air,quest-air-airlines
+LD,active,Ahk Air Hong Kong,ahk-air-hong-kong-airlines,Ahk Air Hong Kong,ahk-air-hong-kong-airlines
+LE,active,Lion Air Cargo Tanzania,lion-air-cargo-tanzania-airlines,Lion Air Cargo Tanzania,lion-air-cargo-tanzania-airlines
+LEP,active,Air Costa,air-costa-airlines,Air Costa,air-costa-airlines
+LF,inactive,Corporate Flight Management,,FlyNordic / NordicAirlink,flynordic-nordicairlink-airlines
+LID,active,Alidaunia,alidaunia-airlines,Alidaunia,alidaunia-airlines
+LK,active,Lao Skyway,lao-skyway-airlines,Lao Skyway,lao-skyway-airlines
+LL,active,Miami Air,miami-air-airlines,Miami Air,miami-air-airlines
+LQ,active,Lanmei Airlines,lanmei-airlines,Lanmei Airlines,lanmei-airlines
+LS,active,Jet2.Com,jet2com-airlines,Jet2.Com,jet2com-airlines
+LT,inactive,Longjiang Airlines,,LTU  InternationalAirways,ltu-internationalairways-airlines
+LTR,active,Lufttransport A/S,lufttransport-a-s-airlines,Lufttransport A/S,lufttransport-a-s-airlines
+LU,active,Lanexpress,lanexpress-airlines,Lanexpress,lanexpress-airlines
+LW,inactive,Law   Latin American Wings,,Pacific Wings,pacific-wings-airlines
+LYD,active,Lydd Air,lydd-air-airlines,Lydd Air,lydd-air-airlines
+LZ,inactive,Swiss Global Air Lines Ag,,Belle Air,belle-air-airlines
+M0,active,Aero Mongolia,aero-mongolia-airlines,Aero Mongolia,aero-mongolia-airlines
+M2,active,Mhs Aviation,mhs-aviation-airlines,Mhs Aviation,mhs-aviation-airlines
+M4,inactive,Mistral Air,,Smart Aviation Company,smart-aviation-company-airlines
+M5,active,Kenmore Air,kenmore-air-airlines,Kenmore Air,kenmore-air-airlines
+M6,active,Amerijet International,amerijet-international-airlines,"Amerijet International, Inc.",amerijet-international-inc-airlines
+M8,active,Magnum.Air,magnumair-airlines,"Magnum.Air, Inc Dba Skyjet",magnumair-inc-dba-skyjet-airlines
+MAV,active,Minoan Air,minoan-air-airlines,Minoan Air,minoan-air-airlines
+MB,active,Mng Airlines Cargo,mng-cargo-airlines,Mng Airlines Cargo,mng-cargo-airlines
+MC,active,Air Mobility Command,air-mobility-command-airlines,Air Mobility Command,air-mobility-command-airlines
+ME,active,Middle East Airlines,middle-east-airlines,Middle East Airlines,middle-east-airlines
+MEG,active,Mega Global Air Services (Maldives),mega-global-air-services-maldives-airlines,Mega Global Air Services (Maldives),mega-global-air-services-maldives-airlines
+MEM,active,Icar   International Cargo Airline,icar-international-cargo-airlines,Icar   International Cargo Airline,icar-international-cargo-airlines
+MG,active,Miami Air Lease,miami-air-lease-airlines,"Miami Air Lease, Inc.",miami-air-lease-inc-airlines
+MN,active,Comair,comair-airlines,Comair,comair-airlines
+MNA,active,Merpati Nusantara Airlines,merpati-nusantara-airlines,Merpati Nusantara Airlines,merpati-nusantara-airlines
+MPX,active,Aeromexpress,aeromexpress-airlines,Aeromexpress,aeromexpress-airlines
+MQ,active,Envoy Air Inc,envoy-air-inc-airlines,Envoy Air Inc,envoy-air-inc-airlines
+MR,inactive,Hunnu Air,,Hunnu Air,hunnu-air-airlines
+MSX,active,Egyptair Cargo,egyptair-cargo-airlines,Egyptair Cargo,egyptair-cargo-airlines
+MT,active,Thomas Cook Airlines,thomas-cook-airlines,Thomas Cook Airlines,thomas-cook-airlines
+MV,active,Air Mediterranean,air-mediterranean-airlines,Air Mediterranean,air-mediterranean-airlines
+MW,inactive,Mokulele Airlines,,Mokulele,mokulele-airlines
+MZ,active,Amakusa Airlines,amakusa-airlines,Amakusa Airlines,amakusa-airlines
+N2,active,Jet Charter,jet-charter-airlines,"Jet Charter, Inc",jet-charter-inc-airlines
+N4,active,Nord Wind,nord-wind-airlines,Nord Wind,nord-wind-airlines
+N5,active,Nolinor Aviation,nolinor-aviation-airlines,Nolinor Aviation,nolinor-aviation-airlines
+N7,inactive,Nordic Regional Airlines,,Lagun Air,lagun-air-airlines
+N8,active,National Airlines,national-airlines,National Airlines,national-airlines
+N9,active,Nova Airlines,nova-airlines,Nova Airlines,nova-airlines
+NA,inactive,Nesma Airlines Company Ltd,,Teebah  Airlines,teebah-airlines
+NB,inactive,Skypower Express Airways,,Sterling  Airlines,sterling-airlines
+NC,active,Northern Air Cargo,northern-air-cargo-airlines,"Northern Air Cargo, Inc.",northern-air-cargo-inc-airlines
+ND,active,Fmi Air,fmi-air-airlines,Fmi Air,fmi-air-airlines
+NE,active,Nesma Airlines,nesma-airlines,Nesma Airlines,nesma-airlines
+NH,active,All Nippon Airways,all-nippon-airways-airlines,All Nippon Airways,all-nippon-airways-airlines
+NI,active,Portugalia,portugalia-airlines,Portugalia,portugalia-airlines
+NIG,active,Aero Contractors Company Of Nigeria,aero-contractors-company-of-nigeria-airlines,Aero Contractors Company Of Nigeria,aero-contractors-company-of-nigeria-airlines
+NIS,active,La Costena,la-costena-airlines,La Costena,la-costena-airlines
+NJ,active,Niger Airways,niger-airways-airlines,Niger Airways,niger-airways-airlines
+NLU,active,Insel Air Aruba,insel-air-aruba-airlines,Insel Air Aruba,insel-air-aruba-airlines
+NN,active,Vim Airlines,vim-airlines,Vim Airlines,vim-airlines
+NO,active,Neos Air,neos-air-airlines,translation missing: en.airlines.NO,translation-missing-enno-airlines
+NR,active,Al Naser Airlines,al-naser-airlines,Al Naser Airlines,al-naser-airlines
+NTH,active,Hokkaido Air System,hokkaido-air-system-airlines,Hokkaido Air System,hokkaido-air-system-airlines
+NV,inactive,Iranian Naft Airlines,,Air Central,air-central-airlines
+NWG,active,Airwing,airwing-airlines,Airwing,airwing-airlines
+NYS,active,Ulendo Airlink,ulendo-airlink-airlines,Ulendo Airlink,ulendo-airlink-airlines
+O2,active,Linear Air,linear-air-airlines,Linear Air,linear-air-airlines
+O3,active,Sf Airlines,sf-airlines,Sf Airlines,sf-airlines
+O7,active,Sue Orenburg Region Intl Airport,sue-orenburg-region-intl-airport-airlines,Sue Orenburg Region Intl Airport,sue-orenburg-region-intl-airport-airlines
+OAE,active,Omni Air International,omni-air-international-airlines,Omni Air International,omni-air-international-airlines
+OC,inactive,Oriental Air Bridge Co.,,Oriental Air Bridge,oriental-air-bridge-airlines
+OF,active,Overland Airways,overland-airways-airlines,Overland Airways,overland-airways-airlines
+OH,active,Psa Airlines,psa-airlines,"Psa Airlines, Inc.",psa-inc-airlines
+OI,active,Hinterland Aviation,hinterland-aviation-airlines,Hinterland Aviation,hinterland-aviation-airlines
+OJ,active,Fly Jamaica,fly-jamaica-airlines,Fly Jamaica,fly-jamaica-airlines
+OL,inactive,Polynesian Airlines,,OLTOstfriesische,oltostfriesische-airlines
+OLY,active,Olympus Airways,olympus-airways-airlines,Olympus Airways,olympus-airways-airlines
+OO,active,Skywest Airlines,skywest-airlines,Skywest Airlines,skywest-airlines
+OQ,active,Chongqing Airlines,chongqing-airlines,Chongqing Airlines,chongqing-airlines
+OR,active,Tui Fly Netherlands,tui-fly-netherlands-airlines,Tui Fly Netherlands,tui-fly-netherlands-airlines
+ORK,active,Orca Airways,orca-airways-airlines,Orca Airways,orca-airways-airlines
+OTJ,active,Ten Airways,ten-airways-airlines,Ten Airways,ten-airways-airlines
+OV,inactive,Salamair,,Estonian Air,estonian-air-airlines
+OW,active,Skyward Express,skyward-express-airlines,Skyward Express,skyward-express-airlines
+OZW,active,Skywest Airlines,skywest-airlines,Skywest Airlines,skywest-airlines
+P0,active,Proflight Commuter Services,proflight-commuter-services-airlines,Proflight Commuter Services,proflight-commuter-services-airlines
+P1,active,Publiccharters.Com,publiccharterscom-airlines,Publiccharters.Com,publiccharterscom-airlines
+P3,active,Cargologicair,cargologicair-airlines,Cargologicair,cargologicair-airlines
+P4,inactive,Air Peace,,Aerolíneas Sosa,aerolneas-sosa-airlines
+P5,active,Aero Republica,aero-republica-airlines,Aero Republica,aero-republica-airlines
+P7,active,Small Planet Airlines,small-planet-airlines,Small Planet Airlines,small-planet-airlines
+P9,inactive,Peruvian Airlines,,Asia Pacific Airlines,asia-pacific-airlines
+PAM,active,Map Linhas Aereas,map-linhas-aereas-airlines,Map Linhas Aereas,map-linhas-aereas-airlines
+PB,inactive,Provincial Airlines,,Provincial Air,provincial-air-airlines
+PF,active,Primera Air,primera-air-airlines,Primera Air,primera-air-airlines
+PFY,active,Pel Air,pel-air-airlines,Pel Air,pel-air-airlines
+PH,active,Phoenix Air Group,phoenix-air-group-airlines,"Phoenix Air Group, Inc",phoenix-air-group-inc-airlines
+PI,active,Polar Airlines Ltd,polar-ltd-airlines,Polar Airlines Ltd,polar-ltd-airlines
+PNP,active,Pineapple Air,pineapple-air-airlines,Pineapple Air,pineapple-air-airlines
+PO,active,Polar Air Cargo,polar-air-cargo-airlines,Polar Air Cargo,polar-air-cargo-airlines
+PP,active,Jet Aviation Business Jets Ag,jet-aviation-business-jets-ag-airlines,Jet Aviation Business Jets Ag,jet-aviation-business-jets-ag-airlines
+PPL,active,Air Pegasus Pvt. Ltd.,air-pegasus-pvt-ltd-airlines,Air Pegasus Pvt. Ltd.,air-pegasus-pvt-ltd-airlines
+PQ,active,Airasia Philippines,airasia-philippines-airlines,Airasia Philippines,airasia-philippines-airlines
+PRO,active,Propair,propair-airlines,Propair,propair-airlines
+PT,active,Piedmont Airlines Inc.,piedmont-inc-airlines,Piedmont Airlines Inc.,piedmont-inc-airlines
+PTI,active,Privatair,privatair-airlines,Privatair,privatair-airlines
+PU,inactive,Plus Ultra Lineas Aereas S. A.,,Pluna Uruguayas,pluna-uruguayas-airlines
+PV,inactive,Saint Barth Commuter,,PAN Air,pan-air-airlines
+Q3,inactive,Anguilla Air Services,,Trans Anguilla Airways,trans-anguilla-airways-airlines
+Q5,active,40 Mile Air,40-mile-air-airlines,40 Mile Air,40-mile-air-airlines
+Q6,inactive,Volaris Costa Rica,,Skytrans Airlines,skytrans-airlines
+Q8,inactive,Trans Air Congo,,Pacific East Asia Cargo Airlines,pacific-east-asia-cargo-airlines
+Q9,inactive,Wataniya Airways,,Afrinat International Airlines,afrinat-international-airlines
+QA,active,Cimber A/S,cimber-a-s-airlines,Cimber A/S,cimber-a-s-airlines
+QB,active,Faraz Qeshm Airline,faraz-qeshm-airlines,Faraz Qeshm Airline,faraz-qeshm-airlines
+QC,inactive,Camair Co,,Cameroon Airlines,cameroon-airlines
+QD,active,Jc (Cambodia) International Airlines,jc-cambodia-international-airlines,Jc (Cambodia) International Airlines,jc-cambodia-international-airlines
+QE,active,Express Freighters Australia,express-freighters-australia-airlines,Express Freighters Australia,express-freighters-australia-airlines
+QJ,active,Jet Airways Inc.,jet-airways-inc-airlines,Jet Airways Inc.,jet-airways-inc-airlines
+QK,active,Air Canada Jazz,air-canada-jazz-airlines,Air Canada Jazz,air-canada-jazz-airlines
+QL,active,Laser Airlines,laser-airlines,Laser Airlines,laser-airlines
+QM,inactive,Monacair,,Air Malawi,air-malawi-airlines
+QNZ,active,Jetconnect,jetconnect-airlines,Jetconnect,jetconnect-airlines
+QO,active,Quikjet Cargo Airlines,quikjet-cargo-airlines,Quikjet Cargo Airlines,quikjet-cargo-airlines
+QP,active,Starlight Airlines,starlight-airlines,Starlight Airlines,starlight-airlines
+QQ,active,Alliance Airlines,alliance-airlines,Alliance Airlines,alliance-airlines
+QT,active,Tampa Cargo S.A.S,tampa-cargo-sas-airlines,Tampa Cargo S.A.S,tampa-cargo-sas-airlines
+QW,active,Qingdao Airline Co,qingdao-co-airlines,"Qingdao Airline Co, Ltd",qingdao-co-ltd-airlines
+QX,active,Horizon Air,horizon-air-airlines,Horizon Air,horizon-air-airlines
+QY,active,European Air Transport Leipzig Gmbh,european-air-transport-leipzig-gmbh-airlines,European Air Transport Leipzig Gmbh,european-air-transport-leipzig-gmbh-airlines
+QZ,active,Indonesia Airasia,indonesia-airasia-airlines,Indonesia Airasia,indonesia-airasia-airlines
+R2,inactive,Transair Senegal,,Transair Senegal,transair-senegal-airlines
+R5,active,Jordan Aviation,jordan-aviation-airlines,Jordan Aviation,jordan-aviation-airlines
+R6,active,Dot Lt,dot-lt-airlines,Dot Lt,dot-lt-airlines
+R8,active,Sundance Air Venezuela,sundance-air-venezuela-airlines,Sundance Air Venezuela,sundance-air-venezuela-airlines
+R9,active,Suasa Airlines,suasa-airlines,Suasa Airlines,suasa-airlines
+RAC,active,Ryukyu Air Commuter,ryukyu-air-commuter-airlines,Ryukyu Air Commuter,ryukyu-air-commuter-airlines
+RF,active,Florida West International Airways Inc.,florida-west-international-airways-inc-airlines,Florida West International Airways Inc.,florida-west-international-airways-inc-airlines
+RFJ,active,Royal Falcon,royal-falcon-airlines,Royal Falcon,royal-falcon-airlines
+RG,inactive,Rotanajet Aviation,,Varig S.A.,varig-sa-airlines
+RGN,active,Cygnus Air,cygnus-air-airlines,Cygnus Air,cygnus-air-airlines
+RH,active,Hong Kong Air Cargo Carrier Limited,hong-kong-air-cargo-carrier-limited-airlines,Hong Kong Air Cargo Carrier Limited,hong-kong-air-cargo-carrier-limited-airlines
+RIH,active,Rahila Air,rahila-air-airlines,Rahila Air,rahila-air-airlines
+RK,active,Skyview Airways Co Dba Skyview,skyview-airways-co-dba-skyview-airlines,Skyview Airways Co Dba Skyview,skyview-airways-co-dba-skyview-airlines
+RL,active,Royal Flight Airlines,royal-flight-airlines,Royal Flight Airlines,royal-flight-airlines
+RLT,active,Real Tonga,real-tonga-airlines,Real Tonga,real-tonga-airlines
+RLY,active,Air Loyaute,air-loyaute-airlines,Air Loyaute,air-loyaute-airlines
+RM,active,Aircompany Armenia,aircompany-armenia-airlines,Aircompany Armenia,aircompany-armenia-airlines
+RMK,active,Simrik Airlines,simrik-airlines,Simrik Airlines,simrik-airlines
+RNX,active,1 Time,1-time-airlines,1 Time,1-time-airlines
+RP,active,Base Airlines,base-airlines,Base Airlines,base-airlines
+RRV,active,Mombassa Air Safari,mombassa-air-safari-airlines,Mombassa Air Safari,mombassa-air-safari-airlines
+RS,active,Air Seoul,air-seoul-airlines,"Air Seoul, Inc",air-seoul-inc-airlines
+RSE,active,Snas Aviation,snas-aviation-airlines,Snas Aviation,snas-aviation-airlines
+RSI,active,Air Sunshine,air-sunshine-airlines,Air Sunshine,air-sunshine-airlines
+RT,inactive,Uvt Aero,,RAK Airways,rak-airways-airlines
+RU,active,Airbridgecargo,airbridgecargo-airlines,Airbridgecargo,airbridgecargo-airlines
+RV,active,Air Canada Rouge,air-canada-rouge-airlines,Air Canada Rouge,air-canada-rouge-airlines
+RW,active,Royal Air Charter Services Inc,royal-air-charter-services-inc-airlines,Royal Air Charter Services Inc,royal-air-charter-services-inc-airlines
+RY,active,Jiangxi Air,jiangxi-air-airlines,Jiangxi Air,jiangxi-air-airlines
+S0,active,Aero Lineas Sosa,aero-lineas-sosa-airlines,Aero Lineas Sosa,aero-lineas-sosa-airlines
+S2,inactive,Jetkonnect,,JetLite,jetlite-airlines
+S5,active,Shuttle America,shuttle-america-airlines,Shuttle America,shuttle-america-airlines
+S6,active,Sunrise Airways,sunrise-airways-airlines,Sunrise Airways,sunrise-airways-airlines
+S8,active,Sounds Air,sounds-air-airlines,Sounds Air,sounds-air-airlines
+SB,active,Air Caledonie International,air-caledonie-international-airlines,Air Caledonie International,air-caledonie-international-airlines
+SBK,active,Blue Sky Aviation,blue-sky-aviation-airlines,Blue Sky Aviation,blue-sky-aviation-airlines
+SDR,active,Sundair,sundair-airlines,Sundair,sundair-airlines
+SE,active,Xl Airways France,xl-airways-france-airlines,Xl Airways France,xl-airways-france-airlines
+SF,active,Tassili Airlines,tassili-airlines,Tassili Airlines,tassili-airlines
+SGB,active,Songbird Airways,songbird-airways-airlines,"Songbird Airways, Inc.",songbird-airways-inc-airlines
+SH,inactive,Sharp Airlines,,Sharp Airlines,sharp-airlines
+SHA,active,Shree Airlines,shree-airlines,Shree Airlines,shree-airlines
+SKP,active,Skytrans Airlines,skytrans-airlines,Skytrans Airlines,skytrans-airlines
+SL,active,Thai Lion Air,thai-lion-air-airlines,Thai Lion Air,thai-lion-air-airlines
+SLD,active,Silver Air,silver-air-airlines,Silver Air,silver-air-airlines
+SM,active,Air Cairo,air-cairo-airlines,Air Cairo,air-cairo-airlines
+SNB,active,Sterling,sterling-airlines,Sterling,sterling-airlines
+SO,active,Apex Airlines Myanmar,apex-myanmar-airlines,Apex Airlines Myanmar,apex-myanmar-airlines
+SOR,active,Sonair,sonair-airlines,Sonair,sonair-airlines
+SQM,active,Siam Air Transport Company Limited,siam-air-transport-company-limited-airlines,Siam Air Transport Company Limited,siam-air-transport-company-limited-airlines
+SRN,active,Sprintair,sprintair-airlines,Sprintair,sprintair-airlines
+SS,active,Corsair,corsair-airlines,Corsair,corsair-airlines
+SSQ,active,Sunstate Airlines,sunstate-airlines,Sunstate Airlines,sunstate-airlines
+SXG,active,Sterling Transportation,sterling-transportation-airlines,"Sterling Transportation, Inc.",sterling-transportation-inc-airlines
+T0,active,Trans American Airlines Dba Taca Peru,trans-american-dba-taca-peru-airlines,Trans American Airlines Dba Taca Peru,trans-american-dba-taca-peru-airlines
+T2,active,Fly Art,fly-art-airlines,Fly Art,fly-art-airlines
+T4,active,Rhoades Aviation Inc.,rhoades-aviation-inc-airlines,Rhoades Aviation Inc.,rhoades-aviation-inc-airlines
+T6,active,Airswift,airswift-airlines,Airswift,airswift-airlines
+T8,active,Mcs Aerocarga De Mexico,mcs-aerocarga-de-mexico-airlines,Mcs Aerocarga De Mexico,mcs-aerocarga-de-mexico-airlines
+TAH,active,Air Moorea,air-moorea-airlines,Air Moorea,air-moorea-airlines
+TB,active,Tui Fly Belgium,tui-fly-belgium-airlines,Tui Fly Belgium,tui-fly-belgium-airlines
+TE,inactive,Skytaxi,,Lithuanian  Airlines,lithuanian-airlines
+TEZ,active,Tez Jet Airlines,tez-jet-airlines,Tez Jet Airlines,tez-jet-airlines
+TH,active,Raya Airways,raya-airways-airlines,Raya Airways,raya-airways-airlines
+THU,active,Thunder Airlines,thunder-airlines,Thunder Airlines,thunder-airlines
+TI,active,Tropic Ocean Airways,tropic-ocean-airways-airlines,Tropic Ocean Airways,tropic-ocean-airways-airlines
+TJ,inactive,Tradewind Aviation,,Tradewind Aviation,tradewind-aviation-airlines
+TNA,active,Transasia Airways,transasia-airways-airlines,Transasia Airways,transasia-airways-airlines
+TO,active,Transavia.Com France,transaviacom-france-airlines,Transavia.Com France,transaviacom-france-airlines
+TOM,active,Tui Airways,tui-airways-airlines,Tui Airways,tui-airways-airlines
+TRH,active,Turuhan Airlines,turuhan-airlines,Turuhan Airlines,turuhan-airlines
+TRJ,active,Trujet,trujet-airlines,Trujet,trujet-airlines
+TT,active,Tigerair Australia,tigerair-australia-airlines,Tigerair Australia,tigerair-australia-airlines
+TUY,active,Linea Turistica Aerotuy,linea-turistica-aerotuy-airlines,Linea Turistica Aerotuy,linea-turistica-aerotuy-airlines
+TV,active,Tibet Airlines,tibet-airlines,Tibet Airlines,tibet-airlines
+TWI,active,Tailwind Hava Yollari A.S,tailwind-hava-yollari-as-airlines,Tailwind Hava Yollari A.S,tailwind-hava-yollari-as-airlines
+TZS,active,Tca Airlines,tca-airlines,Tca Airlines,tca-airlines
+U3,active,Sky Gates Airlines,sky-gates-airlines,Sky Gates Airlines,sky-gates-airlines
+U4,active,Buddha Air,buddha-air-airlines,Buddha Air,buddha-air-airlines
+U5,inactive,Karinou Airlines,,USA3000,usa3000-airlines
+U7,active,Uniworld Air Cargo Corp.,uniworld-air-cargo-corp-airlines,Uniworld Air Cargo Corp.,uniworld-air-cargo-corp-airlines
+U8,active,Tus Airways,tus-airways-airlines,Tus Airways,tus-airways-airlines
+UB,active,Myanmar National Airlines,myanmar-national-airlines,Myanmar National Airlines,myanmar-national-airlines
+UC,active,Latam Cargo Chile,latam-cargo-chile-airlines,Latam Cargo Chile,latam-cargo-chile-airlines
+UDN,active,Dnieproavia Joint Stock Aviation Co,dnieproavia-joint-stock-aviation-co-airlines,Dnieproavia Joint Stock Aviation Co,dnieproavia-joint-stock-aviation-co-airlines
+UE,active,Bizair Op By Ultimate Jetcharters Llc,bizair-op-by-ultimate-jetcharters-llc-airlines,Bizair Op By Ultimate Jetcharters Llc,bizair-op-by-ultimate-jetcharters-llc-airlines
+UGS,active,Ska Air And Logistics (U),ska-air-and-logistics-u-airlines,Ska Air And Logistics (U),ska-air-and-logistics-u-airlines
+UH,active,Aircompany Atlasjet Ukraine Llc,aircompany-atlasjet-ukraine-llc-airlines,Aircompany Atlasjet Ukraine Llc,aircompany-atlasjet-ukraine-llc-airlines
+UI,active,Auric Air,auric-air-airlines,Auric Air,auric-air-airlines
+UK,inactive,Vistara,,Vistara Airlines,vistara-airlines
+UKM,active,Ukrainian Mediterranean Airlines,ukrainian-mediterranean-airlines,Ukrainian Mediterranean Airlines,ukrainian-mediterranean-airlines
+UN,inactive,Business Aviation Asia,,Transaero Airlines,transaero-airlines
+UQ,active,Urumqi Airlines,urumqi-airlines,Urumqi Airlines,urumqi-airlines
+UT,inactive,Utair Aviation,,UTair,utair-airlines
+UV,active,Universal Airways,universal-airways-airlines,"Universal Airways, Inc.",universal-airways-inc-airlines
+UW,active,Uni Top Airlines,uni-top-airlines,Uni Top Airlines,uni-top-airlines
+UY,active,Sky Pearl,sky-pearl-airlines,Sky Pearl,sky-pearl-airlines
+UZ,active,Buraq Air,buraq-air-airlines,Buraq Air,buraq-air-airlines
+V2,active,Avialeasing Aviation Co,avialeasing-aviation-co-airlines,Avialeasing Aviation Co,avialeasing-aviation-co-airlines
+V4,inactive,Vieques Air Link,,Vensecar Internacional,vensecar-internacional-airlines
+V5,inactive,Aerovias Dap S.A.,,Aerovias Dap S.A.,aerovias-dap-sa-airlines
+V6,active,Vi Airlink,vi-airlink-airlines,Vi Airlink,vi-airlink-airlines
+V7,inactive,Volotea,,Air Senegal Intl,air-senegal-intl-airlines
+V8,inactive,Iliamna Air Taxi,,Atran,atran-airlines
+V9,inactive,Citywing,,Van Air Europe,van-air-europe-airlines
+VAS,active,Atran,atran-airlines,Atran,atran-airlines
+VC,active,Viaair,viaair-airlines,Viaair,viaair-airlines
+VE,active,Easyfly S. A.,easyfly-s-a-airlines,Easyfly S. A.,easyfly-s-a-airlines
+VF,inactive,Flyviking,,Valuair Ltd.,valuair-ltd-airlines
+VI,active,Volga Dnepr Airlines,volga-dnepr-airlines,Volga Dnepr Airlines,volga-dnepr-airlines
+VIT,active,Pt Aviastar Mandiri,pt-aviastar-mandiri-airlines,Pt Aviastar Mandiri,pt-aviastar-mandiri-airlines
+VL,active,Med View Airlines (Nig) Ltd,med-view-nig-ltd-airlines,Med View Airlines (Nig) Ltd,med-view-nig-ltd-airlines
+VM,active,Max Air,,Max Air,max-air-airlines
+VNE,active,Ravsa Venezolana,ravsa-venezolana-airlines,Ravsa Venezolana,ravsa-venezolana-airlines
+VO,active,Vlm Airlines D.D.,vlm-dd-airlines,Vlm Airlines D.D.,vlm-dd-airlines
+VP,inactive,Flyme,,VASP Viação Aérea São Paulo,vasp-viao-area-so-paulo-airlines
+VQ,active,Novoair,novoair-airlines,Novoair,novoair-airlines
+VR,active,Tacv Cabo Verde Airlines,tacv-cabo-verde-airlines,Tacv Cabo Verde Airlines,tacv-cabo-verde-airlines
+VTU,active,Turpial Airlines,turpial-airlines,Turpial Airlines,turpial-airlines
+VU,active,Veca Airlines,veca-airlines,Veca Airlines,veca-airlines
+VUR,active,Vip S.A.,vip-sa-airlines,Vip S.A.,vip-sa-airlines
+VV,inactive,Viva Airlines Peru S.A.C.,,AeroSvit  Airlines,aerosvit-airlines
+VVC,active,Vivacolombia,vivacolombia-airlines,Vivacolombia,vivacolombia-airlines
+VZ,active,Thai Vietjet Air,thai-vietjet-air-airlines,Thai Vietjet Air,thai-vietjet-air-airlines
+W1,active,World Ticket Ltd,world-ticket-ltd-airlines,World Ticket Ltd,world-ticket-ltd-airlines
+W7,active,Nakhal Tours,nakhal-tours-airlines,Nakhal Tours,nakhal-tours-airlines
+W8,active,Cargojet Airways Ltd.,cargojet-airways-ltd-airlines,Cargojet Airways Ltd.,cargojet-airways-ltd-airlines
+WA,active,Klm Cityhopper,klm-cityhopper-airlines,Klm Cityhopper,klm-cityhopper-airlines
+WD,active,Modern Transtport Aereo De Caarga Sa,modern-transtport-aereo-de-caarga-sa-airlines,Modern Transtport Aereo De Caarga Sa,modern-transtport-aereo-de-caarga-sa-airlines
+WDL,active,Wdl Aviation,wdl-aviation-airlines,Wdl Aviation,wdl-aviation-airlines
+WE,active,Thai Smile Airways,thai-smile-airways-airlines,Thai Smile Airways,thai-smile-airways-airlines
+WI,active,White Airways S.A.,white-airways-sa-airlines,White Airways S.A.,white-airways-sa-airlines
+WK,active,Edelweiss Air,edelweiss-air-airlines,Edelweiss Air,edelweiss-air-airlines
+WL,active,World Atlantic Airlines,world-atlantic-airlines,World Atlantic Airlines,world-atlantic-airlines
+WM,inactive,Windward Island Airways International,,Windward Is Intl,windward-is-intl-airlines
+WN,active,Southwest Airlines,southwest-airlines,Southwest Airlines,southwest-airlines
+WQ,active,Swift Air L.L.C.,swift-air-llc-airlines,Swift Air L.L.C.,swift-air-llc-airlines
+WR,inactive,Westjet Encore,,Aviaprad  Airlines,aviaprad-airlines
+WSF,active,Westair Benin,westair-benin-airlines,Westair Benin,westair-benin-airlines
+WSG,active,Wasaya Airways Lp,wasaya-airways-lp-airlines,Wasaya Airways Lp,wasaya-airways-lp-airlines
+WST,active,Western Air,western-air-airlines,Western Air,western-air-airlines
+WT,inactive,Swiftair,,Wasaya Airways,wasaya-airways-airlines
+WV,active,Aero Vip,aero-vip-airlines,Aero Vip,aero-vip-airlines
+WW,inactive,Wow Air,,bmiBaby,bmibaby-airlines
+WX,active,City Jet,city-jet-airlines,City Jet,city-jet-airlines
+WY,inactive,Oman Air,,Oman Air,oman-air-airlines
+WZ,active,Red Wings Airlines,red-wings-airlines,Red Wings Airlines,red-wings-airlines
+X4,active,Air Excursions,air-excursions-airlines,"Air Excursions, Llc",air-excursions-llc-airlines
+X5,active,Air Europa Express,air-europa-express-airlines,Air Europa Express,air-europa-express-airlines
+X8,active,Airmax Cargo S.A,airmax-cargo-sa-airlines,Airmax Cargo S.A,airmax-cargo-sa-airlines
+XC,active,Corendon Airlines,corendon-airlines,Corendon Airlines,corendon-airlines
+XE,inactive,Jetsuitex,,ExpressJet  Airlines,expressjet-airlines
+XG,inactive,Sunexpress Deutschland Gmbh,,Sunexpress Deutschland Gmbh,sunexpress-deutschland-gmbh-airlines
+XJ,active,Thai Air Asia X,thai-air-asia-x-airlines,Thai Air Asia X,thai-air-asia-x-airlines
+XLL,active,Air Excel,air-excel-airlines,Air Excel,air-excel-airlines
+XM,active,Zimex Aviation,zimex-aviation-airlines,Zimex Aviation,zimex-aviation-airlines
+XN,active,Xpress Air,xpress-air-airlines,Xpress Air,xpress-air-airlines
+XO,active,Seair International,seair-international-airlines,Seair International,seair-international-airlines
+XP,active,Xtra Airways,xtra-airways-airlines,Xtra Airways,xtra-airways-airlines
+XR,active,Corendon Airlines Europe,corendon-europe-airlines,Corendon Airlines Europe,corendon-europe-airlines
+XT,active,Indonesia Airasia X,indonesia-airasia-x-airlines,Indonesia Airasia X,indonesia-airasia-x-airlines
+XW,active,Nokscoot Airlines Co Ltd,nokscoot-co-ltd-airlines,Nokscoot Airlines Co Ltd,nokscoot-co-ltd-airlines
+XZ,active,South African Express Airways,south-african-express-airways-airlines,South African Express Airways,south-african-express-airways-airlines
+Y2,active,Air Century,air-century-airlines,Air Century,air-century-airlines
+Y7,active,Nordstar,nordstar-airlines,Nordstar,nordstar-airlines
+Y8,active,Yangtze River Airlines,yangtze-river-airlines,Yangtze River Airlines,yangtze-river-airlines
+YB,active,Borajet,borajet-airlines,Borajet,borajet-airlines
+YD,active,Synergy Aviation,synergy-aviation-airlines,Synergy Aviation,synergy-aviation-airlines
+YE,active,Yanair,yanair-airlines,Yanair,yanair-airlines
+YG,active,Yto Cargo Airlines Co. Ltd,yto-cargo-co-ltd-airlines,Yto Cargo Airlines Co. Ltd,yto-cargo-co-ltd-airlines
+YH,active,Yangon Airways,yangon-airways-airlines,Yangon Airways,yangon-airways-airlines
+YK,inactive,Avia Traffic Company,,Cyprus Turkish,cyprus-turkish-airlines
+YL,active,Libyan Wings,libyan-wings-airlines,Libyan Wings,libyan-wings-airlines
+YP,active,Perimeter Aviation Ltd,perimeter-aviation-ltd-airlines,Perimeter Aviation Ltd,perimeter-aviation-ltd-airlines
+YQ,inactive,Tar Aerolineas,,Polet Airlines,polet-airlines
+YR,inactive,Scenic Airlines,,Grand Canyon Airlines,grand-canyon-airlines
+YS,active,Hop! Regional,hop-regional-airlines,Hop! Regional,hop-regional-airlines
+YU,active,Euroatlantic Airways,euroatlantic-airways-airlines,Euroatlantic Airways,euroatlantic-airways-airlines
+YW,active,Air Nostrum,air-nostrum-airlines,Air Nostrum,air-nostrum-airlines
+YX,inactive,Republic Airline Inc,,Midwest,midwest-airlines
+Z3,inactive,Tanana Air Service,,Avient Aviation,avient-aviation-airlines
+Z4,active,Zagrosjet,zagrosjet-airlines,Zagrosjet,zagrosjet-airlines
+Z5,inactive,Global Africa Aviation,,GMG Airlines Ltd.,gmg-ltd-airlines
+Z7,active,Amaszonas Uruguay,amaszonas-uruguay-airlines,Amaszonas Uruguay,amaszonas-uruguay-airlines
+ZC,inactive,Flyafrica   Zimbabwe,,Korongo Airlines,korongo-airlines
+ZD,active,Ewa Air,ewa-air-airlines,Ewa Air,ewa-air-airlines
+ZF,active,Azur Air,azur-air-airlines,Azur Air,azur-air-airlines
+ZJ,active,Air Routing International L.P.,air-routing-international-lp-airlines,Air Routing International L.P.,air-routing-international-lp-airlines
+ZK,active,Great Lakes Airlines,great-lakes-airlines,Great Lakes Airlines,great-lakes-airlines
+ZL,active,Regional Express,regional-express-airlines,Regional Express,regional-express-airlines
+ZM,inactive,Air Manas,,Manas Air,manas-air-airlines
+ZN,active,Naysa,naysa-airlines,Naysa,naysa-airlines
+ZO,active,Zexus Air Service Pvt. Ltd.,zexus-air-service-pvt-ltd-airlines,Zexus Air Service Pvt. Ltd.,zexus-air-service-pvt-ltd-airlines
+ZP,active,Amaszonas Linea Aerea,amaszonas-linea-aerea-airlines,Amaszonas Linea Aerea,amaszonas-linea-aerea-airlines
+ZQ,active,Azman Air Services,azman-air-services-airlines,Azman Air Services,azman-air-services-airlines
+ZR,active,Aviacon Zitotrans Air Company,aviacon-zitotrans-air-company-airlines,Aviacon Zitotrans Air Company,aviacon-zitotrans-air-company-airlines
+ZT,active,Titan Airways,titan-airways-airlines,Titan Airways,titan-airways-airlines
+ZU,active,Sunair Aviation,sunair-aviation-airlines,Sunair Aviation,sunair-aviation-airlines
+ZV,inactive,V Air Corporation,,Air Midwest,air-midwest-airlines
+ZW,active,Air Wisconsin,air-wisconsin-airlines,Air Wisconsin,air-wisconsin-airlines
+ZX,active,Air Georgian Ltd Dba Air Alliance,air-georgian-ltd-dba-air-alliance-airlines,Air Georgian Ltd Dba Air Alliance,air-georgian-ltd-dba-air-alliance-airlines
+ZY,active,China Air Cargo,china-air-cargo-airlines,China Air Cargo,china-air-cargo-airlines

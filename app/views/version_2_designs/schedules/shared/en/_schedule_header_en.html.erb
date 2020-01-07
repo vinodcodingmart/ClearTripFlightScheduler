@@ -1,0 +1,158 @@
+<section id="common-nav-bar">
+  <div class="custom-container">
+
+
+    <!--Logo Sections-->
+    <div class="col-sm-3 ct-col-3 pad-lzero">
+      <a class="ctBrand" href="/">
+        <span class="cleartripLogo" title="Cleartrip ">Home</span>
+      </a>
+      <%# if !@is_route  %>
+      <ul class=" list-inline productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" title="Flights" href="/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" title="Hotels" href="/hotels">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+      </ul>
+      <%# end %>
+    </div>
+
+    <% if !@is_route %>
+    <!--Header Links Sections-->
+    <div class="col-sm-7 pad-lzero common-m-navbar">
+      <div class="main-nav-links">
+        <ul class="list-inline">
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="flights-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Flights</span>
+            <div class="dropdown-menu" aria-labelledby="flights-menu">
+              <a href="/flight-schedule/flights-from-<%= dep_city_name_formated%>.html" title="Flights from <%= dep_city_name.titleize %>" target="_blank">List of Flights from <%= dep_city_name.titleize%> </a>
+              <a href="/flight-schedule/flights-to-<%= arr_city_name_formated %>.html" title="Flights to <%= arr_city_name.titleize %>" target="_blank">List of Flights to <%= arr_city_name.titleize%></a>
+               <a href="/flight-schedule/flights-to-<%= dep_city_name_formated %>.html" title="Flights to <%= dep_city_name.titleize %>" target="_blank">List of Flights to <%= dep_city_name.titleize%></a>
+              <a href="/flight-schedule/flights-from-<%= arr_city_name_formated%>.html" title="Flights from <%=arr_city_name.titleize %>" target="_blank">List of Flights from <%= arr_city_name.titleize%> </a>
+            </div>
+          </li>
+
+          <% top_airlines =  dom_top_airlines + int_top_airlines %>
+          <% if top_airlines.present? && !top_airlines.nil? %>
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Airlines</span>
+            <div class="dropdown-menu" aria-labelledby="airlines-menu">
+              <% top_airlines[0..5].shuffle.each do |cc| %>
+              <% airline_name =  cc == "AI"  ? "Air India" : I18n.t("airlines.#{cc}")  %>
+              <% formated_carrier_name =  airline_name.downcase.gsub(" ",'-').gsub('--','-') %>
+              <a href="<%= "/flight-booking/"+format_airline_name(airline_name).downcase.gsub(" ", "-").gsub("--","-") + ".html" %>" class="airline-link"><%= airline_name%></a>
+              <% end %>
+            </div>
+          </li>
+          <% end %>
+
+
+          <%# if route_dom_airlines.present? && route_dom_airlines.any? %>
+       <!--    <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Domestic Flights</span>
+            <div class="dropdown-menu" aria-labelledby="airlines-menu">
+              <%# route_dom_airlines[0..10].each do |cc| %>
+              <%#
+              airline_name = I18n.t("airlines.#{cc}")
+              link = "#{@host_name}/flight-booking/#{url_escape("#{airline_name.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+             <%#= t('brand_flights_routes_html', dep_city_name: dep_city_name, airline_name: airline_name, arr_city_name: arr_city_name, link: link,title: "#{airline_name} #{dep_city_name} #{arr_city_name} flights",target: "_blank") %>
+              <%# end %>
+            </div>
+          </li> -->
+          <%# end %>
+          <%# if route_int_airlines.present? && route_int_airlines.any? %>
+          <!-- <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="airlines-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">International Flights</span>
+            <div class="dropdown-menu" aria-labelledby="airlines-menu">
+            <%# route_int_airlines[0..10].each do |cc| %>
+            <%#
+            airline_name = I18n.t("airlines.#{cc}")
+            link = "#{@host_name}/flight-booking/#{url_escape("#{airline_name.gsub(' ','-').downcase}-#{dep_city_name.gsub(' ','-').downcase}-#{arr_city_name.gsub(' ','-').downcase}-flights")}.html" %>
+            <%#= t('brand_flights_routes_html', dep_city_name: dep_city_name, airline_name: airline_name, arr_city_name: arr_city_name, link: link,title: "#{airline_name} #{dep_city_name} #{arr_city_name} flights",target: "_blank") %>
+            <%# end %>
+            </div>
+          </li> -->
+          <%# end %>
+          <% if @country_code == "AE" && (@arr_city_code == "DXB" || @arr_city_code == "AUH") %>
+            <li class="dropdown">
+              <span class="dropdown-toggle" type="button" id="offers-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Top Activities in <%= @arr_city_name %> </span>
+              <div class="dropdown-menu" aria-labelledby="offers-menu">
+                <a href="https://www.cleartrip.ae/activities/dubai/collection/burj-khalifa-experience" title="At the top burj khalifa">At the top burj khalifa</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/singapore/universal-studios-singapore-ticket-1-day-pass" title="Universal Studios Singapore">Universal Studios Singapore</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/hong-kong/hong-kong-disneyland-ticket" title="Hong Kong Disneyland Tickets">Hong Kong Disneyland Tickets</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/ferrari-world-abu-dhabi" title="Ferrari World Abu dhabi">Ferrari World Abu dhabi</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/img-worlds-of-adventures" title="IMG World of Adventure">IMG World of Adventure</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/bollywood-parks-dubai" title="Bollywood Park In Dubai">Bollywood Park In Dubai</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/exotic-bird-show-at-dubai-dolphinarium" title="Dubai Dolphinarium">Dubai Dolphinarium</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/wildwadi-waterpark" title="Wild Wadi Waterpark">Wild Wadi Waterpark</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/collection/desert-safari" title="Desert Safari In Dubai">Desert Safari In Dubai</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/legoland-dubai" title="Legoland In Dubai">Legoland In Dubai</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/abu-dhabi/collection/warner-bros-world" title="Warner Bros Abu Dhabi">Warner Bros Abu Dhabi</a>
+                     
+                      <a href="https://www.cleartrip.ae/activities/dubai/dubai-aquarium-and-underwater-zoo-researcher-experience" title="Dubai Aquarium & Underwater Zoo">Dubai Aquarium & Underwater Zoo</a>
+                    
+                      <a href="https://www.cleartrip.ae/activities/dubai/motiongate-dubai" title="Motiongate In Dubai">Motiongate In Dubai</a> 
+                      <a href="https://www.cleartrip.ae/activities/dubai/yas-waterworld" title="Yas Water World">Yas Water World</a>
+              </div>
+                    
+            </li>
+
+            <li class="dropdown">
+              <span class="dropdown-toggle" type="button" id="offers-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Popular things to Do in UAE</span>
+              <div class="dropdown-menu" aria-labelledby="offers-menu">
+                 <a href="https://www.cleartrip.ae/activities/dubai/things-to-do" title="Things to do in Dubai">Things to do in Dubai</a>
+                   
+                 
+                      <a href="https://www.cleartrip.ae/activities/abu-dhabi/things-to-do" title="Things to do in Abu Dhabi">Things to do in Abu Dhabi</a>
+                  
+                
+                      <a href="https://www.cleartrip.ae/activities/sharjah/things-to-do" title="Things to do in Sharjah">Things to do in Sharjah</a>
+              </div>
+            </li>
+        <% end %>
+          <% if @country_code == "IN" %>
+          <li class="dropdown">
+            <span class="dropdown-toggle" type="button" id="offers-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Offers</span>
+            <div class="dropdown-menu" aria-labelledby="offers-menu">
+              <a href="https://www.cleartrip.com/offers/india/domestic-flights" target="_blank" title="Domestic flight offers">Domestic flight offers</a>
+             <a href="https://www.cleartrip.com/offers/india/international-flights" target="_blank" title="International flight offers">International flight offers</a>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <!--Language Links Sections-->
+    <% unless @country_code == "IN" %>
+    <div class="col-sm-2 pad-lzero hidden-xs">
+      <ul class=" lang-menu list-inline text-right">
+        <li><a href="<%= "#{application_processor.host_name(country_code)}/#{@page_type}/#{flight_file_name}" %>">English</a></li>
+        <li><a href="<%= "#{application_processor.host_name(country_code)}/ar/#{@page_type}/#{flight_file_name}" %>">العربية</a></li>
+      </ul>
+    </div>
+    <% end %>
+    <div class="Menuicon visible-xs pull-right"> 
+      <span></span> 
+      <span></span> 
+      <span></span>
+    </div>
+    <% end %>
+  </div>
+</section>

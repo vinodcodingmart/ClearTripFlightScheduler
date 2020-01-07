@@ -1,0 +1,228 @@
+<!--====Mobile Filter Starts====-->
+<div class="modal mobile-mdoal fade in" id="nd-mobilefilter" tabindex="-1" role="dialog" aria-labelledby="cityAutoComplete">
+  <div class="modal-dialog nd-mobile-dialog" role="document">
+    <div class="modal-content nd-mobile-content">
+      <div class="modal-header nd-mobile-header">
+        <span class="clear-filter-mob">Clear filters</span>
+        <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+          <svg width="16" height="16" viewBox="0 0 35 35" fill="#fff"><path fill-rule="evenodd" d="M15.525 17.146L1.383 3.004 3.504.883l14.143 14.142L32.496.175l2.121 2.122-14.85 14.85 14.85 14.849-2.121 2.12-14.85-14.848L2.798 34.117.676 31.996z"></path></svg>
+        </span>
+        <span class="modal-title" >Filter Flights</span>
+      </div>
+      <div class="modal-body">
+        <div class="mfilter-wrapper price_filter">
+          <h3>Price</h3>
+          <div class="pr-filter">
+            <input type="text" class="js-range-slider" name="my_range" value="" />
+            <span class="price-left"></span>
+            <span class="price-right"></span>
+          </div>
+        </div>
+        <div class="mfilter-wrapper hop_filter">
+          <h3>Stops</h3>
+          <ul class="list-unstyled">
+            <li class="dNonStop non_stop">
+              <input type="checkbox" id="0" name="stops-type" value="0">
+              <label for="0"> Non Stop</label>
+            </li>
+            <li class="dNonStop one_stop">
+              <input type="checkbox" id="1" name="stops-type" value="1">
+              <label for="1"> 1 Stop</label>
+            </li>
+            <li class="dNonStop two_stops">
+              <input type="checkbox" id="2" name="stops-type" value="2">
+              <label for="2"> +2 Stop</label>
+            </li>
+          </ul>
+        </div>
+        <div class="mfilter-wrapper depart_time_filter">
+          <h3>Departure time from <%= @dep_city_name %></h3>
+          <ul class="list-unstyled">
+            <li data-time="00:00-08:00">
+              <input type="checkbox" id="dem" name="stops-type" value="0">
+              <label for="dem"> Early Morning <span class="md-timing">12am - 8am</span></label>
+            </li>
+            <li data-time="08:00-12:00">
+              <input type="checkbox" id="dmor" name="stops-type" value="1">
+              <label for="dmor">Morning <span class="md-timing">8am - 12pm</span></label>
+            </li>
+            <li data-time="12:00-16:00">
+              <input type="checkbox" id="dmid" name="stops-type" value="2">
+              <label for="dmid">Mid Day <span class="md-timing">12pm - 4pm</span></label>
+            </li>
+            <li data-time="16:00-20:00">
+              <input type="checkbox" id="devng" name="stops-type" value="2">
+              <label for="devng">Evening <span class="md-timing">4pm - 8pm</span></label>
+            </li>
+            <li data-time="20:00-24:00">
+              <input type="checkbox" id="dngt" name="stops-type" value="2">
+              <label for="dngt">Night <span class="md-timing">8pm - 12am</span></label>
+            </li>
+          </ul>
+        </div>
+        <div class="mfilter-wrapper arrival_time_filter">
+          <% if @round_trip == "R" %>
+          <h3>Departure time from  <%= @arr_city_name %></h3>
+          <% else %>
+          <h3>Arrival at <%= @arr_city_name %></h3>
+          <% end %>
+          <ul class="list-unstyled">
+            <li data-time="00:00-08:00">
+              <input type="checkbox"  name="stops-type" value="0"  id="em">
+              <label for="em"> Early Morning <span class="md-timing">12am - 8am</span></label>
+            </li>
+            <li data-time="08:00-12:00" >
+              <input type="checkbox" id="mor" name="stops-type" value="1">
+              <label for="mor">Morning <span class="md-timing">8am - 12pm</span></label>
+            </li>
+            <li data-time="12:00-16:00">
+              <input type="checkbox" id="mid" name="stops-type" value="2">
+              <label for="mid">Mid Day <span class="md-timing">12pm - 4pm</span></label>
+            </li>
+            <li data-time="16:00-20:00" >
+              <input type="checkbox" id="evng" name="stops-type" value="2">
+              <label for="evng">Evening <span class="md-timing">4pm - 8pm</span></label>
+            </li>
+            <li data-time="20:00-24:00" id="">
+              <input type="checkbox" id="ngt" name="stops-type" value="2">
+              <label for="ngt">Night <span class="md-timing">8pm - 12am</span></label>
+            </li>
+          </ul>
+        </div>
+        <div class="mfilter-wrapper carrier_filter">
+          <h3>Preferred Airlines</h3>
+          <!-- <div class="airlines-filter"> -->
+            <ul class="list-unstyled top-airlines">
+              <li>
+                <div class="airlines-list">
+                  <input type="checkbox" name="airline" id="">
+                  <label for=""><div class="R-airline-logo "><span class="carrier-logo air-asia"></span></div> Air Asis</label>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="airlines-list">
+                  <input type="checkbox" name="airline" id="">
+                  <label for=""><div class="R-airline-logo "><span class="carrier-logo spicejet"></span></div> Air Asis</label>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="airlines-list">
+                  <input type="checkbox" name="airline" id="">
+                  <label for=""><div class="R-airline-logo"><span class="carrier-logo indigo"></span></div> Indigo</label>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="airlines-list">
+                  <input type="checkbox" name="airline" id="">
+                  <label for=""><div class="R-airline-logo "><span class="carrier-logo emirates"></span></div> Air Asis</label>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+            </ul>
+            <!-- </div> -->
+          </div>
+          <div class="filter-btn"><a href="" class="ct-btn">Apply Filters</a></div>
+        </div><!--/modal-body-->
+      </div>
+    </div>
+  </div>
+  <!--====Mobile Filter Ends====-->
+
+
+
+
+
+  <!-- Mobile sort filter starts  -->
+  <!--====Mobile Filter Starts====-->
+  <div class="modal mobile-mdoal fade in" id="nd-mobilesort" tabindex="-1" role="dialog" aria-labelledby="sortFilters">
+    <div class="modal-dialog nd-mobile-dialog" role="document">
+      <div class="modal-content nd-mobile-content">
+        <div class="modal-header nd-mobile-header">
+          <span class="clear-sort-filter-mob">Clear filters</span>
+          <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+            <svg width="16" height="16" viewBox="0 0 35 35" fill="#fff"><path fill-rule="evenodd" d="M15.525 17.146L1.383 3.004 3.504.883l14.143 14.142L32.496.175l2.121 2.122-14.85 14.85 14.85 14.849-2.121 2.12-14.85-14.848L2.798 34.117.676 31.996z"></path></svg>
+          </span>
+          <span class="modal-title" >Sort Flights</span>
+        </div>
+        <div class="modal-body sort-filter">
+          <div class="mfilter-wrapper sort_filter">
+            <ul class="list-unstyled">
+              <li class="dNonStop time">
+                <label class="custom-checkbox"> 
+                  <input type="radio" name="filter" value="time_asc" >
+                  <span class="checkmark"></span>
+                  <span class="filter-title">Ascending Time</span>
+                </label>
+              </li>
+              <li class="dNonStop time">
+                <label class="custom-checkbox"> 
+                  <input type="radio" name="filter" value="time_des" >
+                  <span class="checkmark"></span>
+                  <span class="filter-title">Descending Time</span>
+                </label>
+              </li>
+              <li class="dNonStop duration">
+               <label class="custom-checkbox"> 
+                <input type="radio" name="filter" value="duration_asc" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Ascending Duration</span>
+              </label>
+            </li>
+            <li class="dNonStop duration">
+              <label class="custom-checkbox"> 
+                <input type="radio" name="filter" value="duration_des" >
+                <span class="checkmark"></span>
+                <span class="filter-title">Descending Duration</span>
+              </label>
+            </li>
+            <li class="dNonStop price">
+              <label class="custom-checkbox"> 
+                <input type="radio" name="filter" value="price_asc" checked>
+                <span class="checkmark"></span>
+                <span class="filter-title">Ascending Price</span>
+              </label>
+            </li>
+            <li class="dNonStop price">
+              <label class="custom-checkbox"> 
+                <input type="radio" name="filter" value="price_des">
+                <span class="checkmark"></span>
+                <span class="filter-title">Descending Price</span>
+              </label>
+              <!-- <input type="checkbox" id="2" name="stops-type" value="2">
+                <label for="2"> +2 Stop</label> -->
+              </li>
+            </ul>
+          </div>
+          <!-- </div> -->
+
+       <!--  <div class="msort-wrapper time_filter">
+            <ul class="list-unstyled">
+              <li>
+                <input type="radio" name="filter" value="time">
+
+                <label for="filter">Time</label>
+              </li>
+            </ul>
+        </div>
+        <div class="msort-wrapper duration_filter">
+          <ul class="list-unstyled">
+              <li>
+                <input type="radio" name="filter" value="duration">
+                <label for="filter">Duration</label>
+              </li>
+            </ul>
+          </div> -->
+          <div class="sort-btn"><a href="javascript:void(0)" class="ct-btn">Apply Filters</a></div>
+        </div><!--/modal-body-->
+      </div>
+    </div>
+  </div>
+  <!--====Mobile Filter Ends====-->
+
+  <!-- Mobile sort filter ends -->
+
+
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source_city_code: MyString
+  destination_city_code: MyString
+  calendar_json: MyText
+  section: MyString
+
+two:
+  source_city_code: MyString
+  destination_city_code: MyString
+  calendar_json: MyText
+  section: MyString

@@ -1,0 +1,2 @@
+class QaHotelApi < ApplicationRecord
+end

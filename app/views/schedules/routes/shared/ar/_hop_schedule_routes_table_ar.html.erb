@@ -1,0 +1,153 @@
+<h2 class="f16"><%= dep_city_name %> <%= t('to')%> <%= arr_city_name %> <%= t('flight_schedule_text') %> <span class="weak">( <%= schedule_layout_values["schedule_routes"].count%> 
+<% if  schedule_layout_values["schedule_routes"].count > 1 %>
+تم العثور على رحلات الطيران
+<% else %>
+تم العثور على رحلة
+<% end %>
+)</span></h2>
+<div class="normal-list">
+	<div class="sort-bar">
+		<div class="items text-center">
+			<div class="col-xs-2"><a href="">&nbsp;</a></div>
+			<div class="col-xs-2"><a href=""><%= t('flight_schedule.days_of_operation') %></a></div>
+			<div class="col-xs-2"><a href=""><%= t('flight_schedule.price') %></a></div>
+			<div class="col-xs-1"><a href=""><%= t('flight_schedule.duration') %></a></div>
+			<div class="col-xs-3"><a href=""><%= t('flight_schedule.departure_arrival') %></a></div>
+			<div class="col-xs-2"><a href=""><%= t('flight_schedule.airline') %></a></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<ul id="airline-lists" class="list-unstyled">
+		<%
+		rc = 0
+		schedule_layout_values["schedule_routes"].each do |route| 
+			route_type = route[:dep_country_code] != @country_code || route[:arr_country_code] != @country_code ? "int" : "dom"
+			rc+=1 %>
+			<li class="<%= rc>10 ? "hide showMore" : "" %>">
+				<div class="airline">
+					<div class="col-xs-2 no-padding">
+						<a data-route="<%=route[:dep_airport_code]%>-<%= route[:arr_airport_code]%>-<%= route[:first_carrier_code] %>-<%= route_type %>"   data-languageType ="<%= I18n.locale.to_s%>" class="booking flight-schedule-booking" >
+							<% if route[:cc_min_price].present? && route[:cc_min_price]!=0 %>
+							<%= t('flight_schedule.book_now_text_btn') %>
+							<% else %>
+							<%= t("button.check_price") %>
+							<% end %>
+						</a>
+					</div>
+					<div class="col-xs-2 no-padding pad-10">
+						<span><%= route[:days_of_operation]%></span>
+					</div>
+
+					<div class="col-xs-2 no-padding pad-10">
+						<span>
+							<% if route[:cc_min_price].present? && route[:cc_min_price]!=0 && country_code=='AE' %>
+								AED 
+							<% elsif route[:cc_min_price].present? && route[:cc_min_price]!=0 && country_code=='SA' %>
+								SAR
+							<% end %>
+							<%= route[:cc_min_price].present? ? route[:cc_min_price].to_i : "--NA--" %>
+						</span>
+					</div>
+					<div class="col-xs-1 no-padding pad-10">
+						<% if route[:duration].include? (":")%>
+	            <span> <%= route[:duration].to_time.strftime("%Hh %Mm") %></span>
+	            <span class="type"><%= I18n.t("flight_schedule.one-hop")%></span>
+	          <% else %>
+	            <span> <%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %></span>
+	            <span class="type"><%= I18n.t("flight_schedule.non-stop")%></span>
+	          <% end %>  
+					</div>
+					<div class="col-xs-3 no-padding pad-10">
+						<div class="dep-time">
+							<span><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+							<span class="type"><%= dep_city_name %></span>
+						</div>
+						<div class="schedule-divide">←</div>
+						<div class="arr-time">
+							<span><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+							<span class="type"><%= arr_city_name %></span>
+						</div>
+					</div>
+					<div class="col-xs-2 no-padding">
+						<span class="name mt-15">
+							<%= route[:first_carrier_code] %><%= route[:first_flight_no] %>/<%= route[:second_carrier_code] %><%= route[:second_flight_no] %>
+						</span>
+						<span class="name mt-5">
+							<% airline_name = link_to( t("airlines.#{route[:first_carrier_code]}"), "/#{I18n.locale.to_s}/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route[:first_carrier_code]}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+							<%= airline_name %>
+						</span>
+					</div>					
+					<div class="clearfix"></div>
+				</div>
+			</li>
+			<% end 
+			if schedule_layout_values["schedule_routes"].count>10 %>
+			<li class="more-link">
+				<a href="#" id="show_all_flights">عرض جميع جداول الرحلات الجوية</a>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="mview-list">
+		<div class="sort-bar mview-list">
+			<div class="items text-center">
+				<div class="col-xs-3"><a href="">&nbsp;</a></div>
+				<div class="col-xs-2 text-center no-padding"><a class="sortDes" href="">معدل <span class="f11">(لكل شخص بالغ)</span></a></div>
+				<div class="col-xs-4 no-padding text-center "><a href=""><%= t('flight_schedule.departure') %>-<%= t('flight_schedule.arrival') %></a></div>
+				<div class="col-xs-3 no-padding"><a class="sortAsc" href=""><%= t('flight_schedule.airline') %></a></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<ul id="airline-lists" class="list-unstyled mview-list">
+			<%
+			rc = 0
+			schedule_layout_values["schedule_routes"].each do |route| 
+				route_type = route[:dep_country_code] != country_code || route[:arr_country_code] != country_code ? "int" : "dom"
+				rc+=1 %>
+				<li class="<%= rc>10 ? "hide showMore" : "" %>">
+					<div class="col-xs-3 no-padding ">
+						<a data-route="<%=route[:dep_airport_code]%>-<%= route[:arr_airport_code]%>-<%= route[:first_carrier_code] %>-<%= route_type %>"  data-languageType ="<%= I18n.locale.to_s%>" class="booking flight-schedule-booking">
+							<% if route[:cc_min_price].present? && route[:cc_min_price]!=0 %>
+							<%= t('flight_schedule.book_now_text_btn') %>
+							<% else %>
+							<%= t("airport.check_price") %>
+							<% end %>
+						</a>
+					</div>
+					<div class="airline">
+					<div class="col-xs-2 no-padding pad-10">
+						<span>
+							<% if route[:cc_min_price].present? && route[:cc_min_price]!=0 && country_code=='AE' %>
+								AED 
+							<% elsif route[:cc_min_price].present? && route[:cc_min_price]!=0 && country_code=='SA' %>
+								SAR
+							<% end %>
+							<%= route[:cc_min_price].present? ? route[:cc_min_price].to_i : "--NA--" %>
+						</span>
+					</div>
+
+						<div class="col-xs-4 no-padding pad-10">
+							<span><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%l:%M %p") %> → <%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%l:%M %p") %></span>
+							<span class="type"><%= dep_city_name %> <%= t('to')%>  <%= arr_city_name %></span>
+						</div>
+
+						<div class="col-xs-3 no-padding">
+							<span class="name mt-15">
+								<%= route[:first_carrier_code] %><%= route[:first_flight_no] %>/<%= route[:second_carrier_code] %><%= route[:second_flight_no] %>
+							</span>
+							<span class="name mt-5">
+								<% airline_name = link_to( t("airlines.#{route[:first_carrier_code]}"), "/ar/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route[:first_carrier_code]}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+								<%= airline_name %>
+							</span>
+						</div>
+						<div class="clearfix"></div>
+					</div><!--/airline-->
+				</li>
+				<% end %>
+				<% if schedule_layout_values["schedule_routes"].count>10 %>
+				<li class="more-link">
+					<a id="show_all_flights_mobile" href="#">عرض جميع جداول الرحلات الجوية</a>
+				</li>
+				<% end %>
+			</ul>
+		</div>

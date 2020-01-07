@@ -1,0 +1,2 @@
+class BhAirlineContent < ApplicationRecord
+end

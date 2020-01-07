@@ -1,0 +1,18 @@
+<h3>FAQs</h3><b>1.What is the refund policy at Jet Airways?</b>
+<p>If you have to make any changes or cancellations to your Jet Airways booking for a domestic flight then it should be done at least 1 hour prior to the departure of the flight.</p>
+<b>2.Is there any charge for reissuing a ticket?</b>
+<p>A re-issuance charge will be applicable if a ticket is reissued from a higher to lower fare, irrespective of any changes made in the sector of travel or class of travel.</p>
+<b>3.What is the cancellation charge?</b>
+<p>Cancellation charge for domestic flights is subject to the time limit of ticketing. If it is not met, then an amount of 25% on the basic fare will be charged. Documentation charges will also be levied when a ticket is processed for refund.</p>
+<b>4.What will be the mode of payment for refunds?</b>
+<p>Refunds will be done in the same method as you did the payment. For example, if you paid the money for the ticket in cash then the amount will be refunded in cash. If it is paid by credit card, then it will be processed and will be credited to the respective credit card. If you have paid with a debit card then the amount will be transferred to your respective bank account.</p>
+<b>5.What is the cancellation policy for e-tickets?</b>
+<p>In the case of e-tickets, you will be required to report to the ticketing counter. You can also change or cancel your e-ticket online through the ‘Manage Booking’ facility on the Jet Airways website.</p>   
+<b>6.How much time does it take to generate a refund?</b>
+<p>After the generation of the refund requests, the refund will be processed within 7 working days.</p>
+<b>7.Am I allowed to change the name on my ticket?</b>
+<p>Jet Airways does not permit change of names, so you will have to cancel the ticket and then book another one, in case you need to change the name.</p>
+<b>8.Is there a particular way to cancel my bookings?</b>
+<p>Cancellations can be made through the ‘Manage Booking’ option on the Jet Airways page or by sending an email to info@jetairways.com.</p>
+<b>9.Is there any time period for canceling a booking?</b>
+<p>Cancellation needs to be done 1 hour prior to the departure of the flight for domestic travelers and 3 hours prior to the departure for international flights.</p>

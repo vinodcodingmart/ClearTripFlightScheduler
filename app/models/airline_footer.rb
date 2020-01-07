@@ -1,0 +1,2 @@
+class AirlineFooter < ApplicationRecord
+end

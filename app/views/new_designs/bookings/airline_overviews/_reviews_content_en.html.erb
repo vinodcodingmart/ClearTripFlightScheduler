@@ -1,0 +1,113 @@
+<div class="reviews">
+  <div itemscope itemtype="http://schema.org/Product">
+   <div class="mview-review-header">
+    <span class="review-logo">
+      <img itemprop="image" src="<%= @assets_path %>/new_images/airlines/<%= @carrier_code %>.png" alt='<%= @carrier_name %>' />
+    </span>
+    <span class="review-names" itemprop="name">
+      <h2><%= @carrier_name %> Customer Reviews</h2>
+    </span>
+    <div class="mreview-toggle-btn visible-xs">
+      <i class="fa fa-caret-down"></i>
+    </div>
+  </div>
+  <div class="mreview-toggle-cnt">
+    <div class="review-aggregate" itemprop="aggregateRating"
+    itemscope itemtype="http://schema.org/AggregateRating">
+    Rated  <span class="average-rating"><span itemprop="ratingValue" >
+      <% if review_content[13].present? %>
+      <%= review_content[15].split(":")[1].to_f %>
+      <% else %>
+      <%= review_content[12].split(":")[1].to_f %>
+      <% end %>
+    </span>/5</span>
+    based on <span itemprop="reviewCount">24</span> customer reviews
+  </div>
+  <!-- </span> -->
+  <div class="mreview">
+    <div class="review-card">
+      Customer reviews:
+      <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+        <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+          <span id="review1" class="user-rating"></span>
+          <span itemprop="ratingValue"><%= review_content[1].split(":")[1].to_f %></span>/
+          <span itemprop="bestRating">5</span>stars
+        </div>
+        <span itemprop="description"><%= review_content[0] %>
+        </span> -
+        by <span itemprop="author" itemscope itemtype="http://schema.org/person">
+          <span itemprop="name"><%= review_content[2].split(":")[1].to_s %></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="mreview">
+    <div class="review-card">
+      <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+        <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+          <span id="review2" class="user-rating"></span>
+          <span itemprop="ratingValue"><%= review_content[4].split(":")[1].to_f %></span>/
+          <span itemprop="bestRating">5</span>stars
+        </div>
+        <span itemprop="description"><%= review_content[3] %>
+        </span> -
+        by <span itemprop="author" itemscope itemtype="http://schema.org/person">
+          <span itemprop="name"><%= review_content[5].split(":")[1].to_s %></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="mreview">
+    <div class="review-card">
+      <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+        <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+          <span id="review3" class="user-rating"></span>
+          <span itemprop="ratingValue"><%= review_content[7].split(":")[1].to_f %></span>/
+          <span itemprop="bestRating">5</span>stars
+        </div>
+        <span itemprop="description"><%= review_content[6] %>
+        </span> -
+        by <span itemprop="author" itemscope itemtype="http://schema.org/person">
+          <span itemprop="name"><%= review_content[8].split(":")[1].to_s %></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="mreview">
+    <div class="review-card">
+      <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+        <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+          <span id="review4" class="user-rating"></span>
+          <span itemprop="ratingValue"><%= review_content[10].split(":")[1].to_f %></span>/
+          <span itemprop="bestRating">5</span>stars
+        </div>
+        <span itemprop="description"><%= review_content[9] %>
+        </span> -
+        by <span itemprop="author" itemscope itemtype="http://schema.org/person">
+          <span itemprop="name"><%= review_content[11].split(":")[1].to_s %></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <% if review_content[13].present? %>
+  <div class="mreview">
+    <div class="review-card">
+      <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+        <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+          <span id="review5" class="user-rating"></span>
+          <span itemprop="ratingValue"><%= review_content[13].split(":")[1].to_f %></span>/
+          <span itemprop="bestRating">5</span>stars
+        </div>
+        <span itemprop="description"><%= review_content[12] %>
+        </span> -
+        by <span itemprop="author" itemscope itemtype="http://schema.org/person">
+          <span itemprop="name"><%= review_content[14].split(":")[1].to_s %></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="clearfix"></div>
+</div>
+</div>
+</div>

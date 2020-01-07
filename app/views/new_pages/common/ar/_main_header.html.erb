@@ -1,0 +1,43 @@
+<% case country_code
+    when "IN"
+      hotel_country = "india/"
+    when "AE"
+      hotel_country = "united-arab-emirates/"
+    when "SA"
+      hotel_country = "saudi-arabia/"
+    else
+      hotel_country = ""
+   end %>
+<section id="flights-nav">
+  <div class="container">
+    <div class="ctCol ctProducts mview-header">
+      <a class="ctBrand" href="/ar/flights">
+        <span class="cleartripLogo" title="Homepage">Home</span>
+      </a>
+      <ul class="productLinks hasProductIcons">
+        <li class="flightApp">
+          <a rel="bToolTip" Flights href="/ar/flights">
+            <span class="productIcon flights">Flights</span>
+          </a>
+        </li>
+        <li class="hotelApp">
+          <a rel="bToolTip" Hotels href="/hotels/<%= hotel_country %>">
+            <span class="productIcon hotels">Hotels</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="ctCol">
+      <ul class="list-inline language">
+        <li class="en first active">
+          <a href="<%= host %>/ar/<%= page_type %>/<%= flight_file_name %>" lang="ar">عربى</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="<%= host %>/<%= page_type %>/<%= flight_file_name %>" lang="en">English</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</section>

@@ -1,0 +1,45 @@
+<!-- clevertap event script -->
+	<script type="text/javascript">
+		var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+		clevertap.account.push({"id": "W8R-KK8-W74Z"});
+		clevertap.privacy.push({optOut: true}); 
+		clevertap.privacy.push({useIP: true}); 
+		 (function () {
+				 var wzrk = document.createElement('script');
+				 wzrk.type = 'text/javascript';
+				 wzrk.async = true;
+				 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+				 var s = document.getElementsByTagName('script')[0];
+				 s.parentNode.insertBefore(wzrk, s);
+		  })();
+
+	</script>
+	<% if @page_type == "flight-schedule"%>
+	<script>
+	 clevertap.event.push("SEO-Flights-schedule-CTA", {
+	  "Product name":"Flight-schedule",
+	 	"Search-widget-Button":"yes/na",
+	 	"Cheapest-fare-buttons":"yes/na",
+	 	"Calander-Section-CTA":"yes/na"
+	});
+	</script>
+	<% elsif @meta_page_type == "booking-overview"%>
+	<script>
+	 clevertap.event.push("SEO-Flights-schedule-CTA", {
+	  "Product name":"Flight-schedule",
+	 	"Search-widget-Button":"yes/na",
+	 	"Cheapest-fare-buttons":"yes/na",
+	 	"Calander-Section-CTA":"yes/na"
+	});
+	</script>
+	<% elsif @meta_page_type == ""%>
+		<script>
+	 clevertap.event.push("SEO-Flights-schedule-CTA", {
+	  "Product name":"Flight-schedule",
+	 	"Search-widget-Button":"yes/na",
+	 	"Cheapest-fare-buttons":"yes/na",
+	 	"Calander-Section-CTA":"yes/na"
+	});
+	</script>
+	<% end %>
+ <!-- End of clevertap  -->

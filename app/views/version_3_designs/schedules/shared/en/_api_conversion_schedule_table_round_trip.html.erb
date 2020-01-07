@@ -1,0 +1,218 @@
+<% application_helper = self.extend ApplicationHelper
+currency_code = application_helper.currency_code(@country_code)
+%>
+
+
+
+<div id="rwd-flights">
+  <div class="rwd-desk-lhs">
+    <div class="rwd-trip-info">
+      <span><%= dep_city_name %> → <%= arr_city_name %></span>
+      <span class="weak"><span id="result_dep_date">><%= Date.today.to_formatted_s(:short) %></span></span>
+    </div><!--/trip-info-->
+    <div class="desk-sorting">
+      <ul class="list-inline">
+        <li class="f-airline" data-row="">
+          <a href="javascript:void(0)">Airline</a>
+        </li>
+        <li class="f-timing" data-row="dep_time">
+          <a href="javascript:void(0)">Departure</a>
+        </li>
+        <li class="f-duration" data-row="duration">
+          <a href="javascript:void(0)">Duration</a>
+        </li>
+        <li class="f-price" data-row="route_total_fare">
+          <a href="javascript:void(0)" class="sortAsc">Price</a>
+        </li>
+      </ul>
+    </div>
+    <% onward_routes = routes.first["onward"] %>
+    <% onward_routes.each_with_index do |route,index|
+      route.stringify_keys
+      %>
+      <% route_type = route["no_of_stops"] == 0 ? "Non-Stop" : (route["no_of_stops"].to_s + " hop") %>
+      <% airline_name = route["carrier_codes"].first == "AI" ? "Air India" :  t("airlines.#{route["carrier_codes"].first}")
+      link = format_overview_link(airline_name)
+      %>
+      <% if !airline_name.include?("translation missing") && route["route_total_fare"].to_i > 0  %>
+      <% formated_carrier_name = route["carrier_codes"].first == "AI" ? "air-india" :  t("airlines.#{route["carrier_codes"].first}").downcase.gsub(" ",'-').gsub('--','-') %>
+      <div class="rwd-desk-flights-list <%='last' if index+1 == onward_routes.length %> <%= 'lhs-desk-selected' if index==0 %>" data-info=<%= route['unique_flight_key'] %>>
+        <ul class="list-inline">
+          <li>
+            <% if index == 0 %>
+            <input type="radio" checked id ="<%= index %>" name="onwrd_trip" value="<%= index %>">
+            <% else %>
+            <input type="radio"  id ="<%= index %>" name="onwrd_trip" value="<%= index %>">
+            <% end %>
+          </li>
+          <li class="airline">
+            <span class=" carrier-logo <%= formated_carrier_name %>"></span>
+          </li>
+          <li class="airline-routes">
+            <div class="t-blcok dept"><%= route["dep_time"] %></div>
+            <div class="t-blcok arr"><%= route["arr_time"] %></div>
+            <div class="clearfix"></div>
+            <div class="small-txt"><%#= airline_name %><%= route["flight_number"] %></div>
+          </li>
+          <li class="timing">
+            <span class="t-blcok duration"><%= route["duration"] %></span>
+            <span class="small-txt"><%= route_type %></span>
+          </li>
+          <li class="prices">
+            <span class="t-blcok"><i class="fa fa-inr"></i><%= route["route_total_fare_formatted"] %></span>
+          </li>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="rwd-desk-rhs">
+      <div class="rwd-trip-info">
+        <span><%= arr_city_name %> → <%= dep_city_name %></span>
+        <span class="weak"><span id="result_arr_date"><%= Date.today.to_formatted_s(:short) %></span></span>
+      </div><!--/trip-info-->
+      <div class="desk-sorting">
+        <ul class="list-inline">
+          <li class="f-airline" data-row="">
+            <a href="javascript:void(0)">Airline</a>
+          </li>
+          <li class="f-timing" data-row="dep_time">
+            <a href="javascript:void(0)">Departure</a>
+          </li>
+          <li class="f-duration" data-row="duration">
+            <a href="javascript:void(0)">Duration</a>
+          </li>
+          <li class="f-price" data-row="route_total_fare">
+            <a href="javascript:void(0)" class="sortAsc">Price</a>
+          </li>
+        </ul>
+      </div><!--desktop-sorting-->
+      <% rtn_routes = routes.first["return"] %>
+      <% rtn_routes.each_with_index do |route,index|
+        route.stringify_keys
+        %>
+        <% route_type = route["no_of_stops"] == 0 ? "Non-Stop" : (route["no_of_stops"].to_s + " hop") %>
+
+        <% airline_name = route["carrier_codes"].first == "AI" ? "Air India" :  t("airlines.#{route["carrier_codes"].first}")
+        link = format_overview_link(airline_name)
+        %>
+        <% if !airline_name.include?("translation missing") &&  route["route_total_fare"].to_i > 0  %>
+        <% formated_carrier_name = route["carrier_codes"].first == "AI" ? "air-india" :  t("airlines.#{route["carrier_codes"].first}").downcase.gsub(" ",'-').gsub('--','-') %>
+
+        <div class="rwd-desk-flights-list <%='last' if index+1 == rtn_routes.length %> <%= 'rhs-desk-selected' if index==0 %>" data-info=<%= route['unique_flight_key'] %>>
+          <ul class="list-inline">
+            <li>
+              <% if index == 0 %>
+              <input type="radio" checked id ="<%= index %>" name="return_trip" value="<%= index %>">
+              <% else %>
+              <input type="radio" id ="<%= index %>" name="return_trip" value="<%= index %>">
+              <% end %>
+            </li>
+            <li class="airline">
+              <span class=" carrier-logo <%= formated_carrier_name %>"></span>
+            </li>
+            <li class="airline-routes">
+              <div class="t-blcok dept"><%= route["dep_time"] %></div>
+              <div class="t-blcok arr"><%= route["arr_time"] %></div>
+              <div class="clearfix"></div>
+              <div class="small-txt"><%#= airline_name %><%= route["flight_number"] %></div>
+            </li>
+            <li class="timing">
+              <span class="t-blcok duration"><%= route["duration"] %></span>
+              <span class="small-txt"><%= route_type %></span>
+            </li>
+            <li class="prices">
+              <span class="t-blcok"><i class="fa fa-inr"></i><%= route["route_total_fare_formatted"] %></span>
+            </li>
+          </ul>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    </div><!--/rwd-flights-->    
+
+    <!-- handlebar template start here -->
+    <script type="text/x-handlebars-template" id="fsRndTripRouteCardTpl">
+      <div class="rwd-desk-flights-list bubble {{selectedcls}} {{is_last}}" data-info={{unique_flight_key}} >
+        <ul class="list-inline" data-depdate={{dep_date}}-{{dep_time}} data-arrdate={{arr_date}}-{{arr_time}}>
+          <li>
+            <input type="radio" id={{index}} name="{{trip}}" value={{index}}>
+          </li>
+          <li class="airline">
+            <span class=" carrier-logo {{formated_airline_name}}"></span>
+          </li>
+          <li class="airline-routes">
+            <div class="t-blcok dept">{{dep_time}}</div>
+            <div class="t-blcok arr">{{arr_time}}</div>
+            <div class="clearfix"></div>
+            <div class="small-txt">{{dep_flight_key_format}}</div>
+          </li>
+          <li class="timing">
+            <span class="t-blcok duration">{{duration}}</span>
+            <span class="small-txt">
+              {{#iff no_of_stops '==' 1}} 
+              {{no_of_stops}} Stop
+              {{else iff no_of_stops '>' 1 }}
+              {{no_of_stops}} Stops
+              {{else}}
+              Non Stop
+              {{/iff}}
+            </span>
+          </li>
+          <li class="prices">
+            <span class="t-blcok"><i class="fa fa-inr"></i>{{route_total_fare_formatted}}</span>
+          </li>
+        </ul>
+      </div>
+    </script>
+    <!-- End Handlebars -->
+    <!--  <li>
+        <div class="airlines-list">
+          <input type="checkbox" name="airline" id="{{airline_code}}">
+          <label for="{{airline_code}}"><div class="R-airline-logo "><span class="carrier-logo {{formated_airline}}"></span></div>{{airline_name}}</label>
+        </div>
+        <div class="clearfix"></div>
+      </li>
+      <li> -->
+
+    <script type="text/x-handlebars-template" id="available-airlines">
+       <li>
+        <div class="airlines-list">
+          <label class="custom-checkbox">
+            <input type="checkbox" name="airline" id="{{airline_code}}">
+            <span class="checkmark"></span>
+            <span ><div class="R-airline-logo "><span class="carrier-logo {{formated_airline}}"></span></div> {{airline_name}}</span>
+          </label>
+        </div>
+        <div class="clearfix"></div>
+      </li>
+    </script>
+    <script type="text/x-handlebars-template" id="rndDeskSelectedCrd">
+      <div class="cta-depart">
+      <a href="/flight-booking/{{link}}">
+        <span class="carrier-logo {{formated_airline_name}}"></span>
+      </a>
+    </div>
+    <ul class="list-inline depart-airport-details"  data-key={{unique_flight_key}} data-price={{route_total_fare}}  data-depdate={{dep_date}}-{{dep_time}} data-arrdate={{arr_date}}-{{arr_time}} >
+      <li><span class="ac1">{{dep_city_code}}</span> → <span class="ac2">{{arr_city_code}}</span> <span class="air-num">{{formated_airline_name}} <small>{{flight_number}}</small></span></li>
+    </ul>
+    <ul  class="list-inline depart-tinfo">
+      <li>{{dep_time}} </li>
+      <li>-</li>
+      <li>{{arr_time}}</li>
+      <li>{{duration}}</li>
+      <li>-</li>
+      <li>{{#iff no_of_stops '==' 1}} 
+       {{no_of_stops}} Stop
+       {{else iff no_of_stops '>' 1 }}
+       {{no_of_stops}} Stops
+       {{else}}
+       Non Stop
+     {{/iff}}</li>
+   </ul>
+ </script>
+ <div class='emptyCardRndtriprhs' style="display: none;"><h2>No flights to show based on the last filters</h2><ul class='list-inline'><li><button type='button ct-btn' class='resetFilter'>Reset filter</button></li></ul></div>
+ <div class='emptyCardRndtriplhs' style="display: none;"><h2>No flights to show based on the last filters</h2><ul class='list-inline'><li><button type='button' class='resetFilter ct-btn'>Reset filter</button></li></ul></div>
+
+

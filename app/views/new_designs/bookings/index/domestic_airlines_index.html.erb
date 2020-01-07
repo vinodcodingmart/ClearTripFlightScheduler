@@ -1,0 +1,109 @@
+<% use_helper = self.extend ApplicationHelper %>
+  <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%= @assets_path %>/stylesheets/ct_style.css"/>
+    <link rel="stylesheet" href="<%= @assets_path %>/stylesheets/jquery-ui.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="<%= @assets_path %>/javascripts/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="<%= @assets_path %>/javascripts/date_format.js"></script>
+    <script type="text/javascript" src="<%= @assets_path %>/javascripts/ct_custom.js"></script>
+    <script type="text/javascript" src="<%= @assets_path %>/javascripts/banner.js"></script>
+  </head>
+  <body>
+  <%= render partial: "new_designs/bookings/shared/en/main_header", locals: { assets_path: @assets_path, country_code: country_code, host: @host_name, flight_file_name: flight_file_name, page_type: 'flight-booking', application_processor: application_processor} %>
+  <div class="clearfix"></div>
+  <section id="content">
+    <div class="container-fluid">
+      <ul class="list-inline bread-crumb">
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="first">
+          <a href="/flights" title="<%= t('breadcrumb.cheap_flights')%>" itemprop="url"><span itemprop="title"><%= t('breadcrumb.flights')%></span></a>
+        </li>
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+          <span><%= t('breadcrumb.domestic_airlines')%></span>
+        </li>
+      </ul>
+      <h1><%= t('index_brand.dom_heading', country: @country_code) %> </h1>
+       <%= render partial: "common/search_widget"%>
+      <div class="col-lg-9 col-md-9 col-sm-12 mobile-view pad-lzero" id="flight-schedule">
+        <div class="list-box" id="airline-page">
+          <div class="content-desc">
+
+          </div><!--content-desc-->
+          <div class="Domestic-airlines">
+            <ul class="list-unstyled airline-lists">
+              <% airline_codes.each do |ac| %>
+                <% airline_name = t("airlines.#{ac}") %>
+              <li>
+                <div class="col-sm-12 col-xs-12">
+                  <div class="airline-desc">
+                    <h2><%= airline_name %></h2>
+                    <p class="truncate">
+                      <% key = "#{country_code.downcase}_#{ac}_content"
+                      if I18n.t("airline_brand_content.#{key}").index("translation missing").nil?
+                        content = I18n.t("airline_brand_content.#{key}") rescue ""
+                      else
+                        content = ""
+                      end %>
+
+                      <% if content.present? %>
+                        <% str1 = "<h2>#{airline_name} Online Booking</h2>"
+                          str2 = "<h2>#{airline_name}  Booking</h2>"
+                          str3 = "<h2>#{airline_name} Airlines Booking</h2>"
+                        if content[0,250].include?(str1)
+                          content.gsub!(str1,'')
+                        elsif content[0,250].include?(str2)
+                          content.gsub!(str2,'')
+                        elsif content[0,250].include?(str3)
+                          content.gsub!(str3,'')
+                        end%>
+
+                      <%= raw content[0,250] + "..."  %>
+                      <% end %>
+                    </p>
+                    <ul class="list-inline airline-status">
+
+                      <li>
+                        <%= link_to format_airline_name(airline_name) ,"/flight-booking/#{url_escape(format_overview_link(airline_name))}.html" %>
+                        <span> |</span>
+                      </li>
+                      <li>
+                        <%= link_to t('brand.pnr_status',airline_name:  airline_name) ,"/flight-booking/#{url_escape(format_overview_link(airline_name))}-flight-pnr-status.html" %>
+                        <span> |</span>
+                      </li>
+                      <li> <%= link_to t('brand.web_check_in',airline_name:  airline_name) , "/flight-booking/#{url_escape(format_overview_link(airline_name))}-web-check-in.html" %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+              <% end %>
+            </ul>
+          </div><!--/Domestic-airlines-->
+          <div class="clearfix"></div>
+          <!-- <div class="top_routes">
+            <%# if pages > 1 %>
+            <div class="text-center linklist-btn">
+              <%# if page_number == 1 %>
+              <a href='' ><%#= t('prev') %></a> | <a href='<%#= "/flight-booking/#{locale}#{next_url}" %>' ><%#= t('next') %></a>
+              <%# elsif page_number == pages %>
+              <a href='<%#= "/flight-booking/#{locale}#{prev_url}" %>' ><%#= t('prev') %></a> | <a href='' ><%#= t('next') %></a>
+              <%# else %>
+              <a href='<%#= "/flight-booking/#{locale}#{prev_url}" %>' ><%#= t('prev') %></a> | <a href='<%#= "/flight-booking/#{locale}#{next_url}" %>' ><%#= t('next') %></a>
+              <%# end %>
+            </div>
+            <%# end %>
+          </div> -->
+        </div><!--list-box-->
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </section><!--/contnet-->
+
+
+</body>
+</html>

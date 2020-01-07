@@ -1,0 +1,18 @@
+<% if routes.present? && !routes.nil? %>
+  <div class="white-card">
+    <h2><%= t("brand.top_#{section}_flight_schedule_title") %></h2>
+    <ul class="list-unstyled flight-routes">
+      <% routes.uniq.each do |route| %>
+        <li>
+          <% if I18n.locale.to_s == "en"
+              link = link_to( "#{route['dep_city_name']} to #{route['arr_city_name']} Flights", "/flight-schedule/" + "#{route['schedule_route_url']}" + "-flights.html") 
+             else
+              link = link_to( "#{t('brand.flights')} #{route[:dep_city_name_ar]} #{t('to')} #{route[:arr_city_name_ar]}", "/ar/flight-schedule/" + "#{route['schedule_route_url']}" + "-flights.html")
+             end %>
+          <%= link %>
+          <div class="clearfix"></div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

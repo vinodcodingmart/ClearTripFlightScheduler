@@ -1,0 +1,60 @@
+<div class="airport-outer">
+	<div class="col-sm-5 col-xs-12 no-padding">
+		<div class="airport-details">
+			<h2><%= dep_city_name %> <%= I18n.t('airport.airport_details') %> </h2>
+			<ul class="list-unstyled ">
+				<li>
+					<label><%= I18n.t('airport.name') %><span class='pull-right'>:</span></label>
+					<span><%= airport_details["dep_airport_name_ar"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.address') %> <span class='pull-right'>:</span></label>
+					<span><%= airport_details["dep_airport_address_ar"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.phone') %> <span class='pull-right'>:</span></label>
+					<span><%= airport_details["dep_airport_phone"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.email') %><span class='pull-right'>:</span></label>
+					<span><%= airport_details["dep_airport_email"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.website') %> <span class='pull-right'>:</span></label>
+					<span><a rel="nofollow" href="<%= airport_details["dep_airport_website"] %>" target="_blank"><%= airport_details["dep_airport_website"] %></a></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-sm-5 no-padding col-sm-offset-1 col-xs-12">
+		<div class="airport-details">
+			<h2><%= arr_city_name %> <%= I18n.t('airport.airport_details') %></h2>
+			<ul class="list-unstyled ">
+				<li>
+					<label><%= I18n.t('airport.name') %> <span class='pull-right'>:</span></label>
+					<span><%= airport_details["arr_airport_name_ar"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.address') %> <span class='pull-right'>:</span></label>
+					<span><%= airport_details["arr_airport_address_ar"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.phone') %> <span class='pull-right'>:</span></label>
+					<span><%= airport_details["arr_airport_phone"] %></span>
+				</li>
+				<li>
+					<label><%= I18n.t('airport.email') %> <span class='pull-right'>:</span></label>
+					<span><%= airport_details["arr_airport_email"] %></span>
+				</li>
+				<li>
+					<label> <%= I18n.t('airport.website') %><span class='pull-right'>:</span></label>
+					<span>
+						<a rel="nofollow" href="<%= airport_details["arr_airport_website"] %>" target="_blank">
+							<%= airport_details["arr_airport_website"] %></a>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>

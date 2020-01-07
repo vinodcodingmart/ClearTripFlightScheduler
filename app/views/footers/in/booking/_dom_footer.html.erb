@@ -1,0 +1,44 @@
+  
+<footer>
+	<div class="container-fluid">
+	  <div class="sixteen columns alpha">
+	    <ul class="footerlinkssmall list-unstyled">
+	      <% title = section.include?("dom") ? "Domestic Airlines:" : "International Airlines:" %>
+	        <li><%= title %></li>
+	        <% top_airlines.each do |cc| %>
+	          <li> 
+	            <% airline_name = link_to( t("airlines.#{cc}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{cc}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+	            <%= airline_name %>
+	          </li>
+	        <% end %>
+	    </ul>
+	    <ul class="footerlinkssmall list-unstyled">
+	      <li>Domestic Flights : </li>
+	      <li class="first"> <a href="/flight-schedule/mumbai-new-delhi-flights.html" title="Mumbai New Delhi Flights">Mumbai New Delhi Flights</a> </li>
+        <li> <a href="/flight-schedule/pune-new-delhi-flights.html" title="Pune New Delhi Flights">Pune New Delhi Flights</a></li>
+        <li> <a href="/flight-schedule/bangalore-new-delhi-flights.html" title="Bangalore New Delhi Flights"> Bangalore New Delhi Flights</a> </li>
+        <li> <a href="/flight-schedule/mumbai-bangalore-flights.html" title="Mumbai Bangalore Flights">Mumbai Bangalore Flights</a> </li>
+        <li> <a href="/flight-schedule/mumbai-chennai-flights.html" title="Mumbai Chennai Flights">Mumbai Chennai Flights</a></li>
+        <li> <a href="/flight-schedule/pune-bangalore-flights.html" title="Pune Bangalore Flights">Pune Bangalore Flights</a></li>
+	    </ul>
+	  
+	    <ul class="footerlinkssmall list-unstyled">
+	      <li>Other Tools :</li>
+	      <li class="first"><a href="https://www.cleartrip.com/flights" title="Cheap Flights">Cheap Flights</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/flights" title="Flights">Flights</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/flight-booking/domestic-airlines.html" title="Flight Booking">Flight Booking</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/flight-tickets/cheap-flight-air-tickets-domestic.html" title="Cheap Air Tickets">Cheap Air Tickets</a></li>	
+	      <li class="first"><a href="https://www.cleartrip.com/flight-schedule/flight-schedules-domestic.html" title="Flight Tickets">Flight Tickets</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/flight-booking/domestic-airlines.html" title="Domestic Airlines">Domestic Airlines</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/flight-tickets/cheap-flight-air-tickets-international.html" title="International Air Tickets">International Air Tickets</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/flight-schedule/flight-schedules-international.html" title="International Flights">International Flights</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/flight-booking/international-airlines.html" title="International Airlines">International Airlines</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/hotels/india/" title="India Hotels">Hotels In India </a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/trains" title="IRCTC Railway Reservation"> IRCTC Railway Reservation </a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/trains/pnr" title="IRCTC Railway PNR Status">IRCTC Railway PNR Status</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/tourism/train/tatkal-booking.html" title="IRCTC Tatkal booking">IRCTC Tatkal booking</a></li>
+	      <li class="first"><a href="https://www.cleartrip.com/trains/calendar" title="IRCTC Seat Availability">IRCTC Seat Availability</a></li>
+	    </ul>
+	  </div>
+	</div>
+</footer>

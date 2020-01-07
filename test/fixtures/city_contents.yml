@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_code: MyString
+  city_name: MyString
+  city_name_ar: MyString
+  city_name_hi: MyString
+  content_in_en: MyText
+  content_ae_en: MyText
+  content_sa_en: MyText
+  content_bh_en: MyText
+  content_kw_en: MyText
+  content_qa_en: MyText
+  content_om_en: MyText
+  content_in_hi: MyText
+  content_ae_ar: MyText
+  content_sa_ar: MyText
+  content_bh_ar: MyText
+  content_kw_ar: MyText
+  content_qa_ar: MyText
+  content_om_ar: MyText
+
+two:
+  city_code: MyString
+  city_name: MyString
+  city_name_ar: MyString
+  city_name_hi: MyString
+  content_in_en: MyText
+  content_ae_en: MyText
+  content_sa_en: MyText
+  content_bh_en: MyText
+  content_kw_en: MyText
+  content_qa_en: MyText
+  content_om_en: MyText
+  content_in_hi: MyText
+  content_ae_ar: MyText
+  content_sa_ar: MyText
+  content_bh_ar: MyText
+  content_kw_ar: MyText
+  content_qa_ar: MyText
+  content_om_ar: MyText

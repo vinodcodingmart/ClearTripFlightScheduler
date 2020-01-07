@@ -1,0 +1,106 @@
+
+<% use_helper = self.extend ApplicationHelper %>
+
+<section id="flights-nav">
+  <div class="container-fluid">
+		<div class="ctCol ctProducts mview-header">
+			<a class="ctBrand" href="/">
+				<span class="cleartripLogo" title="Homepage">Home</span>
+			</a>
+			<ul class="productLinks hasProductIcons">
+				<li class="flightApp">
+					<a rel="bToolTip" href="/flights">
+						<span class="productIcon flights">Flights</span>
+					</a>
+				</li>
+				<li class="hotelApp">
+					<a rel="bToolTip" href="/hotels">
+						<span class="productIcon hotels"> Hotels</span>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="ctCol ctCenter mview-center">&nbsp;</div>
+  </div>
+	<div class="clearfix"></div>
+</section>
+			<section id="content">
+				<div class="container-fluid">
+					<ol itemscope itemtype="https://schema.org/BreadcrumbList" class="list-inline bread-crumb no-padding">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a  itemprop="item" href="/flights" title="<%= t('flight_schedule.breadcrumb_flight_title') %>"><span  itemprop="name"><%= t('breadcrumb.flights') %></span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </li>
+
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a  itemprop="item"  href="<%= use_helper.host_name(@country_code)%>/flight-tickets/cheap-flight-air-tickets-domestic.html" title="<%= t('breadcrumb.intl_air_tickets') %>" itemprop="url">
+              <span itemprop="name">
+                <%= t('flight_ticket.dom_air_tickets') %></span>
+              </a>
+              <meta itemprop="position" content="2" />
+          </li>
+        </ol>
+					<h1><%= t('index.domestic_flight_schedule')%></h1>
+					<%= render :partial=>"common/search_widget_ar" %>
+
+			<div class="col-lg-9 col-md-9 col-sm-12 mobile-view pad-lzero">
+				<div class="list-box">
+					<% if pagination[:current_page_no] == 0 %>
+						<% if popular_routes.present? %>
+							<%= render :partial=>"schedules/index/shared/ar/ar_schedule_index_table",:locals=>{:section=>@section, :consolidated_routes=>popular_routes} %>
+						<% end %>
+						<div class="content-desc">
+							<%= render partial: "schedules/index/ar/contents/#{@country_code.downcase}_#{@language.downcase}_#{@section}_index_content" %>
+						</div><!--content-desc-->
+					<% end %>
+					<% if pagination[:routes].present? %>
+            <div class="content-desc">
+              <h2><%= t("index.top_dom_schedules") %></h2>
+              <%= render :partial=>"tickets/index/shared/ar/more_top_routes_ar", locals: { top_routes: pagination[:routes] } %>
+              <% if pagination[:total_pages]  > 1 %>
+                <div class="text-center linklist-btn">
+                  <% if pagination[:current_page_no] == 0 %>
+                    <a class="no-link" ><%= t('prev') %></a> | <a rel="next" href='<%= "/flight-tickets/#{pagination[:next_url]}" %>' ><%= t('next') %></a>
+                  <% elsif pagination[:current_page_no] >= pagination[:total_pages] %>
+                    <a rel="prev" href='<%= "/flight-tickets/#{pagination[:prev_url]}" %>' ><%= t('prev') %></a> | <a class="no-link" ><%= t('next') %></a>
+                  <% else %>
+                    <a rel="prev" href='<%= "/flight-tickets/#{pagination[:prev_url]}" %>' ><%= t('prev') %></a> | <a rel="next" href='<%= "/flight-tickets/#{pagination[:next_url]}" %>' ><%= t('next') %></a>
+                  <% end%>
+                </div>
+                <% end %>
+              <div class="clearfix"></div>
+            </div>
+          <% end %>
+				</div>
+			</div>
+			<div id="Rside-bar">
+
+				<div class="col-lg-3 col-md-3 col-sm-12 side-bar pad-rzero">
+					<div class="blocks banner-section">
+						<div id="banner">
+							<a target="_blank"><img></a>
+						</div>
+					</div>
+					<% if rhs_top_airlines[:dom_airlines].present? %>
+						<%= render partial: "schedules/index/shared/ar/rhs_top_airlines",locals: {top_airlines: rhs_top_airlines[:dom_airlines]} %>
+					<% end %>
+					<% if rhs_top_routes.present? && !rhs_top_routes.empty? %>
+       			<%= render :partial=> "tickets/index/shared/ar/rhs_top_routes_ar",locals: {top_sectors: rhs_top_routes} %>
+       		<% end %>
+       		<%= render :partial=> "schedules/index/shared/ar/rhs_top_airports",locals: {top_airports: rhs_top_airports["dom_airports"]} %>
+          <div class="blocks banner-section">
+            <%= render :partial=>"common/banner",:locals=>{:country_code=>@country_code, use_helper: use_helper} %>
+          </div>
+				</div>
+			</div><!--/Rside-bar-->
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</section><!--/contnet-->
+		<div id="footer_container">
+			<div id="footer">
+				<%= render partial: "footers/#{@country_code.downcase}/schedule/index/#{@country_code.downcase}_#{@language.downcase}_#{@section}_footer"%>
+			</div>
+		</div>

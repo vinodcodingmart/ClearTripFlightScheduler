@@ -1,0 +1,2 @@
+class AeFromToContent < ApplicationRecord
+end

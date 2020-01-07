@@ -1,0 +1,166 @@
+<% application_helper = self.extend ApplicationHelper
+currency_code = application_helper.currency_code(@country_code)%>
+<% if schedule_layout_values.present?%>
+<div id="flight-info">
+	<div class="tab-content">
+		<div id="RI" class="tab-pane fade in active">
+			<div class="airline-info">
+				<h3><%= "Information of #{dep_city_name} #{arr_city_name} Flight" %></h3>
+				<table class="airline-info-table">
+					<%if schedule_layout_values["distance"] %>
+					<tr>
+						<td>Aerial distance</td>
+						<td> <%= schedule_layout_values["distance"] %> KM </td>
+					</tr>
+					<%end%>
+					<tr>
+						<td><%= "Total flights from #{dep_city_name} to #{arr_city_name} in a week"%> </td>
+						<td> <%= schedule_layout_values["weekly_flights_count"] %> flights </td>
+					</tr>
+					<tr>
+						<td>First Flight</td>
+						<td> <%="#{schedule_layout_values["first_dep_airline"]} #{schedule_layout_values["first_dep_airline_no"]} , departs at #{schedule_layout_values["first_dep_time"]}"%> </td>
+					</tr>
+					<tr>
+						<td>Last Flight</td>
+						<td> <%= "#{schedule_layout_values["last_dep_airline"]} #{schedule_layout_values["last_dep_airline_no"]} , departs at #{schedule_layout_values["last_dep_time"]}" %> </td>
+					</tr>
+					<%if schedule_layout_values["route_min_price"].to_i > 0 %>
+					<tr>
+            <td><%="Cheapest flights from #{dep_city_name} to #{arr_city_name}"%></td>
+            <td> <%= currency_code(@country_code)%> <%= schedule_layout_values["route_min_price"] %>*</td>
+					</tr>
+					<% end %>
+          <tr>
+            <td><%= "Popular Airlines from #{dep_city_name} to #{arr_city_name}" %></td>
+            <td><%= schedule_layout_values["operational_airlines"] %></td>
+          </tr>
+          <% if schedule_layout_values["min_duration"].present? %>
+            <tr>
+              <td><%="Shortest Time of flights from #{dep_city_name} to #{arr_city_name}"%></td>
+              <td><%= schedule_layout_values["min_duration"] %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td> <%= "Airport codes flights from #{dep_city_name} to #{arr_city_name}" %></td>
+            <td> <%= "#{dep_city_name}-#{schedule_layout_values["dep_airport_code"]},#{arr_city_name}-#{schedule_layout_values["arr_airport_code"]}"%></td>
+          </tr>
+          <% if schedule_layout_values["max_duration"].present? %>
+          <tr>
+            <td><%= "Time of #{dep_city_name} to #{arr_city_name} flights"%> </td>
+            <td><%= "#{schedule_layout_values["max_duration"]}" %></td>
+          </tr>
+          <% end %>
+				</table>
+			</div>
+		</div>
+		<div id="CF" class="tab-pane fade ">
+			<% if schedule_layout_values["min30"].present? || schedule_layout_values["min30"].present? %>
+			<div class="airline-info">
+				<h3> <%= "#{dep_city_name} #{arr_city_name} Cheap Flights" %> </h3>
+				<table class="fare-table" width="100%">
+					<tr>
+						<th><%="#{dep_city_name} #{arr_city_name} Cheap Flights"%></th>
+						<th>Fare INR</th>
+						<th>Airlines Name</th>
+						<th>Date of journey</th>
+						<th>Timings</th>
+						<th></th>
+					</tr>
+					<% if schedule_layout_values["min30"].present? %>
+					<tr>
+						<% dep_time_30 = Time.parse(schedule_layout_values["min30"]["dt"]).strftime("%I:%m %p") %>
+						<% arr_time_30 = Time.parse(schedule_layout_values["min30"]["at"]).strftime("%I:%m %p") %>
+						<% al30 = schedule_layout_values["min30"]["al"] %>
+						<% dep_date_30= schedule_layout_values["min30"]["ad"]%>
+						<td>Cheapest Fare within 30 days</td>
+						<td>₹<%= schedule_layout_values["min30"]["pr"].to_i %>*</td>
+						<td><%= schedule_layout_values["min30"]["aln"] %></td>
+						<td><%= schedule_layout_values["min30"]["ad"] %></td>
+						<td><%= "#{dep_time_30}-#{arr_time_30}" %></td>
+						  <td> <a href="/flights/results?from=<%=schedule_layout_values["dep_airport_code"]%>&to=<%=schedule_layout_values["arr_airport_code"]%>&depart_date=<%=dep_date_30%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=al30%>" class="booking-btn link"> Book Now</td>
+						</tr>
+						<% end %>
+						<% if schedule_layout_values["min90"].present? %>
+							<tr>
+								<% dep_time_90 = Time.parse(schedule_layout_values["min90"]["dt"]).strftime("%I:%m %p") %>
+								<% arr_time_90 = Time.parse(schedule_layout_values["min90"]["at"]).strftime("%I:%m %p") %>
+								<% al90 = schedule_layout_values["min90"]["al"] %>
+								<% dep_date_90= schedule_layout_values["min90"]["ad"]%>
+								<td> Cheapest Fare within 90 Days </td>
+								<td><%= currency_code %><%= schedule_layout_values["min90"]["pr"].to_i %>*</td>
+								<td><%= schedule_layout_values["min90"]["aln"] %></td>
+								<td><%= schedule_layout_values["min90"]["ad"] %></td>
+								<td><%= "#{dep_time_90}-#{arr_time_90}" %></td>
+								<td> <a href="/flights/results?from=<%=schedule_layout_values["dep_airport_code"]%>&to=<%=schedule_layout_values["arr_airport_code"]%>&depart_date=<%=dep_date_90%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=al90%>" class="booking-btn link"> Book Now </td>
+							</tr>
+							<tr>
+								<td>Lowest Fare to Travel</td>
+								<td><%= currency_code %><%= schedule_layout_values["min90"]["pr"].to_i %>*</td>
+								<td><%= schedule_layout_values["min90"]["aln"] %></td>
+								<td><%= schedule_layout_values["min90"]["ad"] %></td>
+								<td><%= "#{dep_time_90}-#{arr_time_90}" %></td>
+								<td> <a href="/flights/results?from=<%=schedule_layout_values["dep_airport_code"]%>&to=<%=schedule_layout_values["arr_airport_code"]%>&depart_date=<%=dep_date_90%>&adults=1&childs=0&infants=0&page=loaded&airline=<%=al90%>" class="booking-btn link"> Book Now </td>
+							</tr>
+						<% end %>
+					</table>
+						</div>
+						<% end%>
+					</div>
+					<div id="OI" class="tab-pane fade">
+						<% if schedule_layout_values["flight_timings"].present? %>
+						<div class="airline-info">
+							<h3><%=dep_city_name %> <%=arr_city_name%> Flights Timings & Other Info</h3>
+							<table class="other-info">
+								<tr>
+									<th>Flight timings</th>
+									<% schedule_layout_values["flight_timings"].each do |val| %>
+									<th> <%= val[1]["aln"] %></th>
+									<% end %>
+								</tr>
+								<tr>
+
+									<td>Early Morning (12 AM to 8 AM)</td>
+									<% schedule_layout_values["flight_timings"].each do |val| %>
+									<td> <%= val[1]["emorn"] %></td>
+									<% end %>
+								</tr>
+								<tr>
+
+									<td>Morning ( 8 AM to 12 PM)</td>
+									<% schedule_layout_values["flight_timings"].each do |val| %>
+									<td> <%= val[1]["morn"] %></td>
+									<% end %>
+								</tr>
+								<tr>
+
+									<td>After Noon ( 12 PM to 4 PM)</td>
+									<% schedule_layout_values["flight_timings"].each do |val| %>
+									<td> <%= val[1]["noon"] %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<td>Evening ( 4 PM to 8 PM)</td>
+									<% schedule_layout_values["flight_timings"].each do |val| %>
+									<td> <%= val[1]["even"] %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<td>Night ( 8 PM to 12 AM)</td>
+									<% schedule_layout_values["flight_timings"].each do |val| %>
+									<td> <%= val[1]["night"] %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<td>Baggage Details ( Check in )</td>
+									<% schedule_layout_values["flight_timings"].each do |val| %>
+									<td> 15 kg's </td>
+									<% end %>
+								</tr>
+							</table>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<% end %>

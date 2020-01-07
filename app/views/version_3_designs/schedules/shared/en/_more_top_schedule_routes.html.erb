@@ -1,0 +1,55 @@
+<% if flights_dep.present? && !flights_dep.nil? %>
+<div class="more-flights">
+	<div class="mview-toggle-header depFlights">
+		<h2>
+			<% if @country_code == "IN" %>
+			<%= "Most popular routes from #{dep_city_name}" %>
+			<% else %>
+			<%= t('flight_schedule.more_flights_from')%> <%= dep_city_name %>
+			<% end %>
+		</h2>
+		<div class="mview-mf-toggle-btn visible-xs ">
+			<i class="fa fa-caret-down"></i>
+		</div>
+	</div><!--/mview-toggle-header-->
+
+	<div class="mview-mf-toggle depFlightsToggle">
+		<ul class="list-inline">
+			<% flights_dep.each do |route|%>
+			<li><a href="/flight-schedule/<%= route["url"] %>" title="<%= route["dep_city_name_en"] %> <%= route["arr_city_name_en"] %> Flights"><%= dep_city_name %> <%= route["arr_city_name_en"] %> Flights</a></li>
+			<% end %>
+		</ul>
+		<div class="clearfix"></div>
+	</div><!--mview-mf-toggle-->
+
+		<!-- <p class="more-link">
+		 	<a href="/flight-schedule/flights-from-<%#=url_escape(dep_city_name)%>.html" title="More Flights From <%#= dep_city_name%>"><%#= I18n.t('flight_schedule.more_flights_from')%> <%#= dep_city_name%></a>
+		 </p> -->
+		</div>
+		<% end %>
+		<% if flights_arr.present? && !flights_arr.nil? %>
+		<div class="more-flights">
+			<div class="mview-toggle-header arrFlights">
+				<h2>
+					<%= t('flight_schedule.more_flights_to')%> <%= arr_city_name %>
+				</h2>
+				<div class="mview-mf-toggle-btn visible-xs ">
+					<i class="fa fa-caret-down"></i>
+				</div>
+			</div>
+			<div class="mview-mf-toggle arrFlightsToggle ">
+				<ul class="list-inline">
+					<% flights_arr.each do |route|%>
+					<li>
+						<a href="/flight-schedule/<%= route["url"] %>" title="<%= route["dep_city_name_en"] %> <%= route["arr_city_name_en"] %> Flights"><%= route["dep_city_name_en"].titleize %> <%= arr_city_name %> Flights</a>
+					</li>
+					<% end %>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		<!-- <p class="more-link">
+			 <a href#="/flight-schedule/flights-to-<%#=use_helper.url_escape(arr_city_name)%>.html" title="More Flights To <%= arr_city_name%>"><%#= I18n.t('flight_schedule.more_flights_to')%> <%#= arr_city_name %></a>
+			</p> -->
+		</div>
+		<% end %>
+		

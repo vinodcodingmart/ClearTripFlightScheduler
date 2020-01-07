@@ -1,0 +1,64 @@
+<%
+   if I18n.locale.to_s == 'en' 
+    lang = "" 
+   else
+    lang = "/#{I18n.locale.to_s}" 
+   end %>
+<div class="Domestic-airlines">
+  <ul class="list-unstyled airline-lists">
+    <% airline_codes.each do |ac| %>
+      <% airline_name = t("airlines.#{ac}") %>
+      <li>
+        <div class="col-sm-12 col-xs-12">
+          <div class="airline-desc">
+            <h2><%= airline_name %></h2>
+            <p class="truncate">
+              <% key = "#{country_code.downcase}_#{ac.upcase}_content"
+            if I18n.t("airline_index_content.#{key}").index("translation missing").nil?
+              content = I18n.t("airline_index_content.#{key}") rescue ""
+            else
+              content = ""
+            end %>
+              <% if content.present? %>
+                <% str1 = "<h2>#{airline_name} Online Booking</h2>"
+                str2 = "<h2>#{airline_name}  Booking</h2>"
+                str3 = "<h2>#{airline_name} Airlines Booking</h2>"
+                str4 = "<h2>#{airline_name} Airlines Online Booking</h2>"
+              if content[0,250].include?(str1)
+                content.gsub!(str1,'')
+              elsif content[0,250].include?(str2)
+                content.gsub!(str2,'')
+              elsif content[0,250].include?(str3)
+                content.gsub!(str3,'')
+              elsif  content[0,250].include?(str4)
+                content.gsub!(str4,'')
+              end%>
+                <%= raw content[0,250] + "..."  %>
+              <% end %>
+            </p>
+            <% locale_val = I18n.locale
+            I18n.locale = :en
+            airline_name_en = t("airlines.#{ac}")
+            I18n.locale = lang != "" ? lang[1...3].to_sym : :en
+            I18n.locale = locale_val
+             %>
+            <ul class="list-inline airline-status">
+              <li>
+                <%= link_to format_airline_name(airline_name, "#{I18n.locale}".to_sym) ,"#{lang}/flight-booking/#{url_escape(format_overview_link(airline_name_en))}.html" %>
+                <span> |</span>
+              </li>
+              <li>
+                <%= link_to t('brand.pnr_status',airline_name:  airline_name) ,"#{lang}/flight-booking/#{url_escape(format_overview_link(airline_name_en))}-flight-pnr-status.html" %>
+                <span> |</span>
+              </li>
+              <li> <%= link_to t('brand.web_check_in',airline_name:  airline_name) , "#{lang}/flight-booking/#{url_escape(format_overview_link(airline_name_en))}-web-check-in.html" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<!--/Domestic-airlines-->

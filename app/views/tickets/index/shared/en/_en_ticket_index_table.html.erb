@@ -1,0 +1,119 @@
+<%if section.include? "int" %>
+  <h2>Popular International Flights</h2>
+<% else %>
+  <h2>Popular Domestic Flights</h2>
+<% end %>
+          <div class="normal-list">
+            <div class="sort-bar">
+              <div class="items text-center">
+                <div class="col-xs-2"><a href="">Airline</a></div>
+                <div class="col-xs-2"><a href="">Routes</a></div>
+                <%# if no_price %>
+                <div class="col-xs-2"><a href="">Departure</a></div>
+                <div class="col-xs-2"><a href="">Arrival</a></div>
+                <%# else %>
+                <!-- <div class="col-xs-2"><a href="">Min price</a></div>
+                <div class="col-xs-2"><a href="">Max price</a></div> -->
+                <%# end %>
+                <div class="col-xs-2"><a href="">Duration</a></div>
+                <div class="col-xs-2"><a href="">&nbsp;</a></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <ul id="airline-lists" class="list-unstyled">
+              <% consolidated_routes.each do |route | %>
+              <li>
+                <div class="airline">
+                  <div class="col-xs-2 no-padding">
+                    
+                    <span class="name mt-15">
+                      <%= route[:carrier_code] %><%= route[:flight_no] %>
+                    </span>
+                    <span class="name mt-5">
+                      <% airline_name = link_to( t("airlines.#{route[:carrier_code]}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route[:carrier_code]}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+                      <%= airline_name %>
+                    </span>
+                  </div>
+                  <div class="col-xs-2 no-padding pad-10">
+                    <span><%= route[:dep_city_code]%>  →  <%= route[:arr_city_code]%></span>
+                    <span class="type"><%= route[:dep_city_name].try(:humanize)%> to <%= route[:arr_city_name].try(:humanize)%></span>
+                  </div>
+                  <%# if no_price %>
+                  <div class="col-xs-2 no-padding pad-10">
+                    <span><%= Time.strptime(route[:dep_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+                  </div>
+                  <div class="col-xs-2 no-padding pad-10">
+                    <span><%= Time.strptime(route[:arr_time],"%H:%M").to_time.strftime("%I:%M %p") %></span>
+                  </div>
+                  <%# else %>
+                  <!-- <div class="col-xs-2 no-padding pad-10">
+                    <span><i class="fa fa-inr"></i><%= route[:min_price] %></span>
+                  </div>
+                  <div class="col-xs-2 mview-price no-padding pad-10">
+                    <span><i class="fa fa-inr"></i><%= route[:max_price] %></span>
+                  </div> -->
+                  <%# end %>
+                  <div class="col-xs-2 no-padding pad-10">
+                  <% if route[:duration].include? (":")%>
+                      <span> <%= route[:duration].to_time.strftime("%Hh %Mm") %></span>
+                  <% else %>
+                        <span> <%= Time.at(route[:duration].to_i*60).utc.strftime("%Hh %Mm") %></span>
+                    <% end %>
+                    <span class="type">non-stop</span>
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <a class="booking flight-schedule-booking" data-route="<%=route[:dep_city_code]%>-<%= route[:arr_city_code]%>">Book Now</a>
+                  </div>
+                  <div class="clearfix"></div>
+                </div><!--/airline-->
+              </li>
+              <% end %>
+            </ul>
+          </div><!--mobile-view-->
+          <div class="mview-list">
+            <div class="sort-bar mview-list">
+              <div class="items text-center">
+                <div class="col-xs-2 no-padding"><a class="sortAsc" href="">Airline</a></div>
+                <div class="col-xs-4 no-padding text-center "><a href="">Routes</a></div>
+                
+                <div class="col-xs-3 no-padding text-center "><a href="">Duration</a></div>
+                
+                <!-- <div class="col-xs-3 no-padding text-center "><a href="">Min Price</a></div> -->
+                <div class="col-xs-3 text-center no-padding">
+                  <a href="">&nbsp;</a></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <ul id="airline-lists" class="list-unstyled mview-list">
+              <% consolidated_routes.each do |route | %>
+              <li>
+                <div class="airline">
+                  <div class="col-xs-2 no-padding">
+                    
+                    <span class="name mt-15">
+                      <%= route[:carrier_code] %><%= route[:flight_no] %>
+                    </span>
+                    <span class="name mt-5">
+                      <% airline_name = link_to( t("airlines.#{route[:carrier_code]}"), "/flight-booking/" + format_airline_name(I18n.with_locale(:en) { t("airlines.#{route[:carrier_code]}") }).downcase.gsub(" ", "-").gsub("--","-") + ".html") %>
+                      <%= airline_name %>
+                    </span>
+                  </div>
+                  <div class="col-xs-4 no-padding pad-10">
+                    <span><%= route[:dep_city_code]%>  →  <%= route[:arr_city_code]%></span>
+                    <span class="type"><%= route[:dep_city_name].try(:humanize)%> to <%= route[:arr_city_name].try(:humanize)%></span>
+                  </div>
+                  
+                  <div class="col-xs-3 no-padding pad-10">
+                    <span> <%= route[:duration] %></span>
+                    <span class="type">non-stop</span>
+                  </div>
+                 
+                  <div class="col-xs-3 no-padding">
+                    <a class="booking flight-schedule-booking" data-route="<%=route[:dep_city_code]%>-<%= route[:arr_city_code]%>">Book Now</a>
+                  </div>
+                  <div class="clearfix"></div>
+                </div><!--/airline-->
+              </li>
+              <% end %>
+            </ul>
+          </div><!--mobile-view-->

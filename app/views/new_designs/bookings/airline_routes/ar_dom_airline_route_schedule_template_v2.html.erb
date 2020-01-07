@@ -1,0 +1,138 @@
+<% use_helper = self.extend ApplicationHelper %>
+<% header_country_list = ["IN","SA","AE"]
+   application_processor = ApplicationProcessor.new
+%>
+
+  <!-- /Second Header starts here -->
+  <%= render partial: "new_designs/schedules/shared/en/main_header", locals: {country_code: country_code, flight_file_name: flight_file_name, page_type: 'flight-schedule', application_processor: application_processor} %>
+  <!--/Header Ends Here-->
+  <!-- /Second Header starts here -->
+  <%= render partial: "bookings/shared/ar/booking_header",locals: {popular_routes: header_routes,airports: header_airports,carrier_name_en: @carrier_name,use_helper: use_helper, application_processor: application_processor,customer_support: customer_support,baggages: baggages,brand_type: ""} %>
+  <!-- /Second Header ends  here -->
+  <div class="clearfix"></div>
+  <!--/content Starts Here-->
+  <section id="content">
+      <%= render partial: "new_designs/bookings/shared/ar/airline_routes_search_widget_ar",locals: {assets_path: @assets_path,carrier_code: @carrier_code,carrier_name_translated: @carrier_name_ar, formated_airline_name: format_airline_name(@carrier_name, I18n.locale) }%>
+    <div class="container content-wrapper">
+      <div class="col-lg-9 col-md-9 col-sm-12 mobile-view pad-lzero" id="flight-schedule">
+        <div class="list-box">
+          <% if pagination[:current_page_no] == 0 %>
+            <div id="banner" class="lhs-banner"></div>
+            <%= render :partial=>"new_designs/bookings/airline_routes/airline_route_schedule_table_ar_v2",:locals=>{:routes=>airline_route_schedules,dep_city_name: @dep_city_name_ar,arr_city_name: @arr_city_name_ar, :use_helper=>use_helper, :assets_path=>@assets_path, :country_code=> @country_code, :section=> 'dom',currency_code: currency_code(@country_code)} %><!--mobile-view-->
+          <% end %>
+            <div class="airline-cnt">
+              <% if @content.present? && @content != "" %>
+                <%= @content.html_safe %>
+              <% else %>
+            		<% if pagination[:current_page_no] == 0 %>
+                  <% time_of_flying = airline_route_schedules.first[:duration].include?(":") ?  airline_route_schedules.first[:duration].to_time.strftime("%Hh %Mm") : Time.at(airline_route_schedules.first[:duration].to_i*60).utc.strftime("%Hh %Mm") %>
+                  <%= render partial: "new_designs/bookings/airline_routes/airline_routes_templatized_content_ar",locals: { airline_name: @carrier_name_ar,min_rate: airline_route_schedules.first[:cc_route_min_price],max_rate:  airline_route_schedules.first[:cc_route_max_price],total_flights: airline_route_schedules.count,first_flight_dep_time: airline_route_schedules.first[:dep_time],last_flight_dep_time: airline_route_schedules.last[:dep_time],dep_last_flight_no: airline_route_schedules.last[:flight_no],dep_first_flight_no: airline_route_schedules.first[:flight_no],time_of_flying: time_of_flying} %>
+            		<% end %>
+              <% end %>
+               <% if @faq.present? %>
+              <div class="content-desc cnt-odd faq-cnt">
+                <div class="mview-faq-header">
+                  <h2><%= I18n.t('faq') %></h2>
+                  <div class="mview-mf-faqtoggle-btn visible-xs">
+                    <i class="fa fa-caret-down"></i>
+                  </div>
+                </div>
+                <div class="mview-mf-faqtoggle">
+                  <ol>
+                    <% @faq.each do|faq| %>
+                    <li itemscope="" itemtype="http://schema.org/Question">
+                      <div itemprop="text">
+                        <span><%= faq[:question] %></span>
+                      </div>
+                      <div itemscope="" itemtype="http://schema.org/Answer" itemprop=" suggestedAnswer">
+                        <p itemprop="text"><%= faq[:answer]%></p>
+                      </div>
+                    </li>
+                    <% end %> 
+                  </ol>
+                </div>
+              </div>
+          <% end %>
+	            <div class="clearfix"></div>
+	            <div class="more-flights">
+	              <h2><%= t('brand.top_route' , airline_name: @carrier_name_ar) %></h2>
+	              <%= render :partial=>"new_designs/bookings/airline_routes/airline_pagination_routes_ar", locals: { top_routes: pagination[:routes] }  %>
+	                <% if pagination[:total_pages]  > 1 %>
+	                  <!-- <div class="text-center linklist-btn">
+	                    <%# if pagination[:current_page_no] == 0 %>
+	                      <a class="no-link" ><%#= t('prev') %></a> | <a rel="next" href='<%#= "/flight-booking/#{pagination[:next_url]}" %>' title="Next"><%#= t('next') %></a>
+	                    <%# elsif pagination[:current_page_no] >= pagination[:total_pages] %>
+	                      <a rel="prev" href='<%#= "/ar/flight-booking/#{pagination[:prev_url]}" %>' title="Previous" ><%#= t('prev') %></a> | <a class="no-link" ><%#= t('next') %></a>
+	                    <%# else %>
+	                      <a rel="prev" href='<%#= "/ar/flight-booking/#{pagination[:prev_url]}" %>' title="Previous"><%#= t('prev') %></a> | <a rel="next" href='<%#= "/ar/flight-booking/#{pagination[:next_url]}" %>' title="Next" ><%#= t('next') %></a>
+	                    <%# end%>
+	                  </div> -->
+	                <% end %>
+	            </div>
+            </div>
+        </div><!--list-box-->
+      </div>
+      <div id="Rside-bar">
+        <div class="col-lg-3 col-md-3 col-sm-12 pad-rzero side-bar">
+          <div class="blocks banner-section">
+            <div id="banner">
+              <a target="_blank"><img></a>
+            </div>
+        </div>
+        <% if @country_code == "AE" %>
+          <%= render :partial=>"new_designs/bookings/shared/ar/rhs_top_airlines_ar",:locals=>{:top_airlines=>[], use_helper: use_helper,:assets_path=>@assets_path, application_processor: application_processor,section: "int"} %>
+        <% end %>
+      </div><!--/Rside-bar-->
+    </div>
+    <div class="clearfix"></div>
+	  <ul class="list-inline bread-crumb">
+	    <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="first">
+	      <a href="/flights" title="<%= t('breadcrumb.flights') %>" itemprop="url"><span itemprop="title"><%= t('breadcrumb.flights') %></span></a>
+	    </li>
+	    <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+	      <a href="/flight-booking/domestic-airlines.html" title="<%= t('breadcrumb.domestic_airlines') %>" itemprop="url">
+	        <span itemprop="title"><%= t('breadcrumb.domestic_airlines')%></span>
+	      </a>
+	    </li>
+	    <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+	      <a href="/ar/flight-booking/<%= format_overview_link(@carrier_name) %>.html" title = "<%= @carrier_name_ar %>" itemprop='url'>
+	        <span itemprop="title"><%= format_airline_name(@carrier_name_ar, I18n.locale) %></span>
+	      </a>
+	    </li>
+      <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+        <a>
+          <span itemprop="title"><%= @carrier_name_ar %>
+            <%= @dep_city_name_ar %> <%= @arr_city_name_ar %> <%= t("header.flights")%></span>
+        </a>
+      </li>
+	  </ul>
+  </section><!--/contnet-- >
+  <!--/contnet Ends Here-->
+  <div id="footer_container">
+    <div id="footer">
+      <% country_code = @country_code %>
+      <%= render partial: "new_footers/shared/airline_routes_footer_ar", locals: {country_code: country_code,footer_airline_data: booking_footer[:footer_airline_data],top_airlines: booking_footer[:int_airlines],section: @section,footer_links_data: booking_footer[:volume_routes],page_type: '',dep_city_name: @dep_city_name,arr_city_name: @arr_city_name,dep_city_name_ar: @dep_city_name_ar,arr_city_name_ar: @arr_city_name_ar } %>
+    </div>
+  </div>
+  <div style="display:none">
+						<div id="departure_city_code"><%= @dep_city_code%></div>
+						<div id="arrival_city_code"><%= @arr_city_code%></div>
+	</div>
+  <%= render "shared/#{@country_code.downcase}/#{@country_code.downcase}_gac" %>
+  <%= render "common/comscore" %>
+  <%= render "common/mobile_header_flexislider" %>
+  <%#= render "common/mobile_header_flexislider" %>
+<script type="text/javascript">
+  var dep_city_code = '<%= @dep_city_code %>';
+  var arr_city_code = '<%= @arr_city_code %>';
+  var dep_city_name = '<%= @dep_city_name %>';
+  var arr_city_name = '<%= @arr_city_name %>';
+  var country_code='<%= @country_code.downcase %>';
+  var section_type='<%= @section.include?("dom") ? "domestic" : "international" %>';
+  var page_type="flight-booking";
+  var language_type='<%= I18n.locale.downcase.to_s %>';
+  var carrier_name= '<%= @carrier_name %>' ;
+  var carrier_code= '<%= @carrier_code %>';
+  var page_sub_type= "routes";
+  var sub_section= 'routes';
+</script>

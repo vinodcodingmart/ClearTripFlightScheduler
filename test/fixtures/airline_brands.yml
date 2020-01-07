@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  carrier_code: MyString
+  carrier_name: MyString
+  icoa_code: MyString
+  base_airport: MyString
+  country: MyString
+  brand_routes_count: 1
+  country_code: MyString
+
+two:
+  carrier_code: MyString
+  carrier_name: MyString
+  icoa_code: MyString
+  base_airport: MyString
+  country: MyString
+  brand_routes_count: 1
+  country_code: MyString

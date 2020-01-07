@@ -1,0 +1,1212 @@
+<% currency_code = ApplicationProcessor.new.currency_code(@country_code) %>
+<!DOCTYPE html >
+<html lang="<%= @language.downcase %>" <%= "dir = 'rtl'".html_safe if @language == "ar" %>>
+
+<head>
+ <%= csrf_meta_tags %>
+
+ <%# if @country_code == "IN" %>
+ <%= render partial: "common/clevertap_header" %>
+ <%# end %>
+
+ <%= render partial: "common/header_google_tag_manager" %>
+ <% seo =  seo_header %>
+ <% title =  @title.present? ? @title : seo[:title] 
+ description = @description.present? ? @description : seo[:description]
+ %>
+ <title><%=  title.html_safe %></title>
+ <meta name="description" content="<%= description.html_safe %>">
+ <meta name="keywords" content="<%= @keywords.present? ? @keywords : seo[:keywords] %>">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <%=  render partial: "common/fb_tw_gplus",locals: {title: title,description: description} %>
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <meta name="robots" content="noodp,noydir"/>
+
+ <%= render partial: "common/language_meta_tags",locals: {page_number: 1} %>
+
+ <link rel="stylesheet" href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/bootstrap.min.css"/>
+ <link rel="stylesheet" href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/flexslider.min.css"/>
+ <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+ <!-- <link href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/font-awesome.min.css" rel="stylesheet"> -->
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+ <link href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/jquery.bxslider.css" rel="stylesheet">
+ 
+ <!-- <link href="/assets/jquery.bxslider.css" rel="stylesheet"> -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css"/>
+ <% if  (@meta_page_type == "flight-schedule" && @is_popular_route) %>
+ <!-- <link rel="stylesheet" href="/assets/ct-style-new-v3.css"/> -->
+ <link rel="stylesheet" href="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/stylesheets/seo_conversion/ct-style-new-v3.css"/>
+ <link rel="stylesheet" href="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/stylesheets/seo_conversion/font.css"/>
+ <!-- <link rel="stylesheet" href="/assets/font.css"/> -->
+ <% elsif (@meta_page_type == "flight-schedule" || @meta_page_type == "booking-overview") %>
+ <link rel="stylesheet" href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/ct-style-new-v2.css"/>
+ <% elsif  (@meta_page_type == "booking_index" || @meta_page_type ==  "schedule_index") || (@meta_page_type == "ticket_index" || @meta_page_type == "airline_routes")||(@meta_page_type=="flight-tickets"||@meta_page_type == "pnr_status"|| @meta_page_type=="web_checkin" || @meta_page_type== "customer_support" || @meta_page_type=="baggage" || @meta_page_type=="special_assistance" || @meta_page_type=="refund_cancellation" || @meta_page_type=="travel_documents") %>
+
+ <link rel="stylesheet" href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/ct-style-new.css"/>
+ <% else %>
+ <link rel="stylesheet" href="https://d2w5af8s1781.cloudfront.net/waytogo-staging/stylesheets/application.css"/>
+ <% end %>
+ <script src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery.min.js"></script>
+ <script src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery-ui.min.js"></script>
+ <script src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/bootstrap.min.js" ></script>
+ <script src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery.rateyo.min.js"></script>
+ <script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
+ <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery.bxslider.min.js"  ></script>
+ <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery.flexslider.min.js"  ></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
+
+ <style>
+   p[data-f-id="pbf"] {
+    display: none;
+  }
+  #show_more,#show_less{
+    cursor: pointer;
+  }
+</style>
+<style type="text/css">
+  .rwd-lhs,.rwd-rhs{
+    float: left;
+    width: 50%;
+  }
+  .rwd-rhs{
+    border-left: 1px solid #eaeaea;
+  }
+  .rwd-flights-list{
+    padding: 10px 0;
+    height: 65px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  .rwd-marilines{
+    width: 33%;
+    float: left;
+    text-align: center;
+    line-height: 15px;
+  }
+  .rwd-flights-list .rwd-mduration{
+    width: 67%;
+    float: right;
+    line-height: 15px;
+  }
+  .rwd-flights-list .rwd-mtiming{
+    font-size: 10px;
+    font-weight: 500;
+    display: block;
+    color: rgba(0,0,0,.6);
+  }
+  .rwd-flights-list small{
+    display: block;
+    font-size: 10px;
+    text-align: center;
+  }
+  .rwd-flights-list  .rwn-mstop{
+    font-size: 11px;
+    color: rgba(0,0,0,.3);
+  }
+  .rwd-flights-list  .rwd-price{
+    font-size: 11px;
+    color: rgba(0,0,0,.6);
+    display: block;
+  }
+</style>
+<style type="text/css">
+  .minfare-table{
+    margin: 24px 0;
+    line-height: 27px;
+  }
+  #content_btn{
+    color:blue;
+  }
+  .minfare-table h3,.minfare-table h4{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0 16px;
+  }
+  .minfare-table{
+    border-collapse: collapse;
+    background: #fff;
+  }
+  .minfare-table h3{
+    padding: 16px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #d9d9d9;
+    font-size: 14px
+  }
+
+  .min-fare-mobile h4{
+    padding: 16px;
+  }
+  .minfare-table th{
+    background: #f9f9f9;
+    border: 1px solid #d9d9d9;
+  }
+  .minfare-table th,.minfare-table td{
+    padding: 16px 0;
+    border: 1px solid #d9d9d9;
+    width: 25%;
+    text-align: center;
+    font-weight: 500;
+  }
+  .white-card h2 a:hover{
+    background: transparent!important;
+  }
+  .min-fare-desk li{
+    display: block;
+    padding: 16px 12px;
+  }
+  .min-fare-desk ul li:last-child{
+    padding: 16px 12px 0;
+  }
+  .min-fare-desk ul{
+    margin: 0;
+  } 
+  .min-fare-desk a, .min-fare-desk a:hover, .min-fare-desk a:focus{
+    border-radius: 3px;
+    padding: 4px 4px;
+    float: right;
+    outline: none;
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #f86810;
+    /*background-image: -moz-linear-gradient(rgba(204,80,31,0), #cc501f);
+    background-image: -webkit-linear-gradient(rgba(204,80,31,0), #cc501f);
+    background-image: linear-gradient(rgba(204,80,31,0), #cc501f);*/
+    color: #fff!important;
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+    width: 80px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .min-fare-desk a:hover, .min-fare-desk a:focus{
+    background-color: #ff7e33;
+  }
+  .minfare-table h4{
+    font-weight: 400;
+    padding: 16px;
+    color: rgba(0,0,0,.5);
+
+  }
+  .air-name-truncate{
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .min-fare-desk h4{
+    padding: 0;
+  }
+  .min-fare-desk .air-details{
+    max-width: 110px;
+    float: left;
+    display: block;
+  }
+  .min-fare-desk .air-price{
+    display: block;
+    padding: 8px 0 0;
+    color: rgba(0, 0, 0, 0.64);
+    font-weight: 500;
+  }
+  .min-fare-mobile{
+    font-size: 14px;
+  }
+  .min-fare-mobile li{
+    padding: 0 0 16px;
+  }
+  .min-fare-mobile a{
+    text-decoration: none;
+    color: #000;
+  }
+  .min-fare-mobile h4 span{
+    display: inline-block;
+    padding: 0 16px 0 0;
+    max-width: 140px;
+    min-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+    color: rgba(0,0,0,.67);
+  }
+  .min-fare-mobile button{
+    border: none;
+    box-shadow: none;
+    outline: none;
+    float: right;
+  }
+  .min-fare-wrapper{
+    border: 1px solid #d9d9d9;
+    background: #fff;
+  }
+  .ui-datepicker-current-day{
+    background:#3c77d4!important;
+  }
+  .ui-state-highlight{
+    background:none!important;
+  }
+  .min-fare-mobile{
+    display: none;
+  }
+  @media screen and (max-width: 480px){
+    .min-fare-desk{
+      display: none;
+    }
+    .min-fare-mobile{
+      display: block;
+    }
+  }
+
+</style>
+
+
+<% if @meta_page_type ==  "schedule_index" %>
+<style>
+  .top-routes .list-inline li {
+    width: 33%;
+  }
+</style>
+<% end %>
+<style>
+  p[data-f-id="pbf"] {
+    display: none;
+  }
+  #show_more,#show_less{
+    cursor: pointer;
+  }
+  /* overview mobile new search widget begin */
+  body{
+    background: #efeff4!important;
+  }
+
+  #travellerModal .modal-dialog .modal-content .modal-header .modal-title{
+    background: #595858;
+    height: 45px;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+  }
+  #fromCityAutocompleteModel .modal-dialog,#toCityAutocompleteModel .modal-dialog{
+    height: 100vh;
+    overflow-y: auto;
+    margin: 0;
+  }
+  #fromCityAutocompleteModel .modal-content,#toCityAutocompleteModel .modal-content{
+    height: 100vh;
+    overflow-y: auto;
+    border: none;
+    box-shadow: none;
+  }
+  #fromCityAutocompleteModel .modal-header,#toCityAutocompleteModel .modal-header{
+    background: #595858;
+    height: 45px;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+  }
+  #fromCityAutocompleteModel .close, #toCityAutocompleteModel .close{
+    box-shadow: none;
+    background: none;
+    color: #fff;
+    border: none;
+  }
+  #fromCityAutocompleteModel .modal-body,#toCityAutocompleteModel .modal-body{
+    padding: 0;
+  }
+  #fromCityAutocompleteModel .modal-title,#toCityAutocompleteModel .modal-title{
+    font-size: 16px;
+    padding: 0 0 0 15px;
+  }
+  #fromCityAutocompleteModel .search-blk,#toCityAutocompleteModel .search-blk{
+    position: relative;
+    background-color: #e6e6e8;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 16px;
+  }
+  #fromCityAutocompleteModel .search-blk ul, #toCityAutocompleteModel .search-blk ul{
+    margin: 0;
+  }
+  #fromCityAutocompleteModel .search-blk li,#toCityAutocompleteModel .search-blk li{
+    height: auto;
+    border: none;
+    padding: 0;
+  }
+  #fromCityAutocompleteModel .search-blk input,#toCityAutocompleteModel .search-blk input{
+    width: 100%;
+    background: #fff;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    outline: none;
+    border-radius: 4px;
+  }
+  /* overview mobile new search widget end */
+  .show_more_arabic {
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    margin: 0 0 10px;
+    border-radius: 3px;
+    font-weight: 400;
+    color: #36c;
+  }
+  .top-routes .list-inline li {
+    width: 33%;
+  }
+  .content-wrapper .calendar-new a {
+    display: block;
+    text-decoration: none;
+    padding: 0px 10px;
+    color: #444;
+    text-align: center;
+  }
+  .ui-widget-content{
+    border: none;
+  }
+  #ui-datepicker-div .ui-datepicker-current {
+    display: none;
+  }
+  #ui-datepicker-div .ui-datepicker-close {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    font-size: 16px;
+    line-height: 0px;
+    padding: 0;
+    color: #000000b3;
+    / font-weight: 600; /
+    opacity: 0.8;
+    text-transform: lowercase;
+    border: 1px solid #d9d9d9;
+    width: 24px;
+    border-radius: 50%;
+    height: 24px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  }
+  .ui-datepicker .ui-datepicker-next span {
+    margin-left: -45px;
+    margin-top: 2px;
+  }
+  .ui-datepicker .ui-datepicker-prev span {
+    margin-left: 40px;
+  }
+  #ui-datepicker-div .ui-datepicker-close:focus {
+    outline: none;
+  }
+  #ui-datepicker-div .ui-datepicker-close:hover {
+    opacity: 1;
+  }
+  .ui-datepicker-current-day{
+    background:#3c77d4!important;
+  }
+  .ui-state-highlight{
+    background:none!important;
+  }
+</style>
+<% if @meta_page_type =="flight-schedule" || @meta_page_type == "airline_routes" %>
+<style type="text/css">
+  .review-aggregate, .review-names {
+    display: inline-block;
+  }
+  #m-search-widget .destination input[type="text"]{
+    padding: 10px 0 10px 65px!important;
+  }
+  #m-search-widget .destination, #m-search-widget .m-dates, #m-search-widget .m-travellers, #m-search-widget .m-search-btn{
+    padding: 0!important
+  }
+  #m-search-widget label{
+    margin: 10px 0 0 65px;
+  }
+  #m-search-widget ul li{
+    position: relative;
+  }
+  #m-search-widget .m-dates input{
+    padding: 10px 0 10px 65px;
+    font-weight: 400;
+  }
+  #rtn_date_mob{
+    padding: 10px 0 10px 0!important;
+    text-align: left!important;
+  }
+  #m-search-widget .rdate-label label{
+    margin: 0!important;
+  }
+  #m-search-widget label{
+    color: rgba(0,0,0,.4);
+    text-align: left!important;
+  }
+  .m-travellers-count{
+    font-weight: 400;
+  }
+  .m-travellers-count .adults,.class-select select {
+    padding: 0 0 0 65px;
+    font-weight: 400!important;
+  }
+  #m-search-widget .class-select{
+    padding: 10px 0 15px;
+  }
+  #m-search-widget .m-search-btn{
+    padding: 0 20px 15px!important;
+  }
+  #ui-datepicker-div{
+    z-index: 6;
+  }
+  #m-search-widget .m-travellers-count{
+    padding: 0 0 10px;
+  }
+  #m-search-widget .d-dates{
+    border-right: 1px solid #d9d9d9;
+  }
+  .widget-icons{
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 20px;
+    top: 10px;
+    z-index: 1;
+    background: url("https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/images/search-widget-icon.png") no-repeat;
+  }
+  .depart-icon{
+    background-position: -4px -37px;
+  }
+  .dates-icon{
+    background-position: -4px -72px;
+    top: 15px;
+  }
+  .mview-title{
+    border: none!important;
+  }
+  .tr-icon{
+    background-position: -4px -104px;
+    top: 10px;
+  }
+  .class-icon{
+    background-position: -4px -138px;
+    top: 20px;
+  }
+  .m-travellers-count label{
+    padding: 0 0 10px!important;
+  }
+  #m-search-widget .nav-tabs{
+    border: none;
+    padding: 20px 50px 0;
+  }
+  #m-search-widget .rdate input{
+    padding: 10px 0 10px 15px!important;
+  }
+  #m-search-widget .rdate  label{
+    margin: 10px 0 0 15px!important;
+  }
+  #m-search-widget{
+    border: none!important;
+    min-height: 72vh;
+  }
+  #m-search-widget a {
+    font-size: 13px;
+    font-weight: 500;
+    display: block;
+    text-align: center;
+    color: #36c;
+    border: 1px solid #36c;
+    border-radius: 0;
+    margin: 0 5px;
+  }
+  #m-search-widget .nav-tabs>li.active>a, #m-search-widget .nav-tabs>li.active>a:hover, #m-search-widget .nav-tabs>li.active>a:focus{
+    border-radius: 0;
+    border: 1px solid #36c;
+    background: #36c;
+    color: #fff!important;
+    font-weight: 400;
+    width: auto;
+  }
+  #m-search-widget span.click-block a{
+    border:none;
+  }
+  .custom-links{
+    display: block;
+    padding: 10px 5px!important;
+    font-size: 14px;
+  }
+  #m-search-widget .destination input[type="text"], .m-travellers-count{
+    font-weight: 400;
+  }
+  .fa-times-circle{
+    padding-top: 2px;
+    font-size:36px;
+    color: #e26b35;
+  }
+  .fa.pull-right {
+    margin-left: 0em;
+  }
+  #m-search-widget .m-travellers a{
+    border: none;
+  }
+  #airlines .airline-wrapper .arrival{
+    text-align: center;
+  }
+  #arabic .airline-names small{
+    text-align: right;
+  }
+  #arabic  .airline-wrapper small{
+    width: 100%;
+    max-width: 100%;
+  }
+  #arabic #airlines .airline-wrapper small {
+    width: 100%;
+    text-align: right;
+    line-height: 14px;
+  }
+  #arabic .f-lft{
+    text-align: left;
+  }
+  @media screen and (max-width: 480px){
+    .mview-title{
+      font-size: 16px!important
+      margin: 0 0 10px!important;
+    }
+    .ui-autocomplete{
+      left: 75px!important
+    }
+    #arabic .airline-wrapper .depart:after{
+      display: none;
+    }
+    #arabic .airline-wrapper .carrier-logo{
+      float: none;
+    }
+    #arabic .t-blcok small{
+      width: 100%;
+      text-align: center;
+    }
+    #arabic #airlines .airline-wrapper small {
+      width: 100%;
+      text-align: right;
+      line-height: 14px;
+    }
+  }
+  @media Screen and (max-width: 468px){
+    li.packagesApp,.banner-m-view,.breadcrumb-mon-view{
+      display: none;
+    }
+    .breadcrumb-m-view{
+      display: block;
+    }
+  }
+</style>
+<% end %>
+<% if @page_type=="flight-booking" && @meta_page_type == "booking-overview"%>
+<style type="text/css">
+  #content .content-desc, .airline-desc {
+    padding:  0!important;
+    color: rgb(68, 68, 68);
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .top-routes .linklist-btn a.no-link:hover {
+    background-color: #eee;
+    border: 1px solid #ddd;
+  }
+  #banner img {
+    width: 100%;
+  }
+  .show_more{
+    display: inline-block;
+    text-align: center;
+    display: inline-block;
+    padding: 4px 8px;
+    color: #222;
+    background: #f9f9f9;
+    font-size: 14px;
+    border-radius: 3px;
+    margin: 15px 0 0;
+    text-decoration: none;
+    border: 1px solid #d9d9d9;
+  }
+  .user-rating {
+    padding: 10px 0 15px!important;
+  }
+  .breadcrumb-mon-view{
+    display: block;
+  }
+  .breadcrumb-m-view {
+    display: none;
+  }
+  .review-aggregate,.review-names,.review-logo{
+   display: inline-block;
+ }
+ #m-search-widget .destination input[type="text"]{
+  padding: 10px 0 10px 65px!important;
+}
+#m-search-widget .destination, #m-search-widget .m-dates, #m-search-widget .m-travellers, #m-search-widget .m-search-btn{
+  padding: 0!important
+}
+#m-search-widget label{
+  margin: 10px 0 0 65px;
+}
+#m-search-widget ul li{
+  position: relative;
+}
+#m-search-widget .m-dates input{
+  padding: 10px 0 10px 65px;
+  font-weight: 400;
+}
+#rtn_date_mob{
+  padding: 10px 0 10px 0!important;
+  text-align: left!important;
+}
+#m-search-widget .rdate-label label{
+  margin: 0!important;
+}
+#m-search-widget label{
+  color: rgba(0,0,0,.4);
+  text-align: left!important;
+}
+.m-travellers-count{
+  font-weight: 400;
+}
+.m-travellers-count .adults,.class-select select {
+  padding: 0 0 0 65px;
+  font-weight: 400!important;
+}
+#m-search-widget .class-select{
+  padding: 10px 0 15px;
+}
+#m-search-widget .m-search-btn{
+  padding: 0 20px 15px!important;
+}
+#ui-datepicker-div{
+  z-index: 6;
+}
+#m-search-widget .m-travellers-count{
+  padding: 0 0 10px;
+}
+#m-search-widget .d-dates{
+  border-right: 1px solid #d9d9d9;
+}
+.widget-icons{
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  left: 20px;
+  top: 10px;
+  z-index: 1;
+  background: url("https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/images/search-widget-icon.png") no-repeat;
+}
+.depart-icon{
+  background-position: -4px -37px;
+}
+.dates-icon{
+  background-position: -4px -72px;
+  top: 15px;
+}
+.mview-title{
+  border: none!important;
+}
+.tr-icon{
+  background-position: -4px -104px;
+  top: 10px;
+}
+.class-icon{
+  background-position: -4px -138px;
+  top: 20px;
+}
+.m-travellers-count label{
+  padding: 0 0 10px!important;
+}
+#m-search-widget .nav-tabs{
+  border: none;
+  padding: 20px 50px 0;
+}
+#m-search-widget .rdate input{
+  padding: 10px 0 10px 15px!important;
+}
+#m-search-widget .rdate  label{
+  margin: 10px 0 0 15px!important;
+}
+#m-search-widget{
+  border: none!important;
+  min-height: 72vh;
+}
+#m-search-widget a {
+  font-size: 13px;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  color: #36c;
+  border: 1px solid #36c;
+  border-radius: 0;
+  margin: 0 5px;
+}
+#m-search-widget .nav-tabs>li.active>a, #m-search-widget .nav-tabs>li.active>a:hover, #m-search-widget .nav-tabs>li.active>a:focus{
+  border-radius: 0;
+  border: 1px solid #36c;
+  background: #36c;
+  color: #fff!important;
+  font-weight: 400;
+  width: auto;
+}
+#m-search-widget span.click-block a{
+  border:none;
+}
+.custom-links{
+  display: block;
+  padding: 10px 5px!important;
+  font-size: 14px;
+}
+#m-search-widget .destination input[type="text"], .m-travellers-count{
+  font-weight: 400;
+}
+.fa-times-circle{
+  padding-top: 2px;
+  font-size:36px;
+  color: #e26b35;
+}
+.fa.pull-right {
+  margin-left: 0em;
+}
+#arabic .f-lft{
+  text-align: left;
+}
+@media screen and (max-width: 480px){
+  .mview-title{
+    margin: 0!important;
+  }
+  .mview-title{
+    font-size: 20px!important
+  }
+  .ui-autocomplete{
+    left: 75px!important
+  }
+}
+@media Screen and (max-width: 468px){
+  li.packagesApp,.banner-m-view,.breadcrumb-mon-view{
+    display: none;
+  }
+  .breadcrumb-m-view{
+    display: block;
+  }
+}
+</style>
+
+<% end %>
+
+</head>
+<% if @language=="ar" %>
+<body id="arabic">
+  <% else %>
+  <body id= <%= @page_type == "flight-booking" ? "airlines" : "" %> >
+    <% end %>
+    <%= render partial: "common/body_google_tag_manager" if ["AE","OM","BH","QA","KW"].include? @country_code  %>
+    <%= yield %>
+   <!--  <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery.bxslider.min.js"  ></script>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/jquery.flexslider.min.js"  ></script> -->
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/date_format.js"  ></script>
+    <% if ( @meta_page_type == "flight-schedule" && @is_popular_route ) %>
+    <!-- -->
+    <%  if !@is_mobile %>
+    <!-- <script type="text/javascript" src="/assets/schedule_seo_conversion_desktop.js"> </script>  -->
+    <script type="text/javascript" src="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/javascripts/seo_conversion/schedule_seo_conversion_desktop.js"> </script>
+    <!-- <script type="text/javascript" src="/assets/mobile_v1.js" ></script> -->
+    <% else %>
+    <script type="text/javascript" src="/assets/mobile_v1.js" ></script>
+    <!-- <script type="text/javascript" src="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/javascripts/seo_conversion/mobile_v1.js"> </script> -->
+    <% end %>
+    <% elsif  @meta_page_type == "flight-schedule" %>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/ct_custom_v3.js"> </script>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/schedule_routes_mobile_v2.js"> </script>
+    <%# elsif  @country_code == "BH" && @meta_page_type == "booking-overview"  %>
+    <% elsif ( @meta_page_type == "booking-overview" ) %>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/booking_overview_v2.js" ></script>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/booking_overview_v2_mobile.js"> </script>
+
+    <!-- <script type="text/javascript" src="/assets/booking_overview_v2.js" ></script> -->
+    <!-- <script type="text/javascript" src="/assets/booking_overview_v2_mobile.js" ></script> -->
+    <% else %>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/ct_custom_v2.min.js"  ></script>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/ct_custom_mobile_v1.js"></script>
+    <!-- <script type="text/javascript" src="/assets/from_to_search_test.js"></script> -->
+    <% end %>
+    <script type="text/javascript" src="https://d2w5af8s1781.cloudfront.net/waytogo-staging/javascripts/banner_tool_v1.min.js" ></script>
+    
+    <!-- <script type="text/javascript" src="/assets/banner_tool_v1.js" ></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+    <% if @meta_page_type == "flight-schedule" && @is_popular_route %>
+    <!-- <script type="text/javascript" src="/assets/ct_custom_new_srp_v1.js"> </script> -->
+    <!-- <script type="text/javascript" src="/assets/srp_new_int.js"> </script> -->
+    <!-- <script type="text/javascript" src="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/javascripts/seo_conversion/ct_custom_new_srp_v1.js"> </script> -->
+    <% end %>
+    
+    <%= render "common/mobile_header_flexislider" %>
+          <!-- <%# if @country_code == "IN" && @meta_page_type == "flight-schedule" %>
+            <%#= render partail: "common/clevertap_event" %>
+            <%# end %> -->
+            <script type="text/javascript">
+              var meta_page_type = "<%= @meta_page_type %>"
+              $(document).ready(function(){
+                window.masterJson = {}
+                if($(".js-range-slider").length > 0){
+                  $(".js-range-slider").ionRangeSlider({
+                    min: 0,
+                    max: 100,
+                    from: 100,
+                    prefix: "upto ₹ ",
+                    hide_min_max:true,
+                    skin:'big',
+                  })
+                }
+                $('#content_btn').click(function(){
+                  $('.content_show_more').toggleClass('hide',500)
+                })
+
+                <% meta_page_type = @meta_page_type %>
+                <% if  (meta_page_type == "flight-schedule" || meta_page_type == "booking-overview") %>
+                toggleMenuIcon();
+                // toggleSearchWidget();
+                <% else %>
+                toggleOldMenuIcon();
+                <% end %>
+
+                <%# if @country_code == "IN" && @meta_page_type == "flight-schedule" %>
+                // showMoreRhsAirlines(); 
+                <%# end%>
+                <% if @meta_page_type == "booking-overview" %>
+                showMoreOverviewDetails();
+                <% elsif @meta_page_type == "airline_routes"  || @meta_page_type == "flight-schedule"%>
+                showMoreAirlineRoutes();
+                <% end %>
+                flexSlider();
+                stickyWidget();
+                // newStickyWidget();
+                <% if @is_popular_route && !@is_bot_hit %>
+                loadAsyncScheduleTable();
+                <% end %>
+              })
+              var isMobile = {
+                Android: function() {
+                  return navigator.userAgent.match(/Android/i)
+                },
+                BlackBerry: function() {
+                  return navigator.userAgent.match(/BlackBerry/i)
+                },
+                iOS: function() {
+                  return navigator.userAgent.match(/iPhone|iPad|iPod/i)
+                },
+                Opera: function() {
+                  return navigator.userAgent.match(/Opera Mini/i)
+                },
+                Windows: function() {
+                  return navigator.userAgent.match(/IEMobile/i)
+                },
+                any: function() {
+                  return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows())
+                }
+              };
+              var is_mobile = isMobile.any() ? true : false
+              function loadAsyncScheduleTable(){
+                var dep_city_code = "<%= @dep_city_code%>";
+                var arr_city_code  = "<%= @arr_city_code%>";
+                var dep_city_name = "<%= @dep_city_name%>";
+                var arr_city_name = "<%= @arr_city_name%>";
+                var country_code = "<%= @country_code %>";
+                var section = "<%= @section %>";
+                var is_mobile = "<%= @is_mobile %>";
+                var is_bot_hit = "<%= @is_bot_hit %>";
+                var dep_date = "<%= @dep_date %>";
+                var formated_dep_date = "<%= @formated_dep_date %>";
+                var formated_arr_date = "<%= @formated_arr_date %>";
+                var arr_date = "<%= @arr_date %>";
+                var trip = "<%= @round_trip %>";
+                var adult_count = "<%= @adult_count %>";
+                var child_count = "<%= @child_count %>";
+                var infants_count = "<%= @infants_count %>";
+                var travellers_data = "<%= @travellers_data%>";
+                var travell_class = "<%= @travell_class%>";
+                $('#loading-image').show();
+                $.ajax({
+                  url: "/flight-schedule/fetch_api_details.html",
+                  type: 'post',
+                  async: true,
+                  // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));$(".loaders").css("display","block")},
+                  data: {"from": dep_city_code,"to": arr_city_code,"dep_city_name": dep_city_name,"arr_city_name": arr_city_name,"country_code": country_code,"section": section,"is_mobile": is_mobile,"dep_date": dep_date,"arr_date": arr_date,"trip": trip,"travellers_data": travellers_data,"adult_count": adult_count,"child_count": child_count,"infants_count": infants_count,"travell_class": travell_class},
+                  error: function(data){
+                    // return true;
+                    $('div.lhs').addClass("disabled")
+                    $(".loaders").css("display","none");
+                    $(".initial-price").css("display","block");
+                    $(".result_date").html(formated_dep_date);
+                  },
+                  success: function(data){
+                    if (data.api_status == true){
+                      if (is_mobile == "false"){
+                        $("#new-responses").html(data.routes_html);
+                        window.masterJson = data.routes_data
+                        $("#after-remove").css("display","none")
+                        $(".cta-sticky").css("display","block")
+                        $("#loaders").css("display","none");
+                        var price_card = data.best_price_card
+                        $("#owd-flight-api").html(price_card)
+                      }else{
+                        $('.m-filter').removeClass('disabled')
+                        $("#new-responses-mobile").html(data.routes_html);
+                        window.masterJson = data.routes_data
+                        $("#after-remove-mobile").css("display","none")
+                        $("#loaders-mobile").css("display","none");
+                        if(data.section.includes("int")){
+                          if (!data.trip_type){
+                            var price_card = `${"<%= currency_code%>"}${data.best_price.route_total_fare_formatted}<span class='m-book-fi'>Cheapest Fare </span>`
+                          }
+                          else{
+                            var price_card = `${"<%= currency_code%>"}${data.routes_data.routes[0].route_total_fare_formatted}<span class='m-book-fi'>Cheapest Fare </span>`
+                          }
+                        }
+                        else{
+                          if (data.trip_type){
+                            var price_card = `${"<%= currency_code%>"}${data.round_trip_mobile_best_price}<span class='m-book-fi'>Cheapest Fare </span>`
+                          }
+                          else{
+                            if (data.best_price["route_total_fare"] > 0){
+                              var price_card = `${"<%= currency_code%>"}${data["best_price"]["route_total_fare_formatted"]}<span class='m-book-fi'>Cheapest Fare </span>`
+                            }
+                          }
+                        }
+                        $("#best-price-mob").html(price_card)
+                      }
+                      $(".result_date").html(formated_dep_date);
+                      $("#result_dep_date").html(formated_dep_date);
+                      $("#result_arr_date").html(formated_arr_date);
+                      $('div.lhs').show()
+                      if (data.section.includes("int")){
+                        // $.getScript("https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/javascripts/seo_conversion/srp_new_int.js")
+                        $.getScript("/assets/srp_new_int.js")
+                      }
+                      else{
+                        // $.getScript("https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/javascripts/seo_conversion/ct_custom_new_srp_v1.js")
+                        $.getScript("/assets/ct_custom_new_srp_v1.js")
+                      }
+                      if(trip == "R"){
+                        var format_date = formated_dep_date + " - " + formated_arr_date
+                        var sub_title_date = formated_dep_date.split(" ") .splice(1).join(" ") + ", " + formated_arr_date.split(" ") .splice(1).join(" ")
+                        $(".owd-top .sub-title span.result_date").text(sub_title_date);
+                        $("h3.sub-title .result_date").text(sub_title_date);
+                        $(".m-routes .f-routes-details span.result_date").text(sub_title_date);
+                        $("div.nav-mid span.result_date").text(format_date);
+                        $(".bst_card_date").text(format_date);
+                      }else {
+                        $("div.nav-mid .main-title div.td-info .result_date").text(formated_dep_date)
+                        $(".bst_card_date").text(formated_dep_date);
+                      }
+                      // $.getScript("https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/javascripts/seo_conversion/ct_custom_new_srp_v1.js")
+                    }else{
+                      $('div.lhs').addClass("disabled")
+                      $(".loaders").css("display","none");
+                      $(".initial-price").css("display","block");
+                      $(".result_date").html(formated_dep_date);
+                    }
+                  }
+                })
+}
+
+<%# if meta_page_type != "booking_index" && meta_page_type != "schedule_index" && meta_page_type != "ticket_index" %>
+function toggleMenuIcon(){
+  $('.Menuicon').click(function(){
+    if($(".common-m-navbar").offset().left>100){
+      $(this).removeClass("Menuicon");
+      $(this).addClass("fa fa-times-circle");
+      $(".common-m-navbar").animate({right: '0'});
+    }
+    else{
+      $(this).removeClass("fa fa-times-circle");
+      $(this).addClass("Menuicon");
+      $(".common-m-navbar").animate({right: '-450px'});
+    }
+  });
+}
+
+function toggleOldMenuIcon(){
+  $('.Menuicon').click(function(){
+    if($("#Second-menu").offset().left>100){
+      $(this).removeClass("Menuicon");
+      $(this).addClass("fa fa-times-circle");
+      $("#Second-menu").animate({right: '0'});
+    }
+    else{
+      $(this).removeClass("fa fa-times-circle");
+      $(this).addClass("Menuicon");
+      $("#Second-menu").animate({right: '-450px'});
+    }
+  });
+}
+$(".msort-icons").click(function(){
+  $("#content-section").toggle();
+  if($("#content-section").offset().top>100){
+    $("#content-section").toggle();
+  }
+  else{
+    $("#content-section").show();
+  }
+})
+
+
+
+
+
+              // function showMoreRhsAirlines(){
+              //   $('.schedule li').not(':lt(5)').hide();
+              //   $('#show_less').hide();
+              //   var li_size =  $(".schedule li").size();
+              //   var to_show =  5;
+              //   $('#show_more').click(function () {
+              //     $('#show_less').show();
+              //     $('.schedule li').show();
+              //     if(to_show < li_size){
+              //       $('.schedule li:lt('li_size')').show();
+              //       $('#show_more').hide();
+              //       $('#show_less').show();
+              //     }
+              //   });
+              //   $('#show_less').click(function () {
+              //     $('.schedule li').not(':lt(5)').hide();
+              //     $('#show_more').show();
+              //     $('#show_less').hide();
+              //   });
+              // }
+
+              function showMoreOverviewDetails(){
+                $("#show_all_flights_new_dom").click(function() {
+                  $(this).text(function(i,text){
+                    return text === "View All Flights Schedules" ? "View Less Flights Schedules" : "View All Flights Schedules"
+                  })
+                  $(".desktop_top_routes_dom div.showMore").toggleClass("hide")
+                });
+                $("#show_all_flights_new_int").click(function() {
+                  $(this).text(function(i,text){
+                    return text === "View All Flights Schedules" ? "View Less Flights Schedules" : "View All Flights Schedules"
+                  })
+                  $(".desktop_top_routes_int div.showMore").toggleClass("hide")
+                });
+            // $(".mobile_top_routes_dom div.showMore").addClass("hide");
+            $("#show_all_flights_mobile_new_dom").click(function() {
+              $(this).text(function(i,text){
+                return text === "View All Flights Schedules" ? "View Less Flights Schedules" : "View All Flights Schedules"
+              })
+              $(".mobile_top_routes_dom div.showMore").toggleClass("hide")
+            });
+            $("#show_all_flights_mobile_new_int").click(function() {
+             $(this).text(function(i,text){
+              return text === "View All Flights Schedules" ? "View Less Flights Schedules" : "View All Flights Schedules"
+            })
+             $(".mobile_top_routes_int div.showMore").toggleClass("hide")
+           });
+          }
+
+          function showMoreAirlineRoutes(){
+            $("#show_all_flights_new").click(function() {
+              $(this).text(function(i,text){
+                return text === "View All Flights Schedules" ? "View Less Flights Schedules" : "View All Flights Schedules"
+              })
+              $(".desktop_top_routes div.showMore").toggleClass("hide")
+            });
+          // $(".mobile_top_routes div.showMore").addClass("hide");
+          $("#show_all_flights_mobile_new").click(function() {
+            $(this).text(function(i,text){
+              return text === "View All Flights Schedules" ? "View Less Flights Schedules" : "View All Flights Schedules"
+            })
+            $(".mobile_top_routes div.showMore").toggleClass("hide")
+          });
+        }
+        <%# end %>
+
+        function flexSlider(){
+          $(".featured_locals").flexslider({
+            animation: "slide",
+            animationLoop: false,
+            itemWidth: 205,
+            itemMargin: 10,
+            mousewheel: false,
+            rtl: true
+          });
+        }
+
+        // function newStickyWidget() {
+        //   $(window).scroll(function() {
+        //     if ($(this).scrollTop() > 450){  
+        //       $('.top-header').addClass("sticky");
+        //     }
+        //     else{
+        //       $('.top-header').removeClass("sticky");
+        //     }
+        //   });
+
+        //   $('.carousel').carousel()
+        //   $('.m-carousel').carousel();
+        // };
+
+        function stickyWidget(){
+          $(window).scroll(function() {
+            var height = $(window).scrollTop();
+            if(height  > 500) {
+              $("div.search-widget-wrapper").addClass("stickey-widget");
+            }
+            else
+            {
+              $("div.search-widget-wrapper").removeClass("stickey-widget");
+            }
+          });
+        }
+        <% if @is_popular_route && !@is_bot_hit %>
+        if(!is_mobile){
+          $(document).on('scroll',function(){
+            if ($(window).scrollTop() > 353.2){  
+              $('#new-responses div.desk-sorting').addClass("sticky-sorting");
+              $('body').addClass("cs-wrapper")
+            }else{
+              $('#new-responses div.desk-sorting').removeClass("sticky-sorting");
+              $('body').removeClass("cs-wrapper")
+            }
+            if($('.owd-flights-list.bubble.one-way-sticky.last').length > 0 && $(window).scrollTop() > $('.owd-flights-list.bubble.one-way-sticky.last').position().top+20){
+              $('div.desk-sorting').removeClass("sticky-sorting");
+              $('body').removeClass("cs-wrapper")
+            }
+            if($('#rnd-trip').is(':checked') && ($('div.rwd-desk-rhs div.rwd-desk-flights-list.last').length >0 || $('div.rwd-desk-lhs div.rwd-desk-flights-list.last').length > 0)){
+              if($(window).scrollTop() > ($('div.rwd-desk-rhs div.rwd-desk-flights-list.last').length > 0  && $('div.rwd-desk-rhs div.rwd-desk-flights-list.last').position().top)){
+               $('div.rwd-desk-rhs div.desk-sorting').removeClass('sticky-sorting')
+               $('body').removeClass("cs-wrapper")
+             }
+             if($(window).scrollTop() > ($('div.rwd-desk-lhs div.rwd-desk-flights-list.last').length > 0 && $('div.rwd-desk-lhs div.rwd-desk-flights-list.last').position().top)){
+               $('div.rwd-desk-lhs div.desk-sorting').removeClass('sticky-sorting')
+               $('body').removeClass("cs-wrapper")
+             }
+           }
+         })
+        }
+        <% end %>
+        // <%# if @is_popular_route && !@is_bot_hit %>
+        // $(window).scroll(function() {
+        //   if ($(this).scrollTop() > 260){  
+        //     $('.new-srp-widget').addClass("stickey-widget-v3 ");
+        //   }
+        //   else{
+        //     $('.new-srp-widget').removeClass("stickey-widget-v3 ");
+        //   }
+        // });
+        // <%# else %>
+        // $(window).scroll(function() {
+        //   if ($(this).scrollTop() > 660){  
+        //     $('.new-srp-widget').addClass("new-stickey-widget ");
+        //   }
+        //   else{
+        //     $('.new-srp-widget').removeClass("new-stickey-widget ");
+        //   }
+        // });
+        // <%# end %>
+      </script>
+    </body>
+    </html>

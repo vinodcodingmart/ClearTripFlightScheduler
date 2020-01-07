@@ -1,0 +1,157 @@
+<%currency_code = ApplicationProcessor.new.currency_code(country_code)%>
+<!-- Modal -->
+<div class="modal fade" id="tripdetails-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			
+			<h3 class="modal-title" >Details of your round trip <span class="trip-close" data-dismiss="modal" aria-label="Close"><img src="https://waytogo-assets.s3-ap-southeast-1.amazonaws.com/waytogo-staging/images/close.png"></span></h3>
+			<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button> -->
+			
+			<div class="modal-body" id="flights_popup">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="rwd-flight">
+	 <div class="depart-details">
+    <div class="cta-depart">
+      <a href="/flight-booking/<%= best_price["onward"]["link"] %>.html">
+        <span class=" carrier-logo <%= best_price["onward"]["formated_airline_name"] %>"></span>
+        <!-- <span class="airline-names"> <%#= best_price["onward"]["formated_airline"]%> <small><%#=best_price["onward"]["flight_number"]%></small></span> -->
+      </a>
+    </div>
+    <ul class="list-inline depart-airport-details" data-key=<%= best_price["onward"]["unique_flight_key"]%> data-price=<%= best_price["onward"]["route_total_fare"]%> >
+      <li data-depdate=<%="#{best_price['onward']['dep_date']}-#{best_price['onward']['dep_time']}"%> data-arrdate=<%="#{best_price['onward']['arr_date']}-#{best_price['onward']['arr_time']}"%> ><span class="ac1"><%= best_price["onward"]["dep_city_code"]%></span> → <span class="ac2"><%= best_price["onward"]["arr_city_code"]%></span> <span class="air-num"><%= best_price["onward"]["formated_airline"]%> <small><%=best_price["onward"]["flight_number"]%></small></span></li>
+    </ul>
+    <ul  class="list-inline depart-tinfo">
+      <li><%= best_price["onward"]["dep_time"] %></li>
+      <li>-</li>
+      <li><%= best_price["onward"]["arr_time"] %></li>
+      <li><%= best_price["onward"]["duration"] %></li>
+      <li>-</li>
+      <li><%= best_price["onward"]["no_of_stops"] == 0 ? "Non Stop" : "#{best_price["onward"]["no_of_stops"]} - Hops" %></li>
+    </ul>
+    
+  </div><!--/depart-details-->
+  <div class="arrival-details">
+    <div class="cta-depart">
+      <a href="/flight-booking/<%= best_price["return"]['link'] %>.html">
+        <span class=" carrier-logo <%= best_price["return"]["formated_airline_name"] %>"></span>
+        <!-- <span class="airline-names"> <%#= best_price["return"]["formated_airline"]%> <small><%#=best_price["return"]["flight_number"]%></small></span> -->
+      </a>
+    </div>
+    <ul class="list-inline depart-airport-details"  data-key=<%= best_price["return"]["unique_flight_key"]%> data-price=<%= best_price["return"]["route_total_fare"] %>  data-depdate=<%="#{best_price['return']['dep_date']}-#{best_price['return']['dep_time']}"%> data-arrdate=<%="#{best_price['return']['arr_date']}-#{best_price['return']['arr_time']}"%> >
+      <li><span class="ac1"><%= best_price["return"]["dep_city_code"] %></span> → <span class="ac2">BLR</span> <span class="air-num"><%= best_price["return"]["formated_airline"]%> <small><%=best_price["return"]["flight_number"]%></small></span></li>
+    </ul>
+    <ul  class="list-inline depart-tinfo">
+      <li><%= best_price["return"]["dep_time"] %></li>
+      <li>-</li>
+      <li><%= best_price["return"]["arr_time"] %></li>
+      <li><%= best_price["return"]["duration"] %></li>
+      <li>-</li>
+      <li><%= best_price["return"]["no_of_stops"] == 0 ? "Non Stop" : "#{best_price["return"]["no_of_stops"]} - Hops" %></li>
+    </ul>
+    
+  </div><!--/arrival-details-->
+
+  <div class="tw-bst-card">
+    <ul >
+        <li>
+    		<a href="" id="flight_details_fetch" data-toggle="modal" data-target="#tripdetails-info">Flight Details</a>
+        </li> 
+
+        <li class="lprice" >
+        	<span class="lprice-first-span"><b>Cheapest Fare </b> for <span class="bst_card_date"></span></span>
+        	<% route_total_fare =  best_price["onward"]["route_total_fare"].to_i + best_price["return"]["route_total_fare"].to_i %>
+            <span class="prices" id="rndTripRouteTotalFareDesk"><%= currency_code %><%= number_with_delimiter(route_total_fare, :delimiter => ',') %></span>
+            <span><button class="ct-btn book_button book_now" data-key="<%= best_price["unique_flight_key"]%>">Book Now</button></span>
+  
+        </li> 
+    </ul>
+    
+</div>
+
+</div>
+<script type="text/x-handlebars-template" id="best_price_model">	
+	
+	<div class="owd-flight-details" >
+		<div class="owd-routes-header">
+			<div class="col-sm-6 pad-lzero owd-route-code">{{dep_city_name}}  →  {{arr_city_name}} <span class="owdr-date">{{arr_date_formatted}}</span></div>
+			<div class="col-sm-6 pad-rzero">
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		{{#eachData flight_itinerary}}
+		<div class="owd-routes-info">
+			<div class="col-sm-9 pad-lzero">
+				<ul class="list-inline">
+					<li  class="owd-flight-number">
+						<span class="carrier-logo {{../formated_airline_name}}"></span>
+						<span class="air-number">{{flight_number}}</span>
+						<span class="air-class">Economy</span>
+
+					</li>
+					<li class="owd-flight-dep">
+						<span class="owd-dt">{{from_city_code}} <span>{{departure_time}}</span></span>
+						<div class="dpt-dates">
+							{{#iff departure_date_formated '!=' undefined}}
+								{{departure_date_formated}}
+							{{else}}
+								{{../dep_date_formatted	}}
+							{{/iff}}
+						</div>
+						<div class="dept-airport">{{dep_airport_name}}</div>
+						{{#iff depart_terminal '<=>' 0}}
+						<div class="dept-terminal">Terminal {{depart_terminal}}</div>
+						{{/iff}}
+					</li>
+					<li class="owd-flight-time"><i class="fa fa-clock-o"></i> <span class="trip-timing">{{duration}}</span></li>
+					<li class="owd-flight-arr">
+						<span class="owd-arr">{{to_city_code}} <span>{{arrival_time}}</span></span>
+						<div class="arr-dates">
+							{{#iff arrival_date_formated '!=' undefined}}
+								{{arrival_date_formated}}
+							{{else}}
+								{{../arr_date_formatted	}}
+							{{/iff}}
+						</div>
+						<div class="arr-airport">{{arr_airport_name}}</div>
+						{{#iff arrival_terminal '<=>' 0}}
+						<div class="arr-terminal">Terminal {{arrival_terminal}}</div>
+						{{/iff}}
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-3 pad-zero">
+				<div class="baggage-details">
+					
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+		{{#iff index '!=' ../flight_count}}
+              	<div class="trip-layover">
+              		{{#each ../layout_delay_arr as |item i|}}
+              		{{#iff ../index '==' i}}
+              			<span>Layover: {{item}}</span>
+          			{{/iff}}
+					{{/each}}
+					
+				</div>
+        {{/iff}}
+        {{/eachData}}
+	</div>
+	<div class="trip-footer">
+		<span><i class="fa fa-rupee"></i> {{final_price}}</span>
+		<button class="ct-btn book_button book_now">Book Now</button>
+	</div>
+
+	
+
+</script>

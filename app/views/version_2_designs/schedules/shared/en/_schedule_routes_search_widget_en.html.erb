@@ -1,0 +1,393 @@
+
+<!-- common banner starts here -->
+<section id="common-banner">
+  <div class="custom-container">
+    <div class="banner-top-cnt">
+      <% if schedule_layout_values['schedule_routes'].present?  && schedule_layout_values['schedule_routes'].count > 0 %>
+      <% flight_count =  schedule_layout_values['schedule_routes'].count
+      flight_text = flight_count > 1 ? 'flights' : 'flight'
+      %>
+      <% end %>
+      <% if @h1_title.present? %>
+      <h1 class="main-title"><%= @h1_title %></h1>
+      <%# elsif flight_count > 0 %>
+      <!-- <h1 class="main-title"><%#= t('flight_schedule.header_with_count', dep_city_name: dep_city_name, arr_city_name: arr_city_name,count: flight_count,flight_text: flight_count > 1 ? 'flights' : 'flight') %></h1> -->
+      <% else %>
+      <h1 class="main-title" ><%= t('flight_schedule.dep_arr_cheap_flights', dep_city_name: dep_city_name, arr_city_name: arr_city_name) %></h1>
+      <!-- <h1 class="main-title"><%#= t('flight_schedule.header_1',dep_city_name: dep_city_name, arr_city_name: arr_city_name,arr_city_code: schedule_layout_values["arr_city_code"],dep_city_code: schedule_layout_values["dep_city_code"]) %></h1> -->
+      <% end %>
+      
+    </div>
+
+    <!--/new-srp-widget-->
+    <div class="new-srp-widget hidden-xs">
+      <form action="/flights/search" errorblockid="flt_err" id="AirSearch" class="search no-action-change removeSelflabels" method="get" target="_blank">
+        <input type="hidden" name="class" value="Economy" >
+        <ul class="list-inline trip-type">
+        <li class="active">
+          <input id="oneway" type="radio" class="toggle_trip one_way" name="rnd_one" value="O" checked="checked"> <label  for="oneway">One Way</label>
+        </li>
+        <li>
+          <input id="rnd-trip" type="radio"  class="toggle_trip rnd_trip" name="rnd_one" value="R"><label for="rnd-trip" >Round Trip</label>
+        </li>
+      </ul>
+        <div class="form-fields">
+          <ul class="list-inline">
+            <li>
+              <input type="text" id="origin_autocomplete" placeholder="Any Airport or City" autocomplete="off" >
+              <input type="hidden" name="from" class="from">
+            </li>
+            <li class="trip-swap">
+              <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/trip-swap.svg" alt="" class="flip">
+            </li>
+            <li>
+              <input type="text" name="" id ="destination_autocomplete" class ="ui-autocomplete-input" placeholder="Any Airport or City" autocomplete="off">
+              <input type="hidden" name="to"  value="" class="to">
+            </li>
+            <li class="calendar D-Ddate">
+              <input type="text" readonly="readonly" id="dpt_date" title="Departure date" name="depart_date" placeholder="Depart On" class="datePicker required selflabel" >
+            </li>
+            <li class="calendar D-Rdate hide">
+              <input type="text" readonly="readonly" placeholder="Return On" size="10" id="rtn_date" autocomplete="off" mindatefieldid="rtn_date" title="Return date" name="return_date" class="datePicker">
+            </li>
+            <li class="pax-count common-fields">
+              <i class="fa fa-caret-down"></i>
+              <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                <input type="text" readonly="readonly" name="" placeholder="Travellers" class="travellers_data" value="01 Travellers">
+                <input type="hidden" name="adults" value="1">
+                <input type="hidden" name="infants" value="0">
+                <input type="hidden" name="childs" value="0">
+              </div>
+              <ul class="list-unstyled dropdown-menu desktop_travellers">
+                <li>
+                  <span>Adults</span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-minus decrement adult-decrement"></i>
+                    </a>
+                    <span class="count adult-count" style="margin-right:5px;">1</span>
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-plus increment adult-increment"></i>
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>Children</span>
+                  <span class="note">
+                    (2-12 yrs)
+                  </span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)"><i class="fa fa-minus decrement child-decrement"></i></a>
+                    <span class="count child-count" style="margin-right:5px;">0</span>
+                    <a href="javascript:void(0)"><i class="fa fa-plus increment child-increment"></i></a>
+                  </span>
+                </li>
+                <li>
+                  <span>Infants</span>
+                  <span class="note">
+                    (Below 2yrs)
+                  </span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-minus decrement infant-decrement"></i>
+                    </a>
+                    <span class="count infant-count" style="margin-right:5px;">0</span>
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-plus increment infant-increment"></i>
+                    </a>
+                  </span>
+                </li>
+                <li><button type="button" class="Dtravellers">Done</button></li>
+              </ul>
+            </li>
+            <li>
+             <button type="submit" id="button_flight_search" title="Search" class="booking-btn">Search flights</button>
+           </li>
+         </ul>
+       </div>
+     </form>
+   </div>
+
+   <div id="fs-mobile-new-widget">
+    <form action="/flights/search" method="get" id="AirSearchMob">
+      <div class="m-trip-type">
+        <ul class="list-inline">
+          <li class="moile_radioBtn">
+            <input type="radio" name="rnd_one" value="one" id="mob_one_way" checked="checked" >
+            <label for="one-way">One Way</label>
+          </li>
+          <li class="moile_radioBtn">
+            <input type="radio" name="rnd_one" value="rnd" id="mob_rnd_trip">
+            <label for="rnd-trip">Round Trip</label>
+          </li>
+        </ul>
+      </div>
+      <div class="destinations">
+        <div class="depart-city clickable">
+          <a href="#" data-toggle="modal" data-target="#fromCityAutocompleteModel">
+            <span class="airport-code city_code"><%= schedule_layout_values["dep_city_code"] %></span>
+            <span class="city-ac">
+              <p class="placeholder-txt fromCity">Enter From City</p>
+              <div class="fromCityName"></div>
+              <input type="hidden" name="from"  value="" class="from">
+            </span>
+            <div class="clearfix"></div>
+          </a>
+        </div>
+        <div class="arrival-city clickable">
+          <a href="#" data-toggle="modal" data-target="#toCityAutocompleteModel">
+            <span class="airport-code city_code"><%= schedule_layout_values["arr_city_code"] %></span>
+            <span class="city-ac">
+              <p class="placeholder-txt toCity">Enter To City</p>
+              <div class="toCityName"></div>
+              <input type="hidden" name="to"  value="" class="to">
+            </span>
+            <div class="clearfix"></div>
+          </a>
+        </div>
+
+        <div class="sort-icons"><img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/d-sort1.png" class="flip"></div>
+      </div>
+      <div class="date-fields">
+        <div class="dp-date">
+          <label>Departure</label>
+          <span>
+            <input type="text" id="dpt_date_mob"  title="Departure date" class="datePicker" readonly='true'>
+            <input type="hidden"  name="depart_date" value="" id="form_dep_date">
+            <span class="day-txt dep_text"></span>
+          </span>
+        </div>
+        <div class="ar-date hide">
+          <label>Return</label>
+          <span>
+            <input type="text" id="rtn_date_mob" mindatefieldid="dpt_date_mob"  class="datePicker" title="Return date" readonly='true'>
+            <input type="hidden"  name="return_date" value="" id="form_rtn_date">
+            <span class="day-txt ret_text"></span>
+          </span>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="travellers-wrapper">
+        <div class="travellers  travellers-counts clickable">
+          <label>Travellers</label>
+          <a href="#" data-toggle="modal" data-target="#travellerModal">
+            <div class="travellers-count">
+               <!-- <span class="adults"><span class="adultsNumber">1</span><span> Adults,</span></span>
+               <span class="child"><span class="childNumber">0</span><span> Child,</span></span>
+               <span class="infants"><span class="infantsNumber">0</span><span> Infants</span></span> -->
+               <span class="totTravellers">01 Traveller</span>
+               <input type="hidden" name="adults" value="1">
+               <input type="hidden" name="infants" value="0">
+               <input type="hidden" name="childs" value="0">
+             </div>
+           </a>
+         </div>
+         <div class="flight-class">
+          <label>Class</label>
+          <select name="class">
+            <option value="Economy" selected="selected">Economy</option>
+            <option value="Business">Business</option>
+            <option value="Premium Economy">Premium Economy</option>
+          </select>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="find-btn">
+        <input type="submit" name="" value="Find Flights" id="button_flight_search_mob">
+      </div>
+    </form>
+    <div class="mob_errors_container" style="display: none; ">
+      <span class="error-msg">Please fill the required fields</span>
+      <i class="fa fa-close close_error_msg"></i>
+    </div>
+  </div>
+
+  <!-- mobile Traveller model starting -->
+  <div class="modal fade" id="travellerModal" tabindex="-1" role="dialog" aria-labelledby="travellerLabel" style="display: none;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="travellerLabel">Pick travellers</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12 search-blk">
+              <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+                <li>
+                  <span>Adults</span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-minus decrement adult-decrement"></i>
+                    </a>
+                    <span class="count adult-count" style="margin-right:5px;">1</span>
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-plus increment adult-increment"></i>
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>Children</span>
+                  <span class="note">
+                    (2-12 yrs)
+                  </span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)"><i class="fa fa-minus decrement child-decrement"></i></a>
+                    <span class="count child-count" style="margin-right:5px;">0</span>
+                    <a href="javascript:void(0)"><i class="fa fa-plus increment child-increment"></i></a>
+                  </span>
+                </li>
+                <li>
+                  <span>Infants</span>
+                  <span class="note">
+                    (Below 2yrs)
+                  </span>
+                  <span class="click-block">
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-minus decrement infant-decrement"></i>
+                    </a>
+                    <span class="count infant-count" style="margin-right:5px;">0</span>
+                    <a href="javascript:void(0)">
+                      <i class="fa fa-plus increment infant-increment"></i>
+                    </a>
+                  </span>
+                </li>
+              </ul>
+              <div class="btn-orange text-center">
+                <button type="button" data-dismiss="modal" class="btn btn-default booking" style="width: 70%;font-size: 16px;">Continue booking</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- mobile traveller model code ends here -->
+
+  <!-- from city auto complete  model code -->
+  <div class="modal fade" id="fromCityAutocompleteModel" tabindex="-1" role="dialog" aria-labelledby="cityAutoComplete">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+          <svg width="16" version="1.1" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+            <g>
+              <path fill="#ffffff" d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
+            </g>
+          </svg>
+        </span>
+        <span class="modal-title" id="fromCity">Select Origin Airport</span>
+      </div>
+      <div class="modal-body">
+        <div class="search-blk">
+          <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+            <li>
+              <input type="text"  name=""  id="origin_autocomplete_mob" class="ui-autocomplete-input origin_autocomplete_mob" placeholder="Choose Departure city"  >
+            </li>
+          </ul>
+        </div>
+        <% if search_widget_popular_routes.any?  %>
+        <div class="popular-routes depCity">
+         <h4>Popular Cities</h4>
+         <ul class="list-unstyled cityAutoCompleteData">
+           <% search_widget_popular_routes.each do |route| %>
+           <li>
+            <span class="city_code"><%= route[:city_code] %> </span><span class="city_name"><%= route[:city_name]%>, <%= route[:airport_name]%></span>
+          </li>
+          <% end %>
+        </ul>
+        <ul class="depAutoCompleteCities">
+          <li></li>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of from city auto complete  model code   -->
+
+
+
+<!-- To city auto complete model Code starting -->
+<div class="modal fade" id="toCityAutocompleteModel" tabindex="-1" role="dialog" aria-labelledby="cityAutoComplete">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close ao-sw-btn" data-dismiss="modal" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 35 35" fill="#fff"><path fill-rule="evenodd" d="M15.525 17.146L1.383 3.004 3.504.883l14.143 14.142L32.496.175l2.121 2.122-14.85 14.85 14.85 14.849-2.121 2.12-14.85-14.848L2.798 34.117.676 31.996z"></path></svg>
+      </span>
+      <span class="modal-title" id="fromCity">Select Destination Airport</span>
+    </div>
+    <div class="modal-body">
+      <div class="col-md-12 search-blk">
+        <ul class="list-unstyled traveller-menu show-dropdown" aria-labelledby="travellerDropdown" style="display: block;">
+          <li>
+            <input type="text"  id="destination_autocomplete_mob"  class="destination_autocomplete_mob" placeholder="Choose Arrival city" autocomplete="off">
+          </li>
+        </ul>
+      </div>
+      <% if search_widget_popular_routes.any?  %>
+      <div class="popular-routes arrivalCity">
+       <h4>Popular Cities</h4>
+       <ul class="list-unstyled cityAutoCompleteData">
+        <% search_widget_popular_routes.each do |route| %>
+        <li>
+          <span class="city_code"><%= route[:city_code] %> </span><span class="city_name"><%= route[:city_name]%>, <%= route[:airport_name]%></span>
+        </li>
+        <% end %>
+      </ul>
+      <ul class="arrAutoCompleteCities">
+        <li></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
+<!-- End of To city auto complete model Code -->
+
+<!--/new-srp-widget-->
+<!--/trust-icons-wrapper-->
+<div class="trust-icons-wrapper hidden-xs">
+  <div class="trust-icons">
+    <div class="trust-icon">
+
+      <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/lp.png" alt="">
+    </div>
+    <div class="trust-cnt">
+      <span>Lowest Price Guarantee</span>
+      <p>Lowest Price Guarantee on Flight Tickets</p>
+    </div>
+  </div>
+  <div class="trust-icons">
+    <div class="trust-icon">
+
+      <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/sb.png" alt="">
+    </div>
+    <div class="trust-cnt">
+      <span>Safe Booking</span>
+      <p>All Flight bookings are 100% Safe & Secure</p>
+    </div>
+  </div>
+  <div class="trust-icons">
+    <div class="trust-icon">
+      <img src="https://s3-ap-southeast-1.amazonaws.com/waytogo-assets/waytogo-staging/flight-schedule-version-2-images/r.png" alt="">
+    </div>
+    <div class="trust-cnt">
+      <span>Rewards</span>
+      <p>Book More & Get Free Flights & Hotel Stay</p>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!--/trust-icons-wrapper-->
+
+</div>
+</section>
+
+
+<!-- common-banner ends -->

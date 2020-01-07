@@ -1,0 +1,7 @@
+<h2>Book cheap <%= airline_name %> flights</h2>
+ <p>Cleartrip facilitates easy, fast and reliable air tickets booking platform for the <%= airline_name %> Airlines.</p>
+ <p>Cleartrip brings you the latest flight schedule for <%= airline_name %> Airlines. We’ve tried to compile and simplify airways information to help you in booking your air tickets and plan your complete trip. This <%= airline_name %> Airlines flight schedule should give you a fair idea of their flights operating across the world. View flight timings, flight numbers, flight arrivals and departures, via routes and the days on which they operate. <%= host %> offers great deals and discounts on <%= airline_name %> Airlines ticket booking. Make sure you book your <%= airline_name %> Airlines flight tickets well in advance in order to enjoy cheaper air fares</p>
+ <h2><%= airline_name %> Airlines top sectors</h2>
+ <% if top_sectors["occasional_flights"].present? && top_sectors["airline_route_list"].present? %>
+<p>Top international sectors of <%= airline_name %> include <%= top_sectors["airline_route_list"].html_safe %> </p><p>They also have occasional flights from <%= top_sectors["occasional_flights"].html_safe %> flights.</p>
+<% end %>

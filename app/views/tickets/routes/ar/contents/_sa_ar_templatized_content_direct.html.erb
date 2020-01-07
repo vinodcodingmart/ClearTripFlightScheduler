@@ -1,0 +1,13 @@
+<p>تذاكر طيران رخيصة من <%= dep_city_name %> <%= arr_city_name %></p>
+   <p>إن السفر إلى مدينة خارج بلدك يبدو أمراً دائما مثيراً في البداية. ومع ذلك بمجرد بدأ المتاعب أثناء حجز تذاكر السفر فإنك ستشعر بحماس أقل. لذلك جعل كليرتريب عملية الحجز سريعة ومريحة لضمان عدم تعثرك</p>
+<% if ticket_layout_values["operational_airlines"].present? %>
+	<p>إن <%= ticket_layout_values["operational_airlines"]  %> هي الخطوط الجوية التي تُسيّر رحلات بين <%= dep_city_name %> و <%= arr_city_name %></p>  
+<% end %> 
+<% if  ticket_layout_values['airline_count_list'].present? %>
+	<p><%= ticket_layout_values['airline_count_list'] %> رحلات و </p>
+<p>وبالتالي يمكن للمسافرين الاختيار بين رحلات <%= ticket_layout_values["weekly_flights_count"] %> أسبوعياً.</p>
+<p>إن <%= ticket_layout_values["first_dep_airline"]%> التي تغادر في <%= ticket_layout_values["first_dep_time"]%> هي أول رحلة من %{dep_city_name} إلى %{arr_city_name} أما الرحلة الأخيرة هي <%= ticket_layout_values["last_dep_airline"]%> والتي تغادر في <%= ticket_layout_values["last_dep_time"]%>. </p>
+<% end %>
+<p>إن أرخص يوم للسفر من <%= dep_city_name %> إلى <%= arr_city_name %> هو الثلاثاء. احجز تذكرتك قبل 90 يوماً للاستفادة من أفضل العروض.</p>
+<p>إن متوسط طول الرحلة على هذا المسار هو <%= ticket_layout_values["max_duration"] %> بما في ذلك التوقف. كما أن الفرق الزمني بين <%= dep_city_name %> و <%= arr_city_name %> هو <%=  ticket_layout_values["min_duration"] %>. تغادر الرحلات من <%= dep_city_name %> من <%= ticket_layout_values["dep_airport_name_ar"] %> وإن رمز الاتحاد الدولي للنقل الجوي لهذا المطار هو <%= ticket_layout_values["dep_airport_code"] %>.</p>
+<p>والرحلات التي تهبط في <%= arr_city_name %> تصل إلى <%= ticket_layout_values["arr_airport_name_ar"] %> وإن رمز الاتحاد الدولي للنقل الجوي لهذا المطار هو <%= ticket_layout_values["arr_airport_code"] %></p>

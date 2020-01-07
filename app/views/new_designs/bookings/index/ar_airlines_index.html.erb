@@ -1,0 +1,79 @@
+<% use_helper = self.extend ApplicationHelper %>
+<% I18n.locale = :ar %>
+<%= render partial: "new_designs/bookings/shared/ar/main_header", locals: { assets_path: @assets_path, country_code: country_code, host: @host_name, flight_file_name: flight_file_name, page_type: 'flight-booking', application_processor: application_processor} %>
+<div class="clearfix"></div>
+<section id="content">
+  <div class="container-fluid">
+    <ul class="list-inline bread-crumb">
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="first">
+        <a href="/flights" title="<%= t('breadcrumb.cheap_flights')%>" itemprop="url"><span itemprop="title"><%= t('breadcrumb.flights')%></span></a>
+      </li>
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+
+        <span>
+          <% if @section == "dom" %>
+          <%= t('breadcrumb.domestic_airlines')%>
+          <% else %>
+          <%= t('breadcrumb.international_airlines')%>
+          <% end %>
+        </span>
+      </li>
+    </ul>
+    <% @country_name = I18n.t("country.#{country_code}") %>
+    <h1><%= t("brand.#{section}_airlines_in", country: @country_name) %> </h1>
+    <%= render "common/search_widget_ar" %>
+    <div class="col-lg-9 col-md-9 col-sm-12 mobile-view pad-lzero" id="flight-schedule">
+      <div class="list-box" id="airline-page">
+        <div class="content-desc">
+          <% if pagination[:current_page_no] == 0  && File.exists?("#{Rails.root}/app/views/new_designs/bookings/index/contents/_#{country_code.downcase}_#{section}_index_content_ar.html.erb") %>
+          <%= render partial: "new_designs/bookings/index/contents/#{country_code.downcase}_#{section}_index_content_ar" %>
+          <% end %>
+        </div><!--content-desc-->
+
+        <%= render "new_designs/bookings/index/pagination_airlines",airline_codes: pagination[:routes],country_code: country_code %>
+
+        <div class="clearfix"></div>
+        <div class="top_routes">
+          <% if pagination[:total_pages]  > 1 %>
+          <div class="text-center linklist-btn">
+            <% if pagination[:current_page_no] == 0 %>
+            <a class="no-link" ><%= t('prev') %></a> | <a rel="next" href='<%= "/ar/flight-booking/#{pagination[:next_url]}" %>' ><%= t('next') %></a>
+            <% elsif pagination[:current_page_no] >= pagination[:total_pages] %>
+            <a rel="prev" href='<%= "/ar/flight-booking/#{pagination[:prev_url]}" %>' ><%= t('prev') %></a> | <a class="no-link" ><%= t('next') %></a>
+            <% else %>
+            <%#= render "pagination_airlines",airline_codes: pagination[:routes] %>
+            <a rel="prev" href='<%= "/ar/flight-booking/#{pagination[:prev_url]}" %>' ><%= t('prev') %></a> | <a rel="next" href='<%= "/ar/flight-booking/#{pagination[:next_url]}" %>' ><%= t('next') %></a>
+            <% end%>
+          </div>
+          <% end %>
+        </div>
+      </div><!--list-box-->
+    </div>
+
+    <div id="Rside-bar">
+      <div class="col-lg-3 col-md-3 col-sm-12 pad-rzero side-bar">
+        <div class="blocks banner-section">
+          <div id="banner">
+            <a target="_blank"><img></a>
+          </div>
+        </div>
+        <% unless !top_routes.present? && top_routes.nil? %>
+        <%= render :partial=>"bookings/shared/ar/rhs_top_routes",:locals=>{routes: top_routes, page_type: 'flight-booking', application_processor: application_processor, carrier_code: @carrier_code, section: @section } %>
+        <% end %>
+        <%= render :partial=>"bookings/pnr_webcheck_in/rhs_airlines_ar",:locals=>{top_airlines: top_airlines, use_helper: use_helper,:assets_path=>@assets_path, application_processor: application_processor,section: @section} %>
+        <% unless !top_airports.present? && top_airports.nil? %>
+        <%= render :partial=>"bookings/shared/ar/rhs_top_airports",:locals=>{top_airports: top_airports, use_helper: use_helper, application_processor: application_processor } %>
+        <% end %>
+      </div>
+    </div><!--/Rside-bar-->
+
+    <div class="clearfix"></div>
+  </div>
+</section><!--/contnet-->
+<div id="footer_container">
+    <% country_code = @country_code %>
+    <%= render partial: "footers/#{country_code.downcase}/booking/#{country_code.downcase}_#{@section}_footer_ar", locals: {country_code: country_code,top_airlines: top_airlines,section: @section,footer_links_data_arabic:[],footer_links_data:[],page_type: 'airline-arabic-index',footer_airline_data:top_airlines}%>
+</div>
+<%= render "shared/#{country_code.downcase}/#{country_code.downcase}_gac"%>
+<%= render "common/comscore" %>
+<%= render "common/mobile_header_flexislider" %>

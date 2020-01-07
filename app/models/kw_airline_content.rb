@@ -1,0 +1,2 @@
+class KwAirlineContent < ApplicationRecord
+end

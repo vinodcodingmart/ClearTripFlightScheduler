@@ -1,0 +1,2 @@
+class SaFromToContent < ApplicationRecord
+end

@@ -1,0 +1,108 @@
+
+<%if @country_code == "IN"%>
+	<% top_airlines = top_airlines %>
+<% elsif @country_code == "SA" %>
+	<% top_airlines = ["SV","XY","F3","GF","FZ","G9","WY","EY","MS","AI","TK","EK","UL","KU","NE","LH","RJ","NP","SM","8Q"] %>
+<% else%>
+	<%	top_airlines = ["G9","IX","FZ","EK","EY","6E","5J","SG","PA","WY","PR","GF","CX","MS","SQ","UL","TK","AK","BA","NL","ET","RJ","TG","AF","LH"]  %>
+<% end %>
+
+<%# if top_airlines.present?  && (@country_code == "SA" || @country_code == "AE") %>
+<% if top_airlines.present? && top_airlines.any? %>
+	<% if  @country_code == "IN" %>
+		<div class="white-card">
+		<h2> Top Airlines </h2> 
+			<ul class="list-unstyled schedule flight-routes">
+				<% count = 0 %>
+				<% top_airlines.uniq.each do |airline_code| %>
+					<% count += 1 %>
+						<% airline_name =  airline_code == "AI"  ? "Air India" : t("airlines.#{airline_code}")  %>
+						<% formated_carrier_name =  airline_name.downcase.gsub(" ",'-').gsub('--','-') %>
+						<li>
+								<a href="<%= "/flight-booking/#{formated_carrier_name.downcase}-#{schedule_layout_values["dep_city_name_formated"]}-#{schedule_layout_values["arr_city_name_formated"]}-flights.html" %>" class="airline-link" title="<%= dep_city_name %> <%= arr_city_name  %> <%= airline_name %>"><%= dep_city_name %> <%= arr_city_name  %> <%= airline_name %> </a>
+							<div class="clearfix"></div>
+						</li>
+				<% end %>
+			</ul>
+			<% #if @country_code == "IN" &&  count > 5   %>
+				<!-- <p  id="show_more">Show More</p>
+				<p  id="show_less">Show Less</p> -->
+			<% #end %>
+		</div><!--/white-card-->
+	<% else %>
+		<div class="white-card">
+			<% title = @country_code == "IN" ? "Top Rated Airlines" : "Top International Airlines" %>
+			<h2><%= title %></h2>
+			<ul class="list-unstyled top-airlines">
+				<% count = 0 %>
+				<% top_airlines.uniq.each do |airline_code| %>
+				<% count += 1 %>
+				<% airline_name =  airline_code == "AI"  ? "Air India" : t("airlines.#{airline_code}")  %>
+				<% formated_carrier_name =  airline_name.downcase.gsub(" ",'-').gsub('--','-') %>
+				<li>
+					<% if  @country_code == "SA" || @country_code == "AE" %>
+						<a href="<%= "/flight-booking/#{formated_carrier_name.downcase}-airlines.html" %>" class="airline-link" title="<%= airline_name %>">
+
+					<% else %>
+					<a href="<%= "/flight-booking/#{formated_carrier_name.downcase}-#{schedule_layout_values["dep_city_name_formated"]}-#{schedule_layout_values["arr_city_name_formated"]}-flights.html" %>" class="airline-link">
+					<% end %>
+					<!-- <a href="<%#= "/flight-booking/"+format_airline_name(airline_name).downcase.gsub(" ", "-").gsub("--","-") + ".html" %>" class="airline-link"> -->
+						<div class="R-airline-logo "><span class="carrier-logo <%= formated_carrier_name %>"></span></div>
+
+						<div class="R-airline-name">
+							<span>
+							<% if @is_route && @country_code == "IN" %>
+								<%= arr_city_name  %> <%= dep_city_name %> <%= airline_name %> 
+							<% else %>
+								<%= airline_name %> 
+							<% end %>
+							</span>
+						</div>
+					</a>
+					<% if  @country_code == "SA" || @country_code == "AE" %>
+						<div class="R-book">
+							<%= link_to( "Book","/flight-booking/#{formated_carrier_name.downcase}-airlines.html",:class=>"booking-btn", :title => "#{airline_name} Flight Booking") %>
+						</div>
+					<% else %>
+						<div class="R-book">
+							<%= link_to( "Book","/flight-booking/#{formated_carrier_name.downcase}-#{schedule_layout_values["dep_city_name_formated"]}-#{schedule_layout_values["arr_city_name_formated"]}-flights.html",:class=>"booking-btn") %>
+						</div>
+					<% end %>
+					<div class="clearfix"></div>
+				</li>
+
+				<% end %>
+			</ul>
+			<% if @country_code == "IN" &&  count > 5   %>
+				<p  id="show_more">Show More</p>
+				<p  id="show_less">Show Less</p>
+			<% end %>
+		</div><!--/white-card-->
+	<% end %>
+<% end %>
+
+<%  if near_by_airport_hotels.present?  && hotels_rhs_list.present? && @country_code!="SA"  && false %>
+<div class="white-card">
+	<h2>Top Hotels In <%= arr_city_name %></h2>
+	<% if near_by_airport_hotels.present? %>
+	<ul class="list-unstyled flight-routes">
+		<% hotels_list[0..5].each do |hotel| %>
+		<li>
+			<%= link_to hotel["hotel_name"] , hotel["hotel_link"] %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+	<% else %>
+	<ul class="list-unstyled flight-routes">
+		<% hotels_list.each do |hotel| %>
+		<li>
+			<%= link_to hotel["hotel_name"] , hotel["hotel_link"] %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+	<% end %>
+</div><!--/white-card-->
+
+<% end %>

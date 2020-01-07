@@ -1,0 +1,33 @@
+<!-- End Google Tag Manager -->
+<meta property="og:type" content="Flight website" />
+<meta property="og:title" content="<%= title.html_safe %>" />
+<meta property="og:description" content="<%= description.html_safe %>" />
+<meta property="og:url" content="<%= @host_name + request.path %>">
+<meta property="og:site_name" content="Cleartrip Flights" />
+<meta property="fb:admins" content="100004862199945"/>
+<meta property="og:image" content="https://s3.amazonaws.com/ctp-images/uploads/CleartripLogo(nodotcom)-1.png " />
+<meta property="og:image:secure_url" content=" https://s3.amazonaws.com/ctp-images/uploads/CleartripLogo(nodotcom)-1.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="300" />
+<meta property="og:image:alt" content="Cleartrip Logo" />
+<meta property="og:locale" content="<%= og_tags[:main_content]%>" />
+<% og_tags[:alts].each do |alt| %>
+	<meta property="og:locale: alternate" content="<%= alt %>" />
+<%end %>
+
+<!--  END OG graph for FB -->
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="Flight website" />
+<meta name="twitter:title" content="<%= title.html_safe %>"  />
+<meta name="twitter:description" content="<%= description.html_safe %>"/>
+<meta name="twitter:image" content=" https://s3.amazonaws.com/ctp-images/uploads/CleartripLogo(nodotcom)-1.png " />
+<meta name="twitter:site" content="@cleatrip"/>
+<meta name="twitter:creator" content="@cleartrip"/>
+<!-- ENDTwitter card -->
+
+<!-- G+ -->
+<meta itemprop="name" content="<%= title.html_safe %>"/>
+<meta itemprop="description" content="<%= description.html_safe %>"/>
+<meta itemprop="image" content="https://s3.amazonaws.com/ctp-images/uploads/CleartripLogo(nodotcom)-1.png"/>

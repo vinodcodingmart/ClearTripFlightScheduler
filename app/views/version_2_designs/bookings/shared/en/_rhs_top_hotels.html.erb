@@ -1,0 +1,14 @@
+<% if top_hotels.present? %>
+<div class="white-card">
+	<h2>Popular City Hotels</h2>
+	<ul class="list-unstyled flight-routes">
+		<% top_hotels.each do |hotel| %>
+		<li>
+			<% hotel_name = link_to("#{hotel} hotels", "/hotels/india/"+ "#{use_helper.url_escape(hotel)}",title: "#{hotel} hotels")  %>
+			<%=  hotel_name %>
+			<div class="clearfix"></div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>

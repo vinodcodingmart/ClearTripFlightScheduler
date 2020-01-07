@@ -1,0 +1,2 @@
+class SaAirlineContent < ApplicationRecord
+end

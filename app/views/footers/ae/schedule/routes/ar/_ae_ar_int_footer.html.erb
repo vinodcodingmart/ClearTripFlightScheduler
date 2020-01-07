@@ -1,0 +1,67 @@
+<div >
+  <div class="container-fluid">
+    <div class="sixteen columns alpha">
+     <% if  footer_airline_data.present? %>
+      <ul class="footerlinkssmall">
+        <% footer_airline_data.each_with_index do |airline,index| %>
+        <% if index == 0 %>
+        <li><%= t('footer.intl_airlines') %> :</li>
+        <li><%= link_to t("airlines.#{airline[1]}"), "/flight-booking/#{airline[0]}",title: t("airlines.#{airline[1]}") %></li>
+        <% else %>
+        <li><%= link_to t("airlines.#{airline[1]}"), "/flight-booking/#{airline[0]}",title: t("airlines.#{airline[1]}") %></li>
+        <% end %>
+        <% end %>
+      </ul>
+      <%end%>
+
+      <% if footer_links_data_arabic.present? %>
+      <ul class="footerlinkssmall">
+       <% footer_links_data_arabic.each_with_index do |link,index| %>
+       <% if index == 0 %>
+       <li><%= t('footer.international_flight') %> :</li>
+       <li><%= link_to "#{link[:dep_city_name]} #{link[:arr_city_name]}"+ I18n.t('airline_city.flights'),"/ar/flight-schedule/#{link[:url]}",title:"#{link[:dep_city_name]} #{link[:arr_city_name]}"+ I18n.t('airline_city.flights') %></li>
+       <% else %>
+       <li><%= link_to "#{link[:dep_city_name]} #{link[:arr_city_name]}"+ I18n.t('airline_city.flights'),"/ar/flight-schedule/#{link[:url]}",title:"#{link[:dep_city_name]} #{link[:arr_city_name]}"+ I18n.t('airline_city.flights') %></li>
+       <% end %>
+       <% end %>
+     </ul>
+     <% end %>
+
+     <ul class="footerlinkssmall">
+      <li><%= t('other')%>:</li>
+
+      <li> <a href="/ar/flights/" title="<%= t('footer.flight_desc')%>"><%= t('footer.dom_flight')%></a> </li>
+      <li> <a href="/ar/international-flights" title="<%= t('footer.flight_desc')%>"><%= t('footer.international_flight')%></a> </li>
+      <li> <a href="/status/" title="<%= t('footer.status')%>"><%= t('footer.status')%></a> </li>
+      <li> <a href="/hotels/united-arab-emirates/" title="<%= t('footer.hotels')%>"><%= t('footer.hotels')%></a> </li>
+
+      <li> <a href="/<%= I18n.locale.to_s %>/flight-schedule/flight-schedules-domestic.html" title="<%= t('footer.dom_schedule')%>"><%= t('footer.dom_schedule')%></a> </li>
+      <li> <a href="/<%= I18n.locale.to_s %>/flight-booking/domestic-airlines.html" title="<%= t('footer.dom_airlines')%>"><%= t('footer.dom_airlines')%></a> </li>
+      <li> <a href="/tourism/airports/<%= I18n.locale.to_s %>/domestic-airports.html" title="<%= t('footer.dom_airports')%>"><%= t('footer.dom_airports')%></a> </li>
+      
+      <li> <a href="/<%= I18n.locale.to_s %>/flight-schedule/flight-schedules-international.html" title="<%= t('footer.intl_flight_sched')%>"><%= t('footer.intl_flight_sched')%></a> </li>
+      <li> <a href="/<%= I18n.locale.to_s %>/flight-booking/international-airlines.html" title="<%= t('footer.intl_airlines')%>"><%= t('footer.intl_airlines')%></a> </li>
+      <li> <a href="/tourism/airports/<%= I18n.locale.to_s %>/international-airports.html" title="<%= t('footer.intl_airport')%>"><%= t('footer.intl_airport')%></a> </li>
+      <li> <a href="/tourism/routes/ar/" title="<%= t('footer.routes')%>"><%= t('footer.routes')%></a> </li>
+    </ul>
+    <div class="clear"></div>
+    <ul class="footerlinkssmall">
+     <li><%= t('footer.countries')%>:</li>
+     <li> <a href="https://www.cleartrip.com" title="<%= t('footer.in')%>"><%= t('footer.in')%></a> </li>
+     <li> <a href="https://www.cleartrip.ae/ar/" title="<%= t('footer.in')%>"><%= t('footer.ae')%></a> </li>
+     <li> <a href="https://www.cleartrip.sa/ar/" title="<%= t('footer.sa')%>"><%= t('footer.sa')%></a> </li>
+     <li> <a href="https://bh.cleartrip.com" title="<%= t('footer.bh')%>"><%= t('footer.bh')%></a> </li>
+     <li> <a href="https://kw.cleartrip.com" title="<%= t('footer.kw')%>"><%= t('footer.kw')%></a> </li>
+     <li> <a href="https://qa.cleartrip.com" title="<%= t('footer.qa')%>"><%= t('footer.qa')%></a> </li>
+     <li> <a href="https://om.cleartrip.com" title="<%= t('footer.om')%>"><%= t('footer.om')%></a> </li>
+   </ul>
+   <div class="clear"></div>
+   <ul class="footerlinkssmall" style="width:100%;">
+    <li style="width:80%">&copy;<%= t('footer.copyright')%></li>
+    <li> <a rel="nofollow" href="/privacy-policy/"><%= t('footer.privacy')%></a> </li>
+    <li> <a rel="nofollow" href="/security/"><%= t('footer.security')%></a> </li>
+    <li> <a rel="nofollow" href="/terms/"><%= t('footer.tou')%></a> </li>
+  </ul>
+</div>
+</div>
+</div>
