@@ -9,6 +9,8 @@ currency = application_processor.currency_name(@country_code)
 
 <%= render partial: "new_designs/schedules/shared/en/schedule_route_table",locals: { routes:  schedule_layout_values["schedule_routes"],schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,country_code: @country_code} %>
 
+<%= render partial: "new_designs/schedules/shared/en/cheap_fair_table",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,country_code: @country_code,currency: currency} %>
+
 <script>
 var lang = <%= lang.to_json.html_safe %>;
 var country_code= "<%= @country_code.downcase %>";
