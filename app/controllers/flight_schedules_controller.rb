@@ -44,15 +44,6 @@ class FlightSchedulesController < ApplicationController
     schedule_layout_values["dep_city_code"] = dep_city_code
     schedule_layout_values["arr_city_code"] = arr_city_code
     flight_file_name = params[:route] + ".html"
-    min_price_sample_route = route.in_flight_schedule_collectives.first
-    route_details = { 
-                      dep_city_code: min_price_sample_route.dep_city_code,
-                      carrier_code: min_price_sample_route.carrier_code,
-                      arr_city_code: min_price_sample_route.arr_city_code,
-                      country_code: @country_code }
-    flight_booking_service = FlightBookingService.new route_details
-    min_pr = flight_booking_service.min_price_new_changes(@dep_city_code,@arr_city_code,@carrier_code,@country_code)
-    binding.pry
     partial = "version_2_designs/schedules/en/directs/in_dom_schedule_routes_v2"
     render partial,locals: { dep_city_name: dep_city_name,arr_city_name: arr_city_name,routes_rhs_top_airlines: routes_rhs_top_airlines,schedule_layout_values: schedule_layout_values,flight_file_name: flight_file_name,page_type: 'flight-schedule',lang: lang}
 
