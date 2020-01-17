@@ -302,12 +302,12 @@ class FlightBookingService
 			max_price = min_pr[:airline_max_price][@carrier_code].to_i rescue 0
 			airline_route_schedules.each do |route|
 				route_json = eval(route.to_json)
-				route_json[:cc_route_min_price] = min_price
+				route_json[:cc_min_price] = min_price
 				route_json[:cc_route_max_price] = max_price
 				route_with_price << route_json
 			end
-			routes = route_with_price.sort_by{|k| k[:days_of_operation].length}.reverse
-			return routes
+			# routes = route_with_price.sort_by{|k| k[:days_of_operation].length}.reverse
+			return route_with_price
 		end
 
 		def airline_top_header_routes
@@ -826,7 +826,6 @@ class FlightBookingService
 		return {footer_links_data: footer_links_data,footer_links_data_arabic: footer_links_data_arabic,dom_airlines: dom_airlines,int_airlines: int_airlines,footer_airline_data: footer_airline_data,volume_routes: volume_routes}
 	end
 	def min_price_new_changes(dep_city_code,arr_city_code,carrier_code='',country_code='')
-
     result={}
     date_res={}
     result1={}
@@ -980,5 +979,106 @@ class FlightBookingService
   def h1_title_temp
   	return {"SV" => "الخطوط السعودية","XY" => "طيران ناس","MS" => "مصر للطيران","FZ" => "فلاي دبي","GF" => "طيران الخليج","NE" => "نسمة ايرلاينز","G9" => "العربية للطيران","TK" => "الخطوط الجوية التركية","EK" => "الخطوط الاماراتية","NP" => "طيران النيل","EY" => "الاتحاد للطيران","2Q" => "إير كايرو","PC" => "خطوط بيغاسوس الجوية","R5" => "الخطوط الاردنية","PR" => "الخطوط الجوية الفلبينية","AT" => "الخطوط الملكية المغربية","P4" => "السلام الجوي","ME" => "طيران الشرق الاوسط"}
   end
-
+  def self.get_schedule_routes(airlines,lang,country_code)
+    schedule_layout_values = {}
+    airlines.each{|airline|
+      schedule_layout_values["schedule_routes"] ||= []
+      @carrier_name = airline.carrier_name
+      @carrier_name_ar = airline.carrier_name_ar
+      @carrier_code = airline.carrier_code
+      @dep_city_code = airline.dep_city_code
+      @arr_city_code = airline.arr_city_code
+      @dep_city_name = airline.dep_city_name
+      @arr_city_name = airline.arr_city_name
+      @dep_country_code = airline.dep_country_code
+      @arr_country_code = airline.arr_country_code
+      @dep_city_name_ar = CityName.find_by(city_code: airline.dep_city_code).city_name_ar rescue ""
+      @arr_city_name_ar = CityName.find_by(city_code: airline.arr_city_code).city_name_ar rescue ""
+      @country_code = country_code
+      @language = lang
+      @section = ( @dep_country_code == @country_code && @arr_country_code ==  @country_code ) ? "#{@country_code}-dom" : "#{@country_code}-int"
+      # airports = Hash[Airport.where(:city_code=>[@dep_city_code,@arr_city_code]).map{|c| [c.city_code,c]}]
+      # @dep_airport_code = airports[@dep_city_code].airport_code rescue @dep_city_code
+      # @arr_airport_code = airports[@arr_city_code].airport_code rescue @arr_city_code
+      # @dep_airport_name = airports[@dep_city_code].airport_name rescue ""
+      # @arr_airport_name = airports[@arr_city_code].airport_name rescue ""
+      # @dep_airport_name_ar = airports[@dep_city_code].airport_name_ar rescue ""
+      # @arr_airport_name_ar = airports[@arr_city_code].airport_name_ar rescue ""
+      route_details = { carrier_name: @carrier_name,
+                      carrier_code: @carrier_code,
+                      dep_city_code: @dep_city_code,
+                      arr_city_code: @arr_city_code,
+                      dep_city_name: @dep_city_name,
+                      arr_city_name: @arr_city_name,
+                      dep_country_code: @dep_country_code,
+                      arr_country_code: @arr_country_code,
+                      country_code: @country_code,
+                      section: @section,
+                      language: @language,
+                      dep_city_name_ar: @dep_city_name_ar,
+                      arr_city_name_ar: @arr_city_name_ar,
+                    carrier_name_ar: @carrier_name_ar}
+      flight_booking_service = FlightBookingService.new route_details
+      case @country_code
+        when  "IN"
+          @airline_route_schedules = airline.in_airline_route_schedules
+        when  "AE"
+          @airline_route_schedules = airline.ae_airline_route_schedules
+        when  "SA"
+          @airline_route_schedules = airline.sa_airline_route_schedules
+        when  "BH"
+          @airline_route_schedules = airline.bh_airline_route_schedules
+        when  "QA"
+          @airline_route_schedules = airline.qa_airline_route_schedules
+        when  "KW"
+          @airline_route_schedules = airline.kw_airline_route_schedules
+        when  "OM"
+          @airline_route_schedules = airline.om_airline_route_schedules
+        else
+          @airline_route_schedules = airline.om_airline_route_schedules
+      end
+      schedule_layout_values["schedule_routes"] += flight_booking_service.airline_route_schedule_values(@airline_route_schedules)
+    }
+    schedule_layout_values["schedule_routes"] = schedule_layout_values["schedule_routes"].sort_by { |k| k[:cc_min_price] }
+  end
+  def self.get_cheap_fare_table_data(dep_city_code,arr_city_code,country_code)
+    cheap_fare_data = {}
+    if ["IN","AE","SA"].include?(country_code)
+      cheap_fare_data[:min_today] ||= {}
+      cheap_fare_data[:min_15_with_dd] ||= {}
+      cheap_fare_data[:min_30_with_dd] ||= {}
+      cheap_fare_data[:min_90_with_dd] ||= {}
+      calendar_data_30 = Calendar.where({source_city_code: dep_city_code, destination_city_code: arr_city_code,:section=>country_code}).first rescue {}
+      calendar_data_90 = FareCalendar.where({source_city_code: dep_city_code, destination_city_code: arr_city_code,:section=>country_code}).first rescue {}
+      if calendar_data_90.present? && calendar_data_90.calendar_json.present? &&  calendar_data_30.present? && calendar_data_30.calendar_json.present? && !calendar_data_90.calendar_json.include?("<HTML><HEAD>") 
+        calendar_json_90 = JSON.parse(calendar_data_90.calendar_json)['calendar_json']
+        if !calendar_data_30.calendar_json.include?("<HTML><HEAD>")
+          calendar_json_30 = JSON.parse(calendar_data_30.calendar_json)['calendar_json']  
+        else
+          calendar_json_30 = JSON.parse(calendar_data_90.calendar_json)['calendar_json'] 
+        end
+        today_date = Date.today
+        today = today_date.to_s.split('-').join('')
+        min_today = calendar_json_90[today].sort_by { |k| k["pr"].to_i}.take(3)
+        min_15 = calendar_json_90.select{|k,v| ((Date.today)..Date.today + 15).map{|d| d.to_s.gsub('-','')}.include?(k)}
+        min_15_dd = min_15.each{|k,v|
+          v.map{|rec| rec["dd"] = k}
+        }
+        min_15_with_dd = min_15_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3)
+        min_30_dd = calendar_json_30.each{|k,v|
+          v.map{|rec| rec["dd"] = k}
+        }
+        min_30_with_dd = min_30_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3)
+        min_90_dd = calendar_json_90.each{|k,v|
+          v.map{|rec| rec["dd"] = k}
+        }
+        min_90_with_dd = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3)
+        cheap_fare_data[:min_today] = min_today
+        cheap_fare_data[:min_15_with_dd] = min_15_with_dd
+        cheap_fare_data[:min_30_with_dd] = min_30_with_dd
+        cheap_fare_data[:min_90_with_dd] = min_90_with_dd
+      end
+    end
+    cheap_fare_data
+  end
 end
