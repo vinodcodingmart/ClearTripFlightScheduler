@@ -1083,7 +1083,6 @@ class FlightBookingService
         cheap_fare_data[:min_90_with_dd] = min_90_with_dd
       end
     end
-    binding.pry
     [cheap_fare_data,min_price,max_price]
   end
 end

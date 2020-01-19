@@ -57,7 +57,6 @@ class FlightSchedulesController < ApplicationController
     header_details = eval(header_details_obj.hotel_details)
     schedule_header["near_by_airport_hotels"]  = header_details["near_by_hotels"]
     schedule_header["hotels_list"]  = header_details["city_top_hotels"]
-    binding.pry
     partial = "version_2_designs/schedules/en/directs/in_dom_schedule_routes_v2"
     render partial,locals: { dep_city_name: dep_city_name,arr_city_name: arr_city_name,routes_rhs_top_airlines: routes_rhs_top_airlines,schedule_layout_values: schedule_layout_values,flight_file_name: flight_file_name,page_type: 'flight-schedule',lang: lang,schedule_header: schedule_header}
 
