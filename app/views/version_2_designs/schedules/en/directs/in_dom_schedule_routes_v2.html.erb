@@ -11,6 +11,7 @@ currency = application_processor.currency_name(@country_code)
 
 <%= render partial: "new_designs/schedules/shared/en/cheap_fair_table",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,country_code: @country_code,currency: currency} %>
 <%= render partial: "new_designs/schedules/shared/en/cheap_fair_table_mobile",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,country_code: @country_code,currency: currency} %>
+<%= render :partial => "new_designs/schedules/in/directs/direct_routes_templatized_content_en_in",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,near_by_airport_hotels: schedule_header["near_by_airport_hotels"].take(2),city_top_hotels: schedule_header["hotels_list"].take(3)} %>
 <script>
 var lang = <%= lang.to_json.html_safe %>;
 var country_code= "<%= @country_code.downcase %>";

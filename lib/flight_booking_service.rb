@@ -1040,6 +1040,8 @@ class FlightBookingService
       schedule_layout_values["schedule_routes"] += flight_booking_service.airline_route_schedule_values(@airline_route_schedules)
     }
     schedule_layout_values["schedule_routes"] = schedule_layout_values["schedule_routes"].sort_by { |k| k[:cc_min_price] }
+    max_duration = schedule_layout_values["schedule_routes"].max{ |a,b| (a = a[:duration].include?(":")? Time.parse(a[:duration]).hour * 60 + Time.parse(a[:duration]).min : a[:duration].to_i)<=>(b = b[:duration].include?(":")? Time.parse(b[:duration]).hour * 60 + Time.parse(b[:duration]).min : b[:duration].to_i) }
+    [schedule_layout_values["schedule_routes"],max_duration[:duration]]
   end
   def self.get_cheap_fare_table_data(dep_city_code,arr_city_code,country_code)
     cheap_fare_data = {}
@@ -1072,6 +1074,8 @@ class FlightBookingService
         min_90_dd = calendar_json_90.each{|k,v|
           v.map{|rec| rec["dd"] = k}
         }
+        min_price = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.first["pr"] rescue 0
+        max_price = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.reverse.first["pr"] rescue 0
         min_90_with_dd = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3)
         cheap_fare_data[:min_today] = min_today
         cheap_fare_data[:min_15_with_dd] = min_15_with_dd
@@ -1079,6 +1083,7 @@ class FlightBookingService
         cheap_fare_data[:min_90_with_dd] = min_90_with_dd
       end
     end
-    cheap_fare_data
+    binding.pry
+    [cheap_fare_data,min_price,max_price]
   end
 end
