@@ -1072,17 +1072,17 @@ class FlightBookingService
         min_15_dd = min_15.each{|k,v|
           v.map{|rec| rec["dd"] = k}
         }
-        min_15_with_dd = min_15_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3)
+        min_15_with_dd = min_15_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3) rescue {}
         min_30_dd = calendar_json_30.each{|k,v|
           v.map{|rec| rec["dd"] = k}
         }
-        min_30_with_dd = min_30_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3)
+        min_30_with_dd = min_30_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3) rescue {}
         min_90_dd = calendar_json_90.each{|k,v|
           v.map{|rec| rec["dd"] = k}
         }
         min_price = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.first["pr"] rescue 0
         max_price = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.reverse.first["pr"] rescue 0
-        min_90_with_dd = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3)
+        min_90_with_dd = min_90_dd.values.flatten.sort_by { |k| k["pr"].to_i}.uniq!{|e| e["aln"]}.take(3) rescue {}
         cheap_fare_data[:min_today] = min_today
         cheap_fare_data[:min_15_with_dd] = min_15_with_dd
         cheap_fare_data[:min_30_with_dd] = min_30_with_dd
@@ -1131,11 +1131,13 @@ class FlightBookingService
     end
     [cheap_fare_data,min_price,max_price,min30,min90]
   end
-  # def self.get_faqs_and_reviews_data(dep_city_name,arr_city_name)
-  #   review = {}
-  #   faq_and_review_data = CMS::UniqueFsRoute.where(source: dep_city_name,destination: arr_city_name,is_approved: true).first
-  #   faq_object = faq_and_review_data.faq_object
-  #   review_object = faq_and_review_data.reviews_object
-  #   review["avg_review_rating"] = review_object["avg_review_rating"]
-  # end
+  def self.get_faqs_and_reviews_data(dep_city_name,arr_city_name,schedule_layout_values)
+    faq_and_review_data = CMS::UniqueFsRoute.where(source: dep_city_name,destination: arr_city_name,is_approved: true).first
+    faq_object = faq_and_review_data.faq_object.each{|faq| 
+      faq[:question] = faq[:question]%{airline_name:schedule_layout_values["min90"]["aln"],dep_city_name:dep_city_name,arr_city_name:arr_city_name,currency_code:ApplicationProcessor.new.currency_name(@country_code),min_price:schedule_layout_values["min_price"],max_price: schedule_layout_values["max_price"],other_airlines: schedule_layout_values["operational_airlines"]}
+      faq[:answer] = faq[:answer]%{airline_name:schedule_layout_values["min90"]["aln"],dep_city_name:dep_city_name,arr_city_name:arr_city_name,currency_code:ApplicationProcessor.new.currency_name(@country_code),min_price:schedule_layout_values["min_price"],max_price: schedule_layout_values["max_price"],other_airlines: schedule_layout_values["operational_airlines"]}
+    } rescue []
+    review_object = faq_and_review_data.reviews_object rescue {}
+    [faq_object,review_object.first]
+  end
 end

@@ -29,12 +29,12 @@ class FlightSchedulesController < ApplicationController
     schedule_layout_values["last_dep_airline_no"] = last_dep_airline[:flight_no]
     schedule_layout_values["last_dep_time"] = last_dep_airline[:dep_time]
     cheap_fare_data,schedule_layout_values["min_price"],schedule_layout_values["max_price"],min30,min90 = FlightBookingService.get_cheap_fare_table_data(dep_city_code,arr_city_code,@country_code)
-    # @faq,@review,@review["reviews_list"] = FlightBookingService.get_faqs_and_reviews_data(dep_city_name,arr_city_name)
+    @is_route = ((route == "new-delhi-mumbai" || route == "new-delhi-bangkok" )&& @country_code == "IN") ? true : false
     schedule_layout_values["flight_timings"] = min90
-    schedule_layout_values["min30"] = min30.first[1]
-    schedule_layout_values["min90"] = min90.first[1]
-    schedule_layout_values["route_min_price_30"] = schedule_layout_values["min30"]["pr"]
-    schedule_layout_values["route_min_price_90"] = schedule_layout_values["min90"]["pr"]
+    schedule_layout_values["min30"] = min30.first[1] if min30.present?
+    schedule_layout_values["min90"] = min90.first[1] if min90.present?
+    schedule_layout_values["route_min_price_30"] = schedule_layout_values["min30"]["pr"] if min30.present?
+    schedule_layout_values["route_min_price_90"] = schedule_layout_values["min90"]["pr"] if min90.present?
     schedule_layout_values["top_min_flights_today"] = cheap_fare_data[:min_today]
     schedule_layout_values["top_min_flights_15"] = cheap_fare_data[:min_15_with_dd]
     schedule_layout_values["top_min_flights_30"] = cheap_fare_data[:min_30_with_dd]
@@ -76,10 +76,11 @@ class FlightSchedulesController < ApplicationController
     schedule_layout_values["dep_city_code"] = dep_city_code
     schedule_layout_values["arr_city_code"] = arr_city_code
     flight_file_name = params[:route] + ".html"
-    header_details_obj = Header.where(dep_city_code: "BLR",arr_city_code: "MAA").first
+    header_details_obj = Header.where(dep_city_code: dep_city_code,arr_city_code: arr_city_code).first
     header_details = eval(header_details_obj.hotel_details)
     schedule_header["near_by_airport_hotels"]  = header_details["near_by_hotels"]
     schedule_header["hotels_list"]  = header_details["city_top_hotels"]
+    @faq,@review = FlightBookingService.get_faqs_and_reviews_data(dep_city_name,arr_city_name,schedule_layout_values)
     partial = "version_2_designs/schedules/en/directs/in_dom_schedule_routes_v2"
     render partial,locals: { dep_city_name: dep_city_name,arr_city_name: arr_city_name,routes_rhs_top_airlines: routes_rhs_top_airlines,schedule_layout_values: schedule_layout_values,flight_file_name: flight_file_name,page_type: 'flight-schedule',lang: lang,schedule_header: schedule_header}
 
