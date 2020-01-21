@@ -12,6 +12,35 @@ currency = application_processor.currency_name(@country_code)
 <%= render partial: "new_designs/schedules/shared/en/cheap_fair_table",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,country_code: @country_code,currency: currency} %>
 <%= render partial: "new_designs/schedules/shared/en/cheap_fair_table_mobile",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,country_code: @country_code,currency: currency} %>
 <%= render :partial => "new_designs/schedules/in/directs/direct_routes_templatized_content_en_in",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,near_by_airport_hotels: schedule_header["near_by_airport_hotels"].take(2),city_top_hotels: schedule_header["hotels_list"].take(3)} %>
+<%= render :partial =>  "version_2_designs/schedules/shared/en/route_information_en",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,currency_code: currency} %>
+<%= render partial:"version_2_designs/schedules/shared/en/hotels_and_localities",locals:{arr_city_name: arr_city_name,hotel_api: schedule_layout_values["locality_hotels"],application_processor: application_processor,country_code: @country_code,arr_city_name_formated: schedule_layout_values["arr_city_name_formated"]} %>
+<% if @faq.present? %>
+  <div class="content-desc cnt-odd faq-cnt">
+    <div class="mview-faq-header">
+      <h2><%= I18n.t('faq_heading',dep_city_name: @dep_city_name,arr_city_name: @arr_city_name) %></h2>
+      <div class="mview-mf-faqtoggle-btn visible-xs">
+        <i class="fa fa-caret-down"></i>
+      </div>
+    </div>
+    <div class="mview-mf-faqtoggle">
+      <ol>
+        <% @faq.each do|faq| %>
+        <li itemscope="" itemtype="http://schema.org/Question">
+          <div itemprop="name">
+            <span><%= faq[:question] %></span>
+
+          </div>
+          <div itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+            <p itemprop="text"><%= faq[:answer]%></p>
+          </div>
+        </li>
+        <% end %> 
+      </ol>
+    </div>
+  </div>
+<% else %>
+  <%= render partial: "new_designs/schedules/shared/en/schedule_faq_en", locals: { arr_city_name: arr_city_name, dep_city_name: dep_city_name, schedule_layout_values: schedule_layout_values, use_helper: use_helper,currency: currency } %>
+<% end %>
 <script>
 var lang = <%= lang.to_json.html_safe %>;
 var country_code= "<%= @country_code.downcase %>";

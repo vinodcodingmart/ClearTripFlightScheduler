@@ -7,6 +7,7 @@ class FlightSchedulesController < ApplicationController
     @host_name = @application_processor.host_name(@country_code)
     schedule_layout_values = {}
     schedule_header = {}
+    schedule_layout_values["locality_hotels"] ||={}
     # dep_city,arr_city = route.join.split('-').map{|val| val.capitalize}
     route = UniqueRoute.where(schedule_route_url: params[:route].split('-flights').join).first
     # route.in_flight_schedule_collectives.each{|airline|
@@ -17,9 +18,23 @@ class FlightSchedulesController < ApplicationController
     arr_city_name = route.arr_city_name
     dep_city_code = route.dep_city_code
     arr_city_code = route.arr_city_code
+    @dep_city_name = dep_city_name
+    @arr_city_name = arr_city_name
     @airlines = AirlineUniqueRoute.where(dep_city_code: dep_city_code,arr_city_code: arr_city_code)
-    schedule_layout_values["schedule_routes"],schedule_layout_values["max_duration"] = FlightBookingService.get_schedule_routes(@airlines,@language,@country_code)
-    cheap_fare_data,schedule_layout_values["min_price"],schedule_layout_values["max_price"] = FlightBookingService.get_cheap_fare_table_data(dep_city_code,arr_city_code,@country_code)
+    schedule_layout_values["schedule_routes"],schedule_layout_values["max_duration"],first_dep_airline,last_dep_airline ,schedule_layout_values["min_duration"]= FlightBookingService.get_schedule_routes(@airlines,@language,@country_code)
+    schedule_layout_values["first_dep_airline"] = AirlineBrand.find_by(carrier_code: first_dep_airline[:carrier_code]).carrier_name
+    schedule_layout_values["first_dep_airline_no"] = first_dep_airline[:flight_no]
+    schedule_layout_values["first_dep_time"] = first_dep_airline[:dep_time]
+    schedule_layout_values["last_dep_airline"]= AirlineBrand.find_by(carrier_code: last_dep_airline[:carrier_code]).carrier_name
+    schedule_layout_values["last_dep_airline_no"] = last_dep_airline[:flight_no]
+    schedule_layout_values["last_dep_time"] = last_dep_airline[:dep_time]
+    cheap_fare_data,schedule_layout_values["min_price"],schedule_layout_values["max_price"],min30,min90 = FlightBookingService.get_cheap_fare_table_data(dep_city_code,arr_city_code,@country_code)
+    # @faq,@review,@review["reviews_list"] = FlightBookingService.get_faqs_and_reviews_data(dep_city_name,arr_city_name)
+    schedule_layout_values["flight_timings"] = min90
+    schedule_layout_values["min30"] = min30.first[1]
+    schedule_layout_values["min90"] = min90.first[1]
+    schedule_layout_values["route_min_price_30"] = schedule_layout_values["min30"]["pr"]
+    schedule_layout_values["route_min_price_90"] = schedule_layout_values["min90"]["pr"]
     schedule_layout_values["top_min_flights_today"] = cheap_fare_data[:min_today]
     schedule_layout_values["top_min_flights_15"] = cheap_fare_data[:min_15_with_dd]
     schedule_layout_values["top_min_flights_30"] = cheap_fare_data[:min_30_with_dd]
@@ -31,7 +46,15 @@ class FlightSchedulesController < ApplicationController
     schedule_layout_values["dep_airport_name"] = airports[dep_city_code].airport_name rescue ""
     schedule_layout_values["arr_airport_name"] = airports[arr_city_code].airport_name rescue ""
     schedule_layout_values["operational_airlines_count"] = @airlines.size
-    schedule_layout_values["weekly_flights_count"] = schedule_layout_values["schedule_routes"].size
+    schedule_layout_values["weekly_flights_count"] = route.weekly_flights_count
+    schedule_layout_values["distance"] = route.distance
+    schedule_layout_values["route_min_price"] = schedule_layout_values["min_price"]
+    hotel_api_data = InHotelApi.find_by(city_name: arr_city_name)
+    schedule_layout_values["locality_hotels"][:hotel_api_stars] = eval(hotel_api_data.star_data)
+    schedule_layout_values["locality_hotels"][:hotel_api_property_types] = eval(hotel_api_data.properties)
+    schedule_layout_values["locality_hotels"][:featured_hotels] = eval(hotel_api_data.featured_hotels)
+    schedule_layout_values["locality_hotels"][:chain_hotels] = eval(hotel_api_data.chain_hotels)
+    schedule_layout_values["locality_hotels"][:local_data_offset] = eval(hotel_api_data.local_cities_data).take(5)
     @section = (route.dep_country_code == @country && route.arr_country_code == @country) ? "#{@country_code}-dom" : "#{@country_code}-int"
     @meta_page_type  = "flight-schedule"
     lang = @language == "en" ? "" : "/#{@language}"

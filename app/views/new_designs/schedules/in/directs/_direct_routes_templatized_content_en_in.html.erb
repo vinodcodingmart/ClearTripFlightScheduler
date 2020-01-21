@@ -8,7 +8,7 @@
 	<% end %>
 	</p>
 <% if schedule_layout_values["operational_airlines_count"].present? %>
-	<p>Between <%= dep_city_name%> and <%= arr_city_name%>, <%= schedule_layout_values["operational_airlines_count"] %> airlines are operational. In a week, around <%= schedule_layout_values["weekly_flights_count"]%> flights travel from <%= dep_city_name%> to <%= arr_city_name%>. The travel duration between these cities in a non-stop flight is usually around <%= schedule_layout_values["max_duration"] %> Minutes.</p>
+	<p>Between <%= dep_city_name%> and <%= arr_city_name%>, <%= schedule_layout_values["operational_airlines_count"] %> airlines are operational. In a week, around <%= schedule_layout_values["weekly_flights_count"]%> flights travel from <%= dep_city_name%> to <%= arr_city_name%>. The travel duration between these cities in a non-stop flight is usually around <%= format_duration(schedule_layout_values["max_duration"]) %>.</p>
 <% end %>
 <% if schedule_layout_values["min_price"].to_i > 0  && schedule_layout_values["max_price"].to_i > 0 %>
 	<p><%= dep_city_name%> to <%= arr_city_name%> flights will cost you a minimum of <%= schedule_layout_values["min_price"]%>. This may extend up to <%= schedule_layout_values["max_price"]%>. Worry not! As you may enjoy a number of domestic flight booking offers exclusive for Cleartrip customers!</p>

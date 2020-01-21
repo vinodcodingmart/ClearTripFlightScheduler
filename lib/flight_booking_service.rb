@@ -1040,10 +1040,16 @@ class FlightBookingService
       schedule_layout_values["schedule_routes"] += flight_booking_service.airline_route_schedule_values(@airline_route_schedules)
     }
     schedule_layout_values["schedule_routes"] = schedule_layout_values["schedule_routes"].sort_by { |k| k[:cc_min_price] }
+    first_dep_airline = schedule_layout_values["schedule_routes"].sort_by { |k| k[:dep_time] }.first
+    last_dep_airline = schedule_layout_values["schedule_routes"].sort_by { |k| k[:dep_time] }.last
     max_duration = schedule_layout_values["schedule_routes"].max{ |a,b| (a = a[:duration].include?(":")? Time.parse(a[:duration]).hour * 60 + Time.parse(a[:duration]).min : a[:duration].to_i)<=>(b = b[:duration].include?(":")? Time.parse(b[:duration]).hour * 60 + Time.parse(b[:duration]).min : b[:duration].to_i) }
-    [schedule_layout_values["schedule_routes"],max_duration[:duration]]
+    min_duration = schedule_layout_values["schedule_routes"].min{ |a,b| (a = a[:duration].include?(":")? Time.parse(a[:duration]).hour * 60 + Time.parse(a[:duration]).min : a[:duration].to_i)<=>(b = b[:duration].include?(":")? Time.parse(b[:duration]).hour * 60 + Time.parse(b[:duration]).min : b[:duration].to_i) }
+    [schedule_layout_values["schedule_routes"],max_duration[:duration],first_dep_airline,last_dep_airline,min_duration[:duration]]
   end
   def self.get_cheap_fare_table_data(dep_city_code,arr_city_code,country_code)
+    result={}
+    min30={}
+    min90={}
     cheap_fare_data = {}
     if ["IN","AE","SA"].include?(country_code)
       cheap_fare_data[:min_today] ||= {}
@@ -1081,8 +1087,55 @@ class FlightBookingService
         cheap_fare_data[:min_15_with_dd] = min_15_with_dd
         cheap_fare_data[:min_30_with_dd] = min_30_with_dd
         cheap_fare_data[:min_90_with_dd] = min_90_with_dd
+        calendar_data_90 = calendar_json_90.values.flatten.group_by{|g| g["al"]}
+        calendar_data_30 = calendar_json_30.values.flatten.group_by{|g| g["al"]}
+        calendar_data_90.take(6).each do |al,rows|
+          early_morning=0
+          morning=0
+          noon=0
+          evening=0
+          night= 0
+          if rows.present?
+            rows.each do |val|
+              if val["dt"].present? 
+                time = val["dt"].to_time
+                if time.hour >= 0 && time.hour < 8
+                  early_morning += 1
+                end
+                if time.hour >= 8 && time.hour < 12
+                  morning += 1
+                end
+                if time.hour >= 12 && time.hour < 16
+                  noon += 1
+                end
+                if time.hour >= 16 && time.hour < 20
+                  evening += 1
+                end
+                if time.hour >= 20 && time.hour < 24
+                  night += 1
+                end
+              end
+            end
+          end
+          min90[al] = rows.min{ |a,b| (a["pr"].to_f)<=>(b["pr"].to_f) }  if rows.present?
+          min90[al]["emorn"] = early_morning
+          min90[al]["morn"] = morning
+          min90[al]["noon"] = noon
+          min90[al]["even"] = evening
+          min90[al]["night"] = night
+        end
+        calendar_data_30.each do |al,rows|
+          min30[al] = rows.min{ |a,b| (a["pr"].to_f)<=>(b["pr"].to_f) }  if rows.present?
+        end
       end
     end
-    [cheap_fare_data,min_price,max_price]
+    [cheap_fare_data,min_price,max_price,min30,min90]
   end
+  # def self.get_faqs_and_reviews_data(dep_city_name,arr_city_name)
+  #   review = {}
+  #   faq_and_review_data = CMS::UniqueFsRoute.where(source: dep_city_name,destination: arr_city_name,is_approved: true).first
+  #   faq_object = faq_and_review_data.faq_object
+  #   review_object = faq_and_review_data.reviews_object
+  #   review["avg_review_rating"] = review_object["avg_review_rating"]
+  # end
 end
