@@ -222,7 +222,12 @@ currency = application_processor.currency_name(@country_code)
 <%end%>
       
 <% end %>
-
+<%= render :partial=>"version_2_designs/schedules/shared/en/more_top_schedule_routes",locals: {flights_dep: schedule_layout_values['more_flights_from_dep'],flights_arr: schedule_layout_values['more_flights_to_arr'],arr_city_name: arr_city_name,dep_city_name_en:dep_city_name,arr_city_name_en: arr_city_name, dep_city_name: dep_city_name,use_helper: use_helper} %>
+  <% top_airlines =  routes_rhs_top_airlines["all_cc"] %>
+  <%= render partial: "new_designs/schedules/shared/en/schedule_top_airlines_and_hotels",locals:{schedule_layout_values: schedule_layout_values,top_airlines: top_airlines ,dep_city_name: dep_city_name,use_helper: use_helper,arr_city_name: arr_city_name,:flight_file_name=>flight_file_name,hotels_rhs_list: schedule_header["hotels_rhs_list"],hotels_list: schedule_header["hotels_list"],near_by_airport_hotels: schedule_header[:near_by_airport_hotels]} %>
+  <%= render partial: "new_designs/schedules/shared/en/airport_details_new",locals:{dep_city_name: dep_city_name,arr_city_name: arr_city_name,airport_details: schedule_layout_values["airport_details"],schedule_layout_values: schedule_layout_values } %>
+  <%=render partial: "version_2_footers/#{@country_code.downcase}/in_int_schedule_footer", locals: {dep_city_name: dep_city_name,arr_city_name: arr_city_name,dep_city_name_formated: schedule_layout_values["dep_city_name_formated"],arr_city_name_formated: schedule_layout_values["arr_city_name_formated"],page_type: 'schedule-routes'} %>
+  <%= render partial: "version_2_designs/schedules/shared/en/schedule_faq_schema",locals: {schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,currency: currency}%>
 <script>
 var lang = <%= lang.to_json.html_safe %>;
 var country_code= "<%= @country_code.downcase %>";

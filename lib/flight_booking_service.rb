@@ -1140,4 +1140,25 @@ class FlightBookingService
     review_object = faq_and_review_data.reviews_object rescue {}
     [faq_object,review_object.first]
   end
+  def self.get_more_flights_for_from_dep_city_and_to_arr_city(dep_city_code,arr_city_code)
+    flights_for_from_dep_city = UniqueRoute.where(dep_city_code: dep_city_code,arr_country_code: @country_code).order(weekly_flights_count: :desc).first(30).map{|route| {"url"=>route.schedule_route_url+'-flights.html',"dep_city_name_en"=>route.dep_city_name,"arr_city_name_en"=>route.arr_city_name}}
+    flights_for_to_arr_city = UniqueRoute.where(arr_city_code: arr_city_code,dep_country_code: @country_code).order(weekly_flights_count: :desc).first(30).map{|route| {"url"=>route.schedule_route_url+'-flights.html',"arr_city_name_en"=>route.arr_city_name,"dep_city_name_en"=>route.dep_city_name}}
+    [flights_for_from_dep_city,flights_for_to_arr_city]
+  end
+  def self.get_arrival_and_departure_airport_details(dep_city_code,arr_city_code,airports)
+    airport_details = {}
+    airport_details["dep_airport_code"] = airports[dep_city_code].airport_code rescue dep_city_code
+    airport_details["arr_airport_code"] = airports[arr_city_code].airport_code rescue arr_city_code
+    airport_details["dep_airport_name"] = airports[dep_city_code].airport_name rescue ""
+    airport_details["arr_airport_name"] = airports[arr_city_code].airport_name rescue ""
+    airport_details["dep_airport_address"] = airports[dep_city_code].address rescue ""
+    airport_details["arr_airport_address"] = airports[arr_city_code].address rescue ""
+    airport_details["dep_airport_country"] = airports[dep_city_code].country_name rescue ""
+    airport_details["arr_airport_country"] = airports[arr_city_code].country_name rescue ""
+    airport_details["dep_airport_latitude"] = airports[dep_city_code].latitude rescue ""
+    airport_details["arr_airport_latitude"] = airports[arr_city_code].latitude rescue ""
+    airport_details["dep_airport_longitude"] = airports[dep_city_code].longitude rescue ""
+    airport_details["arr_airport_longitude"] = airports[arr_city_code].longitude rescue ""
+    airport_details
+  end
 end
