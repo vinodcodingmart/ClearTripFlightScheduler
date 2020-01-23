@@ -1140,9 +1140,11 @@ class FlightBookingService
     review_object = faq_and_review_data.reviews_object rescue {}
     [faq_object,review_object.first]
   end
-  def self.get_more_flights_for_from_dep_city_and_to_arr_city(dep_city_code,arr_city_code)
-    flights_for_from_dep_city = UniqueRoute.where(dep_city_code: dep_city_code,arr_country_code: @country_code).order(weekly_flights_count: :desc).first(30).map{|route| {"url"=>route.schedule_route_url+'-flights.html',"dep_city_name_en"=>route.dep_city_name,"arr_city_name_en"=>route.arr_city_name}}
-    flights_for_to_arr_city = UniqueRoute.where(arr_city_code: arr_city_code,dep_country_code: @country_code).order(weekly_flights_count: :desc).first(30).map{|route| {"url"=>route.schedule_route_url+'-flights.html',"arr_city_name_en"=>route.arr_city_name,"dep_city_name_en"=>route.dep_city_name}}
+  def self.get_more_flights_for_from_dep_city_and_to_arr_city(dep_city_code,arr_city_code,section)
+    flights_for_from_dep_city_where = section.include?("dom") ? "dep_city_code = '#{dep_city_code}' and arr_country_code = '#{@country_code}'" : "dep_city_code = '#{dep_city_code}'"
+    flights_for_to_arr_city_where = section.include?("dom") ? "arr_city_code = '#{arr_city_code}' and dep_country_code = '#{@country_code}'" : "arr_city_code = '#{arr_city_code}'"
+    flights_for_from_dep_city = UniqueRoute.where(flights_for_from_dep_city_where).order(weekly_flights_count: :desc).first(30).map{|route| {"url"=>route.schedule_route_url+'-flights.html',"dep_city_name_en"=>route.dep_city_name,"arr_city_name_en"=>route.arr_city_name}}
+    flights_for_to_arr_city = UniqueRoute.where(flights_for_to_arr_city_where).order(weekly_flights_count: :desc).first(30).map{|route| {"url"=>route.schedule_route_url+'-flights.html',"arr_city_name_en"=>route.arr_city_name,"dep_city_name_en"=>route.dep_city_name}}
     [flights_for_from_dep_city,flights_for_to_arr_city]
   end
   def self.get_arrival_and_departure_airport_details(dep_city_code,arr_city_code,airports)

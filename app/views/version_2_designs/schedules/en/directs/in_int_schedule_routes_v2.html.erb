@@ -51,7 +51,7 @@ currency = application_processor.currency_name(@country_code)
         </div>
         <% end %>
         <% end %>
-        
+        <%= render partial: "new_designs/schedules/shared/en/schedule_route_table",locals: { routes:  schedule_layout_values["schedule_routes"],schedule_layout_values: schedule_layout_values,dep_city_name: dep_city_name,arr_city_name: arr_city_name,country_code: @country_code} %>
         <%# unless @volume_count < 1000  %>
         
           <div class="unique-content">
@@ -75,7 +75,7 @@ currency = application_processor.currency_name(@country_code)
         <%= render partial:"version_2_designs/schedules/shared/en/hotels_and_localities",locals:{arr_city_name: @arr_city_name,hotel_api: schedule_layout_values["locality_hotels"],application_processor: application_processor,country_code: country_code,arr_city_name_formated: schedule_layout_values["arr_city_name_formated"]} %>
 
         <%# unless @volume_count < 1000   %>
-        <% if @cms_content["unique_content_with_params"] %>
+        <% if @cms_content.present? && @cms_content["unique_content_with_params"] %>
         <div class="unique_content">
           <%if @dep_city_content && arr_city_content %>
           <h2>About <%= @dep_city_name %> (<%= dep_city_code %>)</h2>
@@ -156,7 +156,7 @@ currency = application_processor.currency_name(@country_code)
       </div>
       <!-- -------------------------------------------------------------------------------------------------- -->
       <% else %>
-
+      <%if @review_content.present?%>
       <% review_content = @review_content["route_review_content"].present? ? @review_content["route_review_content"].split("\n") : []
       unless review_content.empty? %>
       <div class="reviews">
@@ -292,6 +292,7 @@ currency = application_processor.currency_name(@country_code)
 </div><!--/reviews-->
 <% end %>
 <% end %>
+<% end %>
 <% if !@is_route %>
 <%= render :partial=>"version_2_designs/schedules/shared/en/more_top_schedule_routes",locals: {flights_dep: schedule_layout_values['more_flights_from_dep'],flights_arr: schedule_layout_values['more_flights_to_arr'],arr_city_name: arr_city_name,dep_city_name_en:dep_city_name,arr_city_name_en: arr_city_name, dep_city_name: dep_city_name,use_helper: use_helper} %>
 <% end %>
@@ -344,7 +345,7 @@ currency = application_processor.currency_name(@country_code)
               <div id="arrival_city_code"><%= arr_city_code %></div>
             </div>
             <% if !@is_route %>
-              <%=render partial: "version_2_footers/#{@country_code.downcase}/in_int_schedule_footer", locals: {country_code: @country_code,dep_city_name: dep_city_name,arr_city_name: arr_city_name,dep_city_name_formated: schedule_layout_values["dep_city_name_formated"],arr_city_name_formated: schedule_layout_values["arr_city_name_formated"],page_type: 'schedule-routes',footer_links_data: schedule_footer[:footer_links_data],top_airlines: schedule_footer[:int_airlines],flights_header: schedule_header,section: @section,footer_airline_data: schedule_footer[:footer_airline_data]} %>
+              <%=render partial: "version_2_footers/#{@country_code.downcase}/in_int_schedule_footer", locals: {dep_city_name: dep_city_name,arr_city_name: arr_city_name,dep_city_name_formated: schedule_layout_values["dep_city_name_formated"],arr_city_name_formated: schedule_layout_values["arr_city_name_formated"],page_type: 'schedule-routes'} %>
             <% end %>
             <!-- footer end -->
             <%= render "shared/#{country_code.downcase}/#{country_code.downcase}_gac" %>

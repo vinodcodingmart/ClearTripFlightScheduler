@@ -5,11 +5,15 @@ class FlightSchedulesController < ApplicationController
     @language = params[:lang].nil? ? 'en' : params[:lang]
     @application_processor = ApplicationProcessor.new
     @host_name = @application_processor.host_name(@country_code)
+    @host = "https://www.cleartrip.com"
     schedule_layout_values = {}
     schedule_header = {}
     schedule_layout_values["locality_hotels"] ||={}
     # dep_city,arr_city = route.join.split('-').map{|val| val.capitalize}
     route = UniqueRoute.where(schedule_route_url: params[:route].split('-flights').join).first
+    if route.nil? || !route.present?
+      redirect_to "#{@host_name}/flight-schedule/flight-schedules-domestic.html",:status=>301 and return
+    end
     # route.in_flight_schedule_collectives.each{|airline|
     # schedule_layout_values["schedule_routes"] ||= []
     # schedule_layout_values["schedule_routes"] <<{carrier_code: airline.carrier_code,dep_time: airline.dep_time,arr_time: airline.arr_time,format_duration: airline.duration}
@@ -20,7 +24,6 @@ class FlightSchedulesController < ApplicationController
     arr_city_code = route.arr_city_code
     @dep_city_name = dep_city_name
     @arr_city_name = arr_city_name
-    @host = "https://www.cleartrip.com"
     @has_calendar = ["IN","AE","SA"].include?(@country_code)
     model_name = "#{@country_code.titleize}VolumeRoute".constantize
     @volume_count = model_name.where(dep_city_code: route.dep_city_code,arr_city_code: route.arr_city_code).first.volume_count rescue 0
@@ -33,6 +36,7 @@ class FlightSchedulesController < ApplicationController
     schedule_layout_values["last_dep_airline_no"] = last_dep_airline[:flight_no]
     schedule_layout_values["last_dep_time"] = last_dep_airline[:dep_time]
     cheap_fare_data,schedule_layout_values["min_price"],schedule_layout_values["max_price"],min30,min90 = FlightBookingService.get_cheap_fare_table_data(dep_city_code,arr_city_code,@country_code)
+    schedule_layout_values['no_price'] = (schedule_layout_values["max_price"].present? && schedule_layout_values["max_price"].to_i > 0)? true : false
     @is_route = ((route == "new-delhi-mumbai" || route == "new-delhi-bangkok" )&& @country_code == "IN") ? true : false
     schedule_layout_values["flight_timings"] = min90
     schedule_layout_values["min30"] = min30.first[1] if min30.present?
@@ -60,7 +64,7 @@ class FlightSchedulesController < ApplicationController
     schedule_layout_values["locality_hotels"][:featured_hotels] = eval(hotel_api_data.featured_hotels)
     schedule_layout_values["locality_hotels"][:chain_hotels] = eval(hotel_api_data.chain_hotels)
     schedule_layout_values["locality_hotels"][:local_data_offset] = eval(hotel_api_data.local_cities_data).take(5)
-    @section = (route.dep_country_code == @country && route.arr_country_code == @country) ? "#{@country_code}-dom" : "#{@country_code}-int"
+    @section = (route.dep_country_code == @country_code && route.arr_country_code == @country_code) ? "#{@country_code.downcase}-dom" : "#{@country_code.downcase}-int"
     @meta_page_type  = "flight-schedule"
     lang = @language == "en" ? "" : "/#{@language}"
     cc =  AirlineUniqueRoute.where(dep_city_code: dep_city_code,arr_city_code: arr_city_code).pluck(:carrier_code).uniq
@@ -87,9 +91,10 @@ class FlightSchedulesController < ApplicationController
     schedule_header["near_by_airport_hotels"]  = header_details["near_by_hotels"]
     schedule_header["hotels_list"]  = header_details["city_top_hotels"]
     @faq,@review = FlightBookingService.get_faqs_and_reviews_data(dep_city_name,arr_city_name,schedule_layout_values)
-    schedule_layout_values['more_flights_from_dep'],schedule_layout_values['more_flights_to_arr'] = FlightBookingService.get_more_flights_for_from_dep_city_and_to_arr_city(dep_city_code,arr_city_code)
+    schedule_layout_values['more_flights_from_dep'],schedule_layout_values['more_flights_to_arr'] = FlightBookingService.get_more_flights_for_from_dep_city_and_to_arr_city(dep_city_code,arr_city_code,@section)
     schedule_layout_values["airport_details"] = FlightBookingService.get_arrival_and_departure_airport_details(dep_city_code,arr_city_code,airports)
-    partial = "version_2_designs/schedules/en/directs/in_dom_schedule_routes_v2"
+    section = @section.gsub("-","_")
+    partial = "version_2_designs/schedules/en/directs/#{section}_schedule_routes_v2"
     render partial,locals: { dep_city_name: dep_city_name,arr_city_name: arr_city_name,routes_rhs_top_airlines: routes_rhs_top_airlines,schedule_layout_values: schedule_layout_values,flight_file_name: flight_file_name,page_type: 'flight-schedule',lang: lang,schedule_header: schedule_header,has_calendar:@has_calendar,arr_city_code: arr_city_code,dep_city_code:dep_city_code,country_code: @country_code,host: @host}
 
     # @airline_details = {country_code: @country_code}
