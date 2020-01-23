@@ -20,6 +20,8 @@ class FlightSchedulesController < ApplicationController
     arr_city_code = route.arr_city_code
     @dep_city_name = dep_city_name
     @arr_city_name = arr_city_name
+    @host = "https://www.cleartrip.com"
+    @has_calendar = ["IN","AE","SA"].include?(@country_code)
     model_name = "#{@country_code.titleize}VolumeRoute".constantize
     @volume_count = model_name.where(dep_city_code: route.dep_city_code,arr_city_code: route.arr_city_code).first.volume_count rescue 0
     @airlines = AirlineUniqueRoute.where(dep_city_code: dep_city_code,arr_city_code: arr_city_code)
@@ -88,7 +90,7 @@ class FlightSchedulesController < ApplicationController
     schedule_layout_values['more_flights_from_dep'],schedule_layout_values['more_flights_to_arr'] = FlightBookingService.get_more_flights_for_from_dep_city_and_to_arr_city(dep_city_code,arr_city_code)
     schedule_layout_values["airport_details"] = FlightBookingService.get_arrival_and_departure_airport_details(dep_city_code,arr_city_code,airports)
     partial = "version_2_designs/schedules/en/directs/in_dom_schedule_routes_v2"
-    render partial,locals: { dep_city_name: dep_city_name,arr_city_name: arr_city_name,routes_rhs_top_airlines: routes_rhs_top_airlines,schedule_layout_values: schedule_layout_values,flight_file_name: flight_file_name,page_type: 'flight-schedule',lang: lang,schedule_header: schedule_header}
+    render partial,locals: { dep_city_name: dep_city_name,arr_city_name: arr_city_name,routes_rhs_top_airlines: routes_rhs_top_airlines,schedule_layout_values: schedule_layout_values,flight_file_name: flight_file_name,page_type: 'flight-schedule',lang: lang,schedule_header: schedule_header,has_calendar:@has_calendar,arr_city_code: arr_city_code,dep_city_code:dep_city_code,country_code: @country_code,host: @host}
 
     # @airline_details = {country_code: @country_code}
     # flight_booking_service = FlightBookingService.new @airline_details
