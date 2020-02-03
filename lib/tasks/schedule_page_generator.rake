@@ -1,6 +1,6 @@
 require_relative "#{Rails.root}/lib/application_processor.rb"
-require_relative "#{Rails.root}/lib/flight_schedule_service.rb"
-require_relative "#{Rails.root}/lib/flight_ticket_service.rb"
+# require_relative "#{Rails.root}/lib/flight_schedule_service.rb"
+# require_relative "#{Rails.root}/lib/flight_ticket_service.rb"
 require_relative "#{Rails.root}/lib/flight_booking_service.rb"
 require 'roo'
 namespace :schedule do
